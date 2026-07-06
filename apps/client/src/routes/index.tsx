@@ -36,9 +36,9 @@ function PortfolioPage() {
         <StatsSection />
       </HeroShell>
       <main>
+        <ResearchSection />
         <CompanyWorkSection />
         <PersonalProjectsSection />
-        <ResearchSection />
         <PhilosophySection />
         <TechSection />
         <ProcessSection />
