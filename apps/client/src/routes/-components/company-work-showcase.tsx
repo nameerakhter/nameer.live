@@ -1,6 +1,9 @@
 import { useState } from 'react'
 
+import PortfolioBadge, { PortfolioBadgeGroup } from './portfolio-badge'
+
 import { cn } from '@/lib/utils'
+
 
 const COMPANY_PROJECTS = [
   {
@@ -141,13 +144,15 @@ function CompanyProjectDetail({ project }: { project: CompanyProject }) {
 
       <div className="pf-wd-body">
         <h4>{project.headline}</h4>
-        <div className="pf-wd-client">{project.category}</div>
-        <p className="pf-wd-desc">{project.description}</p>
-        <div className="pf-wd-tags">
-          {project.items.map((tag) => (
-            <span key={tag}>{tag}</span>
-          ))}
+        <div className="pf-wd-client">
+          <PortfolioBadge variant="accent">{project.category}</PortfolioBadge>
         </div>
+        <p className="pf-wd-desc">{project.description}</p>
+        <PortfolioBadgeGroup className="pf-wd-tags">
+          {project.items.map((tag) => (
+            <PortfolioBadge key={tag}>{tag}</PortfolioBadge>
+          ))}
+        </PortfolioBadgeGroup>
       </div>
     </div>
   )

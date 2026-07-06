@@ -1,4 +1,5 @@
 import CompanyWorkShowcase from './company-work-showcase'
+import PortfolioBadge, { PortfolioBadgeGroup } from './portfolio-badge'
 import ProjectLinks from './project-links'
 
 const STATS = [
@@ -193,7 +194,7 @@ export function HeroSection() {
       </p>
       <div className="pf-cta-row">
         <a href="#contact" className="pf-btn pf-btn-primary">
-          Get in touch
+          Got something worth building?
           <span aria-hidden>→</span>
         </a>
         <a href="#company-work" className="pf-btn pf-btn-ghost">
@@ -262,7 +263,7 @@ export function PersonalProjectsSection() {
               key={project.title}
               className="group flex flex-col rounded-sm border border-(--pf-border) bg-(--pf-surface) p-6 transition-colors hover:border-(--pf-border-strong) hover:bg-(--pf-surface-hover)"
             >
-              <p className="pf-project-cat">{project.category}</p>
+              <PortfolioBadge variant="accent">{project.category}</PortfolioBadge>
               <h3 className="pf-project-title mt-3">{project.title}</h3>
               <p className="pf-body mt-3 flex-1 text-sm">{project.description}</p>
               <ProjectLinks links={project.links} />
@@ -294,7 +295,7 @@ export function ResearchSection() {
               key={item.title}
               className="rounded-sm border border-(--pf-border) bg-(--pf-surface) p-8 md:p-10"
             >
-              <p className="pf-label">{item.category}</p>
+              <PortfolioBadge variant="accent">{item.category}</PortfolioBadge>
               <h3 className="pf-project-title mt-4 max-w-4xl">{item.title}</h3>
               <p className="pf-body mt-4 max-w-3xl text-[clamp(0.95rem,1.2vw,1.05rem)]">
                 {item.description}
@@ -356,13 +357,11 @@ export function TechSection() {
               <h3 className="pf-stack-heading border-b border-(--pf-border) pb-[18px]">
                 {category.title}
               </h3>
-              <ul className="mt-[18px] flex flex-col gap-2.5">
+              <PortfolioBadgeGroup className="mt-[18px]">
                 {category.items.map((item) => (
-                  <li key={item} className="pf-stack-item">
-                    {item}
-                  </li>
+                  <PortfolioBadge key={item}>{item}</PortfolioBadge>
                 ))}
-              </ul>
+              </PortfolioBadgeGroup>
             </div>
           ))}
         </div>

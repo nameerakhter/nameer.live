@@ -48,7 +48,7 @@ export default function PortfolioHeader() {
           <ThemeToggle />
 
           <a href="#contact" className="pf-nav-cta hidden md:inline-flex">
-            Get in touch
+            Say hey
           </a>
 
           <button
@@ -90,7 +90,7 @@ export default function PortfolioHeader() {
             className="pf-nav-cta mt-3 inline-flex w-fit"
             onClick={() => setMobileOpen(false)}
           >
-            Get in touch
+            Say hey
           </a>
         </nav>
       </div>
