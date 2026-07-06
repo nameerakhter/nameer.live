@@ -21,7 +21,6 @@ export default function PortfolioFooter() {
             <a href="#" className="flex items-center gap-3">
               <Logo className="size-7 text-(--pf-fg)" />
 
-              <span className="pf-brand">Nameer</span>
             </a>
 
             <p className="pf-body max-w-xs text-sm">

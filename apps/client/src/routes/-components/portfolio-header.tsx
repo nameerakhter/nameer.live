@@ -30,11 +30,10 @@ export default function PortfolioHeader() {
       <div className="portfolio-nav-row portfolio-content flex items-center justify-between">
         <a
           href="#"
-          className="flex items-center gap-3 transition-opacity hover:opacity-80"
+          aria-label="Home"
+          className="transition-opacity hover:opacity-80"
         >
           <Logo className="size-7 text-(--pf-fg)" />
-
-          <span className="pf-brand">Nameer</span>
         </a>
 
         <div className="hidden items-center gap-[38px] md:flex">

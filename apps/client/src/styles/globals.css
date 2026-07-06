@@ -157,6 +157,8 @@
   --glow-mid: rgba(124, 58, 237, 0.18);
   --glow-mid-2: rgba(124, 58, 237, 0.06);
   --glow-strong: rgba(124, 58, 237, 0.35);
+  --pf-content-max-width: 1600px;
+  --pf-content-padding-x: 1.5rem;
 
   font-family: var(--pf-sans);
   font-weight: 300;
@@ -166,7 +168,8 @@
 
 .portfolio .portfolio-content {
   width: 100%;
-  max-width: calc(100% - clamp(3rem, 7vw, 6rem));
+  max-width: min(100%, var(--pf-content-max-width));
+  padding-inline: var(--pf-content-padding-x);
   margin-inline: auto;
 }
 
