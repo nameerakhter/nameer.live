@@ -133,45 +133,370 @@
   @apply !text-muted-foreground;
 }
 
-/* Portfolio theme tokens */
 .portfolio {
+  --pf-serif: 'Fraunces', Georgia, serif;
+  --pf-sans: 'Archivo', -apple-system, system-ui, sans-serif;
+  --pf-mono-family: 'JetBrains Mono', ui-monospace, monospace;
   --pf-bg: #f5f1e8;
   --pf-fg: #16141c;
   --pf-fg-dim: #4d4956;
-  --pf-fg-muted: color-mix(in oklab, var(--pf-fg) 55%, transparent);
-  --pf-fg-faint: color-mix(in oklab, var(--pf-fg) 38%, transparent);
-  --pf-border: color-mix(in oklab, var(--pf-fg) 10%, transparent);
-  --pf-border-strong: color-mix(in oklab, var(--pf-fg) 16%, transparent);
-  --pf-surface: color-mix(in oklab, var(--pf-fg) 4%, transparent);
-  --pf-surface-hover: color-mix(in oklab, var(--pf-fg) 8%, transparent);
-  --pf-btn-bg: #16141c;
-  --pf-btn-fg: #f5f1e8;
-  --pf-btn-outline-border: color-mix(in oklab, var(--pf-fg) 16%, transparent);
+  --pf-fg-faint: #7c7889;
+  --pf-amber: #7c3aed;
+  --pf-border: rgba(22, 20, 28, 0.1);
+  --pf-border-strong: rgba(22, 20, 28, 0.16);
+  --pf-surface: rgba(22, 20, 28, 0.04);
+  --pf-surface-hover: rgba(22, 20, 28, 0.08);
   --line: rgba(22, 20, 28, 0.1);
   --line-2: rgba(22, 20, 28, 0.16);
   --glow-mid: rgba(124, 58, 237, 0.18);
   --glow-mid-2: rgba(124, 58, 237, 0.06);
   --glow-strong: rgba(124, 58, 237, 0.35);
+
+  font-family: var(--pf-sans);
+  font-weight: 300;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
 .dark .portfolio {
   --pf-bg: #0e0d13;
   --pf-fg: #e8e6f0;
-  --pf-fg-dim: color-mix(in oklab, var(--pf-fg) 65%, transparent);
-  --pf-fg-muted: color-mix(in oklab, var(--pf-fg) 55%, transparent);
-  --pf-fg-faint: color-mix(in oklab, var(--pf-fg) 38%, transparent);
-  --pf-border: color-mix(in oklab, var(--pf-fg) 8%, transparent);
-  --pf-border-strong: color-mix(in oklab, var(--pf-fg) 15%, transparent);
-  --pf-surface: color-mix(in oklab, var(--pf-fg) 4%, transparent);
-  --pf-surface-hover: color-mix(in oklab, var(--pf-fg) 8%, transparent);
-  --pf-btn-bg: #ffffff;
-  --pf-btn-fg: #08080a;
-  --pf-btn-outline-border: color-mix(in oklab, var(--pf-fg) 15%, transparent);
+  --pf-fg-dim: #a6a2b6;
+  --pf-fg-faint: #6c687c;
+  --pf-border: rgba(232, 230, 240, 0.1);
+  --pf-border-strong: rgba(232, 230, 240, 0.16);
+  --pf-surface: rgba(232, 230, 240, 0.04);
+  --pf-surface-hover: rgba(232, 230, 240, 0.08);
   --line: rgba(232, 230, 240, 0.1);
   --line-2: rgba(232, 230, 240, 0.16);
   --glow-mid: rgba(124, 58, 237, 0.28);
   --glow-mid-2: rgba(124, 58, 237, 0.09);
   --glow-strong: rgba(124, 58, 237, 0.55);
+}
+
+.portfolio .pf-mono {
+  font-family: var(--pf-mono-family);
+  font-weight: 400;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--pf-fg-faint);
+  line-height: 1.6;
+}
+
+.portfolio .pf-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 34px;
+}
+
+.portfolio .pf-eyebrow-rule {
+  height: 1px;
+  width: 46px;
+  background: var(--pf-amber);
+  flex: 0 0 auto;
+}
+
+.portfolio .pf-display {
+  max-width: 14ch;
+  font-family: var(--pf-serif);
+  font-weight: 300;
+  font-size: clamp(3rem, 8.4vw, 7.6rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  color: var(--pf-fg);
+}
+
+.portfolio .pf-display em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--pf-amber);
+}
+
+.portfolio .pf-subline {
+  margin-top: 38px;
+  max-width: 46ch;
+  font-size: clamp(1.05rem, 1.7vw, 1.32rem);
+  line-height: 1.55;
+  color: var(--pf-fg-dim);
+  font-weight: 300;
+}
+
+.portfolio .pf-subline b,
+.portfolio .pf-subline strong {
+  color: var(--pf-fg);
+  font-weight: 500;
+}
+
+.portfolio .pf-section-title {
+  font-family: var(--pf-serif);
+  font-weight: 300;
+  font-size: clamp(2rem, 4.2vw, 3.4rem);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+  color: var(--pf-fg);
+}
+
+.portfolio .pf-section-title em {
+  font-style: italic;
+  font-weight: 300;
+}
+
+.portfolio .pf-contact-title {
+  font-family: var(--pf-serif);
+  font-weight: 300;
+  font-size: clamp(2.6rem, 7vw, 6rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  color: var(--pf-fg);
+}
+
+.portfolio .pf-contact-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--pf-amber);
+}
+
+.portfolio .pf-section-title--contact em {
+  color: var(--pf-amber);
+  font-weight: 400;
+}
+
+.portfolio .pf-section-lead {
+  margin-top: 16px;
+  max-width: 42ch;
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  line-height: 1.55;
+  color: var(--pf-fg-dim);
+  font-weight: 300;
+}
+
+.portfolio .pf-stat-num {
+  font-family: var(--pf-serif);
+  font-weight: 300;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--pf-fg);
+}
+
+.portfolio .pf-stat-lbl {
+  margin-top: 16px;
+  font-family: var(--pf-mono-family);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pf-fg-faint);
+  line-height: 1.5;
+}
+
+.portfolio .pf-brand {
+  font-family: var(--pf-serif);
+  font-size: 1.18rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--pf-fg);
+}
+
+.portfolio .pf-nav-link {
+  font-family: var(--pf-mono-family);
+  font-size: 0.74rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pf-fg-dim);
+  transition: color 0.25s;
+}
+
+.portfolio .pf-nav-link:hover {
+  color: var(--pf-fg);
+}
+
+.portfolio .pf-nav-cta {
+  font-family: var(--pf-mono-family);
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pf-fg);
+  border: 1px solid var(--line-2);
+  padding: 11px 20px;
+  border-radius: 2px;
+  white-space: nowrap;
+  transition:
+    border-color 0.25s,
+    background 0.25s,
+    color 0.25s;
+}
+
+.portfolio .pf-nav-cta:hover {
+  border-color: var(--pf-fg-dim);
+}
+
+.portfolio .pf-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 46px;
+}
+
+.portfolio .pf-btn {
+  font-family: var(--pf-mono-family);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 17px 30px;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: 0.28s;
+  cursor: pointer;
+}
+
+.portfolio .pf-btn-primary {
+  background: var(--pf-amber);
+  color: #ffffff;
+}
+
+.portfolio .pf-btn-primary:hover {
+  background: #9b6bf4;
+}
+
+.portfolio .pf-btn-ghost {
+  background: transparent;
+  color: var(--pf-fg);
+  border-color: var(--line-2);
+  font-weight: 300;
+}
+
+.portfolio .pf-btn-ghost:hover {
+  background: var(--pf-surface-hover);
+}
+
+.portfolio .pf-card-idx {
+  font-family: var(--pf-mono-family);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  color: var(--pf-amber);
+}
+
+.portfolio .pf-card-title {
+  font-family: var(--pf-serif);
+  font-weight: 400;
+  font-size: clamp(1.7rem, 2.6vw, 2.3rem);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  color: var(--pf-fg);
+}
+
+.portfolio .pf-body {
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--pf-fg-dim);
+}
+
+.portfolio .pf-label {
+  font-family: var(--pf-mono-family);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pf-amber);
+}
+
+.portfolio .pf-foot-heading {
+  font-family: var(--pf-mono-family);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pf-fg-faint);
+}
+
+.portfolio .pf-foot-link {
+  font-family: var(--pf-sans);
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--pf-fg-dim);
+  transition: color 0.25s;
+}
+
+.portfolio .pf-foot-link:hover {
+  color: var(--pf-fg);
+}
+
+.portfolio .pf-foot-base {
+  font-family: var(--pf-mono-family);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pf-fg-faint);
+}
+
+.portfolio .pf-project-cat {
+  font-family: var(--pf-mono-family);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pf-fg-faint);
+}
+
+.portfolio .pf-project-title {
+  font-family: var(--pf-serif);
+  font-weight: 400;
+  font-size: clamp(1.35rem, 2.3vw, 2rem);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--pf-fg);
+}
+
+.portfolio .pf-stack-heading {
+  font-family: var(--pf-mono-family);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pf-fg-faint);
+}
+
+.portfolio .pf-stack-item {
+  font-family: var(--pf-mono-family);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--pf-fg-dim);
+}
+
+.portfolio .pf-pillar-num {
+  font-family: var(--pf-mono-family);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  color: var(--pf-fg-faint);
+}
+
+.portfolio .pf-pillar-title {
+  font-family: var(--pf-serif);
+  font-weight: 400;
+  font-size: clamp(1.25rem, 1.8vw, 1.55rem);
+  letter-spacing: -0.015em;
+  line-height: 1.14;
+  color: var(--pf-fg);
+}
+
+.portfolio .pf-link-arrow {
+  font-family: var(--pf-mono-family);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pf-fg-dim);
+  transition: color 0.25s;
+}
+
+.portfolio .pf-link-arrow:hover {
+  color: var(--pf-fg);
 }
 
 .theme-toggle {
