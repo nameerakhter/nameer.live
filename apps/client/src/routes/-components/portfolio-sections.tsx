@@ -1,7 +1,5 @@
 import { ArrowRightIcon } from 'lucide-react'
 
-import { BaseButton } from '@/components/ui/button'
-
 const STATS = [
   { value: '1Cr+', label: 'Users on civic platforms' },
   { value: '1,000+', label: 'Public services supported' },
@@ -149,39 +147,33 @@ const EXPERIENCE = [
 export function HeroSection() {
   return (
     <div className="hero-wrap mx-auto max-w-6xl px-6">
-      <p className="mb-6 text-xs font-medium tracking-[0.2em] text-(--pf-fg-muted) uppercase">
-        Software Engineer · Full-Stack AI Engineer
-      </p>
-      <h1 className="max-w-4xl text-5xl leading-[1.05] font-semibold tracking-tight text-(--pf-fg) md:text-7xl">
+      <div className="pf-eyebrow">
+        <span className="pf-eyebrow-rule" aria-hidden />
+        <span className="pf-mono">
+          Software Engineer · Full-Stack · Prodios Labs
+        </span>
+      </div>
+      <h1 className="pf-display">
         Muhammad Nameer
         <br />
-        <span className="text-(--pf-fg-muted) italic">Akhter</span>
+        <em>Akhter</em>
       </h1>
-      <p className="mt-8 max-w-2xl text-lg/relaxed text-(--pf-fg-muted) md:text-xl">
+      <p className="pf-subline">
         I design and ship{' '}
-        <strong className="font-medium text-[color-mix(in_oklab,var(--pf-fg)_80%,transparent)]">
+        <b>
           production backends, AI workflows, and full-stack platforms
-        </strong>{' '}
+        </b>{' '}
         — from citizen portals serving 1Cr+ users to CBDC payment systems and
         RAG-powered assistants.
       </p>
-      <div className="mt-10 flex flex-wrap gap-4">
-        <BaseButton
-          asChild
-          className="h-11 rounded-full bg-(--pf-btn-bg) px-6 text-sm font-medium text-(--pf-btn-fg) hover:bg-(--pf-btn-bg)/90"
-        >
-          <a href="#contact">
-            Get in touch
-            <ArrowRightIcon className="size-4" />
-          </a>
-        </BaseButton>
-        <BaseButton
-          asChild
-          variant="outline"
-          className="h-11 rounded-full border-(--pf-btn-outline-border) bg-transparent px-6 text-sm text-(--pf-fg) hover:bg-(--pf-surface) hover:text-(--pf-fg)"
-        >
-          <a href="#work">View my work</a>
-        </BaseButton>
+      <div className="pf-cta-row">
+        <a href="#contact" className="pf-btn pf-btn-primary">
+          Get in touch
+          <span aria-hidden>→</span>
+        </a>
+        <a href="#work" className="pf-btn pf-btn-ghost">
+          View my work
+        </a>
       </div>
     </div>
   )
@@ -189,16 +181,12 @@ export function HeroSection() {
 
 export function StatsSection() {
   return (
-    <section className="hero-stats border-y border-(--pf-border-strong) px-6 py-14">
+    <section className="hero-stats border-y border-(--pf-border) px-6 py-14">
       <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 md:grid-cols-4 md:gap-12">
         {STATS.map((stat) => (
           <div key={stat.label}>
-            <div className="text-3xl font-semibold tracking-tight text-(--pf-fg) md:text-4xl">
-              {stat.value}
-            </div>
-            <p className="mt-2 text-sm/snug text-(--pf-fg-muted)">
-              {stat.label}
-            </p>
+            <div className="pf-stat-num">{stat.value}</div>
+            <p className="pf-stat-lbl">{stat.label}</p>
           </div>
         ))}
       </div>
@@ -211,39 +199,40 @@ export function ServicesSection() {
     <section id="services" className="px-6 py-24 md:py-32">
       <div className="mx-auto max-w-6xl">
         <div className="mb-16 max-w-2xl">
-          <h2 className="text-3xl font-semibold tracking-tight text-(--pf-fg) md:text-4xl">
-            What I <span className="text-(--pf-fg-muted) italic">do</span>
+          <h2 className="pf-section-title">
+            What I <em>do</em>
           </h2>
-          <p className="mt-4 text-base/relaxed text-(--pf-fg-muted) md:text-lg">
+          <p className="pf-section-lead">
             Backend engineering, applied AI, and full-stack delivery — the same
             disciplines I use daily building platforms for government and
             fintech at Prodios Labs.
           </p>
         </div>
 
-        <div className="space-y-20">
+        <div className="flex flex-col gap-20">
           {EXPERTISE.map((service) => (
             <article
               key={service.number}
               className="grid gap-8 border-t border-(--pf-border) pt-12 md:grid-cols-[120px_1fr] md:gap-16"
             >
-              <div className="text-sm font-medium tracking-widest text-(--pf-fg-faint)">
+              <div className="pf-card-idx">
                 {service.number} · {service.title}
               </div>
               <div>
-                <h3 className="text-2xl font-semibold tracking-tight text-(--pf-fg) md:text-3xl">
-                  {service.headline}
-                </h3>
-                <p className="mt-4 max-w-2xl text-base/relaxed text-(--pf-fg-muted)">
+                <h3 className="pf-card-title">{service.headline}</h3>
+                <p className="pf-body mt-4 max-w-2xl text-[clamp(0.95rem,1.2vw,1.05rem)]">
                   {service.description}
                 </p>
                 <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
                   {service.items.map((item) => (
                     <li
                       key={item}
-                      className="flex items-center gap-2.5 text-sm text-(--pf-fg-dim)"
+                      className="pf-stack-item flex items-center gap-2.5"
                     >
-                      <span className="size-1 shrink-0 rounded-full bg-(--pf-fg-faint)" />
+                      <span
+                        className="size-1 shrink-0 rounded-full bg-(--pf-fg-faint)"
+                        aria-hidden
+                      />
                       {item}
                     </li>
                   ))}
@@ -266,18 +255,15 @@ export function WorkSection() {
       <div className="mx-auto max-w-6xl">
         <div className="mb-14 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <h2 className="text-3xl font-semibold tracking-tight text-(--pf-fg) md:text-4xl">
-              Selected <span className="text-(--pf-fg-muted) italic">work</span>
+            <h2 className="pf-section-title">
+              Selected <em>work</em>
             </h2>
-            <p className="mt-3 max-w-lg text-base text-(--pf-fg-muted)">
+            <p className="pf-section-lead mt-3 max-w-lg">
               Platforms, payment systems, and AI tools shipped in production for
               government and enterprise.
             </p>
           </div>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-1.5 text-sm text-(--pf-fg-dim) transition-colors hover:text-(--pf-fg)"
-          >
+          <a href="#contact" className="pf-link-arrow inline-flex items-center gap-1.5">
             Discuss a project
             <ArrowRightIcon className="size-3.5" />
           </a>
@@ -287,17 +273,11 @@ export function WorkSection() {
           {PROJECTS.map((project) => (
             <article
               key={project.title}
-              className="group rounded-2xl border border-(--pf-border) bg-(--pf-surface) p-6 transition-colors hover:border-(--pf-btn-outline-border) hover:bg-(--pf-surface-hover)"
+              className="group rounded-sm border border-(--pf-border) bg-(--pf-surface) p-6 transition-colors hover:border-(--pf-border-strong) hover:bg-(--pf-surface-hover)"
             >
-              <p className="text-xs font-medium tracking-wide text-(--pf-fg-faint)">
-                {project.category}
-              </p>
-              <h3 className="mt-3 text-lg font-semibold text-(--pf-fg)">
-                {project.title}
-              </h3>
-              <p className="mt-3 text-sm/relaxed text-(--pf-fg-muted)">
-                {project.description}
-              </p>
+              <p className="pf-project-cat">{project.category}</p>
+              <h3 className="pf-project-title mt-3">{project.title}</h3>
+              <p className="pf-body mt-3 text-sm">{project.description}</p>
             </article>
           ))}
         </div>
@@ -310,17 +290,13 @@ export function PhilosophySection() {
   return (
     <section id="about" className="px-6 py-24 md:py-32">
       <div className="mx-auto max-w-6xl">
-        <div className="rounded-3xl border border-(--pf-border) bg-(--pf-surface) px-8 py-14 md:px-16 md:py-20">
-          <p className="text-xs font-medium tracking-[0.2em] text-(--pf-fg-faint) uppercase">
-            About
-          </p>
-          <h2 className="mt-6 max-w-3xl text-3xl/snug font-semibold tracking-tight text-(--pf-fg) md:text-4xl">
+        <div className="rounded-sm border border-(--pf-border) bg-(--pf-surface) px-8 py-14 md:px-16 md:py-20">
+          <p className="pf-label">About</p>
+          <h2 className="pf-section-title mt-6 max-w-3xl">
             Engineering at the intersection of{' '}
-            <span className="text-(--pf-fg-muted) italic">
-              scale, security, and intelligence.
-            </span>
+            <em>scale, security, and intelligence.</em>
           </h2>
-          <p className="mt-6 max-w-2xl text-base/relaxed text-(--pf-fg-muted) md:text-lg">
+          <p className="pf-body mt-6 max-w-2xl text-[clamp(1rem,1.5vw,1.125rem)]">
             I&apos;m a software engineer at Prodios Labs building platforms that
             real people depend on — civic portals, payment infrastructure, and
             AI assistants that need to work under load. My background spans
@@ -340,10 +316,10 @@ export function TechSection() {
     <section className="border-t border-(--pf-border) px-6 py-24 md:py-32">
       <div className="mx-auto max-w-6xl">
         <div className="mb-14 max-w-2xl">
-          <h2 className="text-3xl font-semibold tracking-tight text-(--pf-fg) md:text-4xl">
-            Tech <span className="text-(--pf-fg-muted) italic">stack</span>
+          <h2 className="pf-section-title">
+            Tech <em>stack</em>
           </h2>
-          <p className="mt-4 text-base/relaxed text-(--pf-fg-muted) md:text-lg">
+          <p className="pf-section-lead">
             Tools and technologies I use daily across backend services, frontend
             interfaces, infrastructure, and AI pipelines.
           </p>
@@ -353,18 +329,14 @@ export function TechSection() {
           {TECH_CATEGORIES.map((category) => (
             <div
               key={category.title}
-              className="rounded-2xl border border-(--pf-border) p-6"
+              className="rounded-sm border border-(--pf-border) p-6"
             >
-              <h3 className="text-sm font-semibold text-(--pf-fg)">
+              <h3 className="pf-stack-heading border-b border-(--pf-border) pb-[18px]">
                 {category.title}
               </h3>
-              <ul className="mt-4 space-y-2.5">
+              <ul className="mt-[18px] flex flex-col gap-2.5">
                 {category.items.map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-center gap-2 text-sm text-(--pf-fg-muted)"
-                  >
-                    <span className="size-1 shrink-0 rounded-full bg-[var(--pf-surface)]5" />
+                  <li key={item} className="pf-stack-item">
                     {item}
                   </li>
                 ))}
@@ -382,27 +354,20 @@ export function ProcessSection() {
     <section className="px-6 py-24 md:py-32">
       <div className="mx-auto max-w-6xl">
         <div className="mb-14 max-w-2xl">
-          <h2 className="text-3xl font-semibold tracking-tight text-(--pf-fg) md:text-4xl">
-            Experience &{' '}
-            <span className="text-(--pf-fg-muted) italic">background</span>
+          <h2 className="pf-section-title">
+            Experience & <em>background</em>
           </h2>
-          <p className="mt-4 text-base/relaxed text-(--pf-fg-muted) md:text-lg">
+          <p className="pf-section-lead">
             From research labs to production government platforms.
           </p>
         </div>
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {EXPERIENCE.map((step) => (
-            <div key={step.number} className="space-y-4">
-              <div className="text-sm font-medium tracking-widest text-(--pf-fg-faint)">
-                {step.number}
-              </div>
-              <h3 className="text-base font-semibold text-(--pf-fg)">
-                {step.title}
-              </h3>
-              <p className="text-sm/relaxed text-(--pf-fg-muted)">
-                {step.description}
-              </p>
+            <div key={step.number} className="flex flex-col gap-4">
+              <div className="pf-pillar-num">{step.number}</div>
+              <h3 className="pf-pillar-title">{step.title}</h3>
+              <p className="pf-body text-sm">{step.description}</p>
             </div>
           ))}
         </div>
@@ -418,37 +383,24 @@ export function CtaSection() {
       className="border-t border-(--pf-border) px-6 py-24 md:py-32"
     >
       <div className="mx-auto max-w-6xl text-center">
-        <p className="text-xs font-medium tracking-[0.2em] text-(--pf-fg-faint) uppercase">
-          Contact
-        </p>
-        <h2 className="mt-6 text-4xl font-semibold tracking-tight text-(--pf-fg) md:text-5xl">
+        <p className="pf-label">Contact</p>
+        <h2 className="pf-contact-title mx-auto mt-6 max-w-3xl">
           Let&apos;s build
           <br />
-          <span className="text-(--pf-fg-muted) italic">
-            something together.
-          </span>
+          <em>something together.</em>
         </h2>
-        <p className="mx-auto mt-6 max-w-xl text-base/relaxed text-(--pf-fg-muted) md:text-lg">
+        <p className="pf-body mx-auto mt-6 max-w-xl text-[clamp(1rem,1.5vw,1.125rem)]">
           Open to engineering roles, collaborations, and interesting technical
           problems. Reach out and let&apos;s talk.
         </p>
-        <div className="mt-10 flex flex-wrap justify-center gap-4">
-          <BaseButton
-            asChild
-            className="h-11 rounded-full bg-(--pf-btn-bg) px-6 text-sm font-medium text-(--pf-btn-fg) hover:bg-(--pf-btn-bg)/90"
-          >
-            <a href="mailto:akhtarnameer@gmail.com">
-              Send an email
-              <ArrowRightIcon className="size-4" />
-            </a>
-          </BaseButton>
-          <BaseButton
-            asChild
-            variant="outline"
-            className="h-11 rounded-full border-(--pf-btn-outline-border) bg-transparent px-6 text-sm text-(--pf-fg) hover:bg-(--pf-surface) hover:text-(--pf-fg)"
-          >
-            <a href="#work">Review my work</a>
-          </BaseButton>
+        <div className="pf-cta-row justify-center">
+          <a href="mailto:akhtarnameer@gmail.com" className="pf-btn pf-btn-primary">
+            Send an email
+            <span aria-hidden>→</span>
+          </a>
+          <a href="#work" className="pf-btn pf-btn-ghost">
+            Review my work
+          </a>
         </div>
       </div>
     </section>

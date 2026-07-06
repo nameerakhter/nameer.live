@@ -1,7 +1,6 @@
 import { MenuIcon, XIcon } from 'lucide-react'
 import { useState } from 'react'
 
-import { BaseButton } from '@/components/ui/button'
 import { Logo } from '@/components/ui/logo'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
 import { cn } from '@/lib/utils'
@@ -24,40 +23,31 @@ export default function PortfolioHeader() {
       <div className="mx-auto flex h-[72px] max-w-6xl items-center justify-between px-6">
         <a
           href="#"
-          className="flex items-center gap-2.5 text-(--pf-fg) transition-opacity hover:opacity-80"
+          className="flex items-center gap-3 transition-opacity hover:opacity-80"
         >
           <Logo className="size-7 text-(--pf-fg)" />
 
-          <span className="text-sm font-semibold tracking-tight">Nameer</span>
+          <span className="pf-brand">Nameer</span>
         </a>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-[38px] md:flex">
           {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm text-(--pf-fg-dim) transition-colors hover:text-(--pf-fg)"
-            >
+            <a key={link.href} href={link.href} className="pf-nav-link">
               {link.label}
             </a>
           ))}
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
           <ThemeToggle />
 
-          <div className="hidden md:block">
-            <BaseButton
-              asChild
-              className="h-9 rounded-full bg-(--pf-btn-bg) px-5 text-sm font-medium text-(--pf-btn-fg) hover:bg-(--pf-btn-bg)/90"
-            >
-              <a href="#contact">Get in touch</a>
-            </BaseButton>
-          </div>
+          <a href="#contact" className="pf-nav-cta hidden md:inline-flex">
+            Get in touch
+          </a>
 
           <button
             type="button"
-            className="text-(--pf-fg) md:hidden"
+            className="inline-flex size-[42px] items-center justify-center rounded-[2px] border border-(--line-2) text-(--pf-fg) md:hidden"
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             onClick={() => setMobileOpen((open) => !open)}
           >
@@ -77,26 +67,25 @@ export default function PortfolioHeader() {
           mobileOpen ? 'block' : 'hidden',
         )}
       >
-        <nav className="flex flex-col gap-1 px-6 py-4">
+        <nav className="flex flex-col px-6 py-4">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="rounded-lg px-3 py-2.5 text-sm text-(--pf-fg-dim) transition-colors hover:bg-(--pf-surface) hover:text-(--pf-fg)"
+              className="pf-nav-link border-t border-(--pf-border) py-3.5 first:border-t-0"
               onClick={() => setMobileOpen(false)}
             >
               {link.label}
             </a>
           ))}
 
-          <BaseButton
-            asChild
-            className="mt-2 h-10 rounded-full bg-(--pf-btn-bg) text-(--pf-btn-fg) hover:bg-(--pf-btn-bg)/90"
+          <a
+            href="#contact"
+            className="pf-nav-cta mt-3 inline-flex w-fit"
+            onClick={() => setMobileOpen(false)}
           >
-            <a href="#contact" onClick={() => setMobileOpen(false)}>
-              Get in touch
-            </a>
-          </BaseButton>
+            Get in touch
+          </a>
         </nav>
       </div>
     </nav>
