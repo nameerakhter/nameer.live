@@ -1,14 +1,10 @@
 import { Logo } from '@/components/ui/logo'
 
 const FOOTER_LINKS = [
-  { label: 'At Prodios', href: '#company-work' },
-
-  { label: 'Personal', href: '#personal-projects' },
-
   { label: 'Research', href: '#research' },
-
+  { label: 'At Prodios', href: '#company-work' },
+  { label: 'Personal', href: '#personal-projects' },
   { label: 'About', href: '#about' },
-
   { label: 'Contact', href: '#contact' },
 ] as const
 
