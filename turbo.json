@@ -15,6 +15,13 @@
     },
     "build": {
       "dependsOn": ["^build"]
+    },
+    "@repo/client#build": {
+      "dependsOn": [],
+      "outputs": ["dist/**"]
+    },
+    "@repo/server#build": {
+      "outputs": ["dist/**"]
     }
   }
 }
