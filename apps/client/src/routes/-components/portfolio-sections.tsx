@@ -171,7 +171,7 @@ const EXPERIENCE = [
 
 export function HeroSection() {
   return (
-    <div className="hero-wrap mx-auto max-w-6xl px-6">
+    <div className="hero-wrap portfolio-content">
       <div className="pf-eyebrow">
         <span className="pf-eyebrow-rule" aria-hidden />
         <span className="pf-mono">
@@ -206,8 +206,8 @@ export function HeroSection() {
 
 export function StatsSection() {
   return (
-    <section className="hero-stats border-y border-(--pf-border) px-6 py-14">
-      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 md:grid-cols-4 md:gap-12">
+    <section className="hero-stats border-y border-(--pf-border) py-14">
+      <div className="portfolio-content grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-12">
         {STATS.map((stat) => (
           <div key={stat.label}>
             <div className="pf-stat-num">{stat.value}</div>
@@ -221,8 +221,8 @@ export function StatsSection() {
 
 export function CompanyWorkSection() {
   return (
-    <section id="company-work" className="pf-block px-6">
-      <div className="mx-auto max-w-6xl">
+    <section id="company-work" className="pf-block">
+      <div className="portfolio-content">
         <div className="pf-sec-head">
           <h2 className="pf-section-title max-w-[16ch]">
             What I <em>did</em>
@@ -243,9 +243,9 @@ export function PersonalProjectsSection() {
   return (
     <section
       id="personal-projects"
-      className="border-t border-(--pf-border) pf-block px-6"
+      className="border-t border-(--pf-border) pf-block"
     >
-      <div className="mx-auto max-w-6xl">
+      <div className="portfolio-content">
         <div className="pf-sec-head">
           <h2 className="pf-section-title max-w-[16ch]">
             Personal <em>projects</em>
@@ -276,8 +276,8 @@ export function PersonalProjectsSection() {
 
 export function ResearchSection() {
   return (
-    <section id="research" className="border-t border-(--pf-border) pf-block px-6">
-      <div className="mx-auto max-w-6xl">
+    <section id="research" className="border-t border-(--pf-border) pf-block">
+      <div className="portfolio-content">
         <div className="pf-sec-head">
           <h2 className="pf-section-title max-w-[16ch]">
             Research & <em>publications</em>
@@ -310,8 +310,8 @@ export function ResearchSection() {
 
 export function PhilosophySection() {
   return (
-    <section id="about" className="px-6 py-24 md:py-32">
-      <div className="mx-auto max-w-6xl">
+    <section id="about" className="py-24 md:py-32">
+      <div className="portfolio-content">
         <div className="rounded-sm border border-(--pf-border) bg-(--pf-surface) px-8 py-14 md:px-16 md:py-20">
           <p className="pf-label">About</p>
           <h2 className="pf-section-title mt-6 max-w-3xl">
@@ -335,8 +335,8 @@ export function PhilosophySection() {
 
 export function TechSection() {
   return (
-    <section className="border-t border-(--pf-border) px-6 py-24 md:py-32">
-      <div className="mx-auto max-w-6xl">
+    <section className="border-t border-(--pf-border) py-24 md:py-32">
+      <div className="portfolio-content">
         <div className="mb-14 max-w-2xl">
           <h2 className="pf-section-title">
             Tech <em>stack</em>
@@ -373,8 +373,8 @@ export function TechSection() {
 
 export function ProcessSection() {
   return (
-    <section className="px-6 py-24 md:py-32">
-      <div className="mx-auto max-w-6xl">
+    <section className="py-24 md:py-32">
+      <div className="portfolio-content">
         <div className="mb-14 max-w-2xl">
           <h2 className="pf-section-title">
             Experience & <em>background</em>
@@ -402,9 +402,9 @@ export function CtaSection() {
   return (
     <section
       id="contact"
-      className="border-t border-(--pf-border) px-6 py-24 md:py-32"
+      className="border-t border-(--pf-border) py-24 md:py-32"
     >
-      <div className="mx-auto max-w-6xl text-center">
+      <div className="portfolio-content text-center">
         <p className="pf-label">Contact</p>
         <h2 className="pf-contact-title mx-auto mt-6 max-w-3xl">
           Let&apos;s build

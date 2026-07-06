@@ -15,7 +15,7 @@ const FOOTER_LINKS = [
 export default function PortfolioFooter() {
   return (
     <footer className="border-t border-(--pf-border) bg-(--pf-bg)">
-      <div className="mx-auto max-w-6xl px-6 py-16">
+      <div className="portfolio-content py-16">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
           <div className="flex flex-col gap-4">
             <a href="#" className="flex items-center gap-3">

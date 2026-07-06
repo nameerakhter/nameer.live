@@ -164,6 +164,12 @@
   -webkit-font-smoothing: antialiased;
 }
 
+.portfolio .portfolio-content {
+  width: 100%;
+  max-width: calc(100% - clamp(3rem, 7vw, 6rem));
+  margin-inline: auto;
+}
+
 .dark .portfolio {
   --pf-bg: #0e0d13;
   --pf-fg: #e8e6f0;

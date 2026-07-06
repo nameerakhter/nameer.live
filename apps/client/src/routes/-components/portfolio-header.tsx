@@ -27,7 +27,7 @@ export default function PortfolioHeader() {
         mobileOpen && 'open',
       )}
     >
-      <div className="portfolio-nav-row mx-auto flex max-w-6xl items-center justify-between px-6">
+      <div className="portfolio-nav-row portfolio-content flex items-center justify-between">
         <a
           href="#"
           className="flex items-center gap-3 transition-opacity hover:opacity-80"
@@ -74,7 +74,7 @@ export default function PortfolioHeader() {
           mobileOpen ? 'block' : 'hidden',
         )}
       >
-        <nav className="flex flex-col px-6 py-4">
+        <nav className="portfolio-content flex flex-col py-4">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
