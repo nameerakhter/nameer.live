@@ -5,6 +5,8 @@ const FOOTER_LINKS = [
 
   { label: 'Personal', href: '#personal-projects' },
 
+  { label: 'Research', href: '#research' },
+
   { label: 'About', href: '#about' },
 
   { label: 'Contact', href: '#contact' },

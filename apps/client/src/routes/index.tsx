@@ -11,6 +11,7 @@ import {
   ProcessSection,
   StatsSection,
   TechSection,
+  ResearchSection,
 } from './-components/portfolio-sections'
 
 export const Route = createFileRoute('/')({
@@ -37,6 +38,7 @@ function PortfolioPage() {
       <main>
         <CompanyWorkSection />
         <PersonalProjectsSection />
+        <ResearchSection />
         <PhilosophySection />
         <TechSection />
         <ProcessSection />
