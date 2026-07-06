@@ -1,6 +1,7 @@
 import CompanyWorkShowcase from './company-work-showcase'
 import PortfolioBadge, { PortfolioBadgeGroup } from './portfolio-badge'
 import ProjectLinks from './project-links'
+import ResearchShowcase from './research-showcase'
 
 const STATS = [
   { value: '1Cr+', label: 'Users on civic platforms' },
@@ -85,30 +86,6 @@ const PERSONAL_PROJECTS = [
       {
         label: 'GitHub',
         href: 'https://github.com/nameerakhter/GerichtRestraunt_ReactJs',
-      },
-    ],
-  },
-] as const
-
-const RESEARCH_ACHIEVEMENTS = [
-  {
-    title:
-      'An Improved Bearing Fault Investigation Scheme Using 1D CNN with PCA and SVM',
-    category: 'IEEE Publication · IIT Roorkee · 2024',
-    description:
-      'Published research on vibration-based bearing fault detection using the CWRU dataset — evaluating 10+ ML/DL architectures including 1D CNN, LSTM, GRU, and SVM with 25% performance gains through feature engineering.',
-    links: [
-      {
-        label: 'Published paper',
-        href: 'https://doi.org/10.1109/iatmsi64286.2025.10985009',
-      },
-      {
-        label: 'Models & notebooks',
-        href: 'https://github.com/nameerakhter/Ann_cwru',
-      },
-      {
-        label: 'Signal explorer app',
-        href: 'https://github.com/nameerakhter/Vibration_signal_analysis',
       },
     ],
   },
@@ -201,6 +178,11 @@ export function HeroSection() {
           View company work
         </a>
       </div>
+      <p className="pf-research-hero-note">
+        <span className="pf-label">IEEE publication · 2025</span>
+        Evaluated ML and deep learning models for vibration-based bearing fault
+        detection at IIT Roorkee.
+      </p>
     </div>
   )
 }
@@ -222,7 +204,7 @@ export function StatsSection() {
 
 export function CompanyWorkSection() {
   return (
-    <section id="company-work" className="pf-block">
+    <section id="company-work" className="border-t border-(--pf-border) pf-block">
       <div className="portfolio-content">
         <div className="pf-sec-head">
           <h2 className="pf-section-title max-w-[16ch]">
@@ -277,33 +259,20 @@ export function PersonalProjectsSection() {
 
 export function ResearchSection() {
   return (
-    <section id="research" className="border-t border-(--pf-border) pf-block">
+    <section id="research" className="pf-research-block border-t border-(--pf-border)">
       <div className="portfolio-content">
         <div className="pf-sec-head">
           <h2 className="pf-section-title max-w-[16ch]">
-            Research & <em>publications</em>
+            AI research & <em>publications</em>
           </h2>
           <p className="pf-sec-side">
-            Published work from my research internship at IIT Roorkee — deep
-            learning for vibration-based fault detection in rolling bearings.
+            Peer-reviewed research published in 2025 — evaluating ML and deep
+            learning models for vibration-based fault detection in rolling
+            bearings.
           </p>
         </div>
 
-        <div className="flex flex-col gap-6">
-          {RESEARCH_ACHIEVEMENTS.map((item) => (
-            <article
-              key={item.title}
-              className="rounded-sm border border-(--pf-border) bg-(--pf-surface) p-8 md:p-10"
-            >
-              <PortfolioBadge variant="accent">{item.category}</PortfolioBadge>
-              <h3 className="pf-project-title mt-4 max-w-4xl">{item.title}</h3>
-              <p className="pf-body mt-4 max-w-3xl text-[clamp(0.95rem,1.2vw,1.05rem)]">
-                {item.description}
-              </p>
-              <ProjectLinks links={item.links} />
-            </article>
-          ))}
-        </div>
+        <ResearchShowcase />
       </div>
     </section>
   )
