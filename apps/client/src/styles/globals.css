@@ -125,10 +125,89 @@
     @apply bg-background text-foreground;
   }
   html {
-    @apply font-sans;
+    @apply font-sans scroll-smooth;
   }
 }
 
 [data-sonner-toaster][data-sonner-theme='dark'] [data-description] {
   @apply !text-muted-foreground;
+}
+
+/* Portfolio hero decor (from scratch CSS grid + glow) */
+.portfolio {
+  --line: rgba(232, 230, 240, 0.1);
+  --line-2: rgba(232, 230, 240, 0.16);
+  --glow-mid: rgba(124, 58, 237, 0.28);
+  --glow-mid-2: rgba(124, 58, 237, 0.09);
+  --glow-strong: rgba(124, 58, 237, 0.55);
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: clamp(70px, 10vh, 130px);
+}
+
+.hero-wrap {
+  position: relative;
+  z-index: 2;
+  padding-top: clamp(150px, 20vh, 230px);
+}
+
+.hero-stats {
+  position: relative;
+  z-index: 2;
+  margin-top: clamp(40px, 7vh, 90px);
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: clamp(46px, 6vw, 82px) clamp(46px, 6vw, 82px);
+  mask-image: radial-gradient(120% 90% at 30% 8%, #000 14%, transparent 74%);
+  -webkit-mask-image: radial-gradient(
+    120% 90% at 30% 8%,
+    #000 14%,
+    transparent 74%
+  );
+  opacity: 0.85;
+}
+
+.hero-glow {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  width: min(1100px, 120vw);
+  height: min(1100px, 120vw);
+  top: -42%;
+  left: 22%;
+  transform: translateX(-42%);
+  background: radial-gradient(
+    circle,
+    var(--glow-mid) 0%,
+    var(--glow-mid-2) 32%,
+    transparent 62%
+  );
+  filter: blur(8px);
+}
+
+.hero-glow::after {
+  content: '';
+  position: absolute;
+  top: 18%;
+  left: 8%;
+  width: min(420px, 55vw);
+  height: min(420px, 55vw);
+  background: radial-gradient(
+    circle,
+    var(--glow-strong) 0%,
+    transparent 68%
+  );
+  filter: blur(18px);
+  opacity: 0.35;
 }
