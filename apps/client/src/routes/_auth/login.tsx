@@ -35,7 +35,6 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from '@/components/ui/input-otp'
-import { Logo } from '@/components/ui/logo'
 import { authClient } from '@/lib/auth'
 import { getErrorMessage } from '@/lib/utils'
 
@@ -142,7 +141,12 @@ function Login() {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex items-center justify-center gap-2">
-        <Logo className="size-6" />
+        <img
+          src="/mna.png"
+          alt=""
+          aria-hidden
+          className="size-6 object-contain"
+        />
         <span className="font-medium">Fullstack Starter</span>
       </div>
 

@@ -1,5 +1,3 @@
-import { Logo } from '@/components/ui/logo'
-
 const FOOTER_LINKS = [
   { label: 'Research', href: '#research' },
   { label: 'At Prodios', href: '#company-work' },
@@ -15,7 +13,12 @@ export default function PortfolioFooter() {
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
           <div className="flex flex-col gap-4">
             <a href="#" className="flex items-center gap-3">
-              <Logo className="size-7 text-(--pf-fg)" />
+              <img
+                src="/man-tranparent.png"
+                alt=""
+                aria-hidden
+                className="h-14 w-auto object-contain"
+              />
 
             </a>
 
