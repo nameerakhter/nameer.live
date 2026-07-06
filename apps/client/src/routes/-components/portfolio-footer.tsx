@@ -1,9 +1,9 @@
 import { Logo } from '@/components/ui/logo'
 
 const FOOTER_LINKS = [
-  { label: 'Work', href: '#work' },
+  { label: 'At Prodios', href: '#company-work' },
 
-  { label: 'Expertise', href: '#services' },
+  { label: 'Personal', href: '#personal-projects' },
 
   { label: 'About', href: '#about' },
 

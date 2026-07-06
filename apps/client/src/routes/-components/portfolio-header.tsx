@@ -6,9 +6,9 @@ import { ThemeToggle } from '@/components/ui/theme-toggle'
 import { cn } from '@/lib/utils'
 
 const NAV_LINKS = [
-  { label: 'Work', href: '#work' },
+  { label: 'At Prodios', href: '#company-work' },
 
-  { label: 'Expertise', href: '#services' },
+  { label: 'Personal', href: '#personal-projects' },
 
   { label: 'About', href: '#about' },
 
