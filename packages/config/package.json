@@ -1,0 +1,22 @@
+{
+  "name": "@repo/config",
+  "type": "module",
+  "files": [
+    "prettier.config.js",
+    "eslint.config.js"
+  ],
+  "scripts": {
+    "format": "prettier --write --cache --ignore-path ../../.gitignore .",
+    "lint": "eslint --fix --cache ."
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@stylistic/eslint-plugin": "5.10.0",
+    "eslint": "9.39.1",
+    "eslint-plugin-import": "2.32.0",
+    "globals": "17.6.0",
+    "prettier": "3.8.4",
+    "typescript-eslint": "8.61.1"
+  }
+}
