@@ -5,5 +5,5 @@ export const env = z
     VITE_API_BASE_URL: z
       .string()
       .transform((value) => value.replace(/\/$/, '')),
-  })
+  }).optional()
   .parse(import.meta.env)
