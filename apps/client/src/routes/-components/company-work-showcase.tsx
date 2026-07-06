@@ -133,7 +133,7 @@ function CompanyProjectDetail({ project }: { project: CompanyProject }) {
           <div className="pf-wd-hero-num">
             {hero.main}
             {hero.suffix ? (
-              <span className="text-(--pf-amber) italic">{hero.suffix}</span>
+              <span className="text-(--pf-accent) italic">{hero.suffix}</span>
             ) : null}
           </div>
           <div className="pf-wd-hero-rule" aria-hidden />
