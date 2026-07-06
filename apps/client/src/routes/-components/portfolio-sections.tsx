@@ -1,4 +1,5 @@
 import CompanyWorkShowcase from './company-work-showcase'
+import ProjectLinks from './project-links'
 
 const STATS = [
   { value: '1Cr+', label: 'Users on civic platforms' },
@@ -9,28 +10,106 @@ const STATS = [
 
 const PERSONAL_PROJECTS = [
   {
-    title: 'nameer.live',
-    category: 'Personal · Portfolio',
+    title: 'ML Explainer',
+    category: 'Machine Learning · Interactive',
     description:
-      'This portfolio — designed and built from scratch with React, TanStack Router, and a Hono backend monorepo.',
+      'Interactive visual guides for machine learning concepts — built with React, TanStack Router, and Tailwind.',
+    links: [
+      { label: 'Live demo', href: 'https://ml-explainer-gray.vercel.app/' },
+      {
+        label: 'GitHub',
+        href: 'https://github.com/nameerakhter/ml-explainer',
+      },
+    ],
   },
   {
-    title: 'VibraSense',
-    category: 'Personal · ML Research',
+    title: 'Code Editor React',
+    category: 'React · PrismJS',
     description:
-      'Vibration-based fault detection pipeline evaluating 10+ ML/DL models with custom feature engineering — grew out of research at IIT Roorkee.',
+      'Multi-language code editor with real-time PrismJS syntax highlighting, scroll sync, and a transparent textarea overlay.',
+    links: [
+      { label: 'Live demo', href: 'https://code-editor-react-nine.vercel.app/' },
+      {
+        label: 'GitHub',
+        href: 'https://github.com/nameerakhter/code-editor-react',
+      },
+    ],
   },
   {
-    title: 'DevTools Dashboard',
-    category: 'Personal · Side Project',
+    title: 'Magma Clone',
+    category: 'Frontend · Clone',
     description:
-      'Lightweight developer dashboard for monitoring local services, cron jobs, and API health checks during side-project development.',
+      'Front-end clone of thisismagma.com — replicating layout, interactions, sliders, and animations with vanilla HTML, CSS, and JavaScript.',
+    links: [
+      { label: 'Live demo', href: 'https://magma-clone-nu.vercel.app/' },
+      { label: 'GitHub', href: 'https://github.com/nameerakhter/magma_clone' },
+    ],
   },
   {
-    title: 'ClipStack',
-    category: 'Personal · Open Source',
+    title: 'AI Startup UI',
+    category: 'Next.js · Framer Motion',
     description:
-      'Clipboard history manager with fuzzy search and snippet tagging — built to speed up repetitive coding workflows.',
+      'Hero-section starter kit for AI startups — Figma-to-code with Next.js, shadcn/ui, Tailwind, and Framer Motion animations.',
+    links: [
+      { label: 'Live demo', href: 'https://ai-startup-ui.vercel.app/' },
+      {
+        label: 'GitHub',
+        href: 'https://github.com/nameerakhter/AI_startup_ui',
+      },
+    ],
+  },
+  {
+    title: 'Ochi Dark Version',
+    category: 'React · Locomotive Scroll',
+    description:
+      'Dark-themed clone of ochi.design.in with cursor-tracking eyes, Locomotive Scroll parallax, and Framer Motion hover effects.',
+    links: [
+      { label: 'Live demo', href: 'https://ochi-dark-version.vercel.app/' },
+      {
+        label: 'GitHub',
+        href: 'https://github.com/nameerakhter/ochi_dark_version',
+      },
+    ],
+  },
+  {
+    title: 'Gericht Restaurant',
+    category: 'React · Landing Page',
+    description:
+      'Gericht Restaurant landing page with an interactive intro video, chef message section, and responsive layout.',
+    links: [
+      {
+        label: 'Live demo',
+        href: 'https://gericht-restraunt-react-js.vercel.app/',
+      },
+      {
+        label: 'GitHub',
+        href: 'https://github.com/nameerakhter/GerichtRestraunt_ReactJs',
+      },
+    ],
+  },
+] as const
+
+const RESEARCH_ACHIEVEMENTS = [
+  {
+    title:
+      'An Improved Bearing Fault Investigation Scheme Using 1D CNN with PCA and SVM',
+    category: 'IEEE Publication · IIT Roorkee · 2024',
+    description:
+      'Published research on vibration-based bearing fault detection using the CWRU dataset — evaluating 10+ ML/DL architectures including 1D CNN, LSTM, GRU, and SVM with 25% performance gains through feature engineering.',
+    links: [
+      {
+        label: 'Published paper',
+        href: 'https://doi.org/10.1109/iatmsi64286.2025.10985009',
+      },
+      {
+        label: 'Models & notebooks',
+        href: 'https://github.com/nameerakhter/Ann_cwru',
+      },
+      {
+        label: 'Signal explorer app',
+        href: 'https://github.com/nameerakhter/Vibration_signal_analysis',
+      },
+    ],
   },
 ] as const
 
@@ -172,20 +251,55 @@ export function PersonalProjectsSection() {
             Personal <em>projects</em>
           </h2>
           <p className="pf-sec-side">
-            Side projects, experiments, and open-source work built outside the
-            day job — from this portfolio to ML research and dev tooling.
+            Side projects and UI experiments — interactive tools, design clones,
+            and front-end builds with live demos and open-source repos.
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {PERSONAL_PROJECTS.map((project) => (
             <article
               key={project.title}
-              className="group rounded-sm border border-(--pf-border) bg-(--pf-surface) p-6 transition-colors hover:border-(--pf-border-strong) hover:bg-(--pf-surface-hover)"
+              className="group flex flex-col rounded-sm border border-(--pf-border) bg-(--pf-surface) p-6 transition-colors hover:border-(--pf-border-strong) hover:bg-(--pf-surface-hover)"
             >
               <p className="pf-project-cat">{project.category}</p>
               <h3 className="pf-project-title mt-3">{project.title}</h3>
-              <p className="pf-body mt-3 text-sm">{project.description}</p>
+              <p className="pf-body mt-3 flex-1 text-sm">{project.description}</p>
+              <ProjectLinks links={project.links} />
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export function ResearchSection() {
+  return (
+    <section id="research" className="border-t border-(--pf-border) pf-block px-6">
+      <div className="mx-auto max-w-6xl">
+        <div className="pf-sec-head">
+          <h2 className="pf-section-title max-w-[16ch]">
+            Research & <em>publications</em>
+          </h2>
+          <p className="pf-sec-side">
+            Published work from my research internship at IIT Roorkee — deep
+            learning for vibration-based fault detection in rolling bearings.
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-6">
+          {RESEARCH_ACHIEVEMENTS.map((item) => (
+            <article
+              key={item.title}
+              className="rounded-sm border border-(--pf-border) bg-(--pf-surface) p-8 md:p-10"
+            >
+              <p className="pf-label">{item.category}</p>
+              <h3 className="pf-project-title mt-4 max-w-4xl">{item.title}</h3>
+              <p className="pf-body mt-4 max-w-3xl text-[clamp(0.95rem,1.2vw,1.05rem)]">
+                {item.description}
+              </p>
+              <ProjectLinks links={item.links} />
             </article>
           ))}
         </div>
