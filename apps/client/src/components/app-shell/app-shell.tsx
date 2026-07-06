@@ -39,8 +39,6 @@ import {
 } from '../ui/dropdown-menu'
 import { InputGroup, InputGroupAddon } from '../ui/input-group'
 import { Kbd } from '../ui/kbd'
-import { Logo } from '../ui/logo'
-
 import MenuGroup from './components/menu-group'
 import NavLink from './components/nav-link'
 import ShowForUserRole from './components/show-for-user-role'
@@ -122,8 +120,13 @@ export default function AppShell({ user, children }: AppShellProps) {
             <SidebarMenuItem>
               <SidebarMenuButton size="lg" asChild>
                 <Link to="/">
-                  <div className="flex aspect-square size-8 items-center justify-center">
-                    <Logo className="size-12" />
+                  <div className="flex aspect-square size-10 items-center justify-center">
+                    <img
+                      src="/man-tranparent.png"
+                      alt=""
+                      aria-hidden
+                      className="h-11 w-auto object-contain"
+                    />
                   </div>
                   <div className="grid flex-1 text-left text-sm/tight ">
                     <span className="truncate font-semibold">

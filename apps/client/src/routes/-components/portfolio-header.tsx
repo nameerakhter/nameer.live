@@ -1,7 +1,6 @@
 import { MenuIcon, XIcon } from 'lucide-react'
 import { useState } from 'react'
 
-import { Logo } from '@/components/ui/logo'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
 import { cn } from '@/lib/utils'
 
@@ -29,7 +28,12 @@ export default function PortfolioHeader() {
           aria-label="Home"
           className="transition-opacity hover:opacity-80"
         >
-          <Logo className="size-7 text-(--pf-fg)" />
+          <img
+            src="/man-tranparent.png"
+            alt=""
+            aria-hidden
+            className="h-14 w-auto object-contain"
+          />
         </a>
 
         <div className="hidden items-center gap-[38px] md:flex">

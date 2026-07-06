@@ -21,7 +21,6 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { Logo } from '@/components/ui/logo'
 import { authClient } from '@/lib/auth'
 import { getErrorMessage } from '@/lib/utils'
 
@@ -118,7 +117,12 @@ function ResetPassword() {
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <Logo className="size-10 mx-auto mb-2" />
+        <img
+          src="/mna.png"
+          alt=""
+          aria-hidden
+          className="mx-auto mb-2 size-10 object-contain"
+        />
         <div className="text-xl font-semibold text-foreground text-center">
           Set a new password
         </div>
