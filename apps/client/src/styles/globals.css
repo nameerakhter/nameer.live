@@ -150,6 +150,10 @@
   --line-2: rgba(22, 20, 28, 0.16);
   --pf-nav-scrolled: rgba(245, 241, 232, 0.86);
   --pf-nav-open: rgba(245, 241, 232, 0.97);
+  --pf-ink-2: #efe9da;
+  --pf-ink-3: #e8e2d1;
+  --pf-stripe: rgba(22, 20, 28, 0.06);
+  --pf-glow-card: rgba(124, 58, 237, 0.06);
   --glow-mid: rgba(124, 58, 237, 0.18);
   --glow-mid-2: rgba(124, 58, 237, 0.06);
   --glow-strong: rgba(124, 58, 237, 0.35);
@@ -173,6 +177,10 @@
   --line-2: rgba(232, 230, 240, 0.16);
   --pf-nav-scrolled: rgba(14, 13, 19, 0.78);
   --pf-nav-open: rgba(14, 13, 19, 0.96);
+  --pf-ink-2: #15131d;
+  --pf-ink-3: #1c1926;
+  --pf-stripe: rgba(237, 228, 210, 0.05);
+  --pf-glow-card: rgba(124, 58, 237, 0.1);
   --glow-mid: rgba(124, 58, 237, 0.28);
   --glow-mid-2: rgba(124, 58, 237, 0.09);
   --glow-strong: rgba(124, 58, 237, 0.55);
@@ -651,4 +659,315 @@
   background: radial-gradient(circle, var(--glow-strong) 0%, transparent 68%);
   filter: blur(18px);
   opacity: 0.35;
+}
+
+/* ============ SECTION BLOCKS (prodios-style) ============ */
+.portfolio .pf-block {
+  padding-block: clamp(80px, 12vh, 150px);
+}
+
+.portfolio .pf-sec-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: clamp(46px, 6vh, 76px);
+}
+
+.portfolio .pf-sec-side {
+  max-width: 34ch;
+  padding-top: 8px;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--pf-fg-dim);
+  font-weight: 300;
+}
+
+/* ============ WORK LIST LAYOUT (prodios selected work) ============ */
+.portfolio .pf-work-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(30px, 5vw, 72px);
+  align-items: start;
+}
+
+.portfolio .pf-work-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio .pf-wrow {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 22px;
+  width: 100%;
+  padding: clamp(22px, 2.6vw, 30px) 6px;
+  border-top: 1px solid var(--line);
+  cursor: pointer;
+  position: relative;
+  background: none;
+  border-inline: none;
+  border-bottom: none;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  transition: padding-left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portfolio .pf-work-list .pf-wrow:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.portfolio .pf-wrow::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -1px;
+  height: calc(100% + 1px);
+  width: 0;
+  background: var(--pf-amber);
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portfolio .pf-wrow:hover,
+.portfolio .pf-wrow.active {
+  padding-left: 24px;
+}
+
+.portfolio .pf-wrow:hover::before,
+.portfolio .pf-wrow.active::before {
+  width: 3px;
+}
+
+.portfolio .pf-wnum {
+  font-family: var(--pf-mono-family);
+  font-size: 0.74rem;
+  color: var(--pf-fg-faint);
+  transition: color 0.3s;
+}
+
+.portfolio .pf-wrow.active .pf-wnum,
+.portfolio .pf-wrow:hover .pf-wnum {
+  color: var(--pf-amber);
+}
+
+.portfolio .pf-wname {
+  font-family: var(--pf-serif);
+  font-weight: 400;
+  font-size: clamp(1.35rem, 2.3vw, 2rem);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--pf-fg);
+  transition: color 0.3s;
+}
+
+.portfolio .pf-wclient {
+  font-family: var(--pf-mono-family);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pf-fg-faint);
+  margin-top: 9px;
+}
+
+.portfolio .pf-warr {
+  color: var(--pf-fg-faint);
+  transform: translateX(-8px);
+  opacity: 0;
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.3s,
+    opacity 0.3s;
+}
+
+.portfolio .pf-wrow:hover .pf-warr,
+.portfolio .pf-wrow.active .pf-warr {
+  opacity: 1;
+  color: var(--pf-amber);
+  transform: translateX(0);
+}
+
+.portfolio .pf-wdesc {
+  display: none;
+  margin-top: 10px;
+  max-width: 46ch;
+  font-size: 0.92rem;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--pf-fg-dim);
+}
+
+.portfolio .pf-work-detail {
+  position: sticky;
+  top: 120px;
+  border: 1px solid var(--line);
+  background: var(--pf-ink-2);
+  padding: clamp(26px, 3vw, 38px);
+}
+
+.portfolio .pf-wd-media {
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      var(--pf-stripe) 0 2px,
+      transparent 2px 11px
+    ),
+    var(--pf-ink-3);
+}
+
+.portfolio .pf-wd-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    60% 80% at 25% 35%,
+    var(--pf-glow-card),
+    transparent 65%
+  );
+}
+
+.portfolio .pf-wd-hero {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: clamp(22px, 3.4vw, 38px);
+}
+
+.portfolio .pf-wd-hero-num {
+  font-family: var(--pf-serif);
+  font-weight: 300;
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--pf-fg);
+}
+
+.portfolio .pf-wd-hero-rule {
+  width: 38px;
+  height: 1px;
+  background: var(--pf-amber);
+  margin: 18px 0 14px;
+}
+
+.portfolio .pf-wd-hero-lbl {
+  font-family: var(--pf-mono-family);
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pf-fg-dim);
+  max-width: 22ch;
+  line-height: 1.55;
+}
+
+.portfolio .pf-wd-mlabel {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  z-index: 1;
+  transform: translateX(-50%);
+  font-family: var(--pf-mono-family);
+  font-size: 0.64rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pf-fg-faint);
+  white-space: nowrap;
+}
+
+.portfolio .pf-wd-yr {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  z-index: 1;
+  font-family: var(--pf-mono-family);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--pf-amber);
+}
+
+.portfolio .pf-wd-body h4 {
+  font-family: var(--pf-serif);
+  font-weight: 400;
+  font-size: 1.7rem;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 24px 0 6px;
+  color: var(--pf-fg);
+}
+
+.portfolio .pf-wd-client {
+  font-family: var(--pf-mono-family);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pf-amber);
+  margin-bottom: 18px;
+}
+
+.portfolio .pf-wd-desc {
+  min-height: 4.2em;
+  font-size: 0.98rem;
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--pf-fg-dim);
+}
+
+.portfolio .pf-wd-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.portfolio .pf-wd-tags span {
+  font-family: var(--pf-mono-family);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pf-fg-dim);
+  border: 1px solid var(--line-2);
+  padding: 7px 12px;
+  border-radius: 2px;
+}
+
+.portfolio .pf-wd-fade {
+  animation: pf-wd-fade 0.5s ease;
+}
+
+@keyframes pf-wd-fade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .portfolio .pf-work-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio .pf-work-detail {
+    display: none;
+  }
+
+  .portfolio .pf-wdesc {
+    display: block;
+  }
 }

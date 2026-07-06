@@ -3,14 +3,14 @@ import { createFileRoute } from '@tanstack/react-router'
 import HeroShell from './-components/hero-shell'
 import PortfolioFooter from './-components/portfolio-footer'
 import {
+  CompanyWorkSection,
   CtaSection,
   HeroSection,
+  PersonalProjectsSection,
   PhilosophySection,
   ProcessSection,
-  ServicesSection,
   StatsSection,
   TechSection,
-  WorkSection,
 } from './-components/portfolio-sections'
 
 export const Route = createFileRoute('/')({
@@ -35,8 +35,8 @@ function PortfolioPage() {
         <StatsSection />
       </HeroShell>
       <main>
-        <ServicesSection />
-        <WorkSection />
+        <CompanyWorkSection />
+        <PersonalProjectsSection />
         <PhilosophySection />
         <TechSection />
         <ProcessSection />
