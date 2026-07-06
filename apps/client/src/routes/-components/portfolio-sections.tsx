@@ -1,4 +1,4 @@
-import { ArrowRightIcon } from 'lucide-react'
+import CompanyWorkShowcase from './company-work-showcase'
 
 const STATS = [
   { value: '1Cr+', label: 'Users on civic platforms' },
@@ -7,84 +7,30 @@ const STATS = [
   { value: '84K+', label: 'Complaints managed at scale' },
 ] as const
 
-const EXPERTISE = [
+const PERSONAL_PROJECTS = [
   {
-    number: '01',
-    title: 'Backend & API Engineering',
-    headline: 'Services built to survive real traffic and real scrutiny.',
+    title: 'nameer.live',
+    category: 'Personal · Portfolio',
     description:
-      'TypeScript backends with NestJS and Node.js — REST APIs, microservices, role-based workflows, and transaction validation for government and fintech platforms.',
-    items: [
-      'NestJS & Express.js services',
-      'MongoDB, PostgreSQL & Redis',
-      'Payment & subsidy disbursement APIs',
-      'Automated testing & performance tuning',
-    ],
+      'This portfolio — designed and built from scratch with React, TanStack Router, and a Hono backend monorepo.',
   },
   {
-    number: '02',
-    title: 'AI & Intelligent Systems',
-    headline: 'Production RAG and ML where accuracy actually matters.',
+    title: 'VibraSense',
+    category: 'Personal · ML Research',
     description:
-      'From vector embeddings and semantic search to CNN/LSTM fault detection — AI features engineered for measurable impact, not slide decks.',
-    items: [
-      'RAG pipelines & tool-calling workflows',
-      'Vector search & LLM integrations',
-      'TensorFlow & Scikit-Learn models',
-      'Feature engineering & model evaluation',
-    ],
+      'Vibration-based fault detection pipeline evaluating 10+ ML/DL models with custom feature engineering — grew out of research at IIT Roorkee.',
   },
   {
-    number: '03',
-    title: 'Full-Stack Product Development',
-    headline: 'End-to-end platforms from schema to interface.',
+    title: 'DevTools Dashboard',
+    category: 'Personal · Side Project',
     description:
-      'React and Next.js frontends paired with scalable APIs, workflow automation, and analytics dashboards used across departments and stakeholder groups.',
-    items: [
-      'React & Next.js applications',
-      'Analytics & admin dashboards',
-      'Workflow automation & RBAC',
-      'Docker, AWS & CI/CD deployment',
-    ],
-  },
-] as const
-
-const PROJECTS = [
-  {
-    title: 'Apuni Sarkar Platform',
-    category: 'Government · Full-Stack',
-    description:
-      'Backend services powering citizen-facing applications for 1Cr+ users and 1,000+ public services — designed, tested, and deployed with NestJS and MongoDB.',
+      'Lightweight developer dashboard for monitoring local services, cron jobs, and API health checks during side-project development.',
   },
   {
-    title: 'CBDC Infrastructure',
-    category: 'Fintech · Mission Kiwi',
+    title: 'ClipStack',
+    category: 'Personal · Open Source',
     description:
-      'Secure payment APIs and transaction validation for a state-wide CBDC initiative supporting subsidy disbursement operations worth ₹800Cr+.',
-  },
-  {
-    title: 'AI Assistant',
-    category: 'AI · RAG',
-    description:
-      'Production RAG-based assistant with vector embeddings, semantic search, and tool-calling — cutting query resolution time by 30–40%.',
-  },
-  {
-    title: 'E-Office Dashboard',
-    category: 'Government · Analytics',
-    description:
-      'Analytics dashboards and backend APIs adopted across 4+ government departments, improving operational reporting efficiency by 20–30%.',
-  },
-  {
-    title: 'NHM Training Management',
-    category: 'Enterprise · Platform',
-    description:
-      'Training management software tracking 50K+ hours with automated validation pipelines and secure role-based workflows.',
-  },
-  {
-    title: 'Stray Reporter',
-    category: 'Full-Stack · Civic Tech',
-    description:
-      'Platform managing 84K+ complaints and 20K+ records — API performance optimizations cut average response times by 60%.',
+      'Clipboard history manager with fuzzy search and snippet tagging — built to speed up repetitive coding workflows.',
   },
 ] as const
 
@@ -171,8 +117,8 @@ export function HeroSection() {
           Get in touch
           <span aria-hidden>→</span>
         </a>
-        <a href="#work" className="pf-btn pf-btn-ghost">
-          View my work
+        <a href="#company-work" className="pf-btn pf-btn-ghost">
+          View company work
         </a>
       </div>
     </div>
@@ -194,83 +140,45 @@ export function StatsSection() {
   )
 }
 
-export function ServicesSection() {
+export function CompanyWorkSection() {
   return (
-    <section id="services" className="px-6 py-24 md:py-32">
+    <section id="company-work" className="pf-block px-6">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-16 max-w-2xl">
-          <h2 className="pf-section-title">
-            What I <em>do</em>
+        <div className="pf-sec-head">
+          <h2 className="pf-section-title max-w-[16ch]">
+            What I <em>did</em>
           </h2>
-          <p className="pf-section-lead">
-            Backend engineering, applied AI, and full-stack delivery — the same
-            disciplines I use daily building platforms for government and
-            fintech at Prodios Labs.
+          <p className="pf-sec-side">
+            Production systems shipped at Prodios Labs — government platforms,
+            payment infrastructure, and AI tools built for real users at scale.
           </p>
         </div>
 
-        <div className="flex flex-col gap-20">
-          {EXPERTISE.map((service) => (
-            <article
-              key={service.number}
-              className="grid gap-8 border-t border-(--pf-border) pt-12 md:grid-cols-[120px_1fr] md:gap-16"
-            >
-              <div className="pf-card-idx">
-                {service.number} · {service.title}
-              </div>
-              <div>
-                <h3 className="pf-card-title">{service.headline}</h3>
-                <p className="pf-body mt-4 max-w-2xl text-[clamp(0.95rem,1.2vw,1.05rem)]">
-                  {service.description}
-                </p>
-                <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
-                  {service.items.map((item) => (
-                    <li
-                      key={item}
-                      className="pf-stack-item flex items-center gap-2.5"
-                    >
-                      <span
-                        className="size-1 shrink-0 rounded-full bg-(--pf-fg-faint)"
-                        aria-hidden
-                      />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </article>
-          ))}
-        </div>
+        <CompanyWorkShowcase />
       </div>
     </section>
   )
 }
 
-export function WorkSection() {
+export function PersonalProjectsSection() {
   return (
     <section
-      id="work"
-      className="border-t border-(--pf-border) px-6 py-24 md:py-32"
+      id="personal-projects"
+      className="border-t border-(--pf-border) pf-block px-6"
     >
       <div className="mx-auto max-w-6xl">
-        <div className="mb-14 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div>
-            <h2 className="pf-section-title">
-              Selected <em>work</em>
-            </h2>
-            <p className="pf-section-lead mt-3 max-w-lg">
-              Platforms, payment systems, and AI tools shipped in production for
-              government and enterprise.
-            </p>
-          </div>
-          <a href="#contact" className="pf-link-arrow inline-flex items-center gap-1.5">
-            Discuss a project
-            <ArrowRightIcon className="size-3.5" />
-          </a>
+        <div className="pf-sec-head">
+          <h2 className="pf-section-title max-w-[16ch]">
+            Personal <em>projects</em>
+          </h2>
+          <p className="pf-sec-side">
+            Side projects, experiments, and open-source work built outside the
+            day job — from this portfolio to ML research and dev tooling.
+          </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {PROJECTS.map((project) => (
+        <div className="grid gap-6 md:grid-cols-2">
+          {PERSONAL_PROJECTS.map((project) => (
             <article
               key={project.title}
               className="group rounded-sm border border-(--pf-border) bg-(--pf-surface) p-6 transition-colors hover:border-(--pf-border-strong) hover:bg-(--pf-surface-hover)"
@@ -398,8 +306,8 @@ export function CtaSection() {
             Send an email
             <span aria-hidden>→</span>
           </a>
-          <a href="#work" className="pf-btn pf-btn-ghost">
-            Review my work
+          <a href="#personal-projects" className="pf-btn pf-btn-ghost">
+            See personal projects
           </a>
         </div>
       </div>
