@@ -133,13 +133,74 @@
   @apply !text-muted-foreground;
 }
 
-/* Portfolio hero decor (from scratch CSS grid + glow) */
+/* Portfolio theme tokens */
 .portfolio {
+  --pf-bg: #f5f1e8;
+  --pf-fg: #16141c;
+  --pf-fg-dim: #4d4956;
+  --pf-fg-muted: color-mix(in oklab, var(--pf-fg) 55%, transparent);
+  --pf-fg-faint: color-mix(in oklab, var(--pf-fg) 38%, transparent);
+  --pf-border: color-mix(in oklab, var(--pf-fg) 10%, transparent);
+  --pf-border-strong: color-mix(in oklab, var(--pf-fg) 16%, transparent);
+  --pf-surface: color-mix(in oklab, var(--pf-fg) 4%, transparent);
+  --pf-surface-hover: color-mix(in oklab, var(--pf-fg) 8%, transparent);
+  --pf-btn-bg: #16141c;
+  --pf-btn-fg: #f5f1e8;
+  --pf-btn-outline-border: color-mix(in oklab, var(--pf-fg) 16%, transparent);
+  --line: rgba(22, 20, 28, 0.1);
+  --line-2: rgba(22, 20, 28, 0.16);
+  --glow-mid: rgba(124, 58, 237, 0.18);
+  --glow-mid-2: rgba(124, 58, 237, 0.06);
+  --glow-strong: rgba(124, 58, 237, 0.35);
+}
+
+.dark .portfolio {
+  --pf-bg: #0e0d13;
+  --pf-fg: #e8e6f0;
+  --pf-fg-dim: color-mix(in oklab, var(--pf-fg) 65%, transparent);
+  --pf-fg-muted: color-mix(in oklab, var(--pf-fg) 55%, transparent);
+  --pf-fg-faint: color-mix(in oklab, var(--pf-fg) 38%, transparent);
+  --pf-border: color-mix(in oklab, var(--pf-fg) 8%, transparent);
+  --pf-border-strong: color-mix(in oklab, var(--pf-fg) 15%, transparent);
+  --pf-surface: color-mix(in oklab, var(--pf-fg) 4%, transparent);
+  --pf-surface-hover: color-mix(in oklab, var(--pf-fg) 8%, transparent);
+  --pf-btn-bg: #ffffff;
+  --pf-btn-fg: #08080a;
+  --pf-btn-outline-border: color-mix(in oklab, var(--pf-fg) 15%, transparent);
   --line: rgba(232, 230, 240, 0.1);
   --line-2: rgba(232, 230, 240, 0.16);
   --glow-mid: rgba(124, 58, 237, 0.28);
   --glow-mid-2: rgba(124, 58, 237, 0.09);
   --glow-strong: rgba(124, 58, 237, 0.55);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line-2);
+  background: transparent;
+  color: var(--pf-fg);
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0;
+  transition:
+    border-color 0.25s,
+    color 0.25s,
+    background 0.25s;
+  flex: 0 0 auto;
+}
+
+.theme-toggle:hover {
+  border-color: var(--pf-fg-dim);
+  color: #7c3aed;
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: 2px;
 }
 
 .hero {
@@ -203,11 +264,7 @@
   left: 8%;
   width: min(420px, 55vw);
   height: min(420px, 55vw);
-  background: radial-gradient(
-    circle,
-    var(--glow-strong) 0%,
-    transparent 68%
-  );
+  background: radial-gradient(circle, var(--glow-strong) 0%, transparent 68%);
   filter: blur(18px);
   opacity: 0.35;
 }
