@@ -149,17 +149,17 @@ const EXPERIENCE = [
 export function HeroSection() {
   return (
     <div className="hero-wrap mx-auto max-w-6xl px-6">
-      <p className="mb-6 text-xs font-medium tracking-[0.2em] text-white/45 uppercase">
-        Software Engineer · Full-Stack · Prodios Labs
+      <p className="mb-6 text-xs font-medium tracking-[0.2em] text-(--pf-fg-muted) uppercase">
+        Software Engineer · Full-Stack AI Engineer
       </p>
-      <h1 className="max-w-4xl text-5xl leading-[1.05] font-semibold tracking-tight text-white md:text-7xl">
+      <h1 className="max-w-4xl text-5xl leading-[1.05] font-semibold tracking-tight text-(--pf-fg) md:text-7xl">
         Muhammad Nameer
         <br />
-        <span className="text-white/55 italic">Akhter</span>
+        <span className="text-(--pf-fg-muted) italic">Akhter</span>
       </h1>
-      <p className="mt-8 max-w-2xl text-lg/relaxed text-white/55 md:text-xl">
+      <p className="mt-8 max-w-2xl text-lg/relaxed text-(--pf-fg-muted) md:text-xl">
         I design and ship{' '}
-        <strong className="font-medium text-white/80">
+        <strong className="font-medium text-[color-mix(in_oklab,var(--pf-fg)_80%,transparent)]">
           production backends, AI workflows, and full-stack platforms
         </strong>{' '}
         — from citizen portals serving 1Cr+ users to CBDC payment systems and
@@ -168,7 +168,7 @@ export function HeroSection() {
       <div className="mt-10 flex flex-wrap gap-4">
         <BaseButton
           asChild
-          className="h-11 rounded-full bg-white px-6 text-sm font-medium text-[#08080a] hover:bg-white/90"
+          className="h-11 rounded-full bg-(--pf-btn-bg) px-6 text-sm font-medium text-(--pf-btn-fg) hover:bg-(--pf-btn-bg)/90"
         >
           <a href="#contact">
             Get in touch
@@ -178,7 +178,7 @@ export function HeroSection() {
         <BaseButton
           asChild
           variant="outline"
-          className="h-11 rounded-full border-white/15 bg-transparent px-6 text-sm text-white hover:bg-white/5 hover:text-white"
+          className="h-11 rounded-full border-(--pf-btn-outline-border) bg-transparent px-6 text-sm text-(--pf-fg) hover:bg-(--pf-surface) hover:text-(--pf-fg)"
         >
           <a href="#work">View my work</a>
         </BaseButton>
@@ -189,14 +189,16 @@ export function HeroSection() {
 
 export function StatsSection() {
   return (
-    <section className="hero-stats border-y border-white/10 px-6 py-14">
+    <section className="hero-stats border-y border-(--pf-border-strong) px-6 py-14">
       <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 md:grid-cols-4 md:gap-12">
         {STATS.map((stat) => (
           <div key={stat.label}>
-            <div className="text-3xl font-semibold tracking-tight text-white md:text-4xl">
+            <div className="text-3xl font-semibold tracking-tight text-(--pf-fg) md:text-4xl">
               {stat.value}
             </div>
-            <p className="mt-2 text-sm/snug text-white/45">{stat.label}</p>
+            <p className="mt-2 text-sm/snug text-(--pf-fg-muted)">
+              {stat.label}
+            </p>
           </div>
         ))}
       </div>
@@ -209,10 +211,10 @@ export function ServicesSection() {
     <section id="services" className="px-6 py-24 md:py-32">
       <div className="mx-auto max-w-6xl">
         <div className="mb-16 max-w-2xl">
-          <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">
-            What I <span className="text-white/55 italic">do</span>
+          <h2 className="text-3xl font-semibold tracking-tight text-(--pf-fg) md:text-4xl">
+            What I <span className="text-(--pf-fg-muted) italic">do</span>
           </h2>
-          <p className="mt-4 text-base/relaxed text-white/50 md:text-lg">
+          <p className="mt-4 text-base/relaxed text-(--pf-fg-muted) md:text-lg">
             Backend engineering, applied AI, and full-stack delivery — the same
             disciplines I use daily building platforms for government and
             fintech at Prodios Labs.
@@ -223,25 +225,25 @@ export function ServicesSection() {
           {EXPERTISE.map((service) => (
             <article
               key={service.number}
-              className="grid gap-8 border-t border-white/8 pt-12 md:grid-cols-[120px_1fr] md:gap-16"
+              className="grid gap-8 border-t border-(--pf-border) pt-12 md:grid-cols-[120px_1fr] md:gap-16"
             >
-              <div className="text-sm font-medium tracking-widest text-white/30">
+              <div className="text-sm font-medium tracking-widest text-(--pf-fg-faint)">
                 {service.number} · {service.title}
               </div>
               <div>
-                <h3 className="text-2xl font-semibold tracking-tight text-white md:text-3xl">
+                <h3 className="text-2xl font-semibold tracking-tight text-(--pf-fg) md:text-3xl">
                   {service.headline}
                 </h3>
-                <p className="mt-4 max-w-2xl text-base/relaxed text-white/50">
+                <p className="mt-4 max-w-2xl text-base/relaxed text-(--pf-fg-muted)">
                   {service.description}
                 </p>
                 <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
                   {service.items.map((item) => (
                     <li
                       key={item}
-                      className="flex items-center gap-2.5 text-sm text-white/65"
+                      className="flex items-center gap-2.5 text-sm text-(--pf-fg-dim)"
                     >
-                      <span className="size-1 shrink-0 rounded-full bg-white/30" />
+                      <span className="size-1 shrink-0 rounded-full bg-(--pf-fg-faint)" />
                       {item}
                     </li>
                   ))}
@@ -257,21 +259,24 @@ export function ServicesSection() {
 
 export function WorkSection() {
   return (
-    <section id="work" className="border-t border-white/8 px-6 py-24 md:py-32">
+    <section
+      id="work"
+      className="border-t border-(--pf-border) px-6 py-24 md:py-32"
+    >
       <div className="mx-auto max-w-6xl">
         <div className="mb-14 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">
-              Selected <span className="text-white/55 italic">work</span>
+            <h2 className="text-3xl font-semibold tracking-tight text-(--pf-fg) md:text-4xl">
+              Selected <span className="text-(--pf-fg-muted) italic">work</span>
             </h2>
-            <p className="mt-3 max-w-lg text-base text-white/50">
-              Platforms, payment systems, and AI tools shipped in production
-              for government and enterprise.
+            <p className="mt-3 max-w-lg text-base text-(--pf-fg-muted)">
+              Platforms, payment systems, and AI tools shipped in production for
+              government and enterprise.
             </p>
           </div>
           <a
             href="#contact"
-            className="inline-flex items-center gap-1.5 text-sm text-white/60 transition-colors hover:text-white"
+            className="inline-flex items-center gap-1.5 text-sm text-(--pf-fg-dim) transition-colors hover:text-(--pf-fg)"
           >
             Discuss a project
             <ArrowRightIcon className="size-3.5" />
@@ -282,15 +287,15 @@ export function WorkSection() {
           {PROJECTS.map((project) => (
             <article
               key={project.title}
-              className="group rounded-2xl border border-white/8 bg-white/2 p-6 transition-colors hover:border-white/15 hover:bg-white/4"
+              className="group rounded-2xl border border-(--pf-border) bg-(--pf-surface) p-6 transition-colors hover:border-(--pf-btn-outline-border) hover:bg-(--pf-surface-hover)"
             >
-              <p className="text-xs font-medium tracking-wide text-white/40">
+              <p className="text-xs font-medium tracking-wide text-(--pf-fg-faint)">
                 {project.category}
               </p>
-              <h3 className="mt-3 text-lg font-semibold text-white">
+              <h3 className="mt-3 text-lg font-semibold text-(--pf-fg)">
                 {project.title}
               </h3>
-              <p className="mt-3 text-sm/relaxed text-white/50">
+              <p className="mt-3 text-sm/relaxed text-(--pf-fg-muted)">
                 {project.description}
               </p>
             </article>
@@ -305,17 +310,17 @@ export function PhilosophySection() {
   return (
     <section id="about" className="px-6 py-24 md:py-32">
       <div className="mx-auto max-w-6xl">
-        <div className="rounded-3xl border border-white/8 bg-white/2 px-8 py-14 md:px-16 md:py-20">
-          <p className="text-xs font-medium tracking-[0.2em] text-white/35 uppercase">
+        <div className="rounded-3xl border border-(--pf-border) bg-(--pf-surface) px-8 py-14 md:px-16 md:py-20">
+          <p className="text-xs font-medium tracking-[0.2em] text-(--pf-fg-faint) uppercase">
             About
           </p>
-          <h2 className="mt-6 max-w-3xl text-3xl/snug font-semibold tracking-tight text-white md:text-4xl">
+          <h2 className="mt-6 max-w-3xl text-3xl/snug font-semibold tracking-tight text-(--pf-fg) md:text-4xl">
             Engineering at the intersection of{' '}
-            <span className="text-white/55 italic">
+            <span className="text-(--pf-fg-muted) italic">
               scale, security, and intelligence.
             </span>
           </h2>
-          <p className="mt-6 max-w-2xl text-base/relaxed text-white/50 md:text-lg">
+          <p className="mt-6 max-w-2xl text-base/relaxed text-(--pf-fg-muted) md:text-lg">
             I&apos;m a software engineer at Prodios Labs building platforms that
             real people depend on — civic portals, payment infrastructure, and
             AI assistants that need to work under load. My background spans
@@ -332,13 +337,13 @@ export function PhilosophySection() {
 
 export function TechSection() {
   return (
-    <section className="border-t border-white/8 px-6 py-24 md:py-32">
+    <section className="border-t border-(--pf-border) px-6 py-24 md:py-32">
       <div className="mx-auto max-w-6xl">
         <div className="mb-14 max-w-2xl">
-          <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">
-            Tech <span className="text-white/55 italic">stack</span>
+          <h2 className="text-3xl font-semibold tracking-tight text-(--pf-fg) md:text-4xl">
+            Tech <span className="text-(--pf-fg-muted) italic">stack</span>
           </h2>
-          <p className="mt-4 text-base/relaxed text-white/50 md:text-lg">
+          <p className="mt-4 text-base/relaxed text-(--pf-fg-muted) md:text-lg">
             Tools and technologies I use daily across backend services, frontend
             interfaces, infrastructure, and AI pipelines.
           </p>
@@ -348,18 +353,18 @@ export function TechSection() {
           {TECH_CATEGORIES.map((category) => (
             <div
               key={category.title}
-              className="rounded-2xl border border-white/8 p-6"
+              className="rounded-2xl border border-(--pf-border) p-6"
             >
-              <h3 className="text-sm font-semibold text-white">
+              <h3 className="text-sm font-semibold text-(--pf-fg)">
                 {category.title}
               </h3>
               <ul className="mt-4 space-y-2.5">
                 {category.items.map((item) => (
                   <li
                     key={item}
-                    className="flex items-center gap-2 text-sm text-white/50"
+                    className="flex items-center gap-2 text-sm text-(--pf-fg-muted)"
                   >
-                    <span className="size-1 shrink-0 rounded-full bg-white/25" />
+                    <span className="size-1 shrink-0 rounded-full bg-[var(--pf-surface)]5" />
                     {item}
                   </li>
                 ))}
@@ -377,10 +382,11 @@ export function ProcessSection() {
     <section className="px-6 py-24 md:py-32">
       <div className="mx-auto max-w-6xl">
         <div className="mb-14 max-w-2xl">
-          <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">
-            Experience & <span className="text-white/55 italic">background</span>
+          <h2 className="text-3xl font-semibold tracking-tight text-(--pf-fg) md:text-4xl">
+            Experience &{' '}
+            <span className="text-(--pf-fg-muted) italic">background</span>
           </h2>
-          <p className="mt-4 text-base/relaxed text-white/50 md:text-lg">
+          <p className="mt-4 text-base/relaxed text-(--pf-fg-muted) md:text-lg">
             From research labs to production government platforms.
           </p>
         </div>
@@ -388,13 +394,13 @@ export function ProcessSection() {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {EXPERIENCE.map((step) => (
             <div key={step.number} className="space-y-4">
-              <div className="text-sm font-medium tracking-widest text-white/30">
+              <div className="text-sm font-medium tracking-widest text-(--pf-fg-faint)">
                 {step.number}
               </div>
-              <h3 className="text-base font-semibold text-white">
+              <h3 className="text-base font-semibold text-(--pf-fg)">
                 {step.title}
               </h3>
-              <p className="text-sm/relaxed text-white/50">
+              <p className="text-sm/relaxed text-(--pf-fg-muted)">
                 {step.description}
               </p>
             </div>
@@ -409,25 +415,27 @@ export function CtaSection() {
   return (
     <section
       id="contact"
-      className="border-t border-white/8 px-6 py-24 md:py-32"
+      className="border-t border-(--pf-border) px-6 py-24 md:py-32"
     >
       <div className="mx-auto max-w-6xl text-center">
-        <p className="text-xs font-medium tracking-[0.2em] text-white/35 uppercase">
+        <p className="text-xs font-medium tracking-[0.2em] text-(--pf-fg-faint) uppercase">
           Contact
         </p>
-        <h2 className="mt-6 text-4xl font-semibold tracking-tight text-white md:text-5xl">
+        <h2 className="mt-6 text-4xl font-semibold tracking-tight text-(--pf-fg) md:text-5xl">
           Let&apos;s build
           <br />
-          <span className="text-white/55 italic">something together.</span>
+          <span className="text-(--pf-fg-muted) italic">
+            something together.
+          </span>
         </h2>
-        <p className="mx-auto mt-6 max-w-xl text-base/relaxed text-white/50 md:text-lg">
+        <p className="mx-auto mt-6 max-w-xl text-base/relaxed text-(--pf-fg-muted) md:text-lg">
           Open to engineering roles, collaborations, and interesting technical
           problems. Reach out and let&apos;s talk.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <BaseButton
             asChild
-            className="h-11 rounded-full bg-white px-6 text-sm font-medium text-[#08080a] hover:bg-white/90"
+            className="h-11 rounded-full bg-(--pf-btn-bg) px-6 text-sm font-medium text-(--pf-btn-fg) hover:bg-(--pf-btn-bg)/90"
           >
             <a href="mailto:akhtarnameer@gmail.com">
               Send an email
@@ -437,7 +445,7 @@ export function CtaSection() {
           <BaseButton
             asChild
             variant="outline"
-            className="h-11 rounded-full border-white/15 bg-transparent px-6 text-sm text-white hover:bg-white/5 hover:text-white"
+            className="h-11 rounded-full border-(--pf-btn-outline-border) bg-transparent px-6 text-sm text-(--pf-fg) hover:bg-(--pf-surface) hover:text-(--pf-fg)"
           >
             <a href="#work">Review my work</a>
           </BaseButton>

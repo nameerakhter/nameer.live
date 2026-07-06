@@ -29,7 +29,7 @@ export const Route = createFileRoute('/')({
 
 function PortfolioPage() {
   return (
-    <div className="portfolio min-h-screen bg-[#0E0D13] text-white antialiased">
+    <div className="portfolio min-h-screen bg-(--pf-bg) text-(--pf-fg) antialiased">
       <HeroShell>
         <HeroSection />
         <StatsSection />
