@@ -19,8 +19,13 @@ export default function PortfolioHeader() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <nav className="portfolio-nav fixed inset-x-0 top-0 z-1000 border-b border-transparent">
-      <div className="mx-auto flex h-[72px] max-w-6xl items-center justify-between px-6">
+    <nav
+      className={cn(
+        'portfolio-nav fixed inset-x-0 top-0 z-1000',
+        mobileOpen && 'open',
+      )}
+    >
+      <div className="portfolio-nav-row mx-auto flex max-w-6xl items-center justify-between px-6">
         <a
           href="#"
           className="flex items-center gap-3 transition-opacity hover:opacity-80"

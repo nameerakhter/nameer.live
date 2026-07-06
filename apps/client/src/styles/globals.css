@@ -148,6 +148,8 @@
   --pf-surface-hover: rgba(22, 20, 28, 0.08);
   --line: rgba(22, 20, 28, 0.1);
   --line-2: rgba(22, 20, 28, 0.16);
+  --pf-nav-scrolled: rgba(245, 241, 232, 0.86);
+  --pf-nav-open: rgba(245, 241, 232, 0.97);
   --glow-mid: rgba(124, 58, 237, 0.18);
   --glow-mid-2: rgba(124, 58, 237, 0.06);
   --glow-strong: rgba(124, 58, 237, 0.35);
@@ -169,6 +171,8 @@
   --pf-surface-hover: rgba(232, 230, 240, 0.08);
   --line: rgba(232, 230, 240, 0.1);
   --line-2: rgba(232, 230, 240, 0.16);
+  --pf-nav-scrolled: rgba(14, 13, 19, 0.78);
+  --pf-nav-open: rgba(14, 13, 19, 0.96);
   --glow-mid: rgba(124, 58, 237, 0.28);
   --glow-mid-2: rgba(124, 58, 237, 0.09);
   --glow-strong: rgba(124, 58, 237, 0.55);
@@ -300,6 +304,61 @@
   font-weight: 500;
   letter-spacing: -0.01em;
   color: var(--pf-fg);
+}
+
+.portfolio .portfolio-nav {
+  border-bottom: 1px solid transparent;
+  background: transparent;
+}
+
+@supports (animation-timeline: scroll()) {
+  .portfolio .portfolio-nav:not(.open) {
+    animation: portfolio-nav-scroll linear both;
+    animation-timeline: scroll();
+    animation-range: 0 24px;
+  }
+
+  .portfolio .portfolio-nav:not(.open) .portfolio-nav-row {
+    animation: portfolio-nav-row-scroll linear both;
+    animation-timeline: scroll();
+    animation-range: 0 24px;
+  }
+}
+
+@keyframes portfolio-nav-scroll {
+  from {
+    background: transparent;
+    border-bottom-color: transparent;
+    backdrop-filter: blur(0) saturate(1);
+  }
+
+  to {
+    background: var(--pf-nav-scrolled);
+    backdrop-filter: blur(14px) saturate(1.2);
+    border-bottom-color: var(--line);
+  }
+}
+
+@keyframes portfolio-nav-row-scroll {
+  from {
+    padding-top: 26px;
+    padding-bottom: 26px;
+  }
+
+  to {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+
+.portfolio .portfolio-nav .portfolio-nav-row {
+  padding-top: 26px;
+  padding-bottom: 26px;
+}
+
+.portfolio .portfolio-nav.open {
+  background: var(--pf-nav-open);
+  backdrop-filter: blur(14px) saturate(1.2);
 }
 
 .portfolio .pf-nav-link {
