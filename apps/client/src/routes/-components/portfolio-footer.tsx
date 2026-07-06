@@ -2,7 +2,7 @@ import { Logo } from '@/components/ui/logo'
 
 const FOOTER_LINKS = [
   { label: 'Work', href: '#work' },
-  { label: 'Services', href: '#services' },
+  { label: 'Expertise', href: '#services' },
   { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
 ] as const
@@ -19,9 +19,9 @@ export default function PortfolioFooter() {
                 Nameer
               </span>
             </a>
-            <p className="max-w-xs text-sm/relaxed  text-white/50">
-              Full-stack engineering for products that need to work in
-              production — not just in demos.
+            <p className="max-w-xs text-sm/relaxed text-white/50">
+              Software engineer building government-scale platforms, payment
+              systems, and AI workflows at Prodios Labs.
             </p>
           </div>
 
@@ -50,10 +50,10 @@ export default function PortfolioFooter() {
             <ul className="space-y-2.5">
               <li>
                 <a
-                  href="mailto:hello@nameer.live"
+                  href="mailto:akhtarnameer@gmail.com"
                   className="text-sm text-white/65 transition-colors hover:text-white"
                 >
-                  hello@nameer.live
+                  akhtarnameer@gmail.com
                 </a>
               </li>
               <li>
@@ -70,7 +70,7 @@ export default function PortfolioFooter() {
 
         <div className="mt-14 flex flex-col gap-3 border-t border-white/8 pt-8 text-xs text-white/35 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Nameer · nameer.live</p>
-          <p>You imagine, I build.</p>
+          <p>Building systems that scale.</p>
         </div>
       </div>
     </footer>

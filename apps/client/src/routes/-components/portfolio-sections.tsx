@@ -3,178 +3,186 @@ import { ArrowRightIcon } from 'lucide-react'
 import { BaseButton } from '@/components/ui/button'
 
 const STATS = [
-  { value: '10+', label: 'Years building in production' },
-  { value: '50+', label: 'Projects shipped' },
-  { value: '99.9%', label: 'Uptime on critical systems' },
-  { value: '5M+', label: 'Users served' },
+  { value: '1Cr+', label: 'Users on civic platforms' },
+  { value: '1,000+', label: 'Public services supported' },
+  { value: '₹800Cr+', label: 'CBDC disbursement flows' },
+  { value: '84K+', label: 'Complaints managed at scale' },
 ] as const
 
-const SERVICES = [
+const EXPERTISE = [
   {
     number: '01',
-    title: 'Full-Stack Product Engineering',
-    headline: 'End-to-end systems that hold up under real load.',
+    title: 'Backend & API Engineering',
+    headline: 'Services built to survive real traffic and real scrutiny.',
     description:
-      'From API design to polished interfaces — products engineered to stay up, stay secure, and scale with your users.',
+      'TypeScript backends with NestJS and Node.js — REST APIs, microservices, role-based workflows, and transaction validation for government and fintech platforms.',
     items: [
-      'Web applications & dashboards',
-      'API design & integrations',
-      'Real-time & event-driven systems',
-      'Performance & reliability tuning',
+      'NestJS & Express.js services',
+      'MongoDB, PostgreSQL & Redis',
+      'Payment & subsidy disbursement APIs',
+      'Automated testing & performance tuning',
     ],
   },
   {
     number: '02',
-    title: 'Platform & Infrastructure',
-    headline: 'The machinery behind reliable software.',
+    title: 'AI & Intelligent Systems',
+    headline: 'Production RAG and ML where accuracy actually matters.',
     description:
-      'CI/CD pipelines, observability, and deployment strategies built for teams that cannot afford downtime.',
+      'From vector embeddings and semantic search to CNN/LSTM fault detection — AI features engineered for measurable impact, not slide decks.',
     items: [
-      'Cloud & container orchestration',
-      'CI/CD & observability',
-      'Zero-downtime releases',
-      'Security & compliance foundations',
+      'RAG pipelines & tool-calling workflows',
+      'Vector search & LLM integrations',
+      'TensorFlow & Scikit-Learn models',
+      'Feature engineering & model evaluation',
     ],
   },
   {
     number: '03',
-    title: 'AI & Intelligent Systems',
-    headline: 'Applied intelligence where accuracy matters.',
+    title: 'Full-Stack Product Development',
+    headline: 'End-to-end platforms from schema to interface.',
     description:
-      'LLM workflows, document intelligence, and ML features engineered for precision, auditability, and scale.',
+      'React and Next.js frontends paired with scalable APIs, workflow automation, and analytics dashboards used across departments and stakeholder groups.',
     items: [
-      'LLM-backed workflows',
-      'Document intelligence',
-      'Search & retrieval systems',
-      'Model integration & serving',
+      'React & Next.js applications',
+      'Analytics & admin dashboards',
+      'Workflow automation & RBAC',
+      'Docker, AWS & CI/CD deployment',
     ],
   },
 ] as const
 
 const PROJECTS = [
   {
-    title: 'Citizen Service Platform',
+    title: 'Apuni Sarkar Platform',
     category: 'Government · Full-Stack',
     description:
-      'High-throughput portal processing millions of applications with secure workflows and real-time status tracking.',
+      'Backend services powering citizen-facing applications for 1Cr+ users and 1,000+ public services — designed, tested, and deployed with NestJS and MongoDB.',
   },
   {
-    title: 'Enterprise Analytics Dashboard',
-    category: 'SaaS · Platform',
+    title: 'CBDC Infrastructure',
+    category: 'Fintech · Mission Kiwi',
     description:
-      'Multi-tenant reporting system with role-based access, custom pipelines, and sub-second query performance.',
+      'Secure payment APIs and transaction validation for a state-wide CBDC initiative supporting subsidy disbursement operations worth ₹800Cr+.',
   },
   {
-    title: 'AI Document Pipeline',
-    category: 'AI · Automation',
+    title: 'AI Assistant',
+    category: 'AI · RAG',
     description:
-      'Intelligent extraction and classification system reducing manual review time by 90% across sensitive workflows.',
+      'Production RAG-based assistant with vector embeddings, semantic search, and tool-calling — cutting query resolution time by 30–40%.',
+  },
+  {
+    title: 'E-Office Dashboard',
+    category: 'Government · Analytics',
+    description:
+      'Analytics dashboards and backend APIs adopted across 4+ government departments, improving operational reporting efficiency by 20–30%.',
+  },
+  {
+    title: 'NHM Training Management',
+    category: 'Enterprise · Platform',
+    description:
+      'Training management software tracking 50K+ hours with automated validation pipelines and secure role-based workflows.',
+  },
+  {
+    title: 'Stray Reporter',
+    category: 'Full-Stack · Civic Tech',
+    description:
+      'Platform managing 84K+ complaints and 20K+ records — API performance optimizations cut average response times by 60%.',
   },
 ] as const
 
 const TECH_CATEGORIES = [
   {
-    title: 'Frontend',
-    items: [
-      'React & TypeScript',
-      'TanStack ecosystem',
-      'Design systems',
-      'Performance optimization',
-    ],
+    title: 'Languages',
+    items: ['TypeScript', 'JavaScript', 'Python', 'SQL'],
   },
   {
     title: 'Backend',
     items: [
-      'Node.js & Hono',
-      'PostgreSQL & Redis',
-      'Queue workers',
-      'API design',
+      'Node.js & NestJS',
+      'Express.js & FastAPI',
+      'REST APIs & microservices',
+      'System & API design',
     ],
   },
   {
-    title: 'Infrastructure',
-    items: [
-      'Docker & Kubernetes',
-      'CI/CD pipelines',
-      'Observability',
-      'Cloud deployment',
-    ],
+    title: 'Frontend',
+    items: ['React & Next.js', 'HTML & CSS', 'Responsive UI', 'Payment forms'],
   },
   {
-    title: 'AI / ML',
+    title: 'Infrastructure & AI',
     items: [
-      'LLM integrations',
-      'RAG pipelines',
-      'Document intelligence',
-      'Agent workflows',
+      'Docker & AWS (EC2, S3)',
+      'PostgreSQL, MongoDB & Redis',
+      'RAG & vector embeddings',
+      'TensorFlow & Scikit-Learn',
     ],
   },
 ] as const
 
-const PROCESS = [
+const EXPERIENCE = [
   {
     number: '01',
-    title: 'Fast-moving',
+    title: 'Software Engineer · Prodios Labs',
     description:
-      'Short cycles, working software early, momentum that compounds week over week.',
+      'Jan 2025 – Present · Building government-scale platforms, CBDC payment infrastructure, RAG assistants, and enterprise dashboards in Dehradun.',
   },
   {
     number: '02',
-    title: 'Close collaboration',
+    title: 'Research Intern · IIT Roorkee',
     description:
-      "I work shoulder-to-shoulder with the people who own the outcome, not at arm's length.",
+      'Jan – Aug 2024 · Evaluated 10+ ML/DL models for vibration-based fault detection, improving performance by 25% through feature engineering and tuning.',
   },
   {
     number: '03',
-    title: 'Iterative',
+    title: 'Front-End Developer · PlutosOne',
     description:
-      'Ship, observe, refine. Real usage tells us more than any spec document.',
+      'Jun – Aug 2023 · Built responsive React interfaces and secure payment forms for customer-facing workflows in Noida.',
   },
   {
     number: '04',
-    title: 'Technically serious',
+    title: 'B.Tech CS (AIML) · UPES',
     description:
-      'Architecture, security, and reliability treated as first-class, because the stakes demand it.',
+      'Nov 2020 – Jul 2024 · Bachelor of Technology in Computer Science with AIML specialization, CGPA 8.14.',
   },
 ] as const
 
 export function HeroSection() {
   return (
     <div className="hero-wrap mx-auto max-w-6xl px-6">
-        <p className="mb-6 text-xs font-medium tracking-[0.2em] text-white/45 uppercase">
-          Software engineering · Full-stack · Est. 2015
-        </p>
-        <h1 className="max-w-4xl text-5xl leading-[1.05] font-semibold tracking-tight text-white md:text-7xl">
-          You imagine,
-          <br />
-          <span className="text-white/55 italic">I build.</span>
-        </h1>
-        <p className="mt-8 max-w-2xl text-lg/relaxed  text-white/55 md:text-xl">
-          Most developers ship features.{' '}
-          <strong className="font-medium text-white/80">
-            I build the systems products run on
-          </strong>
-          : platforms serving real users, handling sensitive data, with zero
-          tolerance for failure.
-        </p>
-        <div className="mt-10 flex flex-wrap gap-4">
-          <BaseButton
-            asChild
-            className="h-11 rounded-full bg-white px-6 text-sm font-medium text-[#08080a] hover:bg-white/90"
-          >
-            <a href="#contact">
-              Start a project
-              <ArrowRightIcon className="size-4" />
-            </a>
-          </BaseButton>
-          <BaseButton
-            asChild
-            variant="outline"
-            className="h-11 rounded-full border-white/15 bg-transparent px-6 text-sm text-white hover:bg-white/5 hover:text-white"
-          >
-            <a href="#work">See selected work</a>
-          </BaseButton>
-        </div>
+      <p className="mb-6 text-xs font-medium tracking-[0.2em] text-white/45 uppercase">
+        Software Engineer · Full-Stack · Prodios Labs
+      </p>
+      <h1 className="max-w-4xl text-5xl leading-[1.05] font-semibold tracking-tight text-white md:text-7xl">
+        Muhammad Nameer
+        <br />
+        <span className="text-white/55 italic">Akhter</span>
+      </h1>
+      <p className="mt-8 max-w-2xl text-lg/relaxed text-white/55 md:text-xl">
+        I design and ship{' '}
+        <strong className="font-medium text-white/80">
+          production backends, AI workflows, and full-stack platforms
+        </strong>{' '}
+        — from citizen portals serving 1Cr+ users to CBDC payment systems and
+        RAG-powered assistants.
+      </p>
+      <div className="mt-10 flex flex-wrap gap-4">
+        <BaseButton
+          asChild
+          className="h-11 rounded-full bg-white px-6 text-sm font-medium text-[#08080a] hover:bg-white/90"
+        >
+          <a href="#contact">
+            Get in touch
+            <ArrowRightIcon className="size-4" />
+          </a>
+        </BaseButton>
+        <BaseButton
+          asChild
+          variant="outline"
+          className="h-11 rounded-full border-white/15 bg-transparent px-6 text-sm text-white hover:bg-white/5 hover:text-white"
+        >
+          <a href="#work">View my work</a>
+        </BaseButton>
+      </div>
     </div>
   )
 }
@@ -188,7 +196,7 @@ export function StatsSection() {
             <div className="text-3xl font-semibold tracking-tight text-white md:text-4xl">
               {stat.value}
             </div>
-            <p className="mt-2 text-sm/snug  text-white/45">{stat.label}</p>
+            <p className="mt-2 text-sm/snug text-white/45">{stat.label}</p>
           </div>
         ))}
       </div>
@@ -202,16 +210,17 @@ export function ServicesSection() {
       <div className="mx-auto max-w-6xl">
         <div className="mb-16 max-w-2xl">
           <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">
-            What I <span className="text-white/55 italic">build</span>
+            What I <span className="text-white/55 italic">do</span>
           </h2>
-          <p className="mt-4 text-base/relaxed  text-white/50 md:text-lg">
-            Three disciplines, one standard: production systems that hold up
-            under real load, real scrutiny, and real consequences.
+          <p className="mt-4 text-base/relaxed text-white/50 md:text-lg">
+            Backend engineering, applied AI, and full-stack delivery — the same
+            disciplines I use daily building platforms for government and
+            fintech at Prodios Labs.
           </p>
         </div>
 
         <div className="space-y-20">
-          {SERVICES.map((service) => (
+          {EXPERTISE.map((service) => (
             <article
               key={service.number}
               className="grid gap-8 border-t border-white/8 pt-12 md:grid-cols-[120px_1fr] md:gap-16"
@@ -223,7 +232,7 @@ export function ServicesSection() {
                 <h3 className="text-2xl font-semibold tracking-tight text-white md:text-3xl">
                   {service.headline}
                 </h3>
-                <p className="mt-4 max-w-2xl text-base/relaxed  text-white/50">
+                <p className="mt-4 max-w-2xl text-base/relaxed text-white/50">
                   {service.description}
                 </p>
                 <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
@@ -256,20 +265,20 @@ export function WorkSection() {
               Selected <span className="text-white/55 italic">work</span>
             </h2>
             <p className="mt-3 max-w-lg text-base text-white/50">
-              Systems in production for startups, enterprises, and public-sector
-              institutions.
+              Platforms, payment systems, and AI tools shipped in production
+              for government and enterprise.
             </p>
           </div>
           <a
             href="#contact"
             className="inline-flex items-center gap-1.5 text-sm text-white/60 transition-colors hover:text-white"
           >
-            All work
+            Discuss a project
             <ArrowRightIcon className="size-3.5" />
           </a>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {PROJECTS.map((project) => (
             <article
               key={project.title}
@@ -281,7 +290,7 @@ export function WorkSection() {
               <h3 className="mt-3 text-lg font-semibold text-white">
                 {project.title}
               </h3>
-              <p className="mt-3 text-sm/relaxed  text-white/50">
+              <p className="mt-3 text-sm/relaxed text-white/50">
                 {project.description}
               </p>
             </article>
@@ -298,20 +307,22 @@ export function PhilosophySection() {
       <div className="mx-auto max-w-6xl">
         <div className="rounded-3xl border border-white/8 bg-white/2 px-8 py-14 md:px-16 md:py-20">
           <p className="text-xs font-medium tracking-[0.2em] text-white/35 uppercase">
-            The difference
+            About
           </p>
-          <h2 className="mt-6 max-w-3xl text-3xl/snug  font-semibold tracking-tight text-white md:text-4xl">
-            Anyone can build an app. I build the systems that{' '}
-            <span className="text-white/55 italic">products run on.</span>
+          <h2 className="mt-6 max-w-3xl text-3xl/snug font-semibold tracking-tight text-white md:text-4xl">
+            Engineering at the intersection of{' '}
+            <span className="text-white/55 italic">
+              scale, security, and intelligence.
+            </span>
           </h2>
-          <p className="mt-6 max-w-2xl text-base/relaxed  text-white/50 md:text-lg">
-            Millions of users. Sensitive data. Zero tolerance for failure. When
-            the platform <em className="text-white/70 not-italic">is</em> the
-            product, &ldquo;move fast and break things&rdquo; is not an option.
-            So I move fast and{' '}
-            <strong className="font-medium text-white/80">
-              build things that don&apos;t break.
-            </strong>
+          <p className="mt-6 max-w-2xl text-base/relaxed text-white/50 md:text-lg">
+            I&apos;m a software engineer at Prodios Labs building platforms that
+            real people depend on — civic portals, payment infrastructure, and
+            AI assistants that need to work under load. My background spans
+            full-stack development, ML research at IIT Roorkee, and a B.Tech in
+            Computer Science (AIML) from UPES. I care about API design,
+            automated testing, and shipping systems that don&apos;t break when
+            the stakes are high.
           </p>
         </div>
       </div>
@@ -325,11 +336,11 @@ export function TechSection() {
       <div className="mx-auto max-w-6xl">
         <div className="mb-14 max-w-2xl">
           <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">
-            Tech <span className="text-white/55 italic">DNA</span>
+            Tech <span className="text-white/55 italic">stack</span>
           </h2>
-          <p className="mt-4 text-base/relaxed  text-white/50 md:text-lg">
-            Not a list of what I know. A record of what I&apos;ve run in
-            production, at scale, under load.
+          <p className="mt-4 text-base/relaxed text-white/50 md:text-lg">
+            Tools and technologies I use daily across backend services, frontend
+            interfaces, infrastructure, and AI pipelines.
           </p>
         </div>
 
@@ -367,15 +378,15 @@ export function ProcessSection() {
       <div className="mx-auto max-w-6xl">
         <div className="mb-14 max-w-2xl">
           <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">
-            How I <span className="text-white/55 italic">work</span>
+            Experience & <span className="text-white/55 italic">background</span>
           </h2>
-          <p className="mt-4 text-base/relaxed  text-white/50 md:text-lg">
-            Small, focused engagements that sit close to the problem and ship.
+          <p className="mt-4 text-base/relaxed text-white/50 md:text-lg">
+            From research labs to production government platforms.
           </p>
         </div>
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {PROCESS.map((step) => (
+          {EXPERIENCE.map((step) => (
             <div key={step.number} className="space-y-4">
               <div className="text-sm font-medium tracking-widest text-white/30">
                 {step.number}
@@ -383,7 +394,7 @@ export function ProcessSection() {
               <h3 className="text-base font-semibold text-white">
                 {step.title}
               </h3>
-              <p className="text-sm/relaxed  text-white/50">
+              <p className="text-sm/relaxed text-white/50">
                 {step.description}
               </p>
             </div>
@@ -402,24 +413,24 @@ export function CtaSection() {
     >
       <div className="mx-auto max-w-6xl text-center">
         <p className="text-xs font-medium tracking-[0.2em] text-white/35 uppercase">
-          Start a project
+          Contact
         </p>
         <h2 className="mt-6 text-4xl font-semibold tracking-tight text-white md:text-5xl">
-          You imagine,
+          Let&apos;s build
           <br />
-          <span className="text-white/55 italic">I build.</span>
+          <span className="text-white/55 italic">something together.</span>
         </h2>
-        <p className="mx-auto mt-6 max-w-xl text-base/relaxed  text-white/50 md:text-lg">
-          Tell me about the platform or product you need. I&apos;ll bring the
-          engineering rigor to make it real, and keep it running.
+        <p className="mx-auto mt-6 max-w-xl text-base/relaxed text-white/50 md:text-lg">
+          Open to engineering roles, collaborations, and interesting technical
+          problems. Reach out and let&apos;s talk.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <BaseButton
             asChild
             className="h-11 rounded-full bg-white px-6 text-sm font-medium text-[#08080a] hover:bg-white/90"
           >
-            <a href="mailto:hello@nameer.live">
-              Start a project
+            <a href="mailto:akhtarnameer@gmail.com">
+              Send an email
               <ArrowRightIcon className="size-4" />
             </a>
           </BaseButton>

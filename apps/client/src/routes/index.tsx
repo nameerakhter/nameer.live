@@ -16,11 +16,11 @@ import {
 export const Route = createFileRoute('/')({
   head: () => ({
     meta: [
-      { title: 'Nameer · Full-Stack Engineer' },
+      { title: 'Muhammad Nameer Akhter · Software Engineer' },
       {
         name: 'description',
         content:
-          'Full-stack engineer building production systems — platforms, APIs, and intelligent workflows that scale.',
+          'Software engineer at Prodios Labs building government-scale platforms, CBDC payment infrastructure, and AI-powered workflows.',
       },
     ],
   }),
