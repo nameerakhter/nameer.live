@@ -16,7 +16,7 @@ declare module '@tanstack/react-router' {
 
 export default function App() {
   return (
-    <ThemeProvider>
+    <ThemeProvider defaultTheme="dark">
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
         <Toaster />
