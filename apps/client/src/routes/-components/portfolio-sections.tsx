@@ -140,28 +140,32 @@ const TECH_CATEGORIES = [
 
 const EXPERIENCE = [
   {
-    number: '01',
-    title: 'Software Engineer · Prodios Labs',
+    period: '2025 — Present',
+    title: 'Software Engineer',
+    place: 'Prodios Labs',
     description:
-      'Jan 2025 – Present · Building government-scale platforms, CBDC payment infrastructure, RAG assistants, and enterprise dashboards in Dehradun.',
+      'Building government-scale platforms, CBDC payment infrastructure, RAG assistants, and enterprise dashboards in Dehradun.',
   },
   {
-    number: '02',
-    title: 'Research Intern · IIT Roorkee',
+    period: '2024',
+    title: 'Research Intern',
+    place: 'IIT Roorkee',
     description:
-      'Jan – Aug 2024 · Evaluated 10+ ML/DL models for vibration-based fault detection, improving performance by 25% through feature engineering and tuning.',
+      'Evaluated 10+ ML/DL models for vibration-based fault detection, improving performance by 25% through feature engineering and tuning.',
   },
   {
-    number: '03',
-    title: 'Front-End Developer · PlutosOne',
+    period: '2023',
+    title: 'Front-End Developer',
+    place: 'PlutosOne',
     description:
-      'Jun – Aug 2023 · Built responsive React interfaces and secure payment forms for customer-facing workflows in Noida.',
+      'Built responsive React interfaces and secure payment forms for customer-facing workflows in Noida.',
   },
   {
-    number: '04',
-    title: 'B.Tech CS (AIML) · UPES',
+    period: '2020 — 2024',
+    title: 'B.Tech CS (AIML)',
+    place: 'UPES',
     description:
-      'Nov 2020 – Jul 2024 · Bachelor of Technology in Computer Science with AIML specialization, CGPA 8.14.',
+      'Bachelor of Technology in Computer Science with AIML specialization, CGPA 8.14.',
   },
 ] as const
 
@@ -176,8 +180,8 @@ export function HeroSection() {
             <span className="pf-display-line">Nameer Akhter</span>
           </h1>
           <p className="pf-subline">
-            I ship production backends, AI workflows, and full-stack platforms
-            — citizen portals for 1Cr+ users, CBDC payment systems, and
+            I ship production backends, AI workflows, and full-stack platforms —
+            citizen portals for 1Cr+ users, CBDC payment systems, and
             RAG-powered assistants.
           </p>
           <div className="pf-cta-row">
@@ -205,14 +209,16 @@ export function HeroSection() {
 
 export function StatsSection() {
   return (
-    <section className="hero-stats border-y border-(--pf-border) py-14">
-      <div className="portfolio-content grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-12">
-        {STATS.map((stat) => (
-          <div key={stat.label}>
-            <div className="pf-stat-num">{stat.value}</div>
-            <p className="pf-stat-lbl">{stat.label}</p>
-          </div>
-        ))}
+    <section className="hero-stats" aria-label="Impact at a glance">
+      <div className="portfolio-content">
+        <ul className="pf-proof-band">
+          {STATS.map((stat) => (
+            <li key={stat.label} className="pf-proof-item">
+              <span className="pf-stat-num">{stat.value}</span>
+              <span className="pf-stat-lbl">{stat.label}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   )
@@ -220,15 +226,13 @@ export function StatsSection() {
 
 export function CompanyWorkSection() {
   return (
-    <section id="company-work" className="border-t border-(--pf-border) pf-block">
+    <section id="company-work" className="pf-block">
       <div className="portfolio-content">
         <div className="pf-sec-head">
-          <h2 className="pf-section-title max-w-[16ch]">
-            What I <em>did</em>
-          </h2>
+          <h2 className="pf-section-title max-w-[14ch]">Selected work</h2>
           <p className="pf-sec-side">
-            Production systems shipped at Prodios Labs — government platforms,
-            payment infrastructure, and AI tools built for real users at scale.
+            Production systems at Prodios Labs — civic platforms, payment rails,
+            and AI tools used by real people at scale.
           </p>
         </div>
 
@@ -240,34 +244,30 @@ export function CompanyWorkSection() {
 
 export function PersonalProjectsSection() {
   return (
-    <section
-      id="personal-projects"
-      className="border-t border-(--pf-border) pf-block"
-    >
+    <section id="personal-projects" className="pf-block pf-block--surface">
       <div className="portfolio-content">
         <div className="pf-sec-head">
-          <h2 className="pf-section-title max-w-[16ch]">
-            Personal <em>projects</em>
-          </h2>
+          <h2 className="pf-section-title max-w-[14ch]">Personal projects</h2>
           <p className="pf-sec-side">
-            Side projects and UI experiments — interactive tools, design clones,
-            and front-end builds with live demos and open-source repos.
+            Side builds and UI experiments — interactive tools, design studies,
+            and front-end work with live demos.
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <ul className="pf-project-list">
           {PERSONAL_PROJECTS.map((project) => (
-            <article
-              key={project.title}
-              className="group flex flex-col rounded-sm border border-(--pf-border) bg-(--pf-surface) p-6 transition-colors hover:border-(--pf-border-strong) hover:bg-(--pf-surface-hover)"
-            >
-              <PortfolioBadge variant="accent">{project.category}</PortfolioBadge>
-              <h3 className="pf-project-title mt-3">{project.title}</h3>
-              <p className="pf-body mt-3 flex-1 text-sm">{project.description}</p>
-              <ProjectLinks links={project.links} />
-            </article>
+            <li key={project.title} className="pf-project-row">
+              <div className="pf-project-row-main">
+                <p className="pf-project-cat">{project.category}</p>
+                <h3 className="pf-project-title">{project.title}</h3>
+                <p className="pf-body pf-project-desc">{project.description}</p>
+              </div>
+              <div className="pf-project-row-links">
+                <ProjectLinks links={project.links} />
+              </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   )
@@ -275,16 +275,13 @@ export function PersonalProjectsSection() {
 
 export function ResearchSection() {
   return (
-    <section id="research" className="pf-research-block border-t border-(--pf-border)">
+    <section id="research" className="pf-block">
       <div className="portfolio-content">
         <div className="pf-sec-head">
-          <h2 className="pf-section-title max-w-[16ch]">
-            AI research & <em>publications</em>
-          </h2>
+          <h2 className="pf-section-title max-w-[16ch]">Research</h2>
           <p className="pf-sec-side">
-            Peer-reviewed research published in 2025 — evaluating ML and deep
-            learning models for vibration-based fault detection in rolling
-            bearings.
+            Peer-reviewed work from IIT Roorkee on vibration-based fault
+            detection — published with IEEE in 2025.
           </p>
         </div>
 
@@ -296,24 +293,21 @@ export function ResearchSection() {
 
 export function PhilosophySection() {
   return (
-    <section id="about" className="py-24 md:py-32">
-      <div className="portfolio-content">
-        <div className="rounded-sm border border-(--pf-border) bg-(--pf-surface) px-8 py-14 md:px-16 md:py-20">
-          <p className="pf-label">About</p>
-          <h2 className="pf-section-title mt-6 max-w-3xl">
-            Engineering at the intersection of{' '}
-            <em>scale, security, and intelligence.</em>
-          </h2>
-          <p className="pf-body mt-6 max-w-2xl text-[clamp(1rem,1.5vw,1.125rem)]">
-            I&apos;m a software engineer at Prodios Labs building platforms that
-            real people depend on — civic portals, payment infrastructure, and
-            AI assistants that need to work under load. My background spans
-            full-stack development, ML research at IIT Roorkee, and a B.Tech in
-            Computer Science (AIML) from UPES. I care about API design,
-            automated testing, and shipping systems that don&apos;t break when
-            the stakes are high.
-          </p>
-        </div>
+    <section id="about" className="pf-block pf-block--ink">
+      <div className="portfolio-content pf-about">
+        <p className="pf-about-kicker">About</p>
+        <h2 className="pf-about-title">
+          Engineering where scale, security, and intelligence meet.
+        </h2>
+        <p className="pf-about-body">
+          I&apos;m a software engineer at Prodios Labs building platforms that
+          real people depend on — civic portals, payment infrastructure, and AI
+          assistants that need to work under load. My background spans
+          full-stack development, ML research at IIT Roorkee, and a B.Tech in
+          Computer Science (AIML) from UPES. I care about API design, automated
+          testing, and shipping systems that don&apos;t break when the stakes
+          are high.
+        </p>
       </div>
     </section>
   )
@@ -321,28 +315,21 @@ export function PhilosophySection() {
 
 export function TechSection() {
   return (
-    <section className="border-t border-(--pf-border) py-24 md:py-32">
+    <section className="pf-block">
       <div className="portfolio-content">
-        <div className="mb-14 max-w-2xl">
-          <h2 className="pf-section-title">
-            Tech <em>stack</em>
-          </h2>
-          <p className="pf-section-lead">
-            Tools and technologies I use daily across backend services, frontend
-            interfaces, infrastructure, and AI pipelines.
+        <div className="pf-sec-head">
+          <h2 className="pf-section-title max-w-[12ch]">Tools I use</h2>
+          <p className="pf-sec-side">
+            Day-to-day stack across backend services, interfaces,
+            infrastructure, and AI pipelines.
           </p>
         </div>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="pf-stack-grid">
           {TECH_CATEGORIES.map((category) => (
-            <div
-              key={category.title}
-              className="rounded-sm border border-(--pf-border) p-6"
-            >
-              <h3 className="pf-stack-heading border-b border-(--pf-border) pb-[18px]">
-                {category.title}
-              </h3>
-              <PortfolioBadgeGroup className="mt-[18px]">
+            <div key={category.title} className="pf-stack-col">
+              <h3 className="pf-stack-heading">{category.title}</h3>
+              <PortfolioBadgeGroup>
                 {category.items.map((item) => (
                   <PortfolioBadge key={item}>{item}</PortfolioBadge>
                 ))}
@@ -357,26 +344,29 @@ export function TechSection() {
 
 export function ProcessSection() {
   return (
-    <section className="py-24 md:py-32">
+    <section className="pf-block pf-block--surface">
       <div className="portfolio-content">
-        <div className="mb-14 max-w-2xl">
-          <h2 className="pf-section-title">
-            Experience & <em>background</em>
-          </h2>
-          <p className="pf-section-lead">
+        <div className="pf-sec-head">
+          <h2 className="pf-section-title max-w-[14ch]">Background</h2>
+          <p className="pf-sec-side">
             From research labs to production government platforms.
           </p>
         </div>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="pf-timeline">
           {EXPERIENCE.map((step) => (
-            <div key={step.number} className="flex flex-col gap-4">
-              <div className="pf-pillar-num">{step.number}</div>
-              <h3 className="pf-pillar-title">{step.title}</h3>
-              <p className="pf-body text-sm">{step.description}</p>
-            </div>
+            <li key={step.period + step.title} className="pf-timeline-item">
+              <time className="pf-timeline-period">{step.period}</time>
+              <div className="pf-timeline-body">
+                <h3 className="pf-timeline-title">
+                  {step.title}
+                  <span className="pf-timeline-place"> · {step.place}</span>
+                </h3>
+                <p className="pf-body text-sm">{step.description}</p>
+              </div>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   )
@@ -384,23 +374,20 @@ export function ProcessSection() {
 
 export function CtaSection() {
   return (
-    <section
-      id="contact"
-      className="border-t border-(--pf-border) py-24 md:py-32"
-    >
-      <div className="portfolio-content text-center">
-        <p className="pf-label">Contact</p>
-        <h2 className="pf-contact-title mx-auto mt-6 max-w-3xl">
-          Let&apos;s build
-          <br />
-          <em>something together.</em>
+    <section id="contact" className="pf-block">
+      <div className="portfolio-content pf-contact">
+        <h2 className="pf-contact-title">
+          Let&apos;s build something together.
         </h2>
-        <p className="pf-body mx-auto mt-6 max-w-xl text-[clamp(1rem,1.5vw,1.125rem)]">
-          Open to engineering roles, collaborations, and interesting technical
+        <p className="pf-contact-lead">
+          Open to engineering roles, collaborations, and hard technical
           problems. Reach out and let&apos;s talk.
         </p>
-        <div className="pf-cta-row justify-center">
-          <a href="mailto:akhtarnameer@gmail.com" className="pf-btn pf-btn-primary">
+        <div className="pf-cta-row">
+          <a
+            href="mailto:akhtarnameer@gmail.com"
+            className="pf-btn pf-btn-primary"
+          >
             Send an email
             <span aria-hidden>→</span>
           </a>
