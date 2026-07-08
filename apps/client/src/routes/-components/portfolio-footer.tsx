@@ -8,33 +8,30 @@ const FOOTER_LINKS = [
 
 export default function PortfolioFooter() {
   return (
-    <footer className="border-t border-(--pf-border) bg-(--pf-bg)">
-      <div className="portfolio-content py-16">
-        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
-          <div className="flex flex-col gap-4">
-            <a href="#" className="flex items-center gap-3">
+    <footer className="pf-footer">
+      <div className="portfolio-content">
+        <div className="pf-footer-grid">
+          <div className="pf-footer-brand">
+            <a href="#" className="pf-footer-logo" aria-label="Home">
               <img
                 src="/man-tranparent.png"
                 alt=""
                 aria-hidden
-                className="h-14 w-auto object-contain"
+                className="h-12 w-auto object-contain"
               />
-
             </a>
-
-            <p className="pf-body max-w-xs text-sm">
+            <p className="pf-body text-sm">
               Software engineer building government-scale platforms, payment
               systems, and AI workflows at Prodios Labs.
             </p>
           </div>
 
           <div>
-            <h3 className="pf-foot-heading mb-[18px]">Navigate</h3>
-
-            <ul className="flex flex-col gap-2.5">
+            <h3 className="pf-foot-heading">Navigate</h3>
+            <ul className="pf-footer-list">
               {FOOTER_LINKS.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="pf-foot-link text-sm">
+                  <a href={link.href} className="pf-foot-link">
                     {link.label}
                   </a>
                 </li>
@@ -43,20 +40,18 @@ export default function PortfolioFooter() {
           </div>
 
           <div>
-            <h3 className="pf-foot-heading mb-[18px]">Connect</h3>
-
-            <ul className="flex flex-col gap-2.5">
+            <h3 className="pf-foot-heading">Connect</h3>
+            <ul className="pf-footer-list">
               <li>
                 <a
                   href="mailto:akhtarnameer@gmail.com"
-                  className="pf-foot-link text-sm"
+                  className="pf-foot-link"
                 >
                   akhtarnameer@gmail.com
                 </a>
               </li>
-
               <li>
-                <a href="#contact" className="pf-foot-link text-sm">
+                <a href="#contact" className="pf-foot-link">
                   Start a project
                 </a>
               </li>
@@ -64,9 +59,8 @@ export default function PortfolioFooter() {
           </div>
         </div>
 
-        <div className="pf-foot-base mt-14 flex flex-col gap-3 border-t border-(--pf-border) pt-7 sm:flex-row sm:items-center sm:justify-between">
+        <div className="pf-foot-base">
           <p>© {new Date().getFullYear()} Nameer · nameer.live</p>
-
           <p>Building systems that scale.</p>
         </div>
       </div>
