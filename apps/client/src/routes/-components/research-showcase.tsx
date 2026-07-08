@@ -42,55 +42,32 @@ const PUBLICATION = {
 
 export default function ResearchShowcase() {
   return (
-    <article className="pf-research-feature">
-      <div className="pf-research-feature-accent" aria-hidden />
+    <article className="pf-research">
+      <div className="pf-research-meta">
+        <span>{PUBLICATION.venue}</span>
+        <span aria-hidden>·</span>
+        <span>{PUBLICATION.institution}</span>
+        <span aria-hidden>·</span>
+        <span>{PUBLICATION.year}</span>
+      </div>
 
-      <div className="pf-research-feature-grid">
-        <aside className="pf-research-aside">
-          <p className="pf-label">Featured publication</p>
-
-          <div className="pf-research-meta mt-6">
-            <span className="pf-research-meta-item">{PUBLICATION.venue}</span>
-            <span className="pf-research-meta-sep" aria-hidden>
-              ·
-            </span>
-            <span className="pf-research-meta-item">
-              {PUBLICATION.institution}
-            </span>
-            <span className="pf-research-meta-sep" aria-hidden>
-              ·
-            </span>
-            <span className="pf-research-meta-item">{PUBLICATION.year}</span>
-          </div>
-
-          <div className="pf-research-stats mt-10">
-            {RESEARCH_HIGHLIGHTS.map((item) => (
-              <div key={item.label} className="pf-research-stat">
-                <div className="pf-research-stat-value">{item.value}</div>
-                <p className="pf-research-stat-label">{item.label}</p>
-              </div>
-            ))}
-          </div>
-        </aside>
-
+      <div className="pf-research-layout">
         <div className="pf-research-main">
           <PortfolioBadge variant="accent">
             AI / Machine Learning · Fault Detection
           </PortfolioBadge>
 
-          <h3 className="pf-research-title mt-5">{PUBLICATION.title}</h3>
+          <h3 className="pf-research-title">{PUBLICATION.title}</h3>
 
-          <p className="pf-body mt-5 max-w-3xl text-[clamp(0.98rem,1.25vw,1.08rem)]">
-            {PUBLICATION.description}
-          </p>
+          <p className="pf-body pf-research-desc">{PUBLICATION.description}</p>
 
-          <PortfolioBadgeGroup className="mt-6">
+          <PortfolioBadgeGroup className="pf-research-models">
             {RESEARCH_MODELS.map((model) => (
               <PortfolioBadge key={model}>{model}</PortfolioBadge>
             ))}
           </PortfolioBadgeGroup>
 
-          <div className="pf-research-actions mt-8">
+          <div className="pf-research-actions">
             <a
               href={PUBLICATION.links[0].href}
               target="_blank"
@@ -104,6 +81,15 @@ export default function ResearchShowcase() {
             <ProjectLinks links={PUBLICATION.links.slice(1)} />
           </div>
         </div>
+
+        <aside className="pf-research-aside" aria-label="Research highlights">
+          {RESEARCH_HIGHLIGHTS.map((item) => (
+            <div key={item.label} className="pf-research-stat">
+              <div className="pf-research-stat-value">{item.value}</div>
+              <p className="pf-research-stat-label">{item.label}</p>
+            </div>
+          ))}
+        </aside>
       </div>
     </article>
   )
