@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import PortfolioBadge, { PortfolioBadgeGroup } from './portfolio-badge'
+import ProjectLinks from './project-links'
 
 import { cn } from '@/lib/utils'
 
@@ -22,6 +23,7 @@ const COMPANY_PROJECTS = [
       'Role-based workflows',
       'Production deployment',
     ],
+    links: [{ label: 'e-Services portal', href: 'https://eservices.uk.gov.in/' }],
   },
   {
     number: '02',
@@ -39,6 +41,7 @@ const COMPANY_PROJECTS = [
       'NestJS services',
       'Fintech compliance',
     ],
+    links: [{ label: 'e-Services · CBDC', href: 'https://eservices.uk.gov.in/' }],
   },
   {
     number: '03',
@@ -55,6 +58,10 @@ const COMPANY_PROJECTS = [
       'Semantic search',
       'LLM tool-calling',
       'Production RAG pipeline',
+    ],
+    links: [
+      { label: 'NATA', href: 'https://nata.in/' },
+      { label: 'PGETA', href: 'https://www.pgeta.in/' },
     ],
   },
   {
@@ -73,6 +80,7 @@ const COMPANY_PROJECTS = [
       'Cross-department rollout',
       'Reporting automation',
     ],
+    links: [{ label: 'Dashboard', href: 'https://dashboard.uk.gov.in/' }],
   },
   {
     number: '05',
@@ -89,6 +97,9 @@ const COMPANY_PROJECTS = [
       'Validation pipelines',
       'NestJS backend',
       'Enterprise reporting',
+    ],
+    links: [
+      { label: 'Training portal', href: 'https://tms.prodioslabs.com/login' },
     ],
   },
   {
@@ -107,6 +118,7 @@ const COMPANY_PROJECTS = [
       '60% faster responses',
       'MongoDB at scale',
     ],
+    links: [],
   },
 ] as const
 
@@ -153,6 +165,9 @@ function CompanyProjectDetail({ project }: { project: CompanyProject }) {
             <PortfolioBadge key={tag}>{tag}</PortfolioBadge>
           ))}
         </PortfolioBadgeGroup>
+        {project.links.length > 0 ? (
+          <ProjectLinks links={project.links} variant="proof" />
+        ) : null}
       </div>
     </div>
   )
@@ -166,25 +181,43 @@ export default function CompanyWorkShowcase() {
     <div className="pf-work-layout">
       <div className="pf-work-list" role="list">
         {COMPANY_PROJECTS.map((project, index) => (
-          <button
+          <div
             key={project.number}
-            type="button"
-            role="listitem"
-            className={cn('pf-wrow', index === activeIndex && 'active')}
-            onMouseEnter={() => setActiveIndex(index)}
-            onFocus={() => setActiveIndex(index)}
-            onClick={() => setActiveIndex(index)}
+            className={cn(
+              'pf-wrow-group',
+              project.links.length > 0 && 'pf-wrow-group--has-proof',
+            )}
           >
-            <span className="pf-wnum">{project.number}</span>
-            <div>
-              <div className="pf-wname">{project.title}</div>
-              <div className="pf-wclient">{project.category}</div>
-              <p className="pf-wdesc">{project.description}</p>
-            </div>
-            <span className="pf-warr" aria-hidden>
-              →
-            </span>
-          </button>
+            <button
+              type="button"
+              role="listitem"
+              className={cn(
+                'pf-wrow',
+                index === activeIndex && 'active',
+                project.links.length > 0 && 'pf-wrow--has-proof',
+              )}
+              onMouseEnter={() => setActiveIndex(index)}
+              onFocus={() => setActiveIndex(index)}
+              onClick={() => setActiveIndex(index)}
+            >
+              <span className="pf-wnum">{project.number}</span>
+              <div>
+                <div className="pf-wname">{project.title}</div>
+                <div className="pf-wclient">{project.category}</div>
+                <p className="pf-wdesc">{project.description}</p>
+              </div>
+              <span className="pf-warr" aria-hidden>
+                →
+              </span>
+            </button>
+            {project.links.length > 0 ? (
+              <ProjectLinks
+                links={project.links}
+                variant="proof"
+                className="pf-wrow-proof"
+              />
+            ) : null}
+          </div>
         ))}
       </div>
 

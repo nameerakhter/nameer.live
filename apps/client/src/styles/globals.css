@@ -592,6 +592,48 @@
   color: var(--pf-fg);
 }
 
+.portfolio .pf-proof-links-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.portfolio .pf-link-proof {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 16px;
+  border: 1px solid color-mix(in srgb, var(--pf-accent) 38%, transparent);
+  border-radius: 2px;
+  background: var(--pf-surface);
+  color: var(--pf-fg);
+  font-family: var(--pf-mono-family);
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition:
+    border-color 0.25s,
+    color 0.25s,
+    background 0.25s,
+    transform 0.2s;
+}
+
+.portfolio .pf-link-proof:hover {
+  border-color: var(--pf-accent);
+  color: var(--pf-accent);
+  background: color-mix(in srgb, var(--pf-accent) 12%, transparent);
+}
+
+.portfolio .pf-link-proof:active {
+  transform: scale(0.98);
+}
+
+.portfolio .pf-link-proof:focus-visible {
+  outline: 2px solid var(--pf-accent);
+  outline-offset: 2px;
+}
+
 .theme-toggle {
   display: inline-flex;
   align-items: center;
@@ -723,6 +765,32 @@
   flex-direction: column;
 }
 
+.portfolio .pf-wrow-group {
+  border-top: 1px solid var(--line);
+}
+
+.portfolio .pf-work-list .pf-wrow-group:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.portfolio .pf-wrow-group .pf-wrow {
+  border-top: none;
+}
+
+.portfolio .pf-work-list .pf-wrow-group:last-child .pf-wrow {
+  border-bottom: none;
+}
+
+.portfolio .pf-wrow-proof {
+  display: none;
+  margin-top: 0;
+  padding: 0 6px 22px 52px;
+}
+
+.portfolio .pf-wrow-group--has-proof .pf-wrow-proof {
+  margin-top: -8px;
+}
+
 .portfolio .pf-wrow {
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -740,10 +808,6 @@
   font: inherit;
   color: inherit;
   transition: padding-left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.portfolio .pf-work-list .pf-wrow:last-child {
-  border-bottom: 1px solid var(--line);
 }
 
 .portfolio .pf-wrow::before {
@@ -975,6 +1039,10 @@
   }
 
   .portfolio .pf-wdesc {
+    display: block;
+  }
+
+  .portfolio .pf-wrow-proof {
     display: block;
   }
 }

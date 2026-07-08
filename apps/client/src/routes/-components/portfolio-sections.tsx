@@ -30,7 +30,7 @@ const PERSONAL_PROJECTS = [
     description:
       'Multi-language code editor with real-time PrismJS syntax highlighting, scroll sync, and a transparent textarea overlay.',
     links: [
-      { label: 'Live demo', href: 'https://code-editor-react-nine.vercel.app/' },
+      { label: 'Live demo', href: 'https://code-editor-react.nameer.live/' },
       {
         label: 'GitHub',
         href: 'https://github.com/nameerakhter/code-editor-react',
@@ -43,7 +43,7 @@ const PERSONAL_PROJECTS = [
     description:
       'Front-end clone of thisismagma.com — replicating layout, interactions, sliders, and animations with vanilla HTML, CSS, and JavaScript.',
     links: [
-      { label: 'Live demo', href: 'https://magma-clone-nu.vercel.app/' },
+      { label: 'Live demo', href: 'https://magma-clone.nameer.live/' },
       { label: 'GitHub', href: 'https://github.com/nameerakhter/magma_clone' },
     ],
   },
@@ -66,7 +66,7 @@ const PERSONAL_PROJECTS = [
     description:
       'Dark-themed clone of ochi.design.in with cursor-tracking eyes, Locomotive Scroll parallax, and Framer Motion hover effects.',
     links: [
-      { label: 'Live demo', href: 'https://ochi-dark-version.vercel.app/' },
+      { label: 'Live demo', href: 'https://ochi-dark-version.nameer.live/' },
       {
         label: 'GitHub',
         href: 'https://github.com/nameerakhter/ochi_dark_version',
@@ -81,12 +81,30 @@ const PERSONAL_PROJECTS = [
     links: [
       {
         label: 'Live demo',
-        href: 'https://gericht-restraunt-react-js.vercel.app/',
+        href: 'https://gericht-restraunt.nameer.live/',
       },
       {
         label: 'GitHub',
         href: 'https://github.com/nameerakhter/GerichtRestraunt_ReactJs',
       },
+    ],
+  },
+  {
+    title: 'MacBook Pro Hero',
+    category: 'Three.js · Apple-style UI',
+    description:
+      '3D MacBook Pro hero with a loading sequence, scroll-driven product showcase, and Apple-inspired layout and interactions.',
+    links: [
+      { label: 'Live demo', href: 'https://macbook-pro-hero.nameer.live/' },
+    ],
+  },
+  {
+    title: 'Health Flow App',
+    category: 'React · Health UI',
+    description:
+      'Health and wellness app UI with guided user flows, dashboard views, and a responsive mobile-first layout.',
+    links: [
+      { label: 'Live demo', href: 'https://health-flow-app.nameer.live/' },
     ],
   },
 ] as const
