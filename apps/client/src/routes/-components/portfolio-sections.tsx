@@ -167,40 +167,38 @@ const EXPERIENCE = [
 
 export function HeroSection() {
   return (
-    <div className="hero-wrap portfolio-content">
-      <div className="pf-eyebrow">
-        <span className="pf-eyebrow-rule" aria-hidden />
-        <span className="pf-mono">
-          Software Engineer · Full-Stack · Prodios Labs
-        </span>
+    <div className="hero-wrap">
+      <div className="pf-hero-stage portfolio-content">
+        <div className="pf-hero-copy">
+          <p className="pf-hero-role">Software engineer at Prodios Labs</p>
+          <h1 className="pf-display">
+            Muhammad
+            <span className="pf-display-line">Nameer Akhter</span>
+          </h1>
+          <p className="pf-subline">
+            I ship production backends, AI workflows, and full-stack platforms
+            — citizen portals for 1Cr+ users, CBDC payment systems, and
+            RAG-powered assistants.
+          </p>
+          <div className="pf-cta-row">
+            <a href="#contact" className="pf-btn pf-btn-primary">
+              Start a conversation
+              <span aria-hidden>→</span>
+            </a>
+            <a href="#company-work" className="pf-btn pf-btn-ghost">
+              Selected work
+            </a>
+          </div>
+          <p className="pf-hero-proof">
+            <span className="pf-hero-proof-kicker">IEEE · 2025</span>
+            Vibration-based bearing fault detection research from IIT Roorkee.
+          </p>
+        </div>
+
+        <aside className="pf-hero-side" aria-hidden>
+          <img src="/man-tranparent.png" alt="" className="pf-hero-mark" />
+        </aside>
       </div>
-      <h1 className="pf-display">
-        Muhammad Nameer
-        <br />
-        <em>Akhter</em>
-      </h1>
-      <p className="pf-subline">
-        I design and ship{' '}
-        <b>
-          production backends, AI workflows, and full-stack platforms
-        </b>{' '}
-        — from citizen portals serving 1Cr+ users to CBDC payment systems and
-        RAG-powered assistants.
-      </p>
-      <div className="pf-cta-row">
-        <a href="#contact" className="pf-btn pf-btn-primary">
-          Got something worth building?
-          <span aria-hidden>→</span>
-        </a>
-        <a href="#company-work" className="pf-btn pf-btn-ghost">
-          View company work
-        </a>
-      </div>
-      <p className="pf-research-hero-note">
-        <span className="pf-label">IEEE publication · 2025</span>
-        Evaluated ML and deep learning models for vibration-based bearing fault
-        detection at IIT Roorkee.
-      </p>
     </div>
   )
 }
