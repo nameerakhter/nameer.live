@@ -5,7 +5,6 @@ import ProjectLinks from './project-links'
 
 import { cn } from '@/lib/utils'
 
-
 const COMPANY_PROJECTS = [
   {
     number: '01',
@@ -23,7 +22,9 @@ const COMPANY_PROJECTS = [
       'Role-based workflows',
       'Production deployment',
     ],
-    links: [{ label: 'e-Services portal', href: 'https://eservices.uk.gov.in/' }],
+    links: [
+      { label: 'e-Services portal', href: 'https://eservices.uk.gov.in/' },
+    ],
   },
   {
     number: '02',
@@ -41,7 +42,9 @@ const COMPANY_PROJECTS = [
       'NestJS services',
       'Fintech compliance',
     ],
-    links: [{ label: 'e-Services · CBDC', href: 'https://eservices.uk.gov.in/' }],
+    links: [
+      { label: 'e-Services · CBDC', href: 'https://eservices.uk.gov.in/' },
+    ],
   },
   {
     number: '03',
@@ -145,7 +148,7 @@ function CompanyProjectDetail({ project }: { project: CompanyProject }) {
           <div className="pf-wd-hero-num">
             {hero.main}
             {hero.suffix ? (
-              <span className="text-(--pf-accent) italic">{hero.suffix}</span>
+              <span className="text-(--pf-accent)">{hero.suffix}</span>
             ) : null}
           </div>
           <div className="pf-wd-hero-rule" aria-hidden />
