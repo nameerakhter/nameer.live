@@ -158,8 +158,8 @@
   --glow-mid: rgba(15, 118, 110, 0.16);
   --glow-mid-2: rgba(15, 118, 110, 0.05);
   --glow-strong: rgba(15, 118, 110, 0.28);
-  --pf-content-max-width: 1280px;
-  --pf-content-padding-x: clamp(1.25rem, 3.5vw, 2.5rem);
+  --pf-content-max-width: 1480px;
+  --pf-content-padding-x: clamp(1.25rem, 4vw, 3.5rem);
 
   font-family: var(--pf-sans);
   font-weight: 300;
@@ -225,16 +225,16 @@
 .portfolio .pf-hero-stage {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.78fr);
-  gap: clamp(1.5rem, 4vw, 3.5rem);
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+  gap: clamp(1.25rem, 3.5vw, 3rem);
   align-items: center;
-  min-height: min(62vh, 560px);
+  min-height: min(68vh, 620px);
 }
 
 .portfolio .pf-hero-copy {
   position: relative;
   z-index: 1;
-  max-width: 34rem;
+  max-width: 40rem;
   animation: pf-hero-copy-in 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -276,8 +276,8 @@
 
 .portfolio .pf-subline {
   margin-top: clamp(1.1rem, 1.8vh, 1.5rem);
-  max-width: 36ch;
-  font-size: clamp(1.02rem, 1.3vw, 1.16rem);
+  max-width: 42ch;
+  font-size: clamp(1.05rem, 1.35vw, 1.2rem);
   line-height: 1.6;
   color: var(--pf-fg-dim);
   font-weight: 300;
@@ -296,19 +296,19 @@
   display: grid;
   place-items: center;
   align-self: stretch;
-  min-height: min(52vw, 420px);
+  min-height: min(48vw, 480px);
   pointer-events: none;
   animation: pf-hero-mark-in 1s cubic-bezier(0.16, 1, 0.3, 1) both;
   animation-delay: 0.1s;
 }
 
 .portfolio .pf-hero-mark {
-  width: min(100%, 420px);
+  width: min(100%, 520px);
   height: auto;
   object-fit: contain;
-  opacity: 0.9;
+  opacity: 0.94;
   filter: drop-shadow(
-    0 24px 48px color-mix(in srgb, var(--pf-accent) 18%, transparent)
+    0 28px 56px color-mix(in srgb, var(--pf-accent) 22%, transparent)
   );
 }
 
@@ -814,17 +814,28 @@
   background: var(--pf-bg);
 }
 
-.hero::before {
-  content: '';
+.hero-watercolor {
   position: absolute;
   inset: 0;
   z-index: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
-  background: radial-gradient(
-    55% 55% at 92% 42%,
-    color-mix(in srgb, var(--pf-accent) 14%, transparent),
-    transparent 68%
-  );
+  /* Soft edges only — keep the stroke continuous */
+  filter: blur(10px) saturate(1.25);
+  opacity: 1;
+  mix-blend-mode: multiply;
+}
+
+.dark .hero-watercolor {
+  mix-blend-mode: screen;
+  filter: blur(12px) saturate(1.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-watercolor {
+    filter: blur(18px) saturate(1.1);
+  }
 }
 
 .hero-wrap {
