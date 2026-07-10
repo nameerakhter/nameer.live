@@ -239,14 +239,15 @@
 }
 
 .portfolio .pf-hero-headline.pf-display {
-  font-size: clamp(3rem, 8.5vw, 6.25rem);
+  max-width: 14ch;
+  font-size: clamp(2.75rem, 7.2vw, 5.5rem);
 }
 
 .portfolio .pf-hero-body {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 1fr);
   gap: clamp(2rem, 5vw, 4.5rem);
-  align-items: end;
+  align-items: center;
 }
 
 .portfolio .pf-hero-copy-col {
@@ -259,44 +260,403 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 520px;
+  max-width: 560px;
   justify-self: end;
 }
 
-.portfolio .pf-hero-visual-grid {
-  display: block;
-}
-
-.portfolio .pf-hero-logo-cell {
-  grid-column: 1 / -1;
-  display: grid;
-  place-items: center;
-  min-height: clamp(140px, 18vw, 200px);
-  padding: clamp(1.25rem, 3vw, 2rem);
-  background: color-mix(in srgb, var(--pf-accent) 5%, var(--pf-surface));
+.portfolio .pf-hero-panel {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  color: var(--pf-fg);
+  background: color-mix(in srgb, var(--pf-bg) 72%, var(--pf-surface));
   border: 1px solid var(--line);
 }
 
-.portfolio .pf-hero-logo-mark {
-  width: min(72%, 220px);
-  height: auto;
-  object-fit: contain;
-  opacity: 0.92;
-  filter: drop-shadow(
-    0 16px 40px color-mix(in srgb, var(--pf-accent) 20%, transparent)
-  );
+.portfolio .pf-hero-panel-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  border-bottom: 1px solid var(--line);
 }
 
-.portfolio .pf-hero-availability {
-  display: inline-flex;
+.portfolio .pf-hero-panel-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+  padding: 0.75rem clamp(0.65rem, 1.2vw, 0.9rem);
+}
+
+.portfolio .pf-hero-panel-meta-item:not(:last-child) {
+  border-right: 1px solid var(--line);
+}
+
+.portfolio .pf-hero-panel-meta-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pf-fg-faint);
+}
+
+.portfolio .pf-hero-panel-meta-value {
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  color: var(--pf-fg-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.portfolio .pf-hero-panel-canvas {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  color: var(--pf-accent);
+  background:
+    radial-gradient(
+      ellipse 70% 55% at 50% 45%,
+      color-mix(in srgb, var(--pf-accent) 6%, transparent),
+      transparent 68%
+    ),
+    color-mix(in srgb, var(--pf-accent) 2.5%, transparent);
+}
+
+.portfolio .pf-hero-panel-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.portfolio .pf-hero-iso {
+  overflow: visible;
+  color: var(--pf-accent);
+}
+
+/* --- Slabs --- */
+
+.portfolio .pf-hero-iso-slab {
+  opacity: 0;
+  animation: pf-hero-iso-drop 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.portfolio .pf-hero-iso-slab--l2 {
+  animation-delay: 0.08s;
+}
+
+.portfolio .pf-hero-iso-slab--l1 {
+  animation-delay: 0.24s;
+}
+
+.portfolio .pf-hero-iso-slab--l0 {
+  animation-delay: 0.4s;
+}
+
+.portfolio .pf-hero-iso-face-top {
+  fill: color-mix(in srgb, var(--pf-bg) 93%, var(--pf-accent) 7%);
+  stroke: color-mix(in srgb, currentColor 42%, transparent);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+
+.portfolio .pf-hero-iso-face-left {
+  fill: color-mix(in srgb, var(--pf-fg) 9%, var(--pf-bg));
+  stroke: color-mix(in srgb, currentColor 28%, transparent);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+
+.portfolio .pf-hero-iso-face-right {
+  fill: color-mix(in srgb, var(--pf-fg) 4.5%, var(--pf-bg));
+  stroke: color-mix(in srgb, currentColor 28%, transparent);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+
+.portfolio .pf-hero-iso-slab--l1 .pf-hero-iso-face-top {
+  fill: color-mix(in srgb, var(--pf-bg) 88%, var(--pf-accent) 12%);
+  stroke: color-mix(in srgb, currentColor 65%, transparent);
+}
+
+.portfolio .pf-hero-iso-tile {
+  fill: none;
+  stroke: color-mix(in srgb, currentColor 32%, transparent);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+  stroke-linejoin: round;
+}
+
+.portfolio .pf-hero-iso-tile--live {
+  fill: color-mix(in srgb, var(--pf-accent) 16%, transparent);
+  stroke: color-mix(in srgb, currentColor 60%, transparent);
+  stroke-dasharray: none;
+  animation: pf-hero-iso-tile-pulse 2.8s ease-out 1.4s infinite;
+}
+
+/* --- Layer tags --- */
+
+.portfolio .pf-hero-iso-tag {
+  opacity: 0;
+  animation: pf-hero-iso-fade-left 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.portfolio .pf-hero-iso-tag--l0 {
+  animation-delay: 0.62s;
+}
+
+.portfolio .pf-hero-iso-tag--l1 {
+  animation-delay: 0.74s;
+}
+
+.portfolio .pf-hero-iso-tag--l2 {
+  animation-delay: 0.86s;
+}
+
+.portfolio .pf-hero-iso-tag-id {
+  font-family: var(--pf-mono-family);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  fill: var(--pf-fg);
+}
+
+.portfolio .pf-hero-iso-tag-name {
+  font-family: var(--pf-mono-family);
+  font-size: 7px;
+  letter-spacing: 0.12em;
+  fill: var(--pf-fg-faint);
+}
+
+.portfolio .pf-hero-iso-leader {
+  stroke: color-mix(in srgb, var(--pf-fg) 24%, transparent);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+}
+
+/* --- Request path & checkpoints --- */
+
+.portfolio .pf-hero-iso-path {
+  stroke: currentColor;
+  stroke-opacity: 0.45;
+  stroke-width: 1.25;
+  stroke-dasharray: 328;
+  stroke-dashoffset: 328;
+  animation: pf-hero-iso-draw 1s cubic-bezier(0.22, 1, 0.36, 1) 0.85s forwards;
+}
+
+.portfolio .pf-hero-iso-checkpoint {
+  opacity: 0;
+  animation: pf-hero-iso-fade 0.45s ease-out forwards;
+  animation-delay: 1.05s;
+}
+
+.portfolio .pf-hero-iso-checkpoint--origin {
+  animation-delay: 0.95s;
+}
+
+.portfolio .pf-hero-iso-checkpoint--audit {
+  animation-delay: 1.6s;
+}
+
+.portfolio .pf-hero-iso-cp-dot {
+  fill: var(--pf-bg);
+  stroke: currentColor;
+  stroke-width: 1.25;
+}
+
+.portfolio .pf-hero-iso-origin-dot {
+  fill: currentColor;
+}
+
+.portfolio .pf-hero-iso-cp-label {
+  font-family: var(--pf-mono-family);
+  font-size: 7px;
+  letter-spacing: 0.14em;
+  fill: var(--pf-fg-dim);
+}
+
+/* --- Travelling packet --- */
+
+.portfolio .pf-hero-iso-packet {
+  fill: currentColor;
+  opacity: 0;
+  offset-path: path('M240 16 V344');
+  offset-rotate: 0deg;
+  animation: pf-hero-iso-packet 3.6s cubic-bezier(0.45, 0, 0.55, 1) 2s infinite;
+}
+
+/* --- Drafting furniture --- */
+
+.portfolio .pf-hero-iso-marks path {
+  stroke: color-mix(in srgb, var(--pf-fg) 26%, transparent);
+  stroke-width: 1;
+}
+
+.portfolio .pf-hero-iso-marks {
+  opacity: 0;
+  animation: pf-hero-iso-fade 0.6s ease-out 1.3s forwards;
+}
+
+.portfolio .pf-hero-iso-dim {
+  opacity: 0;
+  animation: pf-hero-iso-fade 0.6s ease-out 1.45s forwards;
+}
+
+.portfolio .pf-hero-iso-dim-ext {
+  stroke: color-mix(in srgb, var(--pf-fg) 14%, transparent);
+  stroke-width: 1;
+  stroke-dasharray: 2 4;
+}
+
+.portfolio .pf-hero-iso-dim-line {
+  stroke: color-mix(in srgb, var(--pf-fg) 30%, transparent);
+  stroke-width: 1;
+}
+
+.portfolio .pf-hero-iso-dim-label {
+  font-family: var(--pf-mono-family);
+  font-size: 7px;
+  letter-spacing: 0.16em;
+  fill: var(--pf-fg-faint);
+}
+
+.portfolio .pf-hero-iso-cube {
+  opacity: 0;
+  animation:
+    pf-hero-iso-fade 0.6s ease-out 1.2s forwards,
+    pf-hero-iso-float 6s ease-in-out 1.8s infinite;
+}
+
+.portfolio .pf-hero-iso-cube-top {
+  fill: color-mix(in srgb, var(--pf-accent) 18%, var(--pf-bg));
+  stroke: color-mix(in srgb, currentColor 45%, transparent);
+  stroke-width: 1;
+}
+
+.portfolio .pf-hero-iso-cube-left {
+  fill: color-mix(in srgb, var(--pf-fg) 10%, var(--pf-bg));
+  stroke: color-mix(in srgb, currentColor 30%, transparent);
+  stroke-width: 1;
+}
+
+.portfolio .pf-hero-iso-cube-right {
+  fill: color-mix(in srgb, var(--pf-fg) 5%, var(--pf-bg));
+  stroke: color-mix(in srgb, currentColor 30%, transparent);
+  stroke-width: 1;
+}
+
+/* --- Keyframes --- */
+
+@keyframes pf-hero-iso-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pf-hero-iso-fade-left {
+  from {
+    opacity: 0;
+    transform: translateX(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pf-hero-iso-fade {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pf-hero-iso-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pf-hero-iso-tile-pulse {
+  0%,
+  100% {
+    fill: color-mix(in srgb, var(--pf-accent) 16%, transparent);
+  }
+
+  55% {
+    fill: color-mix(in srgb, var(--pf-accent) 34%, transparent);
+  }
+}
+
+@keyframes pf-hero-iso-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes pf-hero-iso-packet {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+
+  6% {
+    opacity: 1;
+  }
+
+  88% {
+    opacity: 1;
+  }
+
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+.portfolio .pf-hero-panel-caption {
+  margin: 0;
+  padding: 0.55rem clamp(0.75rem, 1.5vw, 1rem);
+  border-top: 1px solid var(--line);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--pf-fg-faint);
+}
+
+.portfolio .pf-hero-identity {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 0.65rem;
-  margin: 0 0 clamp(1.1rem, 2vh, 1.5rem);
+  gap: 0.45rem 0.55rem;
+  margin: 0 0 clamp(1rem, 2vh, 1.35rem);
   font-family: var(--pf-sans);
-  font-size: clamp(0.92rem, 1vw, 1rem);
+  font-size: clamp(0.88rem, 1vw, 0.98rem);
   font-weight: 400;
   letter-spacing: 0.01em;
   color: var(--pf-fg-dim);
+}
+
+.portfolio .pf-hero-name {
+  font-weight: 500;
+  color: var(--pf-fg);
+}
+
+.portfolio .pf-hero-identity-sep {
+  color: var(--pf-fg-faint);
 }
 
 .portfolio .pf-hero-availability-dot {
@@ -425,6 +785,25 @@
   .portfolio .pf-hero-availability-dot,
   .pf-hero-scroll-line {
     animation: none;
+  }
+
+  .portfolio .pf-hero-iso-slab,
+  .portfolio .pf-hero-iso-tag,
+  .portfolio .pf-hero-iso-path,
+  .portfolio .pf-hero-iso-checkpoint,
+  .portfolio .pf-hero-iso-marks,
+  .portfolio .pf-hero-iso-dim,
+  .portfolio .pf-hero-iso-cube,
+  .portfolio .pf-hero-iso-tile--live {
+    animation: none;
+    opacity: 1;
+    stroke-dashoffset: 0;
+    transform: none;
+  }
+
+  .portfolio .pf-hero-iso-packet {
+    animation: none;
+    opacity: 0;
   }
 }
 
@@ -1542,7 +1921,8 @@
   }
 
   .portfolio .pf-hero-headline.pf-display {
-    font-size: clamp(2.6rem, 11vw, 3.6rem);
+    max-width: none;
+    font-size: clamp(2.35rem, 10vw, 3.35rem);
   }
 
   .portfolio .pf-hero-body {
@@ -1556,12 +1936,13 @@
     order: -1;
   }
 
-  .portfolio .pf-hero-logo-cell {
-    min-height: 120px;
+  .portfolio .pf-hero-panel-meta {
+    grid-template-columns: 1fr;
   }
 
-  .portfolio .pf-hero-logo-mark {
-    width: min(48%, 140px);
+  .portfolio .pf-hero-panel-meta-item:not(:last-child) {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
   }
 
   .pf-hero-scroll {

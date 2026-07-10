@@ -175,13 +175,16 @@ export function HeroSection() {
     <div className="hero-wrap">
       <div className="pf-hero-stage portfolio-content">
         <div className="pf-hero-intro">
-          <p className="pf-hero-availability">
+          <p className="pf-hero-identity">
             <span className="pf-hero-availability-dot" aria-hidden />
-            Software engineer at Prodios Labs
+            <span className="pf-hero-name">Muhammad Nameer Akhter</span>
+            <span className="pf-hero-identity-sep" aria-hidden>
+              ·
+            </span>
+            <span>Software engineer at Prodios Labs</span>
           </p>
           <h1 className="pf-display pf-hero-headline">
-            <span>Muhammad</span>
-            <span className="pf-display-line">Nameer Akhter</span>
+            Systems at scale, <em>shipped by hand.</em>
           </h1>
         </div>
 
