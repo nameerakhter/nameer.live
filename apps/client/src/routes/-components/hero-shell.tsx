@@ -1,20 +1,25 @@
 import type React from 'react'
 
-import HeroWatercolor from './hero-watercolor'
-import PortfolioHeader from './portfolio-header'
+import { GridBackground, Spotlight } from '@/components/ui/spotlight'
 
-import { useResolvedTheme } from '@/hooks/use-resolved-theme'
+import PortfolioHeader from './portfolio-header'
 
 type HeroShellProps = React.PropsWithChildren
 
 export default function HeroShell({ children }: HeroShellProps) {
-  const theme = useResolvedTheme()
-
   return (
     <header className="hero" id="top">
-      <HeroWatercolor key={theme} />
-      <PortfolioHeader />
-      {children}
+      <div className="hero-backdrop" aria-hidden>
+        <GridBackground />
+        <div className="hero-mesh" />
+        <div className="hero-vignette" />
+        <div className="hero-grain" />
+      </div>
+
+      <Spotlight className="hero-spotlight-wrap">
+        <PortfolioHeader />
+        {children}
+      </Spotlight>
     </header>
   )
 }
