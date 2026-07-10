@@ -9,7 +9,7 @@ const COMPANY_PROJECTS = [
   {
     number: '01',
     year: '2024',
-    title: 'Apuni Sarkar Platform',
+    title: 'Apuni Sarkar ',
     category: 'e-District · Govt. of Uttarakhand',
     headline: 'Citizen platform serving 1Cr+ users across Uttarakhand.',
     description:
