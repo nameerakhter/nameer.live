@@ -1,4 +1,5 @@
 import CompanyWorkShowcase from './company-work-showcase'
+import HeroVisual from './hero-visual'
 import PortfolioBadge, { PortfolioBadgeGroup } from './portfolio-badge'
 import ProjectLinks from './project-links'
 import ResearchShowcase from './research-showcase'
@@ -173,35 +174,48 @@ export function HeroSection() {
   return (
     <div className="hero-wrap">
       <div className="pf-hero-stage portfolio-content">
-        <div className="pf-hero-copy">
-          <p className="pf-hero-role">Software engineer at Prodios Labs</p>
-          <h1 className="pf-display">
-            Muhammad
+        <div className="pf-hero-intro">
+          <p className="pf-hero-availability">
+            <span className="pf-hero-availability-dot" aria-hidden />
+            Software engineer at Prodios Labs
+          </p>
+          <h1 className="pf-display pf-hero-headline">
+            <span>Muhammad</span>
             <span className="pf-display-line">Nameer Akhter</span>
           </h1>
-          <p className="pf-subline">
-            I ship production backends, AI workflows, and full-stack platforms —
-            citizen portals for 1Cr+ users, CBDC payment systems, and
-            RAG-powered assistants.
-          </p>
-          <div className="pf-cta-row">
-            <a href="#contact" className="pf-btn pf-btn-primary">
-              Start a conversation
-              <span aria-hidden>→</span>
-            </a>
-            <a href="#company-work" className="pf-btn pf-btn-ghost">
-              Selected work
-            </a>
-          </div>
-          <p className="pf-hero-proof">
-            <span className="pf-hero-proof-kicker">IEEE · 2025</span>
-            Vibration-based bearing fault detection research from IIT Roorkee.
-          </p>
         </div>
 
-        <aside className="pf-hero-side" aria-hidden>
-          <img src="/man-tranparent.png" alt="" className="pf-hero-mark" />
-        </aside>
+        <div className="pf-hero-body">
+          <div className="pf-hero-copy-col">
+            <p className="pf-subline">
+              I ship production backends, AI workflows, and full-stack platforms —
+              citizen portals for 1Cr+ users, CBDC payment systems, and
+              RAG-powered assistants.
+            </p>
+            <div className="pf-cta-row">
+              <a href="#contact" className="pf-btn pf-btn-primary">
+                Start a conversation
+                <span aria-hidden>→</span>
+              </a>
+              <a href="#company-work" className="pf-btn pf-btn-ghost">
+                Selected work
+              </a>
+            </div>
+            <p className="pf-hero-proof">
+              <span className="pf-hero-proof-kicker">IEEE · 2025</span>
+              Vibration-based bearing fault detection research from IIT Roorkee.
+            </p>
+          </div>
+
+          <div className="pf-hero-visual">
+            <HeroVisual />
+          </div>
+        </div>
+      </div>
+
+      <div className="pf-hero-scroll portfolio-content" aria-hidden>
+        <span className="pf-mono">Scroll</span>
+        <span className="pf-hero-scroll-line" />
       </div>
     </div>
   )

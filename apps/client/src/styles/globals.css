@@ -160,6 +160,7 @@
   --glow-strong: rgba(15, 118, 110, 0.28);
   --pf-content-max-width: 1480px;
   --pf-content-padding-x: clamp(1.25rem, 4vw, 3.5rem);
+  --hero-spotlight: color-mix(in srgb, var(--pf-accent) 16%, transparent);
 
   font-family: var(--pf-sans);
   font-weight: 300;
@@ -196,6 +197,7 @@
   --glow-mid: rgba(45, 212, 191, 0.2);
   --glow-mid-2: rgba(45, 212, 191, 0.07);
   --glow-strong: rgba(45, 212, 191, 0.4);
+  --hero-spotlight: color-mix(in srgb, var(--pf-accent) 22%, transparent);
 }
 
 .portfolio .pf-mono {
@@ -224,27 +226,97 @@
 
 .portfolio .pf-hero-stage {
   position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
-  gap: clamp(1.25rem, 3.5vw, 3rem);
-  align-items: center;
-  min-height: min(68vh, 620px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.75rem, 3.5vh, 2.75rem);
+  justify-content: center;
+  min-height: min(80vh, 760px);
 }
 
-.portfolio .pf-hero-copy {
+.portfolio .pf-hero-intro {
   position: relative;
   z-index: 1;
-  max-width: 40rem;
-  animation: pf-hero-copy-in 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.portfolio .pf-hero-role {
-  margin: 0 0 clamp(1rem, 1.8vh, 1.4rem);
+.portfolio .pf-hero-headline.pf-display {
+  font-size: clamp(3rem, 8.5vw, 6.25rem);
+}
+
+.portfolio .pf-hero-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: end;
+}
+
+.portfolio .pf-hero-copy-col {
+  position: relative;
+  z-index: 1;
+  max-width: 42rem;
+}
+
+.portfolio .pf-hero-visual {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 520px;
+  justify-self: end;
+}
+
+.portfolio .pf-hero-visual-grid {
+  display: block;
+}
+
+.portfolio .pf-hero-logo-cell {
+  grid-column: 1 / -1;
+  display: grid;
+  place-items: center;
+  min-height: clamp(140px, 18vw, 200px);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background: color-mix(in srgb, var(--pf-accent) 5%, var(--pf-surface));
+  border: 1px solid var(--line);
+}
+
+.portfolio .pf-hero-logo-mark {
+  width: min(72%, 220px);
+  height: auto;
+  object-fit: contain;
+  opacity: 0.92;
+  filter: drop-shadow(
+    0 16px 40px color-mix(in srgb, var(--pf-accent) 20%, transparent)
+  );
+}
+
+.portfolio .pf-hero-availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0 0 clamp(1.1rem, 2vh, 1.5rem);
   font-family: var(--pf-sans);
-  font-size: clamp(0.95rem, 1.05vw, 1.05rem);
+  font-size: clamp(0.92rem, 1vw, 1rem);
   font-weight: 400;
   letter-spacing: 0.01em;
   color: var(--pf-fg-dim);
+}
+
+.portfolio .pf-hero-availability-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--pf-accent);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--pf-accent) 45%, transparent);
+  animation: pf-hero-pulse 2.8s ease-out infinite;
+}
+
+@keyframes pf-hero-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--pf-accent) 40%, transparent);
+  }
+
+  55% {
+    box-shadow: 0 0 0 7px color-mix(in srgb, var(--pf-accent) 0%, transparent);
+  }
 }
 
 .portfolio .pf-display {
@@ -275,7 +347,7 @@
 }
 
 .portfolio .pf-subline {
-  margin-top: clamp(1.1rem, 1.8vh, 1.5rem);
+  margin-top: 0;
   max-width: 42ch;
   font-size: clamp(1.05rem, 1.35vw, 1.2rem);
   line-height: 1.6;
@@ -288,28 +360,6 @@
 .portfolio .pf-subline strong {
   color: var(--pf-fg);
   font-weight: 500;
-}
-
-.portfolio .pf-hero-side {
-  position: relative;
-  z-index: 0;
-  display: grid;
-  place-items: center;
-  align-self: stretch;
-  min-height: min(48vw, 480px);
-  pointer-events: none;
-  animation: pf-hero-mark-in 1s cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: 0.1s;
-}
-
-.portfolio .pf-hero-mark {
-  width: min(100%, 520px);
-  height: auto;
-  object-fit: contain;
-  opacity: 0.94;
-  filter: drop-shadow(
-    0 28px 56px color-mix(in srgb, var(--pf-accent) 22%, transparent)
-  );
 }
 
 .portfolio .pf-hero-proof {
@@ -326,8 +376,39 @@
   color: var(--pf-fg-dim);
   font-weight: 300;
   text-wrap: pretty;
-  animation: pf-hero-copy-in 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: 0.22s;
+}
+
+.pf-hero-scroll {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: clamp(1.5rem, 3vh, 2.5rem);
+  color: var(--pf-fg-faint);
+}
+
+.pf-hero-scroll-line {
+  display: block;
+  width: 1px;
+  height: 42px;
+  background: linear-gradient(
+    to bottom,
+    var(--pf-accent),
+    color-mix(in srgb, var(--pf-accent) 0%, transparent)
+  );
+  animation: pf-hero-scroll-drift 2.2s ease-in-out infinite;
+}
+
+@keyframes pf-hero-scroll-drift {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.55;
+  }
+
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
 }
 
 .portfolio .pf-hero-proof-kicker {
@@ -340,34 +421,9 @@
   white-space: nowrap;
 }
 
-@keyframes pf-hero-copy-in {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes pf-hero-mark-in {
-  from {
-    opacity: 0;
-    transform: translateX(18px) scale(0.97);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .portfolio .pf-hero-copy,
-  .portfolio .pf-hero-side,
-  .portfolio .pf-hero-proof {
+  .portfolio .pf-hero-availability-dot,
+  .pf-hero-scroll-line {
     animation: none;
   }
 }
@@ -812,29 +868,96 @@
   overflow: clip;
   padding-bottom: clamp(32px, 5vh, 64px);
   background: var(--pf-bg);
+  isolation: isolate;
 }
 
-.hero-watercolor {
+.hero-backdrop {
   position: absolute;
   inset: 0;
   z-index: 0;
-  width: 100%;
-  height: 100%;
   pointer-events: none;
-  /* Soft edges only — keep the stroke continuous */
-  filter: blur(10px) saturate(1.25);
-  opacity: 1;
-  mix-blend-mode: multiply;
+  overflow: hidden;
 }
 
-.dark .hero-watercolor {
-  mix-blend-mode: screen;
-  filter: blur(12px) saturate(1.35);
+.hero-grid-lines {
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.55;
+}
+
+.hero-grid-mask {
+  background: radial-gradient(
+    ellipse 72% 58% at 50% 42%,
+    transparent 16%,
+    var(--pf-bg) 78%
+  );
+}
+
+.hero-spotlight-wrap {
+  position: relative;
+  z-index: 1;
+  min-height: 100%;
+}
+
+.hero-mesh {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(
+      ellipse 48% 42% at 78% 28%,
+      color-mix(in srgb, var(--pf-accent) 24%, transparent),
+      transparent 68%
+    ),
+    radial-gradient(
+      ellipse 36% 30% at 18% 82%,
+      color-mix(in srgb, var(--pf-accent) 10%, transparent),
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 28% 24% at 62% 72%,
+      color-mix(in srgb, var(--pf-accent) 8%, transparent),
+      transparent 70%
+    );
+  animation: hero-mesh-drift 22s ease-in-out infinite alternate;
+}
+
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 90% 80% at 50% 40%,
+    transparent 40%,
+    color-mix(in srgb, var(--pf-bg) 55%, transparent) 100%
+  );
+}
+
+.hero-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+}
+
+.dark .hero-grain {
+  opacity: 0.07;
+}
+
+@keyframes hero-mesh-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate3d(-2%, 1.5%, 0) scale(1.04);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-watercolor {
-    filter: blur(18px) saturate(1.1);
+  .hero-mesh {
+    animation: none;
   }
 }
 
@@ -1409,20 +1532,43 @@
     min-height: 0;
   }
 
-  .portfolio .pf-hero-side {
-    order: -1;
+  .portfolio .pf-hero-stage {
     min-height: 0;
-    justify-self: start;
-    width: min(180px, 42vw);
+    gap: 1.5rem;
   }
 
-  .portfolio .pf-hero-mark {
-    width: 100%;
-    filter: none;
-    opacity: 0.88;
+  .portfolio .pf-hero-intro {
+    max-width: none;
   }
 
-  .portfolio .pf-hero-copy {
+  .portfolio .pf-hero-headline.pf-display {
+    font-size: clamp(2.6rem, 11vw, 3.6rem);
+  }
+
+  .portfolio .pf-hero-body {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .portfolio .pf-hero-visual {
+    max-width: none;
+    justify-self: stretch;
+    order: -1;
+  }
+
+  .portfolio .pf-hero-logo-cell {
+    min-height: 120px;
+  }
+
+  .portfolio .pf-hero-logo-mark {
+    width: min(48%, 140px);
+  }
+
+  .pf-hero-scroll {
+    display: none;
+  }
+
+  .portfolio .pf-hero-copy-col {
     max-width: none;
   }
 
