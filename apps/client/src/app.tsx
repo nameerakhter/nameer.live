@@ -1,9 +1,6 @@
-import { QueryClientProvider } from '@tanstack/react-query'
 import { RouterProvider, createRouter } from '@tanstack/react-router'
 
-import { Toaster } from './components/ui/sonner'
 import { ThemeProvider } from './components/ui/theme-provider'
-import { queryClient } from './lib/query'
 import { routeTree } from './routeTree.gen'
 
 const router = createRouter({ routeTree })
@@ -17,10 +14,7 @@ declare module '@tanstack/react-router' {
 export default function App() {
   return (
     <ThemeProvider defaultTheme="dark">
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-        <Toaster />
-      </QueryClientProvider>
+      <RouterProvider router={router} />
     </ThemeProvider>
   )
 }

@@ -31,20 +31,22 @@ export const Route = createFileRoute('/')({
 function PortfolioPage() {
   return (
     <div className="portfolio min-h-screen bg-(--pf-bg) text-(--pf-fg) antialiased">
-      <HeroShell>
-        <HeroSection />
-        <StatsSection />
-      </HeroShell>
-      <main>
-        <ResearchSection />
-        <CompanyWorkSection />
-        <PersonalProjectsSection />
-        <PhilosophySection />
-        <TechSection />
-        <ProcessSection />
-        <CtaSection />
-      </main>
-      <PortfolioFooter />
+      <div className="pf-lines">
+        <HeroShell>
+          <HeroSection />
+          <StatsSection />
+        </HeroShell>
+        <main>
+          <ResearchSection />
+          <CompanyWorkSection />
+          <PersonalProjectsSection />
+          <PhilosophySection />
+          <TechSection />
+          <ProcessSection />
+          <CtaSection />
+        </main>
+        <PortfolioFooter />
+      </div>
     </div>
   )
 }
