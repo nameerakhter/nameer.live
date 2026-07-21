@@ -1,13 +1,17 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
-@import '@fontsource-variable/geist';
+@import '@fontsource-variable/archivo/wght.css';
+@import '@fontsource-variable/source-serif-4/wght.css';
+@import '@fontsource-variable/source-serif-4/wght-italic.css';
+@import '@fontsource/jetbrains-mono/latin-400.css';
+@import '@fontsource/jetbrains-mono/latin-500.css';
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --font-heading: var(--font-sans);
-  --font-sans: 'Geist Variable', sans-serif;
+  --font-sans: 'Archivo Variable', 'Archivo', -apple-system, system-ui, sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -134,8 +138,8 @@
 }
 
 .portfolio {
-  --pf-serif: 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
-  --pf-sans: 'Archivo', -apple-system, system-ui, sans-serif;
+  --pf-serif: 'Source Serif 4 Variable', 'Source Serif 4', Georgia, serif;
+  --pf-sans: 'Archivo Variable', 'Archivo', -apple-system, system-ui, sans-serif;
   --pf-mono-family: 'JetBrains Mono', ui-monospace, monospace;
   --pf-bg: #f3f5f4;
   --pf-fg: #101618;
@@ -724,22 +728,32 @@
 }
 
 .portfolio .pf-hero-availability-dot {
+  position: relative;
   width: 7px;
   height: 7px;
   border-radius: 50%;
   background: var(--pf-accent);
-  box-shadow: 0 0 0 0 color-mix(in srgb, var(--pf-accent) 45%, transparent);
+}
+
+.portfolio .pf-hero-availability-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: color-mix(in srgb, var(--pf-accent) 40%, transparent);
   animation: pf-hero-pulse 2.8s ease-out infinite;
 }
 
 @keyframes pf-hero-pulse {
   0%,
   100% {
-    box-shadow: 0 0 0 0 color-mix(in srgb, var(--pf-accent) 40%, transparent);
+    transform: scale(1);
+    opacity: 0.7;
   }
 
   55% {
-    box-shadow: 0 0 0 7px color-mix(in srgb, var(--pf-accent) 0%, transparent);
+    transform: scale(2.6);
+    opacity: 0;
   }
 }
 
@@ -847,6 +861,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .portfolio .pf-hero-availability-dot,
+  .portfolio .pf-hero-availability-dot::after,
   .pf-hero-scroll-line {
     animation: none;
   }
@@ -1431,6 +1446,8 @@
 /* ============ SECTIONS ============ */
 .portfolio .pf-block {
   padding-block: clamp(72px, 11vh, 132px);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 720px;
 }
 
 .portfolio .pf-block--surface {
