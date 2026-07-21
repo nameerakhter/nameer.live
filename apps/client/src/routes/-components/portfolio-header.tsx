@@ -1,4 +1,3 @@
-import { MenuIcon, XIcon } from 'lucide-react'
 import { useState } from 'react'
 
 import { ThemeToggle } from '@/components/ui/theme-toggle'
@@ -30,9 +29,13 @@ export default function PortfolioHeader() {
             className="transition-opacity hover:opacity-80"
           >
             <img
-              src="/man-tranparent.png"
+              src="/man-transparent.webp"
               alt=""
               aria-hidden
+              width={103}
+              height={56}
+              decoding="async"
+              fetchPriority="high"
               className="h-14 w-auto object-contain"
             />
           </a>
@@ -58,11 +61,7 @@ export default function PortfolioHeader() {
               aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
               onClick={() => setMobileOpen((open) => !open)}
             >
-              {mobileOpen ? (
-                <XIcon className="size-5" />
-              ) : (
-                <MenuIcon className="size-5" />
-              )}
+              {mobileOpen ? <CloseIcon /> : <MenuIcon />}
             </button>
           </div>
         </div>
@@ -96,5 +95,39 @@ export default function PortfolioHeader() {
         </div>
       </div>
     </nav>
+  )
+}
+
+function MenuIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="20"
+      height="20"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      aria-hidden
+    >
+      <path d="M4 7h16M4 12h16M4 17h16" />
+    </svg>
+  )
+}
+
+function CloseIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="20"
+      height="20"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      aria-hidden
+    >
+      <path d="M6 6l12 12M18 6L6 18" />
+    </svg>
   )
 }

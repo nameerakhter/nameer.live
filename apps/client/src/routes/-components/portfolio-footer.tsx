@@ -14,9 +14,13 @@ export default function PortfolioFooter() {
           <div className="pf-footer-brand">
             <a href="#" className="pf-footer-logo" aria-label="Home">
               <img
-                src="/man-tranparent.png"
+                src="/man-transparent.webp"
                 alt=""
                 aria-hidden
+                width={88}
+                height={48}
+                loading="lazy"
+                decoding="async"
                 className="h-12 w-auto object-contain"
               />
             </a>
