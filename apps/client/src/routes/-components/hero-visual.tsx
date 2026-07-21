@@ -1,7 +1,7 @@
 const PANEL_META = [
-  { label: 'LAYERS', value: 'L0 / L1 / L2' },
-  { label: 'PATH', value: 'REQ → AUDIT' },
-  { label: 'REV', value: '2026.03' },
+  { label: 'SCOPE', value: 'GOVT · FINTECH · AI' },
+  { label: 'STACK', value: 'UI → API → DATA' },
+  { label: 'SCALE', value: '1CR+ USERS' },
 ] as const
 
 type SlabGeometry = {
@@ -13,9 +13,9 @@ type SlabGeometry = {
 }
 
 const SLABS: readonly SlabGeometry[] = [
-  { id: 'l0', cy: 82, tag: 'L0', name: 'INTERFACE', checkpoint: 'VALIDATE' },
-  { id: 'l1', cy: 174, tag: 'L1', name: 'SERVICES', checkpoint: 'PROCESS' },
-  { id: 'l2', cy: 266, tag: 'L2', name: 'DATA', checkpoint: 'PERSIST' },
+  { id: 'l0', cy: 82, tag: 'L0', name: 'PORTALS', checkpoint: 'RENDER' },
+  { id: 'l1', cy: 174, tag: 'L1', name: 'APIS', checkpoint: 'ROUTE' },
+  { id: 'l2', cy: 266, tag: 'L2', name: 'LEDGER', checkpoint: 'RECORD' },
 ] as const
 
 /** Isometric slab: 220×110 rhombus top face + 12px extruded sides. */
@@ -33,7 +33,7 @@ export default function HeroVisual() {
   return (
     <figure
       className="pf-hero-panel"
-      aria-label="Isometric schematic: a request travels through interface, service, and data layers, crossing validate, process, persist, and audit checkpoints"
+      aria-label="Isometric schematic: a user interaction flows through portal, API, and ledger layers — from render through route and record to live production"
     >
       <div className="pf-hero-panel-meta">
         {PANEL_META.map((item) => (
@@ -110,14 +110,14 @@ export default function HeroVisual() {
             </g>
           ))}
 
-          {/* Request path piercing the stack */}
+          {/* User flow piercing the stack */}
           <path className="pf-hero-iso-path" d="M240 16 V344" />
 
           {/* Origin */}
           <g className="pf-hero-iso-checkpoint pf-hero-iso-checkpoint--origin">
             <circle cx="240" cy="16" r="2.5" className="pf-hero-iso-origin-dot" />
             <text className="pf-hero-iso-cp-label" x="250" y="19">
-              REQ
+              USER
             </text>
           </g>
 
@@ -141,20 +141,20 @@ export default function HeroVisual() {
           ))}
 
           {/* Terminal checkpoint */}
-          <g className="pf-hero-iso-checkpoint pf-hero-iso-checkpoint--audit">
+          <g className="pf-hero-iso-checkpoint pf-hero-iso-checkpoint--live">
             <circle cx="240" cy="344" r="4" className="pf-hero-iso-cp-dot" />
             <text className="pf-hero-iso-cp-label" x="250" y="347">
-              AUDIT
+              LIVE
             </text>
           </g>
 
-          {/* Travelling request packet */}
+          {/* Travelling flow packet */}
           <circle className="pf-hero-iso-packet" r="3" />
         </svg>
       </div>
 
       <figcaption className="pf-hero-panel-caption pf-mono">
-        Runtime stack · one request, end to end
+        Govt · fintech · AI — shipped in production
       </figcaption>
     </figure>
   )
