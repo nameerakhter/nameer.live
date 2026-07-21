@@ -9,156 +9,38 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as AuthRouteImport } from './routes/_auth'
-import { Route as AppRouteImport } from './routes/_app'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AuthSignupRouteImport } from './routes/_auth/signup'
-import { Route as AuthResetPasswordRouteImport } from './routes/_auth/reset-password'
-import { Route as AuthLoginRouteImport } from './routes/_auth/login'
-import { Route as AuthForgotPasswordRouteImport } from './routes/_auth/forgot-password'
-import { Route as AppNotificationsRouteImport } from './routes/_app/notifications'
-import { Route as AppSettingsIndexRouteImport } from './routes/_app/settings/index'
-import { Route as AppProjectsIndexRouteImport } from './routes/_app/projects/index'
 
-const AuthRoute = AuthRouteImport.update({
-  id: '/_auth',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AppRoute = AppRouteImport.update({
-  id: '/_app',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthSignupRoute = AuthSignupRouteImport.update({
-  id: '/signup',
-  path: '/signup',
-  getParentRoute: () => AuthRoute,
-} as any)
-const AuthResetPasswordRoute = AuthResetPasswordRouteImport.update({
-  id: '/reset-password',
-  path: '/reset-password',
-  getParentRoute: () => AuthRoute,
-} as any)
-const AuthLoginRoute = AuthLoginRouteImport.update({
-  id: '/login',
-  path: '/login',
-  getParentRoute: () => AuthRoute,
-} as any)
-const AuthForgotPasswordRoute = AuthForgotPasswordRouteImport.update({
-  id: '/forgot-password',
-  path: '/forgot-password',
-  getParentRoute: () => AuthRoute,
-} as any)
-const AppNotificationsRoute = AppNotificationsRouteImport.update({
-  id: '/notifications',
-  path: '/notifications',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppSettingsIndexRoute = AppSettingsIndexRouteImport.update({
-  id: '/settings/',
-  path: '/settings/',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppProjectsIndexRoute = AppProjectsIndexRouteImport.update({
-  id: '/projects/',
-  path: '/projects/',
-  getParentRoute: () => AppRoute,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/notifications': typeof AppNotificationsRoute
-  '/forgot-password': typeof AuthForgotPasswordRoute
-  '/login': typeof AuthLoginRoute
-  '/reset-password': typeof AuthResetPasswordRoute
-  '/signup': typeof AuthSignupRoute
-  '/projects/': typeof AppProjectsIndexRoute
-  '/settings/': typeof AppSettingsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/notifications': typeof AppNotificationsRoute
-  '/forgot-password': typeof AuthForgotPasswordRoute
-  '/login': typeof AuthLoginRoute
-  '/reset-password': typeof AuthResetPasswordRoute
-  '/signup': typeof AuthSignupRoute
-  '/projects': typeof AppProjectsIndexRoute
-  '/settings': typeof AppSettingsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/_app': typeof AppRouteWithChildren
-  '/_auth': typeof AuthRouteWithChildren
-  '/_app/notifications': typeof AppNotificationsRoute
-  '/_auth/forgot-password': typeof AuthForgotPasswordRoute
-  '/_auth/login': typeof AuthLoginRoute
-  '/_auth/reset-password': typeof AuthResetPasswordRoute
-  '/_auth/signup': typeof AuthSignupRoute
-  '/_app/projects/': typeof AppProjectsIndexRoute
-  '/_app/settings/': typeof AppSettingsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/notifications'
-    | '/forgot-password'
-    | '/login'
-    | '/reset-password'
-    | '/signup'
-    | '/projects/'
-    | '/settings/'
+  fullPaths: '/'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/notifications'
-    | '/forgot-password'
-    | '/login'
-    | '/reset-password'
-    | '/signup'
-    | '/projects'
-    | '/settings'
-  id:
-    | '__root__'
-    | '/'
-    | '/_app'
-    | '/_auth'
-    | '/_app/notifications'
-    | '/_auth/forgot-password'
-    | '/_auth/login'
-    | '/_auth/reset-password'
-    | '/_auth/signup'
-    | '/_app/projects/'
-    | '/_app/settings/'
+  to: '/'
+  id: '__root__' | '/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AppRoute: typeof AppRouteWithChildren
-  AuthRoute: typeof AuthRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/_auth': {
-      id: '/_auth'
-      path: ''
-      fullPath: '/'
-      preLoaderRoute: typeof AuthRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app': {
-      id: '/_app'
-      path: ''
-      fullPath: '/'
-      preLoaderRoute: typeof AppRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -166,92 +48,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_auth/signup': {
-      id: '/_auth/signup'
-      path: '/signup'
-      fullPath: '/signup'
-      preLoaderRoute: typeof AuthSignupRouteImport
-      parentRoute: typeof AuthRoute
-    }
-    '/_auth/reset-password': {
-      id: '/_auth/reset-password'
-      path: '/reset-password'
-      fullPath: '/reset-password'
-      preLoaderRoute: typeof AuthResetPasswordRouteImport
-      parentRoute: typeof AuthRoute
-    }
-    '/_auth/login': {
-      id: '/_auth/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof AuthLoginRouteImport
-      parentRoute: typeof AuthRoute
-    }
-    '/_auth/forgot-password': {
-      id: '/_auth/forgot-password'
-      path: '/forgot-password'
-      fullPath: '/forgot-password'
-      preLoaderRoute: typeof AuthForgotPasswordRouteImport
-      parentRoute: typeof AuthRoute
-    }
-    '/_app/notifications': {
-      id: '/_app/notifications'
-      path: '/notifications'
-      fullPath: '/notifications'
-      preLoaderRoute: typeof AppNotificationsRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/settings/': {
-      id: '/_app/settings/'
-      path: '/settings'
-      fullPath: '/settings/'
-      preLoaderRoute: typeof AppSettingsIndexRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/projects/': {
-      id: '/_app/projects/'
-      path: '/projects'
-      fullPath: '/projects/'
-      preLoaderRoute: typeof AppProjectsIndexRouteImport
-      parentRoute: typeof AppRoute
-    }
   }
 }
 
-interface AppRouteChildren {
-  AppNotificationsRoute: typeof AppNotificationsRoute
-  AppProjectsIndexRoute: typeof AppProjectsIndexRoute
-  AppSettingsIndexRoute: typeof AppSettingsIndexRoute
-}
-
-const AppRouteChildren: AppRouteChildren = {
-  AppNotificationsRoute: AppNotificationsRoute,
-  AppProjectsIndexRoute: AppProjectsIndexRoute,
-  AppSettingsIndexRoute: AppSettingsIndexRoute,
-}
-
-const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
-
-interface AuthRouteChildren {
-  AuthForgotPasswordRoute: typeof AuthForgotPasswordRoute
-  AuthLoginRoute: typeof AuthLoginRoute
-  AuthResetPasswordRoute: typeof AuthResetPasswordRoute
-  AuthSignupRoute: typeof AuthSignupRoute
-}
-
-const AuthRouteChildren: AuthRouteChildren = {
-  AuthForgotPasswordRoute: AuthForgotPasswordRoute,
-  AuthLoginRoute: AuthLoginRoute,
-  AuthResetPasswordRoute: AuthResetPasswordRoute,
-  AuthSignupRoute: AuthSignupRoute,
-}
-
-const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AppRoute: AppRouteWithChildren,
-  AuthRoute: AuthRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
