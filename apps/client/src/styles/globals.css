@@ -296,9 +296,10 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: clamp(1.75rem, 3.5vh, 2.75rem);
+  gap: clamp(1rem, 2.2vh, 1.75rem);
   justify-content: center;
-  min-height: min(80vh, 760px);
+  flex: 1;
+  min-height: 0;
 }
 
 .portfolio .pf-hero-intro {
@@ -308,27 +309,27 @@
 
 .portfolio .pf-hero-headline.pf-display {
   max-width: 14ch;
-  font-size: clamp(2.75rem, 7.2vw, 5.5rem);
+  font-size: clamp(2.4rem, 5.8vw, 4.25rem);
 }
 
 .portfolio .pf-hero-body {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 1fr);
-  gap: clamp(2rem, 5vw, 4.5rem);
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.95fr);
+  gap: clamp(1.25rem, 3vw, 3rem);
   align-items: center;
 }
 
 .portfolio .pf-hero-copy-col {
   position: relative;
   z-index: 1;
-  max-width: 42rem;
+  max-width: 40rem;
 }
 
 .portfolio .pf-hero-visual {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 560px;
+  max-width: 480px;
   justify-self: end;
 }
 
@@ -379,10 +380,10 @@
 
 .portfolio .pf-hero-panel-canvas {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 11;
   display: grid;
   place-items: center;
-  padding: clamp(1rem, 2.5vw, 1.5rem);
+  padding: clamp(0.75rem, 1.8vw, 1.15rem);
   color: var(--pf-accent);
   background:
     radial-gradient(
@@ -805,12 +806,12 @@
   flex-wrap: wrap;
   align-items: baseline;
   gap: 0.55rem 0.85rem;
-  margin: clamp(1.35rem, 2.4vh, 1.85rem) 0 0;
+  margin: clamp(0.85rem, 1.6vh, 1.25rem) 0 0;
   max-width: 42ch;
-  padding-top: 1rem;
+  padding-top: 0.75rem;
   border-top: 1px dashed var(--line);
-  font-size: 0.92rem;
-  line-height: 1.5;
+  font-size: 0.88rem;
+  line-height: 1.45;
   color: var(--pf-fg-dim);
   font-weight: 300;
   text-wrap: pretty;
@@ -1006,7 +1007,7 @@
   display: flex;
   gap: var(--pf-marquee-gap, 2.5rem);
   overflow: hidden;
-  padding-block: 1.15rem;
+  padding-block: 0.85rem;
 }
 
 .portfolio .pf-marquee-track {
@@ -1436,8 +1437,11 @@
 
 .hero {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
   overflow: clip;
-  padding-bottom: clamp(32px, 5vh, 64px);
+  padding-bottom: 0;
   background: var(--pf-bg);
   isolation: isolate;
 }
@@ -1469,7 +1473,10 @@
 .hero-spotlight-wrap {
   position: relative;
   z-index: 1;
-  min-height: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 100dvh;
 }
 
 .hero-mesh {
@@ -1535,13 +1542,20 @@
 .hero-wrap {
   position: relative;
   z-index: 2;
-  padding-top: clamp(108px, 13vh, 140px);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0;
+  padding-top: clamp(88px, 10vh, 112px);
+  padding-bottom: clamp(0.5rem, 1.5vh, 1rem);
 }
 
 .hero-stats {
   position: relative;
   z-index: 2;
-  margin-top: clamp(28px, 5vh, 56px);
+  flex-shrink: 0;
+  margin-top: 0;
 }
 
 /* ============ SECTIONS ============ */
@@ -2253,15 +2267,8 @@
 
 @media (max-width: 960px) {
   .portfolio .pf-hero-stage {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.15rem;
     align-items: start;
-    min-height: 0;
-  }
-
-  .portfolio .pf-hero-stage {
-    min-height: 0;
-    gap: 1.5rem;
   }
 
   .portfolio .pf-hero-intro {
@@ -2270,16 +2277,16 @@
 
   .portfolio .pf-hero-headline.pf-display {
     max-width: none;
-    font-size: clamp(2.35rem, 10vw, 3.35rem);
+    font-size: clamp(2.15rem, 9vw, 3rem);
   }
 
   .portfolio .pf-hero-body {
     grid-template-columns: 1fr;
-    gap: 1.75rem;
+    gap: 1.15rem;
   }
 
   .portfolio .pf-hero-visual {
-    max-width: none;
+    max-width: min(100%, 420px);
     justify-self: stretch;
     order: -1;
   }
@@ -2302,6 +2309,7 @@
   }
 
   .portfolio .pf-subline {
+    font-size: 1rem;
     max-width: 46ch;
   }
 
@@ -2328,6 +2336,34 @@
   .portfolio .pf-footer-brand {
     grid-column: 1 / -1;
     max-width: 36ch;
+  }
+}
+
+@media (max-height: 780px) {
+  .portfolio .pf-hero-visual {
+    max-width: 380px;
+  }
+
+  .portfolio .pf-hero-panel-canvas {
+    aspect-ratio: 2 / 1;
+  }
+
+  .portfolio .pf-hero-panel-meta {
+    display: none;
+  }
+
+  .portfolio .pf-hero-proof {
+    display: none;
+  }
+}
+
+@media (max-height: 680px) {
+  .portfolio .pf-hero-visual {
+    display: none;
+  }
+
+  .hero-wrap {
+    padding-top: 5.5rem;
   }
 }
 

@@ -240,11 +240,6 @@ export function HeroSection() {
           </div>
         </div>
       </div>
-
-      <div className="pf-hero-scroll portfolio-content" aria-hidden>
-        <span className="pf-mono">Scroll</span>
-        <span className="pf-hero-scroll-line" />
-      </div>
     </div>
   )
 }
