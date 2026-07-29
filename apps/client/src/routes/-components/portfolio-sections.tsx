@@ -1,14 +1,39 @@
 import CompanyWorkShowcase from './company-work-showcase'
 import HeroVisual from './hero-visual'
 import PortfolioBadge, { PortfolioBadgeGroup } from './portfolio-badge'
+import PortfolioMarquee from './portfolio-marquee'
 import ProjectLinks from './project-links'
 import ResearchShowcase from './research-showcase'
 
-const STATS = [
-  { value: '1Cr+', label: 'Users on civic platforms' },
-  { value: '1,000+', label: 'Public services supported' },
-  { value: '₹800Cr+', label: 'CBDC disbursement flows' },
-  { value: '84K+', label: 'Complaints managed at scale' },
+const SIGNAL_STRIP = [
+  {
+    kicker: 'Now',
+    label: 'Software engineer at Prodios Labs · Dehradun',
+  },
+  {
+    kicker: 'Shipping',
+    label: 'NestJS backends for Apuni Sarkar · 1Cr+ users',
+  },
+  {
+    kicker: 'Building',
+    label: 'CBDC payment rails for state subsidy disbursement',
+  },
+  {
+    kicker: 'Live',
+    label: 'Production RAG assistants on NATA & PGETA',
+  },
+  {
+    kicker: 'Research',
+    label: 'IEEE 2025 · Bearing fault detection · IIT Roorkee',
+  },
+  {
+    kicker: 'Shipped',
+    label: 'NHM training platform tracking 50K+ hours',
+  },
+  {
+    kicker: 'Scale',
+    label: 'Civic APIs handling 84K+ complaints',
+  },
 ] as const
 
 const PERSONAL_PROJECTS = [
@@ -226,16 +251,9 @@ export function HeroSection() {
 
 export function StatsSection() {
   return (
-    <section className="hero-stats" aria-label="Impact at a glance">
-      <div className="portfolio-content">
-        <ul className="pf-proof-band">
-          {STATS.map((stat) => (
-            <li key={stat.label} className="pf-proof-item">
-              <span className="pf-stat-num">{stat.value}</span>
-              <span className="pf-stat-lbl">{stat.label}</span>
-            </li>
-          ))}
-        </ul>
+    <section className="hero-stats" aria-label="What I'm working on">
+      <div className="pf-signal-strip">
+        <PortfolioMarquee items={SIGNAL_STRIP} />
       </div>
     </section>
   )
