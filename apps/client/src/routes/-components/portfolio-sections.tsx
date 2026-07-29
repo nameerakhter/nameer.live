@@ -201,7 +201,7 @@ export function HeroSection() {
                 <span aria-hidden>→</span>
               </a>
               <a href="#company-work" className="pf-btn pf-btn-ghost">
-                Selected work
+                Proof in production
               </a>
             </div>
             <p className="pf-hero-proof">
@@ -243,11 +243,13 @@ export function StatsSection() {
 
 export function CompanyWorkSection() {
   return (
-    <section id="company-work" className="pf-block">
+    <section id="company-work" className="pf-block pf-block--surface">
       <div className="portfolio-content">
-        <div className="pf-sec-head">
-          <h2 className="pf-section-title max-w-[14ch]">Selected work</h2>
-          <p className="pf-sec-side">
+        <div className="pf-sec-head pf-sec-head--stack">
+          <h2 className="pf-section-title max-w-[18ch]">
+            Proof in <em>production</em>
+          </h2>
+          <p className="pf-sec-side pf-sec-side--wide">
             Production systems at Prodios Labs — civic platforms, payment rails,
             and AI tools used by real people at scale.
           </p>
@@ -261,7 +263,7 @@ export function CompanyWorkSection() {
 
 export function PersonalProjectsSection() {
   return (
-    <section id="personal-projects" className="pf-block pf-block--surface">
+    <section id="personal-projects" className="pf-block">
       <div className="portfolio-content">
         <div className="pf-sec-head">
           <h2 className="pf-section-title max-w-[14ch]">Personal projects</h2>

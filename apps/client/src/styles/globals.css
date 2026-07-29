@@ -1510,19 +1510,27 @@
   flex-direction: column;
 }
 
-.portfolio .pf-wrow {
-  display: block;
-  position: relative;
-  padding: clamp(1.15rem, 2.2vw, 1.65rem) 0.4rem;
+.portfolio .pf-wrow-group {
   border-top: 1px solid var(--line);
-  border-left: 4px solid transparent;
-  text-decoration: none;
-  color: inherit;
-  transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.portfolio .pf-work-list .pf-wrow:last-child {
+.portfolio .pf-work-list .pf-wrow-group:last-child {
   border-bottom: 1px solid var(--line);
+}
+
+.portfolio .pf-wrow {
+  display: block;
+  width: 100%;
+  position: relative;
+  padding: clamp(1.15rem, 2.2vw, 1.65rem) 0.4rem;
+  border: none;
+  border-left: 4px solid transparent;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .portfolio .pf-wrow:hover,
@@ -1643,6 +1651,11 @@
 .portfolio .pf-wstats {
   display: none;
   margin-top: 1.15rem;
+}
+
+.portfolio .pf-wrow-actions {
+  display: none;
+  margin: 0 0.4rem 1.15rem;
 }
 
 .portfolio .pf-work-detail {
@@ -1809,13 +1822,20 @@
   max-width: 16ch;
 }
 
+.portfolio .pf-wd-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 1.35rem;
+}
+
 .portfolio .pf-wd-cta {
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  margin-top: 1.35rem;
+  margin-top: 0;
   padding: 0.85rem 1rem;
   border: 1px solid var(--line);
   background: transparent;
@@ -2225,6 +2245,10 @@
 
   .portfolio .pf-wstats {
     display: grid;
+  }
+
+  .portfolio .pf-wrow-actions {
+    display: flex;
   }
 
   .portfolio .pf-research-layout {
