@@ -1554,7 +1554,8 @@
   flex-direction: column;
   justify-content: center;
   min-height: 0;
-  padding-top: clamp(88px, 10vh, 112px);
+  /* Nav is fixed: logo h-14 + 26px padding each side ≈ 108px */
+  padding-top: clamp(7.75rem, 12vh, 9.5rem);
   padding-bottom: clamp(0.5rem, 1.5vh, 1rem);
 }
 
@@ -2370,7 +2371,7 @@
   }
 
   .hero-wrap {
-    padding-top: 5.5rem;
+    padding-top: 7.75rem;
   }
 }
 
