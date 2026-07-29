@@ -2,8 +2,6 @@ import type React from 'react'
 
 import { GridBackground, Spotlight } from '@/components/ui/spotlight'
 
-import PortfolioHeader from './portfolio-header'
-
 type HeroShellProps = React.PropsWithChildren
 
 export default function HeroShell({ children }: HeroShellProps) {
@@ -16,10 +14,7 @@ export default function HeroShell({ children }: HeroShellProps) {
         <div className="hero-grain" />
       </div>
 
-      <Spotlight className="hero-spotlight-wrap">
-        <PortfolioHeader />
-        {children}
-      </Spotlight>
+      <Spotlight className="hero-spotlight-wrap">{children}</Spotlight>
     </header>
   )
 }
