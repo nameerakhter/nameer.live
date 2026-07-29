@@ -1,14 +1,39 @@
 import CompanyWorkShowcase from './company-work-showcase'
 import HeroVisual from './hero-visual'
 import PortfolioBadge, { PortfolioBadgeGroup } from './portfolio-badge'
+import PortfolioMarquee from './portfolio-marquee'
 import ProjectLinks from './project-links'
 import ResearchShowcase from './research-showcase'
 
-const STATS = [
-  { value: '1Cr+', label: 'Users on civic platforms' },
-  { value: '1,000+', label: 'Public services supported' },
-  { value: '₹800Cr+', label: 'CBDC disbursement flows' },
-  { value: '84K+', label: 'Complaints managed at scale' },
+const SIGNAL_STRIP = [
+  {
+    kicker: 'Now',
+    label: 'Software engineer at Prodios Labs · Dehradun',
+  },
+  {
+    kicker: 'Shipping',
+    label: 'NestJS backends for Apuni Sarkar · 1Cr+ users',
+  },
+  {
+    kicker: 'Building',
+    label: 'CBDC payment rails for state subsidy disbursement',
+  },
+  {
+    kicker: 'Live',
+    label: 'Production RAG assistants on NATA & PGETA',
+  },
+  {
+    kicker: 'Research',
+    label: 'IEEE 2025 · Bearing fault detection · IIT Roorkee',
+  },
+  {
+    kicker: 'Shipped',
+    label: 'NHM training platform tracking 50K+ hours',
+  },
+  {
+    kicker: 'Scale',
+    label: 'Civic APIs handling 84K+ complaints',
+  },
 ] as const
 
 const PERSONAL_PROJECTS = [
@@ -201,7 +226,7 @@ export function HeroSection() {
                 <span aria-hidden>→</span>
               </a>
               <a href="#company-work" className="pf-btn pf-btn-ghost">
-                Selected work
+                Proof in production
               </a>
             </div>
             <p className="pf-hero-proof">
@@ -215,27 +240,15 @@ export function HeroSection() {
           </div>
         </div>
       </div>
-
-      <div className="pf-hero-scroll portfolio-content" aria-hidden>
-        <span className="pf-mono">Scroll</span>
-        <span className="pf-hero-scroll-line" />
-      </div>
     </div>
   )
 }
 
 export function StatsSection() {
   return (
-    <section className="hero-stats" aria-label="Impact at a glance">
-      <div className="portfolio-content">
-        <ul className="pf-proof-band">
-          {STATS.map((stat) => (
-            <li key={stat.label} className="pf-proof-item">
-              <span className="pf-stat-num">{stat.value}</span>
-              <span className="pf-stat-lbl">{stat.label}</span>
-            </li>
-          ))}
-        </ul>
+    <section className="hero-stats" aria-label="What I'm working on">
+      <div className="pf-signal-strip">
+        <PortfolioMarquee items={SIGNAL_STRIP} />
       </div>
     </section>
   )
@@ -243,11 +256,13 @@ export function StatsSection() {
 
 export function CompanyWorkSection() {
   return (
-    <section id="company-work" className="pf-block">
+    <section id="company-work" className="pf-block pf-block--surface">
       <div className="portfolio-content">
-        <div className="pf-sec-head">
-          <h2 className="pf-section-title max-w-[14ch]">Selected work</h2>
-          <p className="pf-sec-side">
+        <div className="pf-sec-head pf-sec-head--stack">
+          <h2 className="pf-section-title max-w-[18ch]">
+            Proof in <em>production</em>
+          </h2>
+          <p className="pf-sec-side pf-sec-side--wide">
             Production systems at Prodios Labs — civic platforms, payment rails,
             and AI tools used by real people at scale.
           </p>
@@ -261,7 +276,7 @@ export function CompanyWorkSection() {
 
 export function PersonalProjectsSection() {
   return (
-    <section id="personal-projects" className="pf-block pf-block--surface">
+    <section id="personal-projects" className="pf-block">
       <div className="portfolio-content">
         <div className="pf-sec-head">
           <h2 className="pf-section-title max-w-[14ch]">Personal projects</h2>

@@ -296,9 +296,10 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: clamp(1.75rem, 3.5vh, 2.75rem);
+  gap: clamp(1rem, 2.2vh, 1.75rem);
   justify-content: center;
-  min-height: min(80vh, 760px);
+  flex: 1;
+  min-height: 0;
 }
 
 .portfolio .pf-hero-intro {
@@ -308,27 +309,27 @@
 
 .portfolio .pf-hero-headline.pf-display {
   max-width: 14ch;
-  font-size: clamp(2.75rem, 7.2vw, 5.5rem);
+  font-size: clamp(2.4rem, 5.8vw, 4.25rem);
 }
 
 .portfolio .pf-hero-body {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 1fr);
-  gap: clamp(2rem, 5vw, 4.5rem);
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.95fr);
+  gap: clamp(1.25rem, 3vw, 3rem);
   align-items: center;
 }
 
 .portfolio .pf-hero-copy-col {
   position: relative;
   z-index: 1;
-  max-width: 42rem;
+  max-width: 40rem;
 }
 
 .portfolio .pf-hero-visual {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 560px;
+  max-width: 480px;
   justify-self: end;
 }
 
@@ -379,10 +380,10 @@
 
 .portfolio .pf-hero-panel-canvas {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 11;
   display: grid;
   place-items: center;
-  padding: clamp(1rem, 2.5vw, 1.5rem);
+  padding: clamp(0.75rem, 1.8vw, 1.15rem);
   color: var(--pf-accent);
   background:
     radial-gradient(
@@ -805,12 +806,12 @@
   flex-wrap: wrap;
   align-items: baseline;
   gap: 0.55rem 0.85rem;
-  margin: clamp(1.35rem, 2.4vh, 1.85rem) 0 0;
+  margin: clamp(0.85rem, 1.6vh, 1.25rem) 0 0;
   max-width: 42ch;
-  padding-top: 1rem;
+  padding-top: 0.75rem;
   border-top: 1px dashed var(--line);
-  font-size: 0.92rem;
-  line-height: 1.5;
+  font-size: 0.88rem;
+  line-height: 1.45;
   color: var(--pf-fg-dim);
   font-weight: 300;
   text-wrap: pretty;
@@ -899,7 +900,7 @@
 .portfolio .pf-section-title em {
   font-style: normal;
   font-weight: inherit;
-  color: inherit;
+  color: var(--pf-accent);
 }
 
 .portfolio .pf-contact-title {
@@ -974,6 +975,107 @@
 
 .portfolio .pf-proof-item:not(:last-child) {
   border-right: 1px dashed var(--line);
+}
+
+.portfolio .pf-signal-strip {
+  position: relative;
+  overflow: hidden;
+  border-block: 1px dashed var(--line);
+}
+
+.portfolio .pf-signal-strip::before,
+.portfolio .pf-signal-strip::after {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  z-index: 1;
+  width: clamp(2rem, 6vw, 4rem);
+  pointer-events: none;
+}
+
+.portfolio .pf-signal-strip::before {
+  left: 0;
+  background: linear-gradient(to right, var(--pf-bg), transparent);
+}
+
+.portfolio .pf-signal-strip::after {
+  right: 0;
+  background: linear-gradient(to left, var(--pf-bg), transparent);
+}
+
+.portfolio .pf-marquee {
+  display: flex;
+  gap: var(--pf-marquee-gap, 2.5rem);
+  overflow: hidden;
+  padding-block: 0.85rem;
+}
+
+.portfolio .pf-marquee-track {
+  display: flex;
+  shrink: 0;
+  align-items: center;
+  justify-content: space-around;
+  gap: var(--pf-marquee-gap, 2.5rem);
+  min-width: max-content;
+  animation: pf-marquee var(--pf-marquee-duration, 45s) linear infinite;
+}
+
+.portfolio .pf-marquee--pause-hover:hover .pf-marquee-track {
+  animation-play-state: paused;
+}
+
+.portfolio .pf-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  white-space: nowrap;
+  font-family: var(--pf-mono-family);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--pf-fg-dim);
+}
+
+.portfolio .pf-marquee-dot {
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--pf-accent) 70%, transparent);
+  flex-shrink: 0;
+}
+
+.portfolio .pf-marquee-kicker {
+  color: var(--pf-accent);
+  font-weight: 500;
+}
+
+.portfolio .pf-marquee-label {
+  color: var(--pf-fg-dim);
+}
+
+@keyframes pf-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-100% - var(--pf-marquee-gap, 2.5rem)));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio .pf-marquee {
+    overflow-x: auto;
+  }
+
+  .portfolio .pf-marquee-track {
+    animation: none;
+  }
+
+  .portfolio .pf-marquee-track[aria-hidden='true'] {
+    display: none;
+  }
 }
 
 .portfolio .pf-brand {
@@ -1342,8 +1444,11 @@
 
 .hero {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
   overflow: clip;
-  padding-bottom: clamp(32px, 5vh, 64px);
+  padding-bottom: 0;
   background: var(--pf-bg);
   isolation: isolate;
 }
@@ -1375,7 +1480,10 @@
 .hero-spotlight-wrap {
   position: relative;
   z-index: 1;
-  min-height: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 100dvh;
 }
 
 .hero-mesh {
@@ -1441,13 +1549,21 @@
 .hero-wrap {
   position: relative;
   z-index: 2;
-  padding-top: clamp(108px, 13vh, 140px);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0;
+  /* Nav is fixed: logo h-14 + 26px padding each side ≈ 108px */
+  padding-top: clamp(7.75rem, 12vh, 9.5rem);
+  padding-bottom: clamp(0.5rem, 1.5vh, 1rem);
 }
 
 .hero-stats {
   position: relative;
   z-index: 2;
-  margin-top: clamp(28px, 5vh, 56px);
+  flex-shrink: 0;
+  margin-top: 0;
 }
 
 /* ============ SECTIONS ============ */
@@ -1474,6 +1590,12 @@
   margin-bottom: clamp(2.5rem, 5vh, 4rem);
 }
 
+.portfolio .pf-sec-head--stack {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
 .portfolio .pf-sec-side {
   max-width: 34ch;
   font-size: 1rem;
@@ -1483,10 +1605,25 @@
   text-wrap: pretty;
 }
 
-/* Work list */
+.portfolio .pf-sec-side--wide {
+  max-width: 52ch;
+}
+
+.portfolio .pf-inline-link {
+  color: var(--pf-accent);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.25s;
+}
+
+.portfolio .pf-inline-link:hover {
+  color: var(--pf-accent-hover);
+}
+
+/* Work list — Proof in production */
 .portfolio .pf-work-layout {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1.15fr 0.85fr;
   gap: clamp(28px, 4.5vw, 64px);
   align-items: start;
 }
@@ -1497,42 +1634,31 @@
 }
 
 .portfolio .pf-wrow-group {
-  border-top: 1px dashed var(--line);
+  border-top: 1px solid var(--line);
 }
 
 .portfolio .pf-work-list .pf-wrow-group:last-child {
-  border-bottom: 1px dashed var(--line);
-}
-
-.portfolio .pf-wrow-group .pf-wrow {
-  border-top: none;
-}
-
-.portfolio .pf-wrow-proof {
-  display: none;
-  margin-top: 0;
-  padding: 0 6px 22px 0;
-}
-
-.portfolio .pf-wrow-group--has-proof .pf-wrow-proof {
-  margin-top: -8px;
+  border-bottom: 1px solid var(--line);
 }
 
 .portfolio .pf-wrow {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 20px;
+  display: block;
   width: 100%;
-  padding: clamp(1.25rem, 2.4vw, 1.75rem) 0;
-  border: none;
-  cursor: pointer;
   position: relative;
+  padding: clamp(1.15rem, 2.2vw, 1.65rem) 0.4rem;
+  border: none;
+  border-left: 4px solid transparent;
   background: none;
+  cursor: pointer;
   text-align: left;
   font: inherit;
   color: inherit;
-  transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portfolio .pf-wrow:hover,
+.portfolio .pf-wrow.active {
+  border-left-color: var(--pf-accent);
 }
 
 .portfolio .pf-wrow:focus-visible {
@@ -1540,186 +1666,330 @@
   outline-offset: 4px;
 }
 
+.portfolio .pf-wrow-inner {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 861px) {
+  .portfolio .pf-wrow:hover .pf-wrow-inner,
+  .portfolio .pf-wrow.active .pf-wrow-inner {
+    transform: translateX(1rem);
+  }
+}
+
 .portfolio .pf-wnum {
-  font-family: var(--pf-sans);
-  font-size: 0.82rem;
+  display: block;
+  font-family: var(--pf-mono-family);
+  font-size: 0.72rem;
   font-weight: 500;
   color: var(--pf-fg-faint);
   font-variant-numeric: tabular-nums;
-  transition: color 0.3s;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
 }
 
-.portfolio .pf-wrow.active .pf-wnum,
-.portfolio .pf-wrow:hover .pf-wnum {
+.portfolio .pf-wrow:hover .pf-wnum,
+.portfolio .pf-wrow.active .pf-wnum {
   color: var(--pf-accent);
+}
+
+.portfolio .pf-wname-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.4rem;
 }
 
 .portfolio .pf-wname {
   font-family: var(--pf-serif);
   font-weight: 500;
-  font-size: clamp(1.3rem, 2.1vw, 1.85rem);
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
   letter-spacing: -0.02em;
-  line-height: 1.08;
+  line-height: 1.15;
   color: var(--pf-fg);
-  transition: color 0.3s;
 }
 
-.portfolio .pf-wrow.active .pf-wname,
-.portfolio .pf-wrow:hover .pf-wname {
+.portfolio .pf-wcategory {
+  margin-top: 0.45rem;
+  font-family: var(--pf-mono-family);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--pf-accent);
 }
 
 .portfolio .pf-wclient {
-  font-family: var(--pf-sans);
-  font-size: 0.84rem;
+  margin-top: 0.3rem;
+  font-family: var(--pf-mono-family);
+  font-size: 0.7rem;
   font-weight: 400;
-  letter-spacing: 0.01em;
-  text-transform: none;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--pf-fg-faint);
-  margin-top: 0.4rem;
+}
+
+.portfolio .pf-wsep {
+  margin-inline: 0.45rem;
+  color: var(--line-2);
 }
 
 .portfolio .pf-warr {
-  color: var(--pf-fg-faint);
-  transform: translateX(-6px);
+  color: var(--pf-accent);
+  flex-shrink: 0;
+  transform: translateX(-0.5rem);
   opacity: 0;
   transition:
-    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    color 0.3s,
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
     opacity 0.3s;
 }
 
-.portfolio .pf-wrow:hover .pf-warr,
-.portfolio .pf-wrow.active .pf-warr {
-  opacity: 1;
-  color: var(--pf-accent);
-  transform: translateX(0);
+@media (min-width: 861px) {
+  .portfolio .pf-wrow:hover .pf-warr,
+  .portfolio .pf-wrow.active .pf-warr {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 860px) {
+  .portfolio .pf-warr {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .portfolio .pf-wdesc {
   display: none;
-  margin-top: 0.65rem;
-  max-width: 46ch;
-  font-size: 0.92rem;
+  margin-top: 0.7rem;
+  max-width: 48ch;
+  font-size: 0.9rem;
   font-weight: 300;
-  line-height: 1.5;
+  line-height: 1.55;
   color: var(--pf-fg-dim);
+  text-wrap: pretty;
+}
+
+.portfolio .pf-wstats {
+  display: none;
+  margin-top: 1.15rem;
+}
+
+.portfolio .pf-wrow-actions {
+  display: none;
+  margin: 0 0.4rem 1.15rem;
 }
 
 .portfolio .pf-work-detail {
   position: sticky;
   top: 120px;
-  border: 1px dashed var(--line);
+  border: 1px solid var(--line);
   background: var(--pf-bg);
-  padding: clamp(1.4rem, 2.5vw, 2rem);
+  padding: clamp(1.25rem, 2.2vw, 1.65rem);
 }
 
-.portfolio .pf-wd-media {
-  aspect-ratio: 16 / 10;
-  position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(
-      70% 90% at 20% 30%,
-      color-mix(in srgb, var(--pf-accent) 16%, transparent),
-      transparent 65%
-    ),
-    var(--pf-ink-3);
+.portfolio .pf-wd-head {
+  margin-bottom: 1.35rem;
 }
 
-.portfolio .pf-wd-hero {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
+.portfolio .pf-wd-title-row {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: clamp(1.25rem, 3vw, 2rem);
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
-.portfolio .pf-wd-hero-num {
+.portfolio .pf-wd-title-row h4 {
   font-family: var(--pf-serif);
   font-weight: 500;
-  font-size: clamp(2.4rem, 4.5vw, 3.5rem);
-  line-height: 1;
-  letter-spacing: -0.025em;
-  color: var(--pf-fg);
-  font-variant-numeric: tabular-nums;
-}
-
-.portfolio .pf-wd-hero-rule {
-  width: 32px;
-  height: 1px;
-  background: var(--pf-accent);
-  margin: 1rem 0 0.75rem;
-}
-
-.portfolio .pf-wd-hero-lbl {
-  font-family: var(--pf-sans);
-  font-size: 0.84rem;
-  font-weight: 400;
-  letter-spacing: 0.01em;
-  text-transform: none;
-  color: var(--pf-fg-dim);
-  max-width: 22ch;
-  line-height: 1.45;
-}
-
-.portfolio .pf-wd-mlabel {
-  position: absolute;
-  bottom: 14px;
-  left: 50%;
-  z-index: 1;
-  transform: translateX(-50%);
-  font-family: var(--pf-sans);
-  font-size: 0.72rem;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  text-transform: none;
-  color: var(--pf-fg-faint);
-  white-space: nowrap;
-}
-
-.portfolio .pf-wd-yr {
-  position: absolute;
-  top: 14px;
-  right: 16px;
-  z-index: 1;
-  font-family: var(--pf-sans);
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  color: var(--pf-accent);
-}
-
-.portfolio .pf-wd-body h4 {
-  font-family: var(--pf-serif);
-  font-weight: 500;
-  font-size: clamp(1.35rem, 2vw, 1.65rem);
+  font-size: clamp(1.4rem, 2vw, 1.7rem);
   letter-spacing: -0.02em;
   line-height: 1.15;
-  margin: 1.35rem 0 0.5rem;
+  margin: 0;
   color: var(--pf-fg);
   text-wrap: balance;
 }
 
+.portfolio .pf-wd-yr {
+  flex-shrink: 0;
+  font-family: var(--pf-mono-family);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--pf-accent);
+}
+
+.portfolio .pf-wd-category {
+  margin-top: 0.4rem;
+  font-family: var(--pf-mono-family);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pf-accent);
+}
+
 .portfolio .pf-wd-client {
-  margin-bottom: 1rem;
+  margin-top: 0.3rem;
+  font-family: var(--pf-mono-family);
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--pf-fg-faint);
 }
 
 .portfolio .pf-wd-desc {
-  min-height: 4.2em;
-  font-size: 0.95rem;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
   font-weight: 300;
   line-height: 1.55;
   color: var(--pf-fg-dim);
+  text-wrap: pretty;
 }
 
-.portfolio .pf-wd-tags {
+.portfolio .pf-wd-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--line);
+}
+
+.portfolio .pf-wd-stat {
+  position: relative;
+  padding: clamp(0.95rem, 1.8vw, 1.2rem);
+  overflow: hidden;
+  background-image:
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--pf-stat-tone) 8%, transparent),
+      transparent 70%
+    ),
+    repeating-linear-gradient(
+      30deg,
+      transparent 0 11px,
+      color-mix(in srgb, var(--pf-stat-tone) 14%, transparent) 11px 12px
+    ),
+    repeating-linear-gradient(
+      150deg,
+      transparent 0 11px,
+      color-mix(in srgb, var(--pf-stat-tone) 14%, transparent) 11px 12px
+    );
+}
+
+.portfolio .pf-wd-stat--indigo {
+  --pf-stat-tone: #6366f1;
+}
+
+.portfolio .pf-wd-stat--sky {
+  --pf-stat-tone: #0ea5e9;
+}
+
+.portfolio .pf-wd-stat--emerald {
+  --pf-stat-tone: #10b981;
+}
+
+.portfolio .pf-wd-stat--amber {
+  --pf-stat-tone: #f59e0b;
+}
+
+.portfolio .pf-wd-stat--rose {
+  --pf-stat-tone: #f43f5e;
+}
+
+.portfolio .pf-wd-stat--violet {
+  --pf-stat-tone: #8b5cf6;
+}
+
+.portfolio .pf-wd-stat--teal {
+  --pf-stat-tone: #14b8a6;
+}
+
+.portfolio .pf-wd-stat--fuchsia {
+  --pf-stat-tone: #d946ef;
+}
+
+.portfolio .pf-wd-stat--border-r {
+  border-right: 1px solid var(--line);
+}
+
+.portfolio .pf-wd-stat--border-t {
+  border-top: 1px solid var(--line);
+}
+
+.portfolio .pf-wd-stat-num {
+  font-family: var(--pf-serif);
+  font-weight: 500;
+  font-size: clamp(1.45rem, 2.4vw, 1.85rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--pf-fg);
+  font-variant-numeric: tabular-nums;
+}
+
+.portfolio .pf-wd-stat-rule {
+  width: 24px;
+  height: 1px;
+  background: var(--pf-accent);
+  margin: 0.55rem 0 0.45rem;
+}
+
+.portfolio .pf-wd-stat-lbl {
+  font-family: var(--pf-mono-family);
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.45;
+  color: var(--pf-fg-dim);
+  max-width: 16ch;
+}
+
+.portfolio .pf-wd-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
   margin-top: 1.35rem;
-  padding-top: 1.35rem;
-  border-top: 1px dashed var(--line);
+}
+
+.portfolio .pf-wd-cta {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--pf-fg-dim);
+  font-family: var(--pf-mono-family);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition:
+    border-color 0.25s,
+    color 0.25s;
+}
+
+.portfolio .pf-wd-cta:hover {
+  border-color: var(--pf-fg);
+  color: var(--pf-fg);
+}
+
+.portfolio .pf-wd-cta:focus-visible {
+  outline: 2px solid var(--pf-accent);
+  outline-offset: 2px;
+}
+
+.portfolio .pf-wd-cta span {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portfolio .pf-wd-cta:hover span {
+  transform: translateX(2px);
 }
 
 .portfolio .pf-wd-fade {
@@ -2005,15 +2275,8 @@
 
 @media (max-width: 960px) {
   .portfolio .pf-hero-stage {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.15rem;
     align-items: start;
-    min-height: 0;
-  }
-
-  .portfolio .pf-hero-stage {
-    min-height: 0;
-    gap: 1.5rem;
   }
 
   .portfolio .pf-hero-intro {
@@ -2022,16 +2285,16 @@
 
   .portfolio .pf-hero-headline.pf-display {
     max-width: none;
-    font-size: clamp(2.35rem, 10vw, 3.35rem);
+    font-size: clamp(2.15rem, 9vw, 3rem);
   }
 
   .portfolio .pf-hero-body {
     grid-template-columns: 1fr;
-    gap: 1.75rem;
+    gap: 1.15rem;
   }
 
   .portfolio .pf-hero-visual {
-    max-width: none;
+    max-width: min(100%, 420px);
     justify-self: stretch;
     order: -1;
   }
@@ -2054,6 +2317,7 @@
   }
 
   .portfolio .pf-subline {
+    font-size: 1rem;
     max-width: 46ch;
   }
 
@@ -2083,6 +2347,34 @@
   }
 }
 
+@media (max-height: 780px) {
+  .portfolio .pf-hero-visual {
+    max-width: 380px;
+  }
+
+  .portfolio .pf-hero-panel-canvas {
+    aspect-ratio: 2 / 1;
+  }
+
+  .portfolio .pf-hero-panel-meta {
+    display: none;
+  }
+
+  .portfolio .pf-hero-proof {
+    display: none;
+  }
+}
+
+@media (max-height: 680px) {
+  .portfolio .pf-hero-visual {
+    display: none;
+  }
+
+  .hero-wrap {
+    padding-top: 7.75rem;
+  }
+}
+
 @media (max-width: 860px) {
   .portfolio .pf-work-layout {
     grid-template-columns: 1fr;
@@ -2096,8 +2388,12 @@
     display: block;
   }
 
-  .portfolio .pf-wrow-proof {
-    display: block;
+  .portfolio .pf-wstats {
+    display: grid;
+  }
+
+  .portfolio .pf-wrow-actions {
+    display: flex;
   }
 
   .portfolio .pf-research-layout {
