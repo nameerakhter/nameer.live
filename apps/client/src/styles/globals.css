@@ -153,8 +153,8 @@
   --pf-surface-hover: rgba(16, 22, 24, 0.07);
   --line: rgba(16, 22, 24, 0.1);
   --line-2: rgba(16, 22, 24, 0.16);
-  --pf-nav-scrolled: rgba(243, 245, 244, 0.88);
-  --pf-nav-open: rgba(243, 245, 244, 0.97);
+  --pf-nav-scrolled: color-mix(in srgb, var(--pf-bg) 80%, transparent);
+  --pf-nav-open: color-mix(in srgb, var(--pf-bg) 98%, transparent);
   --pf-ink-2: #e8ecea;
   --pf-ink-3: #dde3e0;
   --pf-stripe: rgba(16, 22, 24, 0.05);
@@ -256,8 +256,8 @@
   --pf-surface-hover: rgba(232, 238, 236, 0.08);
   --line: rgba(232, 238, 236, 0.1);
   --line-2: rgba(232, 238, 236, 0.16);
-  --pf-nav-scrolled: rgba(10, 15, 16, 0.82);
-  --pf-nav-open: rgba(10, 15, 16, 0.96);
+  --pf-nav-scrolled: color-mix(in srgb, var(--pf-bg) 80%, transparent);
+  --pf-nav-open: color-mix(in srgb, var(--pf-bg) 98%, transparent);
   --pf-ink-2: #11181a;
   --pf-ink-3: #172022;
   --pf-stripe: rgba(232, 238, 236, 0.05);
@@ -986,6 +986,10 @@
 
 .portfolio .portfolio-nav {
   background: transparent;
+  transition:
+    background 0.3s ease-in-out,
+    backdrop-filter 0.3s ease-in-out,
+    -webkit-backdrop-filter 0.3s ease-in-out;
 }
 
 .portfolio .portfolio-nav-shell {
@@ -998,8 +1002,9 @@
   margin-inline: auto;
   padding-inline: var(--pf-lines-width);
   border-bottom: 1px dashed var(--line);
-  background: color-mix(in srgb, var(--pf-bg) 80%, transparent);
-  backdrop-filter: blur(14px) saturate(1.2);
+  background: var(--pf-nav-scrolled);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
 }
 
 .portfolio .portfolio-nav-shell::before,
@@ -1049,6 +1054,8 @@
 
 .portfolio .portfolio-nav.open .portfolio-nav-shell {
   background: var(--pf-nav-open);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
 }
 
 .portfolio .pf-nav-link {

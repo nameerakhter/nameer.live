@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import HeroShell from './-components/hero-shell'
 import PortfolioFooter from './-components/portfolio-footer'
+import PortfolioHeader from './-components/portfolio-header'
 import {
   CompanyWorkSection,
   CtaSection,
@@ -32,6 +33,7 @@ function PortfolioPage() {
   return (
     <div className="portfolio min-h-screen bg-(--pf-bg) text-(--pf-fg) antialiased">
       <div className="pf-lines">
+        <PortfolioHeader />
         <HeroShell>
           <HeroSection />
           <StatsSection />
