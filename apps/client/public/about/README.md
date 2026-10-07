@@ -1,2 +1,2 @@
-# Studio / portrait image placeholder
-Add studio.jpg or portrait.webp here
+# About portrait
+Anime portrait at studio.jpg (Gemini via mcp-image).
