@@ -4,11 +4,11 @@ import PortfolioFooter from './-components/portfolio-footer'
 import PortfolioHeader from './-components/portfolio-header'
 import {
   AboutSection,
-  ActionRowSection,
-  BioSection,
-  HeroMuralSection,
+  CaseStudiesSection,
+  ContactOpenSection,
+  ExperienceSection,
+  HeroMuralSlotSection,
   SelectedWorkSection,
-  ShowcaseSection,
 } from './-components/portfolio-sections'
 
 export const Route = createFileRoute('/')({
@@ -30,12 +30,12 @@ function PortfolioPage() {
     <div className="portfolio">
       <PortfolioHeader />
       <main>
-        <HeroMuralSection />
-        <BioSection />
-        <ActionRowSection />
+        <ContactOpenSection />
+        <HeroMuralSlotSection />
         <SelectedWorkSection />
-        <ShowcaseSection />
         <AboutSection />
+        <ExperienceSection />
+        <CaseStudiesSection />
       </main>
       <PortfolioFooter />
     </div>

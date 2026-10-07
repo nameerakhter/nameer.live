@@ -1,80 +1,34 @@
-import { useState } from 'react'
+import { CONTACT } from './portfolio-data'
 
-import { cn } from '@/lib/utils'
+import { useLocalClock } from '@/hooks/use-local-clock'
 
-const NAV_LINKS = [
-  { label: 'Work', href: '#work' },
-  { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' },
-] as const
-
-const SOCIAL_LINKS = [
-  { label: 'Email', href: 'mailto:akhtarnameer@gmail.com' },
-  { label: 'GitHub', href: 'https://github.com/nameerakhter' },
-] as const
 
 export default function PortfolioHeader() {
-  const [mobileOpen, setMobileOpen] = useState(false)
+  const clock = useLocalClock()
 
   return (
-    <header className={cn('pf-nav', mobileOpen && 'pf-nav--open')}>
-      <div className="pf-shell pf-nav-row">
-        <a href="#" className="pf-nav-brand">
-          Nameer
-        </a>
+    <header className="pf-identity">
+      <div className="pf-shell pf-identity-row">
+        <div className="pf-identity-left">
+          <a href="#" className="pf-identity-name">
+            Muhammad Nameer Akhter
+          </a>
+          <p className="pf-identity-role">Software engineer</p>
+        </div>
 
-        <p className="pf-nav-role">Software engineer</p>
+        <p className="pf-identity-surface">“Portfolio”</p>
 
-        <nav className="pf-nav-links" aria-label="Primary">
-          {NAV_LINKS.map((link) => (
-            <a key={link.href} href={link.href} className="pf-nav-link">
-              {link.label}
-            </a>
-          ))}
+        <p className="pf-identity-time" aria-label="Local time">
+          {clock} Dehradun
+        </p>
+
+        <nav className="pf-identity-links" aria-label="Contact">
+          <a href="#contact">Contact</a>
+          <a href="#work">Selected work ↓</a>
+          <a href={CONTACT.github} target="_blank" rel="noreferrer">
+            GitHub
+          </a>
         </nav>
-
-        <div className="pf-nav-social">
-          {SOCIAL_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="pf-nav-link"
-              {...(link.href.startsWith('http')
-                ? { target: '_blank', rel: 'noreferrer' }
-                : {})}
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-
-        <button
-          type="button"
-          className="pf-nav-menu"
-          aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-          aria-expanded={mobileOpen}
-          onClick={() => setMobileOpen((open) => !open)}
-        >
-          {mobileOpen ? 'Close' : 'Menu'}
-        </button>
-      </div>
-
-      <div className="pf-nav-drawer">
-        <div className="pf-shell pf-nav-drawer-inner">
-          {[...NAV_LINKS, ...SOCIAL_LINKS].map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="pf-nav-drawer-link"
-              onClick={() => setMobileOpen(false)}
-              {...(link.href.startsWith('http')
-                ? { target: '_blank', rel: 'noreferrer' }
-                : {})}
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
       </div>
     </header>
   )

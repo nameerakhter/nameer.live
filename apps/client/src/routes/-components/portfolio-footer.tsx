@@ -1,3 +1,5 @@
+import { CONTACT } from './portfolio-data'
+
 export default function PortfolioFooter() {
   return (
     <footer className="pf-footer">
@@ -5,8 +7,8 @@ export default function PortfolioFooter() {
         <p className="pf-footer-copy">
           © {new Date().getFullYear()} Muhammad Nameer Akhter
         </p>
-        <a href="mailto:akhtarnameer@gmail.com" className="pf-nav-link">
-          akhtarnameer@gmail.com
+        <a href={`mailto:${CONTACT.email}`} className="pf-text-link">
+          {CONTACT.email}
         </a>
       </div>
     </footer>
