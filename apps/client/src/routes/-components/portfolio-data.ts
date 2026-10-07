@@ -267,14 +267,6 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
         label: 'Accuracy metrics and confusion matrices',
       },
       {
-        path: '/work/research/05-explorer-home.webp',
-        label: 'Vibration Signal Explorer — home',
-      },
-      {
-        path: '/work/research/06-time-fft.webp',
-        label: 'Dataset info and FFT controls',
-      },
-      {
         path: '/work/research/07-segment-plot.webp',
         label: 'Segment FFT of bearing signal',
       },

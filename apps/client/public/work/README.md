@@ -6,5 +6,5 @@ kumbh-2027/     ✅ 01–06 populated
 ai-assistant/   ✅ 01–03 populated
 e-office/
 nhm/
-research/       ✅ 01–08 (IEEE paper pages + Streamlit explorer)
+research/       ✅ 01–04, 07–08 (IEEE paper pages + segment FFT)
 personal/
