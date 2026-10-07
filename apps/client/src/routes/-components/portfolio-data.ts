@@ -236,18 +236,52 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     role: 'Research Intern',
     period: '2024 → 2025',
     scope:
-      'IEEE-published research from IIT Roorkee — 10+ ML/DL architectures for vibration-based fault detection.',
+      'IEEE-published research from IIT Roorkee — 1D CNN + PCA + SVM for CWRU vibration-based bearing fault detection, with a Streamlit explorer for time/FFT analysis.',
     tags: ['Research', '1D CNN', 'IEEE'],
     links: [
       {
         label: 'Paper',
         href: 'https://doi.org/10.1109/iatmsi64286.2025.10985009',
       },
+      {
+        label: 'GitHub',
+        href: 'https://github.com/nameerakhter/Vibration_signal_analysis',
+      },
     ],
     assetFolder: 'work/research',
     images: [
-      { path: '/work/research/01.webp', label: 'Paper figure' },
-      { path: '/work/research/02.webp', label: 'Model results' },
+      {
+        path: '/work/research/01-paper-title.webp',
+        label: 'IEEE paper — title and abstract',
+      },
+      {
+        path: '/work/research/02-cnn-block-diagram.webp',
+        label: 'CNN–PCA–SVM pipeline block diagram',
+      },
+      {
+        path: '/work/research/03-tsne-features.webp',
+        label: 'CWRU setup and t-SNE feature clusters',
+      },
+      {
+        path: '/work/research/04-results-metrics.webp',
+        label: 'Accuracy metrics and confusion matrices',
+      },
+      {
+        path: '/work/research/05-explorer-home.webp',
+        label: 'Vibration Signal Explorer — home',
+      },
+      {
+        path: '/work/research/06-time-fft.webp',
+        label: 'Dataset info and FFT controls',
+      },
+      {
+        path: '/work/research/07-segment-plot.webp',
+        label: 'Segment FFT of bearing signal',
+      },
+      {
+        path: '/work/research/08-segment-fft.webp',
+        label: 'Per-segment frequency spectrum',
+      },
     ],
   },
 ]

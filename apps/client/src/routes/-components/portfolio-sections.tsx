@@ -40,7 +40,8 @@ export function AboutSection() {
           </div>
 
           <MediaSlot
-            label="about/studio.jpg — portrait / studio (pending)"
+            src="/about/studio.jpg"
+            label="Nameer — anime portrait"
             aspect="3/4"
             className="pf-about-photo"
           />
