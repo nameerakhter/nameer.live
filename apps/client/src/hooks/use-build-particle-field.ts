@@ -43,13 +43,17 @@ export function useBuildParticleField() {
   const reduceMotion = usePrefersReducedMotion()
 
   useMountEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
+    const el = canvasRef.current
+    if (!el) return
 
-    const ctx =
-      canvas.getContext('2d', { alpha: false, desynchronized: true }) ||
-      canvas.getContext('2d', { alpha: false })
-    if (!ctx) return
+    const context =
+      el.getContext('2d', { alpha: false, desynchronized: true }) ||
+      el.getContext('2d', { alpha: false })
+    if (!context) return
+
+    // Explicit non-null aliases so nested closures keep the narrowed types.
+    const canvas: HTMLCanvasElement = el
+    const ctx: CanvasRenderingContext2D = context
 
     const sprites = new Map(
       COLORS.map((color) => [color, makeSprite(color)] as const),
