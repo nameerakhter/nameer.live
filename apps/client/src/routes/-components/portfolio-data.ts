@@ -4,7 +4,7 @@ export type WorkLink = {
 }
 
 export type CaseImageSlot = {
-  /** Path under public/ (e.g. /work/apuni-sarkar/01-public-portal.png) */
+  /** Path under public/ (e.g. /work/apuni-sarkar/01-public-portal.webp) */
   path: string
   label: string
 }
@@ -47,27 +47,27 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     assetFolder: 'work/apuni-sarkar',
     images: [
       {
-        path: '/work/apuni-sarkar/01-public-portal.png',
+        path: '/work/apuni-sarkar/01-public-portal.webp',
         label: 'Citizen e-Services portal',
       },
       {
-        path: '/work/apuni-sarkar/02-departments-grid.png',
+        path: '/work/apuni-sarkar/02-departments-grid.webp',
         label: 'All departments services grid',
       },
       {
-        path: '/work/apuni-sarkar/03-applications-dashboard.png',
+        path: '/work/apuni-sarkar/03-applications-dashboard.webp',
         label: 'Actionable applications dashboard',
       },
       {
-        path: '/work/apuni-sarkar/04-stats-geographic.png',
+        path: '/work/apuni-sarkar/04-stats-geographic.webp',
         label: 'Geographic distribution stats',
       },
       {
-        path: '/work/apuni-sarkar/05-feedback-insights.png',
+        path: '/work/apuni-sarkar/05-feedback-insights.webp',
         label: 'Citizen feedback insights',
       },
       {
-        path: '/work/apuni-sarkar/06-best-worst-services.png',
+        path: '/work/apuni-sarkar/06-best-worst-services.webp',
         label: 'Best and worst services',
       },
     ],
@@ -86,39 +86,39 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     assetFolder: 'work/stray-reporter',
     images: [
       {
-        path: '/work/stray-reporter/01-marketing-landing.png',
+        path: '/work/stray-reporter/01-marketing-landing.webp',
         label: 'Marketing landing collage',
       },
       {
-        path: '/work/stray-reporter/02-get-started.png',
+        path: '/work/stray-reporter/02-get-started.webp',
         label: 'Get started onboarding',
       },
       {
-        path: '/work/stray-reporter/03-login.png',
+        path: '/work/stray-reporter/03-login.webp',
         label: 'Login / continue',
       },
       {
-        path: '/work/stray-reporter/04-home.png',
+        path: '/work/stray-reporter/04-home.webp',
         label: 'Home — report and captures',
       },
       {
-        path: '/work/stray-reporter/05-new-scan.png',
+        path: '/work/stray-reporter/05-new-scan.webp',
         label: 'New scan capture',
       },
       {
-        path: '/work/stray-reporter/06-report-submitted.png',
+        path: '/work/stray-reporter/06-report-submitted.webp',
         label: 'Report submitted',
       },
       {
-        path: '/work/stray-reporter/07-rescue-tracking.png',
+        path: '/work/stray-reporter/07-rescue-tracking.webp',
         label: 'Rescue on the way',
       },
       {
-        path: '/work/stray-reporter/08-team-dashboard.png',
+        path: '/work/stray-reporter/08-team-dashboard.webp',
         label: 'Team dashboard and requests',
       },
       {
-        path: '/work/stray-reporter/09-update-status.png',
+        path: '/work/stray-reporter/09-update-status.webp',
         label: 'Update status and close case',
       },
     ],
@@ -137,27 +137,27 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     assetFolder: 'work/kumbh-2027',
     images: [
       {
-        path: '/work/kumbh-2027/01-home-hero.png',
+        path: '/work/kumbh-2027/01-home-hero.webp',
         label: 'Home hero and countdown',
       },
       {
-        path: '/work/kumbh-2027/02-story-of-kumbh.png',
+        path: '/work/kumbh-2027/02-story-of-kumbh.webp',
         label: 'The story of Kumbh',
       },
       {
-        path: '/work/kumbh-2027/03-tradition-timeline.png',
+        path: '/work/kumbh-2027/03-tradition-timeline.webp',
         label: 'Tradition timeline',
       },
       {
-        path: '/work/kumbh-2027/04-explore-haridwar.png',
+        path: '/work/kumbh-2027/04-explore-haridwar.webp',
         label: 'Explore Haridwar',
       },
       {
-        path: '/work/kumbh-2027/05-dos-and-donts.png',
+        path: '/work/kumbh-2027/05-dos-and-donts.webp',
         label: 'Pilgrim dos and don’ts',
       },
       {
-        path: '/work/kumbh-2027/06-kumbh-map.png',
+        path: '/work/kumbh-2027/06-kumbh-map.webp',
         label: 'Kumbh GIS map',
       },
     ],
@@ -180,15 +180,15 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     assetFolder: 'work/ai-assistant',
     images: [
       {
-        path: '/work/ai-assistant/01-pgeta-assistant.png',
+        path: '/work/ai-assistant/01-pgeta-assistant.webp',
         label: 'PGETA assistant on landing',
       },
       {
-        path: '/work/ai-assistant/02-pgeta-chat.png',
+        path: '/work/ai-assistant/02-pgeta-chat.webp',
         label: 'PGETA chat answers',
       },
       {
-        path: '/work/ai-assistant/03-apuni-sarkar-chatbot.png',
+        path: '/work/ai-assistant/03-apuni-sarkar-chatbot.webp',
         label: 'Apuni Sarkar chatbot',
       },
     ],
@@ -207,8 +207,8 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     links: [{ label: 'Dashboard', href: 'https://dashboard.uk.gov.in/' }],
     assetFolder: 'work/e-office',
     images: [
-      { path: '/work/e-office/01.jpg', label: 'Dashboard' },
-      { path: '/work/e-office/02.jpg', label: 'Reports' },
+      { path: '/work/e-office/01.webp', label: 'Dashboard' },
+      { path: '/work/e-office/02.webp', label: 'Reports' },
     ],
   },
   {
@@ -224,8 +224,8 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     links: [{ label: 'Portal', href: 'https://tms.prodioslabs.com/login' }],
     assetFolder: 'work/nhm',
     images: [
-      { path: '/work/nhm/01.jpg', label: 'Training portal' },
-      { path: '/work/nhm/02.jpg', label: 'Hours tracking' },
+      { path: '/work/nhm/01.webp', label: 'Training portal' },
+      { path: '/work/nhm/02.webp', label: 'Hours tracking' },
     ],
   },
   {
@@ -246,8 +246,8 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     ],
     assetFolder: 'work/research',
     images: [
-      { path: '/work/research/01.jpg', label: 'Paper figure' },
-      { path: '/work/research/02.jpg', label: 'Model results' },
+      { path: '/work/research/01.webp', label: 'Paper figure' },
+      { path: '/work/research/02.webp', label: 'Model results' },
     ],
   },
 ]
