@@ -5,6 +5,8 @@ import {
   type KeyboardEvent,
 } from 'react'
 
+import { useMountEffect } from '@/hooks/use-mount-effect'
+
 import MediaSlot from './media-slot'
 import { CASE_STUDIES, type CaseStudy } from './portfolio-data'
 
@@ -51,11 +53,37 @@ export function WorkGallery() {
     document.body.style.overflow = ''
   }
 
+  function activeContentEl() {
+    return galleryRef.current?.querySelector<HTMLElement>(
+      '.pf-gallery-card.is-active .pf-gallery-content',
+    )
+  }
+
   function go(delta: number) {
     if (mode !== 'open' || activeListIndex < 0) return
     const next =
       (activeListIndex + delta + CASE_STUDIES.length) % CASE_STUDIES.length
     setActiveId(CASE_STUDIES[next].id)
+    queueMicrotask(() => {
+      const el = activeContentEl()
+      if (el) el.scrollLeft = 0
+    })
+  }
+
+  /** ←/→ pan screenshots; returns false if strip can't move further */
+  function scrollActiveStrip(direction: -1 | 1) {
+    const el = activeContentEl()
+    if (!el) return false
+    const maxScroll = el.scrollWidth - el.clientWidth
+    if (maxScroll <= 1) return false
+
+    const step = Math.max(280, Math.round(el.clientWidth * 0.72))
+    const before = el.scrollLeft
+    el.scrollLeft = Math.max(
+      0,
+      Math.min(maxScroll, el.scrollLeft + direction * step),
+    )
+    return Math.abs(el.scrollLeft - before) > 0.5
   }
 
   function onGalleryKeyDown(event: KeyboardEvent<HTMLElement>) {
@@ -65,12 +93,22 @@ export function WorkGallery() {
       closeGallery()
       return
     }
-    if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault()
+      scrollActiveStrip(-1)
+      return
+    }
+    if (event.key === 'ArrowRight') {
+      event.preventDefault()
+      scrollActiveStrip(1)
+      return
+    }
+    if (event.key === 'ArrowUp') {
       event.preventDefault()
       go(-1)
       return
     }
-    if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+    if (event.key === 'ArrowDown') {
       event.preventDefault()
       go(1)
     }
@@ -176,6 +214,7 @@ function GalleryCard({
   galleryY: string | undefined
   onOpen: () => void
 }) {
+  const contentRef = useRef<HTMLElement>(null)
   const className = [
     'pf-gallery-card',
     isActive ? 'is-active' : '',
@@ -184,6 +223,24 @@ function GalleryCard({
   ]
     .filter(Boolean)
     .join(' ')
+
+  // maciej.co: vertical wheel pans the screenshot strip horizontally
+  useMountEffect(() => {
+    const el = contentRef.current
+    if (!el) return
+
+    const onWheel = (event: WheelEvent) => {
+      if (!el.closest('.pf-gallery-card.is-active')) return
+      const maxScroll = el.scrollWidth - el.clientWidth
+      if (maxScroll <= 1) return
+
+      event.preventDefault()
+      el.scrollLeft += event.deltaY + event.deltaX
+    }
+
+    el.addEventListener('wheel', onWheel, { passive: false })
+    return () => el.removeEventListener('wheel', onWheel)
+  })
 
   return (
     <section
@@ -215,16 +272,15 @@ function GalleryCard({
         <h3>{study.tabLabel ?? study.title}</h3>
       </div>
 
-      <article className="pf-gallery-content">
+      <article ref={contentRef} className="pf-gallery-content">
         <div className="pf-work-images">
           {study.images.map((image) => (
-            <figure key={image.path}>
-              <MediaSlot
-                label={`${image.label} · ${image.path}`}
-                aspect="16/9"
-                className="pf-work-slot"
-              />
-            </figure>
+            <MediaSlot
+              key={image.path}
+              src={image.path}
+              label={image.label}
+              className="pf-work-slot"
+            />
           ))}
         </div>
 
