@@ -1136,50 +1136,80 @@
   }
 }
 
-/* Experience */
+/* Experience — Linear-inspired instrument rows */
 .portfolio .pf-experience {
   margin-top: var(--section-gap);
   padding-top: var(--section-gap);
   border-top: 1px solid var(--surface-hairline);
 }
 
-.portfolio .pf-experience-grid {
-  display: grid;
-  gap: var(--spacing-24);
-}
-
-.portfolio .pf-experience-years,
-.portfolio .pf-experience-roles {
+.portfolio .pf-experience-list {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  gap: var(--spacing-12);
 }
 
-.portfolio .pf-experience-years {
+.portfolio .pf-experience-row {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  grid-template-areas:
+    'year place'
+    'year role';
+  column-gap: var(--spacing-24);
+  row-gap: var(--spacing-4);
+  padding-block: var(--spacing-12);
+  border-top: 1px solid var(--surface-hairline);
+  transition: color 160ms ease;
+}
+
+.portfolio .pf-experience-row:last-child {
+  border-bottom: 1px solid var(--surface-hairline);
+}
+
+.portfolio .pf-experience-year {
+  grid-area: year;
   font-family: var(--font-replica-mono);
   font-size: var(--text-caption);
   color: var(--color-fog);
+  align-self: start;
+  padding-top: 0.15em;
 }
 
 .portfolio .pf-experience-place {
-  margin: 0;
+  grid-area: place;
   font-family: var(--font-display);
   font-size: var(--text-subheading);
   letter-spacing: var(--tracking-subheading);
+  color: var(--color-bone-white);
 }
 
 .portfolio .pf-experience-role {
-  margin: var(--spacing-4) 0 0;
+  grid-area: role;
   color: var(--color-fog);
   font-size: var(--text-caption);
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .portfolio .pf-experience-row:hover .pf-experience-place {
+    color: color-mix(in srgb, var(--color-bone-white) 88%, var(--color-fog));
+  }
+
+  .portfolio .pf-experience-row:hover .pf-experience-year,
+  .portfolio .pf-experience-row:hover .pf-experience-role {
+    color: color-mix(in srgb, var(--color-fog) 70%, var(--color-bone-white));
+  }
+}
+
 @media (min-width: 700px) {
-  .portfolio .pf-experience-grid {
-    grid-template-columns: 6rem 1fr;
-    gap: var(--spacing-24);
+  .portfolio .pf-experience-row {
+    grid-template-columns: 4.5rem 1fr auto;
+    grid-template-areas: 'year place role';
+    align-items: baseline;
+    padding-block: 14px;
+  }
+
+  .portfolio .pf-experience-role {
+    text-align: right;
   }
 }
 

@@ -40,21 +40,15 @@ export function ExperienceSection() {
         <h2 id="experience-title" className="pf-section-title">
           Work experience
         </h2>
-        <div className="pf-experience-grid">
-          <ol className="pf-experience-years">
-            {EXPERIENCE.map((item) => (
-              <li key={item.year + item.title}>{item.year}</li>
-            ))}
-          </ol>
-          <ol className="pf-experience-roles">
-            {EXPERIENCE.map((item) => (
-              <li key={item.place + item.title}>
-                <p className="pf-experience-place">{item.place}</p>
-                <p className="pf-experience-role">{item.title}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
+        <ol className="pf-experience-list">
+          {EXPERIENCE.map((item) => (
+            <li key={item.place + item.title} className="pf-experience-row">
+              <span className="pf-experience-year">{item.year}</span>
+              <span className="pf-experience-place">{item.place}</span>
+              <span className="pf-experience-role">{item.title}</span>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   )
