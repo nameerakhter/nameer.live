@@ -26,7 +26,8 @@
     "build:server": "turbo build --filter=@repo/server",
     "db:generate": "bun --filter=@repo/server db:generate",
     "db:migrate": "bun --filter=@repo/server db:migrate",
-    "db:seed": "bun --filter=@repo/server db:seed"
+    "db:seed": "bun --filter=@repo/server db:seed",
+    "skills:update": "npx skills update -y -p && npx skills add pbakaus/impeccable --skill impeccable --full-depth -y"
   },
   "dependencies": {
     "@clack/prompts": "1.5.1",
