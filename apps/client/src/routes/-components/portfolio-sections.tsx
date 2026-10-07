@@ -1,51 +1,33 @@
-import MediaSlot from './media-slot'
 import { CONTACT, EXPERIENCE } from './portfolio-data'
 
 export function AboutSection() {
   return (
-    <section id="about" className="pf-about">
-      <div className="pf-shell">
-        <p className="pf-about-hi">Hi</p>
-        <h2 className="pf-about-name">I&apos;m Nameer</h2>
-
-        <div className="pf-about-grid">
-          <div className="pf-about-copy">
-            <p>
-              I&apos;m a software engineer based in Dehradun. I work at Prodios
-              Labs building platforms that real people depend on — civic
-              portals, payment infrastructure, and AI assistants that need to
-              work under load.
-            </p>
-            <p>
-              My background spans full-stack development, ML research at IIT
-              Roorkee, and a B.Tech in Computer Science (AIML) from UPES. I care
-              about API design, automated testing, and shipping systems that
-              don&apos;t break when the stakes are high.
-            </p>
-            <p>
-              I do my best work on hard technical problems with clear product
-              stakes. If that sounds like you, let&apos;s chat.
-            </p>
-            <div className="pf-open-actions">
-              <a
-                href={`mailto:${CONTACT.email}`}
-                className="pf-btn pf-btn-fill"
-              >
-                Get in touch →
-              </a>
-              <a href={`mailto:${CONTACT.email}`} className="pf-text-link">
-                {CONTACT.email}
-              </a>
-            </div>
-          </div>
-
-          <MediaSlot
-            src="/about/studio.jpg"
-            label="Nameer — anime portrait"
-            aspect="3/4"
-            className="pf-about-photo"
-          />
-        </div>
+    <section id="about" className="pf-about" aria-labelledby="about-name">
+      <h2 id="about-name" className="pf-about-name">
+        <span>Muhammad</span>
+        <span>Nameer</span>
+        <span>Akhter</span>
+      </h2>
+      <div className="pf-about-copy">
+        <p>
+          I&apos;m a software engineer based in Dehradun. I work at Prodios
+          Labs building platforms that real people depend on — civic portals,
+          payment infrastructure, and AI assistants that need to work under
+          load.
+        </p>
+        <p>
+          My background spans full-stack development, ML research at IIT
+          Roorkee, and a B.Tech in Computer Science (AIML) from UPES. I care
+          about API design, automated testing, and shipping systems that
+          don&apos;t break when the stakes are high.
+        </p>
+        <p>
+          I do my best work on hard technical problems with clear product
+          stakes. If that sounds like you, let&apos;s chat.
+        </p>
+        <a className="pf-about-mail" href={`mailto:${CONTACT.email}`}>
+          {CONTACT.email}
+        </a>
       </div>
     </section>
   )
