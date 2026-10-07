@@ -4,7 +4,7 @@ export type WorkLink = {
 }
 
 export type CaseImageSlot = {
-  /** Expected path under public/ — left blank until assets land */
+  /** Path under public/ (e.g. /work/apuni-sarkar/01-public-portal.png) */
   path: string
   label: string
 }
@@ -31,7 +31,7 @@ export type ExperienceItem = {
   place: string
 }
 
-/** Selected work — structure mirrors maciej.co case-study model; images blank */
+/** Selected work — structure mirrors maciej.co case-study model */
 export const CASE_STUDIES: readonly CaseStudy[] = [
   {
     id: 'apuni-sarkar',
@@ -41,31 +41,104 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     role: 'Software Engineer',
     period: '2024 → Present',
     scope:
-      'NestJS backends for citizen-facing e-District services — 1Cr+ users and 1,000+ public services across Uttarakhand.',
+      'NestJS backends for citizen-facing e-District services — 1Cr+ users, 1,000+ public services, and CBDC subsidy payment rails across Uttarakhand.',
     tags: ['NestJS', 'Civic', 'MongoDB', 'RBAC'],
     links: [{ label: 'e-Services', href: 'https://eservices.uk.gov.in/' }],
     assetFolder: 'work/apuni-sarkar',
     images: [
-      { path: '/work/apuni-sarkar/01.jpg', label: 'Portal overview' },
-      { path: '/work/apuni-sarkar/02.jpg', label: 'Services grid' },
-      { path: '/work/apuni-sarkar/03.jpg', label: 'Workflow' },
+      {
+        path: '/work/apuni-sarkar/01-public-portal.png',
+        label: 'Citizen e-Services portal',
+      },
+      {
+        path: '/work/apuni-sarkar/02-departments-grid.png',
+        label: 'All departments services grid',
+      },
+      {
+        path: '/work/apuni-sarkar/03-applications-dashboard.png',
+        label: 'Actionable applications dashboard',
+      },
+      {
+        path: '/work/apuni-sarkar/04-stats-geographic.png',
+        label: 'Geographic distribution stats',
+      },
+      {
+        path: '/work/apuni-sarkar/05-feedback-insights.png',
+        label: 'Citizen feedback insights',
+      },
+      {
+        path: '/work/apuni-sarkar/06-best-worst-services.png',
+        label: 'Best and worst services',
+      },
     ],
   },
   {
-    id: 'cbdc',
+    id: 'stray-reporter',
     year: '2024',
-    title: 'CBDC Infrastructure',
-    tabLabel: 'CBDC',
-    role: 'Software Engineer',
-    period: '2024',
+    title: 'Stray Reporter',
+    tabLabel: 'Stray Reporter',
+    role: 'Full-stack',
+    period: 'Personal',
     scope:
-      'Payment APIs and transaction validation for a state CBDC subsidy program handling ₹800Cr+ disbursement flows.',
-    tags: ['Fintech', 'Payments', 'NestJS'],
-    links: [{ label: 'e-Services', href: 'https://eservices.uk.gov.in/' }],
-    assetFolder: 'work/cbdc',
+      'Mobile app for reporting stray cows and dogs — citizen capture flow, rescue tracking, and team inbox for accept/reject and status updates.',
+    tags: ['Mobile', 'React Native', 'Maps'],
+    links: [{ label: 'GitHub', href: 'https://github.com/nameerakhter' }],
+    assetFolder: 'work/stray-reporter',
     images: [
-      { path: '/work/cbdc/01.jpg', label: 'Payment flow' },
-      { path: '/work/cbdc/02.jpg', label: 'Validation UI' },
+      {
+        path: '/work/stray-reporter/01-marketing-landing.png',
+        label: 'Marketing landing collage',
+      },
+      {
+        path: '/work/stray-reporter/02-get-started.png',
+        label: 'Get started onboarding',
+      },
+      {
+        path: '/work/stray-reporter/03-login.png',
+        label: 'Login / continue',
+      },
+      {
+        path: '/work/stray-reporter/04-home.png',
+        label: 'Home — report and captures',
+      },
+      {
+        path: '/work/stray-reporter/05-new-scan.png',
+        label: 'New scan capture',
+      },
+      {
+        path: '/work/stray-reporter/06-report-submitted.png',
+        label: 'Report submitted',
+      },
+      {
+        path: '/work/stray-reporter/07-rescue-tracking.png',
+        label: 'Rescue on the way',
+      },
+      {
+        path: '/work/stray-reporter/08-team-dashboard.png',
+        label: 'Team dashboard and requests',
+      },
+      {
+        path: '/work/stray-reporter/09-update-status.png',
+        label: 'Update status and close case',
+      },
+    ],
+  },
+  {
+    id: 'kumbh-2027',
+    year: '2025',
+    title: 'Haridwar Kumbh 2027',
+    tabLabel: 'Kumbh 2027',
+    role: 'Software Engineer',
+    period: '2025 → Present',
+    scope:
+      'Digital platform for Haridwar Kumbh 2027 — pilgrim-facing services, operations tooling, and high-traffic civic infrastructure built with Prodios Labs.',
+    tags: ['Civic', 'NestJS', 'Events'],
+    links: [{ label: 'Kumbh 2027', href: 'https://kumbh.prodioslabs.in/' }],
+    assetFolder: 'work/kumbh-2027',
+    images: [
+      { path: '/work/kumbh-2027/01-portal.jpg', label: 'Portal overview' },
+      { path: '/work/kumbh-2027/02-services.jpg', label: 'Services' },
+      { path: '/work/kumbh-2027/03-ops.jpg', label: 'Operations' },
     ],
   },
   {
