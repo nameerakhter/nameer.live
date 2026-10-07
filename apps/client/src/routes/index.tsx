@@ -1,19 +1,13 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-import HeroShell from './-components/hero-shell'
 import PortfolioFooter from './-components/portfolio-footer'
 import PortfolioHeader from './-components/portfolio-header'
+import { HeroMuralSection } from './-components/hero-mural'
 import {
-  CompanyWorkSection,
-  CtaSection,
-  HeroSection,
-  PersonalProjectsSection,
-  PhilosophySection,
-  ProcessSection,
-  StatsSection,
-  TechSection,
-  ResearchSection,
+  AboutSection,
+  ExperienceSection,
 } from './-components/portfolio-sections'
+import { WorkGallery } from './-components/work-gallery'
 
 export const Route = createFileRoute('/')({
   head: () => ({
@@ -31,24 +25,17 @@ export const Route = createFileRoute('/')({
 
 function PortfolioPage() {
   return (
-    <div className="portfolio min-h-screen bg-(--pf-bg) text-(--pf-fg) antialiased">
-      <div className="pf-lines">
+    <div className="portfolio">
+      <div className="pf-viewport">
         <PortfolioHeader />
-        <HeroShell>
-          <HeroSection />
-          <StatsSection />
-        </HeroShell>
-        <main>
-          <ResearchSection />
-          <CompanyWorkSection />
-          <PersonalProjectsSection />
-          <PhilosophySection />
-          <TechSection />
-          <ProcessSection />
-          <CtaSection />
-        </main>
-        <PortfolioFooter />
+        <HeroMuralSection />
+        <WorkGallery />
       </div>
+      <main>
+        <AboutSection />
+        <ExperienceSection />
+      </main>
+      <PortfolioFooter />
     </div>
   )
 }
