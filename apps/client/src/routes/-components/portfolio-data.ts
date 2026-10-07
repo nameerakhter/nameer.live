@@ -13,6 +13,8 @@ export type CaseStudy = {
   id: string
   year: string
   title: string
+  /** Short label for the folder tab */
+  tabLabel: string
   role: string
   period: string
   scope: string
@@ -35,6 +37,7 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     id: 'apuni-sarkar',
     year: '2024',
     title: 'Apuni Sarkar',
+    tabLabel: 'Apuni Sarkar',
     role: 'Software Engineer',
     period: '2024 → Present',
     scope:
@@ -52,6 +55,7 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     id: 'cbdc',
     year: '2024',
     title: 'CBDC Infrastructure',
+    tabLabel: 'CBDC',
     role: 'Software Engineer',
     period: '2024',
     scope:
@@ -68,6 +72,7 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     id: 'ai-assistant',
     year: '2024',
     title: 'AI Assistant',
+    tabLabel: 'AI Assistant',
     role: 'Software Engineer',
     period: '2024',
     scope:
@@ -88,6 +93,7 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     id: 'e-office',
     year: '2023',
     title: 'E-Office Dashboard',
+    tabLabel: 'E-Office',
     role: 'Software Engineer',
     period: '2023',
     scope:
@@ -104,6 +110,7 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     id: 'nhm',
     year: '2023',
     title: 'NHM Training Management',
+    tabLabel: 'NHM',
     role: 'Software Engineer',
     period: '2023',
     scope:
@@ -120,6 +127,7 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     id: 'research',
     year: '2025',
     title: 'Bearing Fault Detection',
+    tabLabel: 'Research',
     role: 'Research Intern',
     period: '2024 → 2025',
     scope:
