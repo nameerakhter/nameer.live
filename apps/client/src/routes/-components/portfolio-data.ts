@@ -136,11 +136,33 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     links: [{ label: 'Kumbh 2027', href: 'https://kumbh.prodioslabs.in/' }],
     assetFolder: 'work/kumbh-2027',
     images: [
-      { path: '/work/kumbh-2027/01-portal.jpg', label: 'Portal overview' },
-      { path: '/work/kumbh-2027/02-services.jpg', label: 'Services' },
-      { path: '/work/kumbh-2027/03-ops.jpg', label: 'Operations' },
+      {
+        path: '/work/kumbh-2027/01-home-hero.png',
+        label: 'Home hero and countdown',
+      },
+      {
+        path: '/work/kumbh-2027/02-story-of-kumbh.png',
+        label: 'The story of Kumbh',
+      },
+      {
+        path: '/work/kumbh-2027/03-tradition-timeline.png',
+        label: 'Tradition timeline',
+      },
+      {
+        path: '/work/kumbh-2027/04-explore-haridwar.png',
+        label: 'Explore Haridwar',
+      },
+      {
+        path: '/work/kumbh-2027/05-dos-and-donts.png',
+        label: 'Pilgrim dos and don’ts',
+      },
+      {
+        path: '/work/kumbh-2027/06-kumbh-map.png',
+        label: 'Kumbh GIS map',
+      },
     ],
   },
+
   {
     id: 'ai-assistant',
     year: '2024',
@@ -157,11 +179,21 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     ],
     assetFolder: 'work/ai-assistant',
     images: [
-      { path: '/work/ai-assistant/01.jpg', label: 'Chat surface' },
-      { path: '/work/ai-assistant/02.jpg', label: 'Tool calling' },
-      { path: '/work/ai-assistant/03.jpg', label: 'Admin' },
+      {
+        path: '/work/ai-assistant/01-pgeta-assistant.png',
+        label: 'PGETA assistant on landing',
+      },
+      {
+        path: '/work/ai-assistant/02-pgeta-chat.png',
+        label: 'PGETA chat answers',
+      },
+      {
+        path: '/work/ai-assistant/03-apuni-sarkar-chatbot.png',
+        label: 'Apuni Sarkar chatbot',
+      },
     ],
   },
+
   {
     id: 'e-office',
     year: '2023',
