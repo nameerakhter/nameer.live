@@ -42,7 +42,16 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     period: '2024 → Present',
     scope:
       'NestJS backends for citizen-facing e-District services — 1Cr+ users, 1,000+ public services, and CBDC subsidy payment rails across Uttarakhand.',
-    tags: ['NestJS', 'Civic', 'MongoDB', 'RBAC'],
+    tags: [
+      'NestJS',
+      'Redis',
+      'MongoDB',
+      'React',
+      'TanStack Query',
+      'Docker',
+      'CI/CD',
+      'Nginx',
+    ],
     links: [{ label: 'e-Services', href: 'https://eservices.uk.gov.in/' }],
     assetFolder: 'work/apuni-sarkar',
     images: [
@@ -81,8 +90,17 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     period: 'Personal',
     scope:
       'Mobile app for reporting stray cows and dogs — citizen capture flow, rescue tracking, and team inbox for accept/reject and status updates.',
-    tags: ['Mobile', 'React Native', 'Maps'],
-    links: [{ label: 'GitHub', href: 'https://github.com/nameerakhter' }],
+    tags: [
+      'React Native',
+      'Expo',
+      'Next.js',
+      'MongoDB',
+      'Prisma',
+      'Redis',
+    ],
+    links: [
+      { label: 'Stray Reporter', href: 'https://stray-reporter.prodioslabs.in/' },
+    ],
     assetFolder: 'work/stray-reporter',
     images: [
       {
@@ -171,11 +189,11 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     role: 'Software Engineer',
     period: '2024',
     scope:
-      'Production RAG assistants with vector search and tool-calling — live on NATA and PGETA.',
+      'Production RAG assistants with vector search and tool-calling — live on PGETA and Apuni Sarkar.',
     tags: ['RAG', 'LLM', 'Vector Search'],
     links: [
-      { label: 'NATA', href: 'https://nata.in/' },
       { label: 'PGETA', href: 'https://www.pgeta.in/' },
+      { label: 'Apuni Sarkar', href: 'https://eservices.uk.gov.in/' },
     ],
     assetFolder: 'work/ai-assistant',
     images: [
@@ -195,20 +213,38 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
   },
 
   {
-    id: 'e-office',
-    year: '2023',
-    title: 'E-Office Dashboard',
-    tabLabel: 'E-Office',
+    id: 'chat-forge',
+    year: '2025',
+    title: 'Chat Forge',
+    tabLabel: 'Chat Forge',
     role: 'Software Engineer',
-    period: '2023',
+    period: '2025 → Present',
     scope:
-      'Analytics dashboards and APIs adopted across 4+ government departments.',
-    tags: ['React', 'Analytics', 'REST'],
-    links: [{ label: 'Dashboard', href: 'https://dashboard.uk.gov.in/' }],
-    assetFolder: 'work/e-office',
+      'Platform for building support agents trained on a site — crawl a URL, index pages, and keep replies grounded in those sources.',
+    tags: ['RAG', 'Agents', 'LLM'],
+    links: [{ label: 'Chat Forge', href: 'https://chatforge.prodioslabs.in/' }],
+    assetFolder: 'work/chat-forge',
     images: [
-      { path: '/work/e-office/01.webp', label: 'Dashboard' },
-      { path: '/work/e-office/02.webp', label: 'Reports' },
+      {
+        path: '/work/chat-forge/01-landing-hero.webp',
+        label: 'Landing hero',
+      },
+      {
+        path: '/work/chat-forge/02-landing-features.webp',
+        label: 'Landing features',
+      },
+      {
+        path: '/work/chat-forge/03-agents-dashboard.webp',
+        label: 'Agents dashboard',
+      },
+      {
+        path: '/work/chat-forge/04-website-sources.webp',
+        label: 'Website sources and training',
+      },
+      {
+        path: '/work/chat-forge/05-actions.webp',
+        label: 'Agent actions',
+      },
     ],
   },
   {
@@ -221,11 +257,17 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     scope:
       'Enterprise training platform tracking 50K+ hours with automated validation and RBAC.',
     tags: ['Enterprise', 'NestJS', 'RBAC'],
-    links: [{ label: 'Portal', href: 'https://tms.prodioslabs.com/login' }],
+    links: [{ label: 'Portal', href: 'https://tms.uk.gov.in/login' }],
     assetFolder: 'work/nhm',
     images: [
-      { path: '/work/nhm/01.webp', label: 'Training portal' },
-      { path: '/work/nhm/02.webp', label: 'Hours tracking' },
+      {
+        path: '/work/nhm/01-login.webp',
+        label: 'TMS login',
+      },
+      {
+        path: '/work/nhm/02-training-calendar.webp',
+        label: 'Training calendar',
+      },
     ],
   },
   {
