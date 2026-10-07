@@ -1,0 +1,2 @@
+# Keep agent skill files out of GitHub language stats
+.agents/** linguist-vendored
