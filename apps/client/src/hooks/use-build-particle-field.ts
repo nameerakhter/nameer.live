@@ -13,7 +13,7 @@ type Particle = {
   sprite: HTMLCanvasElement
 }
 
-/** Exact maciej.co orb palette on white */
+/** Exact maciej.co orb palette on bone-white letter fill */
 const COLORS = ['#FD5F1C', '#AC9CFC', '#D6F50A'] as const
 const FILL = '#F2F2F3'
 const COUNT = 40

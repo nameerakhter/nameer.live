@@ -1,25 +1,25 @@
-# Maciej Zadykowicz — Style Reference
-> midnight gallery with a kaleidoscope mural — a near-black studio wall where one brilliantly colorful typographic artwork commands attention and everything else stays quiet and deliberate.
+# Portfolio — Style Reference
+> black gallery with a kaleidoscope mural — Maciej’s folder-gallery structure on a pure black canvas.
 
 **Theme:** dark
 
-**Source:** [Refero Styles — Maciej Zadykowicz](https://styles.refero.design/style/f1b76a42-050e-4c9e-96e3-a77fbd718c68)
+**Structure source:** [Refero Styles — Maciej Zadykowicz](https://styles.refero.design/style/f1b76a42-050e-4c9e-96e3-a77fbd718c68)
 
 Source measurements are normalized; roles and recommendations are interpreted. Font summary lists are independent, not paired by position. HTML examples are reconstructions, not source components.
 
-Maciej Zadykowicz's portfolio operates as a midnight design studio: a near-black canvas of deep slate (#25262d) that lets a single spectacular piece of typographic art — the multicolored 'I build things' mural — command the entire first impression. Below the hero, the system retreats into quiet restraint: light bone-white text (#f2f2f3) over flat dark cards, tight Replica typography, pill-shaped controls, and a single muted indigo (#384270) reserved for the live 'Open' status indicator. The page reads like a gallery wall — the work IS the decoration, so chrome stays compact, metadata is mono-typed, and the only chromatic accent carries semantic meaning (availability, live state). Information density is high but breathing — project entries stack as year/title/description/tags with generous 24px internal padding, and the 16px card radius softens the otherwise severe dark surface.
+The portfolio keeps Maciej’s gallery architecture (identity strip, typographic mural hero, stacked folder work cards) with Maciej’s chromatic restraint, but replaces slate `#25262d` with true black `#000000` for the page canvas. Elevated surfaces sit at near-black graphite (`#181818`); bone-white text and indigo status accents stay as in the reference.
 
 ## Tokens — Colors
 
 | Name | Value | Token | Role |
 |------|-------|-------|------|
-| Bone White | `#f2f2f3` | `--color-bone-white` | Primary text, nav links, button labels, footer copy — the only light on the page, used for everything that must be read |
-| Slate Dark | `#25262d` | `--color-slate-dark` | Page canvas, base surface for all cards and sections |
-| Graphite | `#383a42` | `--color-graphite` | Elevated surface — nested cards, button hover fills, secondary panels sitting on top of Slate Dark |
-| Fog | `#858893` | `--color-fog` | Secondary text, metadata labels, inactive nav items, muted descriptions |
-| Ash | `#54565f` | `--color-ash` | Tertiary text, timestamps, low-priority labels |
-| Charcoal | `#0c0c0c` | `--color-charcoal` | Outlined button borders, icon strokes on dark surfaces |
-| Indigo Dusk | `#384270` | `--color-indigo-dusk` | Violet supporting accent for decorative details and low-frequency emphasis |
+| Bone White | `#f2f2f3` | `--color-bone-white` | Primary text, nav, button labels |
+| Black | `#000000` | `--color-slate-dark` / `--surface-canvas` | Page canvas |
+| Graphite | `#181818` | `--color-graphite` | Elevated cards, button fills |
+| Fog | `#858893` | `--color-fog` | Secondary text, metadata |
+| Ash | `#54565f` | `--color-ash` | Tertiary captions, footer copy |
+| Charcoal | `#2a2a2a` | `--color-charcoal` | Ghost borders visible on black |
+| Indigo Dusk | `#384270` | `--color-indigo-dusk` | Status / live accent |
 
 ## Tokens — Typography
 
@@ -174,8 +174,8 @@ Two-column asymmetric layout on Slate Dark canvas. Name 'Maciej' in 36px Bone Wh
 
 | Level | Name | Value | Purpose |
 |-------|------|-------|---------|
-| 0 | Canvas | `#25262d` | Page background, the base layer everything sits on |
-| 1 | Card | `#383a42` | Elevated content containers — project cards, bio blocks, nested panels |
+| 0 | Canvas | `#000000` | Page background, the base layer everything sits on |
+| 1 | Card | `#181818` | Elevated content containers — project folders, bio blocks, nested panels |
 | 2 | Highlight | `#384270` | Status pills and active state surfaces |
 
 ## Elevation
@@ -196,11 +196,10 @@ The page is a single scroll with max-width ~1200px centered content. Navigation 
 
 **Quick Color Reference**
 - text: #f2f2f3 (Bone White)
-- background: #25262d (Slate Dark)
-- card surface: #383a42 (Graphite)
-- border: #0c0c0c (Charcoal)
+- background: #000000 (Black)
+- card surface: #181818 (Graphite)
+- border: #2a2a2a (Charcoal)
 - accent / live status: #384270 (Indigo Dusk)
-- primary action: no distinct CTA color
 
 **Example Component Prompts**
 
@@ -216,7 +215,7 @@ No distinct primary action color was observed; use the extracted neutral button 
 
 ## Color Discipline
 
-This system is built on radical chromatic restraint. The page is 99% achromatic — dark canvas, light text, gray hierarchy. The hero mural is the ONLY place where multiple colors appear, and it's artwork, not interface. In the interface itself, the single chromatic color (Indigo Dusk #384270) carries semantic weight: it means 'live', 'available', 'active'. Never use it for decoration, hover states, or generic emphasis. If you need to draw attention to something, change its size, weight of position — not its color.
+This system is built on radical chromatic restraint. The page is 99% achromatic — black canvas, light text, gray hierarchy. The hero mural is the ONLY place where multiple colors appear, and it's artwork, not interface. In the interface itself, the single chromatic color (Indigo Dusk #384270) carries semantic weight: it means 'live', 'available', 'active'.
 
 ## Similar Brands
 
@@ -232,13 +231,13 @@ This system is built on radical chromatic restraint. The page is 99% achromatic 
 
 ```css
 :root {
-  /* Colors */
+  /* Colors — black canvas Maciej roles */
   --color-bone-white: #f2f2f3;
-  --color-slate-dark: #25262d;
-  --color-graphite: #383a42;
+  --color-slate-dark: #000000;
+  --color-graphite: #181818;
   --color-fog: #858893;
   --color-ash: #54565f;
-  --color-charcoal: #0c0c0c;
+  --color-charcoal: #2a2a2a;
   --color-indigo-dusk: #384270;
 
   /* Typography — Font Families */
@@ -298,8 +297,8 @@ This system is built on radical chromatic restraint. The page is 99% achromatic 
   --radius-buttons: 24px;
 
   /* Surfaces */
-  --surface-canvas: #25262d;
-  --surface-card: #383a42;
+  --surface-canvas: #000000;
+  --surface-card: #181818;
   --surface-highlight: #384270;
 }
 ```
@@ -310,11 +309,11 @@ This system is built on radical chromatic restraint. The page is 99% achromatic 
 @theme {
   /* Colors */
   --color-bone-white: #f2f2f3;
-  --color-slate-dark: #25262d;
-  --color-graphite: #383a42;
+  --color-slate-dark: #000000;
+  --color-graphite: #181818;
   --color-fog: #858893;
   --color-ash: #54565f;
-  --color-charcoal: #0c0c0c;
+  --color-charcoal: #2a2a2a;
   --color-indigo-dusk: #384270;
 
   /* Typography */

@@ -6,13 +6,13 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  /* Inspiration portfolio tokens (Maciej system values; fonts substituted) */
+  /* Portfolio tokens — Maciej structure on pure black */
   --color-bone-white: #f2f2f3;
-  --color-slate-dark: #25262d;
-  --color-graphite: #383a42;
+  --color-slate-dark: #000000;
+  --color-graphite: hsl(180, 10%, 20%);
   --color-fog: #858893;
   --color-ash: #54565f;
-  --color-charcoal: #0c0c0c;
+  --color-charcoal: #2a2a2a;
   --color-indigo-dusk: #384270;
   --font-replica-regular: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
   --font-replica-mono: 'Commit Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -174,16 +174,16 @@
   @apply !text-muted-foreground;
 }
 
-/* ─── Midnight gallery portfolio (inspiration tokens) ─── */
+/* ─── Black gallery portfolio (Maciej structure, pure black canvas) ─── */
 
 .portfolio {
-  /* Colors — exact inspiration values */
+  /* Colors — Maciej roles; canvas is true black instead of slate */
   --color-bone-white: #f2f2f3;
-  --color-slate-dark: #25262d;
-  --color-graphite: #383a42;
+  --color-slate-dark: #000000;
+  --color-graphite: hsl(180, 10%, 20%);
   --color-fog: #858893;
   --color-ash: #54565f;
-  --color-charcoal: #0c0c0c;
+  --color-charcoal: #2a2a2a;
   --color-indigo-dusk: #384270;
 
   /* Fonts — Replica substitutes (Clash Display / Satoshi / Commit Mono) */
@@ -237,12 +237,12 @@
   --radius-images: 16px;
   --radius-buttons: 24px;
 
-  /* Surfaces */
-  --surface-canvas: #25262d;
-  --surface-card: #383a42;
+  /* Surfaces — canvas stays black; cards match maciej.co dark folders */
+  --surface-canvas: #000000;
+  --surface-card: hsl(180, 10%, 20%);
   --surface-highlight: #384270;
-  --surface-card-hover: #4a4c55;
-  --surface-hairline: #2e2f37;
+  --surface-card-hover: hsl(180, 5%, 24%);
+  --surface-hairline: #1a1a1a;
 
   /* Short aliases used by components */
   --pf-bone: var(--color-bone-white);
@@ -413,7 +413,7 @@
   height: 100%;
   border: none;
   padding: 16px;
-  background: #2a2c32;
+  background: hsl(180, 8%, 14%);
   border-radius: var(--radius-images);
   overflow: hidden;
 }
@@ -499,6 +499,7 @@
   border-radius: var(--radius-cards);
   background: color-mix(in srgb, var(--color-bone-white) 12%, transparent);
   color: var(--color-bone-white);
+  border: 0;
   font-family: var(--font-replica-regular);
   font-size: var(--text-body-sm);
   font-weight: 500;
@@ -647,10 +648,11 @@
     calc((100% - var(--gallery-origin)) / var(--gallery-count))
   );
   --gallery-peek-offset: 0px;
-  --gallery-l-step: 1.6%;
-  --card-unfocused-h: 230;
-  --card-unfocused-s: 8%;
-  --card-unfocused-l: 24%;
+  /* Folder stack — exact maciej.co dark scheme tokens */
+  --gallery-l-step: 1.8%;
+  --card-unfocused-h: 180;
+  --card-unfocused-s: 10%;
+  --card-unfocused-l: 20%;
   --card-edge-ink: white;
   --card-edge-mix: 10%;
   --gallery-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
