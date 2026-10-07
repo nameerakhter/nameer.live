@@ -118,7 +118,7 @@ export function WorkGallery() {
     <section id="work" className="pf-work">
       <div className="pf-shell">
         <div className="pf-work-head">
-          <h2 className="pf-section-title">Selected work ↓</h2>
+          <h2 className="pf-section-title">Projects ↓</h2>
           <p className="pf-work-lede">
             I ship production backends, AI workflows, and full-stack platforms —
             civic portals, payment rails, and assistants used at scale.{' '}
@@ -273,6 +273,36 @@ function GalleryCard({
       </div>
 
       <article ref={contentRef} className="pf-gallery-content">
+        <aside className="pf-work-info">
+          <div>
+            <p className="pf-mono-label">Stack</p>
+            <ul className="pf-work-tags">
+              {study.tags.map((tag) => (
+                <li key={tag}>{tag}</li>
+              ))}
+            </ul>
+          </div>
+          {study.links.length > 0 ? (
+            <div>
+              <p className="pf-mono-label">Live</p>
+              <div className="pf-case-links">
+                {study.links.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="pf-live-link"
+                  >
+                    {link.label}
+                    <span aria-hidden>↗</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ) : null}
+        </aside>
+
         <div className="pf-work-images">
           {study.images.map((image) => (
             <MediaSlot
@@ -283,39 +313,6 @@ function GalleryCard({
             />
           ))}
         </div>
-
-        <aside className="pf-work-info">
-          <div className="pf-work-scope">
-            <p className="pf-mono-label">Scope</p>
-            <p>{study.scope}</p>
-          </div>
-          <div className="pf-work-facts">
-            <div>
-              <p className="pf-mono-label">Position</p>
-              <p>{study.role}</p>
-            </div>
-            <div>
-              <p className="pf-mono-label">Time</p>
-              <p>{study.period}</p>
-            </div>
-            <div>
-              <p className="pf-mono-label">With</p>
-              <div className="pf-case-links">
-                {study.links.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="pf-text-link"
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-        </aside>
       </article>
     </section>
   )
