@@ -26,10 +26,12 @@ export const Route = createFileRoute('/')({
 function PortfolioPage() {
   return (
     <div className="portfolio">
-      <PortfolioHeader />
-      <main>
+      <div className="pf-viewport">
+        <PortfolioHeader />
         <HeroMuralSection />
         <WorkGallery />
+      </div>
+      <main>
         <AboutSection />
         <ExperienceSection />
       </main>
