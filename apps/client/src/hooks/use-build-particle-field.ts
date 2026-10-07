@@ -13,9 +13,11 @@ type Particle = {
   sprite: HTMLCanvasElement
 }
 
-const COLORS = ['#FD5F1C', '#AC9CFC', '#D6F50A', '#3DDCFF'] as const
-const COUNT = 36
-const MAX_RADIUS = 52
+/** Exact maciej.co orb palette on white */
+const COLORS = ['#FD5F1C', '#AC9CFC', '#D6F50A'] as const
+const FILL = '#F2F2F3'
+const COUNT = 40
+const MAX_RADIUS = 60
 
 function makeSprite(color: string) {
   const size = MAX_RADIUS * 2
@@ -35,18 +37,18 @@ function randomBetween(min: number, max: number) {
   return Math.floor(Math.random() * (max - min) + min)
 }
 
-/** Soft rising orbs clipped by the hero letterform mask (maciej.co model). */
+/** Rising colored orbs on white, clipped by the letterform mask. */
 export function useBuildParticleField() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const reduceMotion = usePrefersReducedMotion()
 
   useMountEffect(() => {
     const canvas = canvasRef.current
-    if (!canvas || reduceMotion) return
+    if (!canvas) return
 
     const ctx =
-      canvas.getContext('2d', { alpha: true, desynchronized: true }) ||
-      canvas.getContext('2d', { alpha: true })
+      canvas.getContext('2d', { alpha: false, desynchronized: true }) ||
+      canvas.getContext('2d', { alpha: false })
     if (!ctx) return
 
     const sprites = new Map(
@@ -57,14 +59,14 @@ export function useBuildParticleField() {
 
     let width = 0
     let height = 0
-    let magnetR = 120
+    let magnetR = 110
     let magnetRsq = magnetR * magnetR
     let rafId = 0
     let running = false
 
     function spawn(fromBottom: boolean): Particle {
-      const radius = randomBetween(22, MAX_RADIUS)
-      const speed = randomBetween(1.4, 5.2)
+      const radius = randomBetween(30, MAX_RADIUS)
+      const speed = randomBetween(2, 8)
       const color = COLORS[randomBetween(0, COLORS.length)]
       return {
         x: Math.random() * Math.max(width, 1),
@@ -83,26 +85,31 @@ export function useBuildParticleField() {
       const rect = canvas.getBoundingClientRect()
       const cssW = Math.max(1, rect.width)
       const cssH = Math.max(1, rect.height)
-      const scale = Math.min(1, 1200 / cssW)
+      const scale = Math.min(1, 1192 / cssW)
       const nextW = Math.max(1, Math.round(cssW * scale))
       const nextH = Math.max(1, Math.round(cssH * scale))
       if (nextW === width && nextH === height) return
       width = nextW
       height = nextH
-      magnetR = Math.min(170, Math.max(100, Math.min(width, height) * 0.4))
+      magnetR = Math.min(180, Math.max(110, Math.min(width, height) * 0.42))
       magnetRsq = magnetR * magnetR
       canvas.width = width
       canvas.height = height
       if (particles.length === 0) {
         for (let i = 0; i < COUNT; i += 1) particles.push(spawn(false))
+      } else {
+        for (const particle of particles) {
+          particle.x = Math.min(particle.x, width)
+          particle.y = Math.min(particle.y, height)
+        }
       }
     }
 
     function draw() {
-      ctx.clearRect(0, 0, width, height)
+      ctx.fillStyle = FILL
+      ctx.fillRect(0, 0, width, height)
       for (const particle of particles) {
         const size = particle.radius * 2
-        ctx.globalAlpha = 0.85
         ctx.drawImage(
           particle.sprite,
           particle.x - particle.radius,
@@ -111,7 +118,6 @@ export function useBuildParticleField() {
           size,
         )
       }
-      ctx.globalAlpha = 1
     }
 
     function tick() {
@@ -162,15 +168,23 @@ export function useBuildParticleField() {
       pointer.inside = false
     }
 
+    function start() {
+      if (running || reduceMotion) return
+      running = true
+      rafId = requestAnimationFrame(tick)
+    }
+
+    function stop() {
+      running = false
+      cancelAnimationFrame(rafId)
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        const visible = Boolean(entry?.isIntersecting)
-        if (visible && !running) {
-          running = true
-          rafId = requestAnimationFrame(tick)
-        } else if (!visible && running) {
-          running = false
-          cancelAnimationFrame(rafId)
+        if (entry?.isIntersecting) start()
+        else {
+          stop()
+          draw()
         }
       },
       { threshold: 0.05 },
@@ -178,14 +192,13 @@ export function useBuildParticleField() {
 
     resize()
     draw()
-    observer.observe(canvas)
+    if (!reduceMotion) observer.observe(canvas)
     window.addEventListener('resize', resize)
     canvas.addEventListener('pointermove', onPointerMove)
     canvas.addEventListener('pointerleave', onPointerLeave)
 
     return () => {
-      running = false
-      cancelAnimationFrame(rafId)
+      stop()
       observer.disconnect()
       window.removeEventListener('resize', resize)
       canvas.removeEventListener('pointermove', onPointerMove)
