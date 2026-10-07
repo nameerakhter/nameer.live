@@ -1,372 +1,182 @@
-import CompanyWorkShowcase from './company-work-showcase'
-import HeroVisual from './hero-visual'
-import PortfolioBadge, { PortfolioBadgeGroup } from './portfolio-badge'
-import PortfolioMarquee from './portfolio-marquee'
-import ProjectLinks from './project-links'
-import ResearchShowcase from './research-showcase'
+import { motion, useReducedMotion } from 'motion/react'
+import { lazy, Suspense, type ReactNode } from 'react'
 
-const SIGNAL_STRIP = [
-  {
-    kicker: 'Now',
-    label: 'Software engineer at Prodios Labs · Dehradun',
-  },
-  {
-    kicker: 'Shipping',
-    label: 'NestJS backends for Apuni Sarkar · 1Cr+ users',
-  },
-  {
-    kicker: 'Building',
-    label: 'CBDC payment rails for state subsidy disbursement',
-  },
-  {
-    kicker: 'Live',
-    label: 'Production RAG assistants on NATA & PGETA',
-  },
-  {
-    kicker: 'Research',
-    label: 'IEEE 2025 · Bearing fault detection · IIT Roorkee',
-  },
-  {
-    kicker: 'Shipped',
-    label: 'NHM training platform tracking 50K+ hours',
-  },
-  {
-    kicker: 'Scale',
-    label: 'Civic APIs handling 84K+ complaints',
-  },
-] as const
+import {
+  FEATURED_PROJECTS,
+  SELECTED_PROJECTS,
+  type SelectedProject,
+} from './portfolio-data'
 
-const PERSONAL_PROJECTS = [
-  {
-    title: 'ML Explainer',
-    category: 'Machine Learning · Interactive',
-    description:
-      'Interactive visual guides for machine learning concepts — built with React, TanStack Router, and Tailwind.',
-    links: [
-      { label: 'Live demo', href: 'https://ml-explainer-gray.vercel.app/' },
-      {
-        label: 'GitHub',
-        href: 'https://github.com/nameerakhter/ml-explainer',
-      },
-    ],
-  },
-  {
-    title: 'Code Editor React',
-    category: 'React · PrismJS',
-    description:
-      'Multi-language code editor with real-time PrismJS syntax highlighting, scroll sync, and a transparent textarea overlay.',
-    links: [
-      { label: 'Live demo', href: 'https://code-editor-react.nameer.live/' },
-      {
-        label: 'GitHub',
-        href: 'https://github.com/nameerakhter/code-editor-react',
-      },
-    ],
-  },
-  {
-    title: 'Magma Clone',
-    category: 'Frontend · Clone',
-    description:
-      'Front-end clone of thisismagma.com — replicating layout, interactions, sliders, and animations with vanilla HTML, CSS, and JavaScript.',
-    links: [
-      { label: 'Live demo', href: 'https://magma-clone.nameer.live/' },
-      { label: 'GitHub', href: 'https://github.com/nameerakhter/magma_clone' },
-    ],
-  },
-  {
-    title: 'AI Startup UI',
-    category: 'Next.js · Framer Motion',
-    description:
-      'Hero-section starter kit for AI startups — Figma-to-code with Next.js, shadcn/ui, Tailwind, and Framer Motion animations.',
-    links: [
-      { label: 'Live demo', href: 'https://ai-startup-ui.vercel.app/' },
-      {
-        label: 'GitHub',
-        href: 'https://github.com/nameerakhter/AI_startup_ui',
-      },
-    ],
-  },
-  {
-    title: 'Ochi Dark Version',
-    category: 'React · Locomotive Scroll',
-    description:
-      'Dark-themed clone of ochi.design.in with cursor-tracking eyes, Locomotive Scroll parallax, and Framer Motion hover effects.',
-    links: [
-      { label: 'Live demo', href: 'https://ochi-dark-version.nameer.live/' },
-      {
-        label: 'GitHub',
-        href: 'https://github.com/nameerakhter/ochi_dark_version',
-      },
-    ],
-  },
-  {
-    title: 'Gericht Restaurant',
-    category: 'React · Landing Page',
-    description:
-      'Gericht Restaurant landing page with an interactive intro video, chef message section, and responsive layout.',
-    links: [
-      {
-        label: 'Live demo',
-        href: 'https://gericht-restraunt.nameer.live/',
-      },
-      {
-        label: 'GitHub',
-        href: 'https://github.com/nameerakhter/GerichtRestraunt_ReactJs',
-      },
-    ],
-  },
-  {
-    title: 'MacBook Pro Hero',
-    category: 'Three.js · Apple-style UI',
-    description:
-      '3D MacBook Pro hero with a loading sequence, scroll-driven product showcase, and Apple-inspired layout and interactions.',
-    links: [
-      { label: 'Live demo', href: 'https://macbook-pro-hero.nameer.live/' },
-    ],
-  },
-  {
-    title: 'Health Flow App',
-    category: 'React · Health UI',
-    description:
-      'Health and wellness app UI with guided user flows, dashboard views, and a responsive mobile-first layout.',
-    links: [
-      { label: 'Live demo', href: 'https://health-flow-app.nameer.live/' },
-    ],
-  },
-] as const
+const HeroAtmosphere = lazy(() => import('./hero-atmosphere'))
 
-const TECH_CATEGORIES = [
-  {
-    title: 'Languages',
-    items: ['TypeScript', 'JavaScript', 'Python', 'SQL'],
-  },
-  {
-    title: 'Backend',
-    items: [
-      'Node.js & NestJS',
-      'Express.js & FastAPI',
-      'REST APIs & microservices',
-      'System & API design',
-    ],
-  },
-  {
-    title: 'Frontend',
-    items: ['React & Next.js', 'HTML & CSS', 'Responsive UI', 'Payment forms'],
-  },
-  {
-    title: 'Infrastructure & AI',
-    items: [
-      'Docker & AWS (EC2, S3)',
-      'PostgreSQL, MongoDB & Redis',
-      'RAG & vector embeddings',
-      'TensorFlow & Scikit-Learn',
-    ],
-  },
-] as const
+const fadeUp = {
+  hidden: { opacity: 0, y: 18 },
+  show: { opacity: 1, y: 0 },
+}
 
-const EXPERIENCE = [
-  {
-    period: '2025 — Present',
-    title: 'Software Engineer',
-    place: 'Prodios Labs',
-    description:
-      'Building government-scale platforms, CBDC payment infrastructure, RAG assistants, and enterprise dashboards in Dehradun.',
-  },
-  {
-    period: '2024',
-    title: 'Research Intern',
-    place: 'IIT Roorkee',
-    description:
-      'Evaluated 10+ ML/DL models for vibration-based fault detection, improving performance by 25% through feature engineering and tuning.',
-  },
-  {
-    period: '2023',
-    title: 'Front-End Developer',
-    place: 'PlutosOne',
-    description:
-      'Built responsive React interfaces and secure payment forms for customer-facing workflows in Noida.',
-  },
-  {
-    period: '2020 — 2024',
-    title: 'B.Tech CS (AIML)',
-    place: 'UPES',
-    description:
-      'Bachelor of Technology in Computer Science with AIML specialization, CGPA 8.14.',
-  },
-] as const
+function Reveal({
+  children,
+  className,
+  delay = 0,
+}: {
+  children: ReactNode
+  className?: string
+  delay?: number
+}) {
+  const reduce = useReducedMotion()
 
-export function HeroSection() {
+  if (reduce) {
+    return <div className={className}>{children}</div>
+  }
+
   return (
-    <div className="hero-wrap">
-      <div className="pf-hero-stage portfolio-content">
-        <div className="pf-hero-intro">
-          <p className="pf-hero-identity">
-            <span className="pf-hero-availability-dot" aria-hidden />
-            <span className="pf-hero-name">Muhammad Nameer Akhter</span>
-            <span className="pf-hero-identity-sep" aria-hidden>
-              ·
+    <motion.div
+      className={className}
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: '-10% 0px' }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay }}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+export function HeroMuralSection() {
+  const reduce = useReducedMotion()
+
+  return (
+    <section className="pf-hero" aria-label="Introduction">
+      <div className="pf-shell pf-hero-inner">
+        <Suspense fallback={null}>
+          <HeroAtmosphere />
+        </Suspense>
+
+        <motion.div
+          className="pf-mural"
+          initial={reduce ? false : { opacity: 0, scale: 0.985 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <img
+            src="/i-build-things-mural.jpg"
+            alt="I build things"
+            width={1600}
+            height={900}
+            decoding="async"
+            fetchPriority="high"
+            className="pf-mural-img"
+          />
+          <h1 className="sr-only">I build things</h1>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+export function BioSection() {
+  return (
+    <section className="pf-bio-section" aria-labelledby="bio-heading">
+      <div className="pf-shell">
+        <Reveal>
+          <div className="pf-bio-card">
+            <p className="pf-bio-hello" id="bio-heading">
+              Hello
+            </p>
+            <p className="pf-bio-body">
+              I&apos;m Muhammad Nameer Akhter — a software engineer at Prodios
+              Labs shipping civic platforms, CBDC payment rails, and RAG
+              assistants for real users at scale. IEEE-published research from
+              IIT Roorkee; full-stack systems that hold up when the stakes are
+              high.
+            </p>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  )
+}
+
+export function ActionRowSection() {
+  return (
+    <section className="pf-actions-section" id="contact">
+      <div className="pf-shell">
+        <Reveal>
+          <div className="pf-actions">
+            <span className="pf-status-pill">
+              <span className="pf-status-dot" aria-hidden />
+              Open
             </span>
-            <span>Software engineer at Prodios Labs</span>
-          </p>
-          <h1 className="pf-display pf-hero-headline">
-            Systems at scale, <em>shipped by hand.</em>
-          </h1>
-        </div>
-
-        <div className="pf-hero-body">
-          <div className="pf-hero-copy-col">
-            <p className="pf-subline">
-              I ship production backends, AI workflows, and full-stack platforms —
-              citizen portals for 1Cr+ users, CBDC payment systems, and
-              RAG-powered assistants.
-            </p>
-            <div className="pf-cta-row">
-              <a href="#contact" className="pf-btn pf-btn-primary">
-                Start a conversation
-                <span aria-hidden>→</span>
-              </a>
-              <a href="#company-work" className="pf-btn pf-btn-ghost">
-                Proof in production
-              </a>
-            </div>
-            <p className="pf-hero-proof">
-              <span className="pf-hero-proof-kicker">IEEE · 2025</span>
-              Vibration-based bearing fault detection research from IIT Roorkee.
-            </p>
+            <a
+              href="mailto:akhtarnameer@gmail.com"
+              className="pf-btn pf-btn-fill"
+            >
+              Get in touch →
+            </a>
+            <a href="#work" className="pf-btn pf-btn-ghost">
+              View work →
+            </a>
           </div>
-
-          <div className="pf-hero-visual">
-            <HeroVisual />
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-export function StatsSection() {
-  return (
-    <section className="hero-stats" aria-label="What I'm working on">
-      <div className="pf-signal-strip">
-        <PortfolioMarquee items={SIGNAL_STRIP} />
+        </Reveal>
       </div>
     </section>
   )
 }
 
-export function CompanyWorkSection() {
+function ProjectCard({
+  project,
+  index,
+}: {
+  project: SelectedProject
+  index: number
+}) {
   return (
-    <section id="company-work" className="pf-block pf-block--surface">
-      <div className="portfolio-content">
-        <div className="pf-sec-head pf-sec-head--stack">
-          <h2 className="pf-section-title max-w-[18ch]">
-            Proof in <em>production</em>
-          </h2>
-          <p className="pf-sec-side pf-sec-side--wide">
-            Production systems at Prodios Labs — civic platforms, payment rails,
-            and AI tools used by real people at scale.
-          </p>
+    <Reveal delay={Math.min(index * 0.04, 0.24)}>
+      <article className="pf-project-card">
+        <p className="pf-project-year">{project.year}</p>
+        <div className="pf-project-main">
+          <h3 className="pf-project-title">{project.title}</h3>
+          <p className="pf-project-desc">{project.description}</p>
         </div>
-
-        <CompanyWorkShowcase />
-      </div>
-    </section>
-  )
-}
-
-export function PersonalProjectsSection() {
-  return (
-    <section id="personal-projects" className="pf-block">
-      <div className="portfolio-content">
-        <div className="pf-sec-head">
-          <h2 className="pf-section-title max-w-[14ch]">Personal projects</h2>
-          <p className="pf-sec-side">
-            Side builds and UI experiments — interactive tools, design studies,
-            and front-end work with live demos.
-          </p>
-        </div>
-
-        <ul className="pf-project-list">
-          {PERSONAL_PROJECTS.map((project) => (
-            <li key={project.title} className="pf-project-row">
-              <div className="pf-project-row-main">
-                <p className="pf-project-cat">{project.category}</p>
-                <h3 className="pf-project-title">{project.title}</h3>
-                <p className="pf-body pf-project-desc">{project.description}</p>
-              </div>
-              <div className="pf-project-row-links">
-                <ProjectLinks links={project.links} />
-              </div>
+        <ul className="pf-project-tags">
+          {project.tags.map((tag) => (
+            <li key={tag} className="pf-tag">
+              ○ {tag}
             </li>
           ))}
         </ul>
-      </div>
-    </section>
+        {project.links && project.links.length > 0 ? (
+          <div className="pf-project-links">
+            {project.links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className="pf-nav-link"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        ) : null}
+      </article>
+    </Reveal>
   )
 }
 
-export function ResearchSection() {
+export function SelectedWorkSection() {
   return (
-    <section id="research" className="pf-block">
-      <div className="portfolio-content">
-        <div className="pf-sec-head">
-          <h2 className="pf-section-title max-w-[16ch]">Research</h2>
-          <p className="pf-sec-side">
-            Peer-reviewed work from IIT Roorkee on vibration-based fault
-            detection — published with IEEE in 2025.
-          </p>
-        </div>
+    <section id="work" className="pf-work-section">
+      <div className="pf-shell">
+        <Reveal>
+          <h2 className="pf-section-title">Selected work</h2>
+        </Reveal>
 
-        <ResearchShowcase />
-      </div>
-    </section>
-  )
-}
-
-export function PhilosophySection() {
-  return (
-    <section id="about" className="pf-block pf-block--ink">
-      <div className="portfolio-content pf-about">
-        <p className="pf-about-kicker">About</p>
-        <h2 className="pf-about-title">
-          Engineering where scale, security, and intelligence meet.
-        </h2>
-        <p className="pf-about-body">
-          I&apos;m a software engineer at Prodios Labs building platforms that
-          real people depend on — civic portals, payment infrastructure, and AI
-          assistants that need to work under load. My background spans
-          full-stack development, ML research at IIT Roorkee, and a B.Tech in
-          Computer Science (AIML) from UPES. I care about API design, automated
-          testing, and shipping systems that don&apos;t break when the stakes
-          are high.
-        </p>
-      </div>
-    </section>
-  )
-}
-
-export function TechSection() {
-  return (
-    <section className="pf-block">
-      <div className="portfolio-content">
-        <div className="pf-sec-head">
-          <h2 className="pf-section-title max-w-[12ch]">Tools I use</h2>
-          <p className="pf-sec-side">
-            Day-to-day stack across backend services, interfaces,
-            infrastructure, and AI pipelines.
-          </p>
-        </div>
-
-        <div className="pf-stack-grid">
-          {TECH_CATEGORIES.map((category) => (
-            <div key={category.title} className="pf-stack-col">
-              <h3 className="pf-stack-heading">{category.title}</h3>
-              <PortfolioBadgeGroup>
-                {category.items.map((item) => (
-                  <PortfolioBadge key={item}>{item}</PortfolioBadge>
-                ))}
-              </PortfolioBadgeGroup>
-            </div>
+        <div className="pf-project-list">
+          {SELECTED_PROJECTS.map((project, index) => (
+            <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
       </div>
@@ -374,59 +184,68 @@ export function TechSection() {
   )
 }
 
-export function ProcessSection() {
+export function ShowcaseSection() {
   return (
-    <section className="pf-block pf-block--surface">
-      <div className="portfolio-content">
-        <div className="pf-sec-head">
-          <h2 className="pf-section-title max-w-[14ch]">Background</h2>
-          <p className="pf-sec-side">
-            From research labs to production government platforms.
-          </p>
-        </div>
-
-        <ol className="pf-timeline">
-          {EXPERIENCE.map((step) => (
-            <li key={step.period + step.title} className="pf-timeline-item">
-              <time className="pf-timeline-period">{step.period}</time>
-              <div className="pf-timeline-body">
-                <h3 className="pf-timeline-title">
-                  {step.title}
-                  <span className="pf-timeline-place"> · {step.place}</span>
-                </h3>
-                <p className="pf-body text-sm">{step.description}</p>
+    <section className="pf-showcase-section" aria-label="Featured projects">
+      <div className="pf-shell pf-showcase-list">
+        {FEATURED_PROJECTS.map((project, index) => (
+          <Reveal key={project.id} delay={index * 0.05}>
+            <a
+              href={project.embedHref!}
+              target="_blank"
+              rel="noreferrer"
+              className="pf-showcase"
+            >
+              <div className="pf-showcase-meta">
+                <span className="pf-showcase-label">
+                  {project.embedLabel ?? project.title}
+                </span>
+                <ul className="pf-showcase-tags">
+                  {project.tags.slice(0, 3).map((tag) => (
+                    <li key={tag} className="pf-tag pf-tag--border">
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </li>
-          ))}
-        </ol>
+              <div className="pf-showcase-panel">
+                <p className="pf-showcase-title">{project.title}</p>
+                <p className="pf-showcase-desc">{project.description}</p>
+                <span className="pf-showcase-cta">Open →</span>
+              </div>
+            </a>
+          </Reveal>
+        ))}
       </div>
     </section>
   )
 }
 
-export function CtaSection() {
+export function AboutSection() {
   return (
-    <section id="contact" className="pf-block">
-      <div className="portfolio-content pf-contact">
-        <h2 className="pf-contact-title">
-          Let&apos;s build something together.
-        </h2>
-        <p className="pf-contact-lead">
-          Open to engineering roles, collaborations, and hard technical
-          problems. Reach out and let&apos;s talk.
-        </p>
-        <div className="pf-cta-row">
-          <a
-            href="mailto:akhtarnameer@gmail.com"
-            className="pf-btn pf-btn-primary"
-          >
-            Send an email
-            <span aria-hidden>→</span>
-          </a>
-          <a href="#personal-projects" className="pf-btn pf-btn-ghost">
-            See personal projects
-          </a>
-        </div>
+    <section id="about" className="pf-about-section">
+      <div className="pf-shell pf-about-grid">
+        <Reveal>
+          <div className="pf-about-name">
+            <h2 className="pf-about-heading">Nameer</h2>
+            <p className="pf-about-phonetic">Software engineer · Prodios Labs</p>
+          </div>
+        </Reveal>
+        <Reveal delay={0.08}>
+          <div className="pf-about-copy">
+            <p>
+              I build platforms that real people depend on — civic portals,
+              payment infrastructure, and AI assistants that need to work under
+              load. My background spans full-stack development, ML research at
+              IIT Roorkee, and a B.Tech in Computer Science (AIML) from UPES.
+            </p>
+            <p>
+              I care about API design, automated testing, and shipping systems
+              that don&apos;t break when the stakes are high. Currently based in
+              Dehradun, open to engineering roles and hard technical problems.
+            </p>
+          </div>
+        </Reveal>
       </div>
     </section>
   )

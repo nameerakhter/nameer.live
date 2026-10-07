@@ -1,133 +1,81 @@
 import { useState } from 'react'
 
-import { ThemeToggle } from '@/components/ui/theme-toggle'
 import { cn } from '@/lib/utils'
 
 const NAV_LINKS = [
-  { label: 'Research', href: '#research' },
-  { label: 'At Prodios', href: '#company-work' },
-  { label: 'Personal', href: '#personal-projects' },
+  { label: 'Work', href: '#work' },
   { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
+] as const
+
+const SOCIAL_LINKS = [
+  { label: 'Email', href: 'mailto:akhtarnameer@gmail.com' },
+  { label: 'GitHub', href: 'https://github.com/nameerakhter' },
 ] as const
 
 export default function PortfolioHeader() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <nav
-      className={cn(
-        'portfolio-nav fixed inset-x-0 top-0 z-1000',
-        mobileOpen && 'open',
-      )}
-    >
-      <div className="portfolio-nav-shell">
-        <div className="portfolio-nav-row portfolio-content flex items-center justify-between">
-          <a
-            href="#"
-            aria-label="Home"
-            className="transition-opacity hover:opacity-80"
-          >
-            <img
-              src="/man-transparent.webp"
-              alt=""
-              aria-hidden
-              width={103}
-              height={56}
-              decoding="async"
-              fetchPriority="high"
-              className="h-14 w-auto object-contain"
-            />
-          </a>
+    <header className={cn('pf-nav', mobileOpen && 'pf-nav--open')}>
+      <div className="pf-shell pf-nav-row">
+        <a href="#" className="pf-nav-brand">
+          Nameer
+        </a>
 
-          <div className="hidden items-center gap-[38px] md:flex">
-            {NAV_LINKS.map((link) => (
-              <a key={link.href} href={link.href} className="pf-nav-link">
-                {link.label}
-              </a>
-            ))}
-          </div>
+        <p className="pf-nav-role">Software engineer</p>
 
-          <div className="flex items-center gap-2.5">
-            <ThemeToggle />
-
-            <a href="#contact" className="pf-nav-cta hidden md:inline-flex">
-              Say hey
+        <nav className="pf-nav-links" aria-label="Primary">
+          {NAV_LINKS.map((link) => (
+            <a key={link.href} href={link.href} className="pf-nav-link">
+              {link.label}
             </a>
+          ))}
+        </nav>
 
-            <button
-              type="button"
-              className="inline-flex size-[42px] items-center justify-center rounded-[2px] border border-(--line-2) text-(--pf-fg) md:hidden"
-              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-              onClick={() => setMobileOpen((open) => !open)}
+        <div className="pf-nav-social">
+          {SOCIAL_LINKS.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="pf-nav-link"
+              {...(link.href.startsWith('http')
+                ? { target: '_blank', rel: 'noreferrer' }
+                : {})}
             >
-              {mobileOpen ? <CloseIcon /> : <MenuIcon />}
-            </button>
-          </div>
+              {link.label}
+            </a>
+          ))}
         </div>
 
-        <div
-          className={cn(
-            'border-t border-dashed border-(--line) bg-(--pf-bg) md:hidden',
-            mobileOpen ? 'block' : 'hidden',
-          )}
+        <button
+          type="button"
+          className="pf-nav-menu"
+          aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={mobileOpen}
+          onClick={() => setMobileOpen((open) => !open)}
         >
-          <nav className="portfolio-content flex flex-col py-4">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="pf-nav-link border-t border-dashed border-(--line) py-3.5 first:border-t-0"
-                onClick={() => setMobileOpen(false)}
-              >
-                {link.label}
-              </a>
-            ))}
+          {mobileOpen ? 'Close' : 'Menu'}
+        </button>
+      </div>
 
+      <div className="pf-nav-drawer">
+        <div className="pf-shell pf-nav-drawer-inner">
+          {[...NAV_LINKS, ...SOCIAL_LINKS].map((link) => (
             <a
-              href="#contact"
-              className="pf-nav-cta mt-3 inline-flex w-fit"
+              key={link.href}
+              href={link.href}
+              className="pf-nav-drawer-link"
               onClick={() => setMobileOpen(false)}
+              {...(link.href.startsWith('http')
+                ? { target: '_blank', rel: 'noreferrer' }
+                : {})}
             >
-              Say hey
+              {link.label}
             </a>
-          </nav>
+          ))}
         </div>
       </div>
-    </nav>
-  )
-}
-
-function MenuIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      width="20"
-      height="20"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      aria-hidden
-    >
-      <path d="M4 7h16M4 12h16M4 17h16" />
-    </svg>
-  )
-}
-
-function CloseIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      width="20"
-      height="20"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      aria-hidden
-    >
-      <path d="M6 6l12 12M18 6L6 18" />
-    </svg>
+    </header>
   )
 }
