@@ -2,14 +2,12 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import PortfolioFooter from './-components/portfolio-footer'
 import PortfolioHeader from './-components/portfolio-header'
+import { HeroMuralSection } from './-components/hero-mural'
 import {
   AboutSection,
-  CaseStudiesSection,
-  ContactOpenSection,
   ExperienceSection,
-  HeroMuralSlotSection,
-  SelectedWorkSection,
 } from './-components/portfolio-sections'
+import { WorkGallery } from './-components/work-gallery'
 
 export const Route = createFileRoute('/')({
   head: () => ({
@@ -30,12 +28,10 @@ function PortfolioPage() {
     <div className="portfolio">
       <PortfolioHeader />
       <main>
-        <ContactOpenSection />
-        <HeroMuralSlotSection />
-        <SelectedWorkSection />
+        <HeroMuralSection />
+        <WorkGallery />
         <AboutSection />
         <ExperienceSection />
-        <CaseStudiesSection />
       </main>
       <PortfolioFooter />
     </div>

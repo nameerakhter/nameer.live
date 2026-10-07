@@ -23,7 +23,7 @@ export default function PortfolioHeader() {
         </p>
 
         <nav className="pf-identity-links" aria-label="Contact">
-          <a href="#contact">Contact</a>
+          <a href={`mailto:${CONTACT.email}`}>Contact</a>
           <a href="#work">Selected work ↓</a>
           <a href={CONTACT.github} target="_blank" rel="noreferrer">
             GitHub
