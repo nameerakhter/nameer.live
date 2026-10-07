@@ -387,17 +387,47 @@
   color: var(--color-fog);
 }
 
-/* Blank media wells */
+/* Media wells — placeholder or filled screenshot */
 .portfolio .pf-media-slot {
   display: grid;
   place-items: center;
   width: 100%;
+  margin: 0;
+  overflow: hidden;
   border-radius: var(--radius-images);
   background: var(--surface-card);
   border: 1px dashed color-mix(in srgb, var(--color-fog) 45%, transparent);
   color: var(--color-fog);
   text-align: center;
   padding: var(--spacing-24);
+}
+
+/* Framed screenshot — dark matte fills the strip; image sits inset (maciej.co) */
+.portfolio .pf-media-slot.is-filled,
+.portfolio .pf-work-slot.is-filled {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  box-sizing: border-box;
+  width: auto;
+  height: 100%;
+  border: none;
+  padding: 16px;
+  background: #2a2c32;
+  border-radius: var(--radius-images);
+  overflow: hidden;
+}
+
+.portfolio .pf-media-slot.is-filled img,
+.portfolio .pf-work-slot.is-filled img {
+  display: block;
+  height: 100%;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  object-position: center top;
+  border-radius: 10px;
+  background: #fff;
 }
 
 .portfolio .pf-media-slot-label {
@@ -901,12 +931,12 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: stretch;
   flex: 1 1 auto;
   min-height: 0;
   width: 100%;
-  padding: calc(var(--gallery-pad) * 2) 0
-    calc(var(--gallery-pad) * 2 + var(--gallery-peek-offset)) 0;
+  padding: var(--gallery-pad) 0
+    calc(var(--gallery-pad) + var(--gallery-peek-offset)) 0;
   overflow: hidden;
   container-type: size;
 }
@@ -934,13 +964,13 @@
 .portfolio .pf-work-images {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: stretch;
   align-self: stretch;
   flex: 0 0 auto;
-  height: 100%;
   min-height: 0;
-  padding-inline: var(--gallery-pad);
-  gap: var(--gallery-gap);
+  min-width: max-content;
+  padding-inline: 16px;
+  gap: 16px;
   transform: translateY(0);
   transition: transform var(--gallery-time) var(--gallery-ease);
 }
@@ -954,28 +984,23 @@
   transform: translateY(var(--gallery-tab));
 }
 
-.portfolio .pf-work-images figure {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Screenshot strip — full folder height, natural width inside frames */
+.portfolio .pf-work-slot {
   flex: 0 0 auto;
-  margin: 0;
-  height: min(420px, 55cqh);
-  padding: var(--gallery-pad);
-  background: color-mix(in srgb, var(--surface-canvas) 70%, var(--surface-card));
-  border-radius: var(--radius-cards);
+  height: 100%;
+  min-height: 0;
 }
 
-.portfolio .pf-work-slot {
+.portfolio .pf-work-slot:not(.is-filled) {
   width: min(52vw, 560px);
-  height: 100%;
-  min-height: 180px;
   aspect-ratio: 16 / 9;
 }
 
 .portfolio .pf-work-info {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-self: stretch;
   flex: 0 0 auto;
   gap: var(--spacing-24);
   width: min(360px, 80vw);
