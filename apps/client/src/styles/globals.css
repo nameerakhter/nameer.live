@@ -683,8 +683,8 @@
 }
 
 /*
-  Closed veil: soft depth over peeks — enough to settle white chrome
-  into the slate, not crush it to black. Fades off when active.
+  Closed veil: light depth only — peeks stay readable. Folder framing
+  (slate well + inset) handles polish, not a luminance crush.
 */
 .portfolio .pf-gallery-content::after {
   content: '';
@@ -693,10 +693,10 @@
   z-index: 2;
   background: linear-gradient(
     0deg,
-    oklch(0 0 0 / 0.45) 0%,
-    oklch(0 0 0 / 0.28) 40%,
-    oklch(0 0 0 / 0.12) 72%,
-    oklch(0 0 0 / 0.06) 100%
+    oklch(0 0 0 / 0.32) 0%,
+    oklch(0 0 0 / 0.16) 42%,
+    oklch(0 0 0 / 0.05) 78%,
+    transparent 100%
   );
   opacity: 1;
   pointer-events: none;
@@ -734,17 +734,16 @@
 }
 
 /*
-  Closed stack: pull shots up for a thin peek under each tab.
-  Framing (folder slate + inset) quiets pop — not a luminance crush.
+  Closed stack: pull shots up so a strip peeks under each tab.
   Hover lifts ~20px more (maciej.co).
 */
 .portfolio .pf-gallery:not(.is-focused) .pf-work-images {
-  transform: translateY(calc(-1 * var(--gallery-pad)));
+  transform: translateY(calc(-1.5 * var(--gallery-pad)));
 }
 
 .portfolio .pf-gallery:not(.is-focused) .pf-gallery-card:hover .pf-work-images,
 .portfolio .pf-gallery:not(.is-focused) .pf-gallery-card:focus-visible .pf-work-images {
-  transform: translateY(calc(-1 * var(--gallery-pad) - 20px));
+  transform: translateY(calc(-1.5 * var(--gallery-pad) - 20px));
 }
 
 .portfolio .pf-gallery-card.is-active .pf-work-images {
