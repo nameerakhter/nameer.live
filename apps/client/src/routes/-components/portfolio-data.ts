@@ -31,7 +31,11 @@ export type ExperienceItem = {
   place: string
 }
 
-/** Selected work — structure mirrors maciej.co case-study model */
+/**
+ * Selected work — ordered for recruiter scan:
+ * scale → AI product ownership → production AI → current civic →
+ * enterprise → mobile breadth → research closer
+ */
 export const CASE_STUDIES: readonly CaseStudy[] = [
   {
     id: 'apuni-sarkar',
@@ -78,6 +82,133 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
       {
         path: '/work/apuni-sarkar/06-best-worst-services.webp',
         label: 'Best and worst services',
+      },
+    ],
+  },
+  {
+    id: 'chat-forge',
+    year: '2025',
+    title: 'Chat Forge',
+    tabLabel: 'Chat Forge',
+    role: 'Software Engineer',
+    period: '2025 → Present',
+    scope:
+      'Platform for building support agents trained on a site — crawl a URL, index pages, and keep replies grounded in those sources.',
+    tags: ['RAG', 'Agents', 'LLM'],
+    links: [{ label: 'Chat Forge', href: 'https://chatforge.prodioslabs.in/' }],
+    assetFolder: 'work/chat-forge',
+    images: [
+      {
+        path: '/work/chat-forge/01-landing-hero.webp',
+        label: 'Landing hero',
+      },
+      {
+        path: '/work/chat-forge/02-landing-features.webp',
+        label: 'Landing features',
+      },
+      {
+        path: '/work/chat-forge/03-agents-dashboard.webp',
+        label: 'Agents dashboard',
+      },
+      {
+        path: '/work/chat-forge/04-website-sources.webp',
+        label: 'Website sources and training',
+      },
+      {
+        path: '/work/chat-forge/05-actions.webp',
+        label: 'Agent actions',
+      },
+    ],
+  },
+  {
+    id: 'ai-assistant',
+    year: '2024',
+    title: 'AI Assistant',
+    tabLabel: 'AI Assistant',
+    role: 'Software Engineer',
+    period: '2024',
+    scope:
+      'Production RAG assistants with vector search and tool-calling — live on PGETA and Apuni Sarkar.',
+    tags: ['RAG', 'LLM', 'Vector Search'],
+    links: [
+      { label: 'PGETA', href: 'https://www.pgeta.in/' },
+      { label: 'Apuni Sarkar', href: 'https://eservices.uk.gov.in/' },
+    ],
+    assetFolder: 'work/ai-assistant',
+    images: [
+      {
+        path: '/work/ai-assistant/01-pgeta-assistant.webp',
+        label: 'PGETA assistant on landing',
+      },
+      {
+        path: '/work/ai-assistant/02-pgeta-chat.webp',
+        label: 'PGETA chat answers',
+      },
+      {
+        path: '/work/ai-assistant/03-apuni-sarkar-chatbot.webp',
+        label: 'Apuni Sarkar chatbot',
+      },
+    ],
+  },
+  {
+    id: 'kumbh-2027',
+    year: '2025',
+    title: 'Haridwar Kumbh 2027',
+    tabLabel: 'Kumbh 2027',
+    role: 'Software Engineer',
+    period: '2025 → Present',
+    scope:
+      'Digital platform for Haridwar Kumbh 2027 — pilgrim-facing services, operations tooling, and high-traffic civic infrastructure built with Prodios Labs.',
+    tags: ['Civic', 'NestJS', 'Events'],
+    links: [{ label: 'Kumbh 2027', href: 'https://kumbh.prodioslabs.in/' }],
+    assetFolder: 'work/kumbh-2027',
+    images: [
+      {
+        path: '/work/kumbh-2027/01-home-hero.webp',
+        label: 'Home hero and countdown',
+      },
+      {
+        path: '/work/kumbh-2027/02-story-of-kumbh.webp',
+        label: 'The story of Kumbh',
+      },
+      {
+        path: '/work/kumbh-2027/03-tradition-timeline.webp',
+        label: 'Tradition timeline',
+      },
+      {
+        path: '/work/kumbh-2027/04-explore-haridwar.webp',
+        label: 'Explore Haridwar',
+      },
+      {
+        path: '/work/kumbh-2027/05-dos-and-donts.webp',
+        label: 'Pilgrim dos and don’ts',
+      },
+      {
+        path: '/work/kumbh-2027/06-kumbh-map.webp',
+        label: 'Kumbh GIS map',
+      },
+    ],
+  },
+  {
+    id: 'nhm',
+    year: '2023',
+    title: 'NHM Training Management',
+    tabLabel: 'NHM',
+    role: 'Software Engineer',
+    period: '2023',
+    scope:
+      'Enterprise training platform tracking 50K+ hours with automated validation and RBAC.',
+    tags: ['Enterprise', 'NestJS', 'RBAC'],
+    links: [{ label: 'Portal', href: 'https://tms.uk.gov.in/login' }],
+    assetFolder: 'work/nhm',
+    images: [
+      {
+        path: '/work/nhm/01-login.webp',
+        label: 'TMS login',
+      },
+      {
+        path: '/work/nhm/02-training-calendar.webp',
+        label: 'Training calendar',
       },
     ],
   },
@@ -138,135 +269,6 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
       {
         path: '/work/stray-reporter/09-update-status.webp',
         label: 'Update status and close case',
-      },
-    ],
-  },
-  {
-    id: 'kumbh-2027',
-    year: '2025',
-    title: 'Haridwar Kumbh 2027',
-    tabLabel: 'Kumbh 2027',
-    role: 'Software Engineer',
-    period: '2025 → Present',
-    scope:
-      'Digital platform for Haridwar Kumbh 2027 — pilgrim-facing services, operations tooling, and high-traffic civic infrastructure built with Prodios Labs.',
-    tags: ['Civic', 'NestJS', 'Events'],
-    links: [{ label: 'Kumbh 2027', href: 'https://kumbh.prodioslabs.in/' }],
-    assetFolder: 'work/kumbh-2027',
-    images: [
-      {
-        path: '/work/kumbh-2027/01-home-hero.webp',
-        label: 'Home hero and countdown',
-      },
-      {
-        path: '/work/kumbh-2027/02-story-of-kumbh.webp',
-        label: 'The story of Kumbh',
-      },
-      {
-        path: '/work/kumbh-2027/03-tradition-timeline.webp',
-        label: 'Tradition timeline',
-      },
-      {
-        path: '/work/kumbh-2027/04-explore-haridwar.webp',
-        label: 'Explore Haridwar',
-      },
-      {
-        path: '/work/kumbh-2027/05-dos-and-donts.webp',
-        label: 'Pilgrim dos and don’ts',
-      },
-      {
-        path: '/work/kumbh-2027/06-kumbh-map.webp',
-        label: 'Kumbh GIS map',
-      },
-    ],
-  },
-
-  {
-    id: 'ai-assistant',
-    year: '2024',
-    title: 'AI Assistant',
-    tabLabel: 'AI Assistant',
-    role: 'Software Engineer',
-    period: '2024',
-    scope:
-      'Production RAG assistants with vector search and tool-calling — live on PGETA and Apuni Sarkar.',
-    tags: ['RAG', 'LLM', 'Vector Search'],
-    links: [
-      { label: 'PGETA', href: 'https://www.pgeta.in/' },
-      { label: 'Apuni Sarkar', href: 'https://eservices.uk.gov.in/' },
-    ],
-    assetFolder: 'work/ai-assistant',
-    images: [
-      {
-        path: '/work/ai-assistant/01-pgeta-assistant.webp',
-        label: 'PGETA assistant on landing',
-      },
-      {
-        path: '/work/ai-assistant/02-pgeta-chat.webp',
-        label: 'PGETA chat answers',
-      },
-      {
-        path: '/work/ai-assistant/03-apuni-sarkar-chatbot.webp',
-        label: 'Apuni Sarkar chatbot',
-      },
-    ],
-  },
-
-  {
-    id: 'chat-forge',
-    year: '2025',
-    title: 'Chat Forge',
-    tabLabel: 'Chat Forge',
-    role: 'Software Engineer',
-    period: '2025 → Present',
-    scope:
-      'Platform for building support agents trained on a site — crawl a URL, index pages, and keep replies grounded in those sources.',
-    tags: ['RAG', 'Agents', 'LLM'],
-    links: [{ label: 'Chat Forge', href: 'https://chatforge.prodioslabs.in/' }],
-    assetFolder: 'work/chat-forge',
-    images: [
-      {
-        path: '/work/chat-forge/01-landing-hero.webp',
-        label: 'Landing hero',
-      },
-      {
-        path: '/work/chat-forge/02-landing-features.webp',
-        label: 'Landing features',
-      },
-      {
-        path: '/work/chat-forge/03-agents-dashboard.webp',
-        label: 'Agents dashboard',
-      },
-      {
-        path: '/work/chat-forge/04-website-sources.webp',
-        label: 'Website sources and training',
-      },
-      {
-        path: '/work/chat-forge/05-actions.webp',
-        label: 'Agent actions',
-      },
-    ],
-  },
-  {
-    id: 'nhm',
-    year: '2023',
-    title: 'NHM Training Management',
-    tabLabel: 'NHM',
-    role: 'Software Engineer',
-    period: '2023',
-    scope:
-      'Enterprise training platform tracking 50K+ hours with automated validation and RBAC.',
-    tags: ['Enterprise', 'NestJS', 'RBAC'],
-    links: [{ label: 'Portal', href: 'https://tms.uk.gov.in/login' }],
-    assetFolder: 'work/nhm',
-    images: [
-      {
-        path: '/work/nhm/01-login.webp',
-        label: 'TMS login',
-      },
-      {
-        path: '/work/nhm/02-training-calendar.webp',
-        label: 'Training calendar',
       },
     ],
   },

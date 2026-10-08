@@ -6,14 +6,20 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  /* Portfolio tokens — Maciej structure on pure black */
-  --color-bone-white: #f2f2f3;
-  --color-slate-dark: #000000;
-  --color-graphite: hsl(180, 10%, 20%);
-  --color-fog: #858893;
-  --color-ash: #54565f;
-  --color-charcoal: #2a2a2a;
-  --color-indigo-dusk: #384270;
+  /* Portfolio tokens — oklch (Maciej structure on pure black) */
+  --color-bone-white: oklch(0.961 0.001 286.4);
+  /* Cool near-black canvas (maciej.co rgb(12,18,18)) + slate folders */
+  --color-slate-dark: oklch(0.169 0.006 196.5);
+  --color-graphite: oklch(0.336 0.015 196.5);
+  --color-fog: oklch(0.628 0.017 273.7);
+  --color-ash: oklch(0.455 0.015 275.8);
+  --color-charcoal: oklch(0.364 0.011 196.7);
+  --color-indigo-dusk: oklch(0.393 0.079 273);
+  --color-gallery-accent: oklch(0.745 0.137 290.3);
+  --color-surface-card: oklch(0.336 0.015 196.5);
+  --color-surface-card-hover: oklch(0.38 0.016 196.5);
+  --color-surface-hairline: oklch(0.24 0.01 196.5);
+  --color-surface-media: oklch(0.28 0.012 196.5);
   --font-replica-regular: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
   --font-replica-mono: 'Commit Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --font-display: 'Clash Display', 'Satoshi', ui-sans-serif, system-ui, sans-serif;
@@ -38,11 +44,7 @@
   --text-display: 120px;
   --leading-display: 1;
   --tracking-display: -0.014em;
-  --spacing-4: 4px;
-  --spacing-6: 6px;
-  --spacing-12: 12px;
-  --spacing-24: 24px;
-  --spacing-90: 90px;
+  --radius-images: 16px;
   --radius-2xl: 16px;
   --radius-3xl: 24px;
   --radius-full: 64px;
@@ -174,114 +176,24 @@
   @apply !text-muted-foreground;
 }
 
-/* ─── Black gallery portfolio (Maciej structure, pure black canvas) ─── */
+/* ─── Gallery portfolio (Maciej folder stack on black canvas) ─── */
 
 .portfolio {
-  /* Colors — Maciej roles; canvas is true black instead of slate */
-  --color-bone-white: #f2f2f3;
-  --color-slate-dark: #000000;
-  --color-graphite: hsl(180, 10%, 20%);
-  --color-fog: #858893;
-  --color-ash: #54565f;
-  --color-charcoal: #2a2a2a;
-  --color-indigo-dusk: #384270;
-
-  /* Fonts — Replica substitutes (Clash Display / Satoshi / Commit Mono) */
-  --font-replica-regular: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
-  --font-replica-mono: 'Commit Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  --font-display: 'Clash Display', var(--font-replica-regular);
-
-  /* Type scale */
-  --text-caption: 14px;
-  --leading-caption: 1.2;
-  --tracking-caption: -0.014em;
-  --text-body-sm: 16px;
-  --leading-body-sm: 1.2;
-  --tracking-body-sm: -0.014em;
-  --text-body: 20px;
-  --leading-body: 1.2;
-  --tracking-body: -0.014em;
-  --text-subheading: 24px;
-  --leading-subheading: 1.2;
-  --tracking-subheading: -0.014em;
-  --text-heading-sm: 28px;
-  --leading-heading-sm: 1.2;
-  --tracking-heading-sm: -0.014em;
-  --text-heading: 36px;
-  --leading-heading: 1.2;
-  --tracking-heading: -0.014em;
-  --text-display: 120px;
-  --leading-display: 1;
-  --tracking-display: -0.014em;
-  --font-weight-regular: 400;
-
-  /* Spacing / layout */
-  --spacing-unit: 4px;
-  --spacing-4: 4px;
-  --spacing-6: 6px;
-  --spacing-12: 12px;
-  --spacing-24: 24px;
-  --spacing-90: 90px;
-  --page-max-width: 100%;
-  --page-inline-pad: var(--spacing-24);
+  /* Surfaces alias theme tokens (oklch) for gallery CSS that can't be inlined */
+  --surface-canvas: var(--color-slate-dark);
+  --surface-card: var(--color-surface-card);
+  --surface-highlight: var(--color-indigo-dusk);
+  --surface-card-hover: var(--color-surface-card-hover);
+  --surface-hairline: var(--color-surface-hairline);
+  /* Named pixel spaces — keep off Tailwind's --spacing-* scale (p-4, gap-4, …) */
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-12: 12px;
+  --space-24: 24px;
+  --space-90: 90px;
+  --page-inline-pad: var(--space-24);
   --section-gap: 64px;
-  --card-padding: 24px;
-  --element-gap: 12px;
-
-  /* Radii */
-  --radius-2xl: 16px;
-  --radius-3xl: 24px;
-  --radius-full: 64px;
-  --radius-cards: 16px;
-  --radius-pills: 64px;
-  --radius-images: 16px;
-  --radius-buttons: 24px;
-
-  /* Surfaces — canvas stays black; cards match maciej.co dark folders */
-  --surface-canvas: #000000;
-  --surface-card: hsl(180, 10%, 20%);
-  --surface-highlight: #384270;
-  --surface-card-hover: hsl(180, 5%, 24%);
-  --surface-hairline: #1a1a1a;
-
-  /* Short aliases used by components */
-  --pf-bone: var(--color-bone-white);
-  --pf-canvas: var(--surface-canvas);
-  --pf-card: var(--surface-card);
-  --pf-card-hover: var(--surface-card-hover);
-  --pf-fog: var(--color-fog);
-  --pf-ash: var(--color-ash);
-  --pf-charcoal: var(--color-charcoal);
-  --pf-status: var(--color-indigo-dusk);
-  --pf-hairline: var(--surface-hairline);
-  --pf-display: var(--font-display);
-  --pf-sans: var(--font-replica-regular);
-  --pf-mono: var(--font-replica-mono);
-  --pf-max: var(--page-max-width);
-  --pf-pad: var(--spacing-24);
-  --pf-gap: var(--section-gap);
-  --pf-radius-card: var(--radius-cards);
-  --pf-radius-btn: var(--radius-buttons);
-  --pf-radius-pill: var(--radius-pills);
-  --pf-track: var(--tracking-body);
-
-  min-height: 100vh;
-  background: var(--surface-canvas);
-  color: var(--color-bone-white);
-  font-family: var(--font-replica-regular);
-  font-weight: var(--font-weight-regular);
-  font-size: var(--text-body);
-  letter-spacing: var(--tracking-body);
-  line-height: var(--leading-body);
-  -webkit-font-smoothing: antialiased;
-}
-
-.portfolio .pf-shell {
-  width: 100%;
-  max-width: none;
-  margin-inline: auto;
-  padding-inline: var(--page-inline-pad);
-  box-sizing: border-box;
+  --font-weight-regular: 400;
 }
 
 .portfolio .sr-only {
@@ -298,92 +210,12 @@
 
 
 /* Shared */
-.portfolio .pf-section-title {
-  margin: 0 0 var(--spacing-24);
-  font-family: var(--font-display);
-  font-size: var(--text-heading);
-  font-weight: var(--font-weight-regular);
-  letter-spacing: var(--tracking-heading);
-  line-height: var(--leading-heading);
-}
-
 .portfolio .pf-mono-label {
-  margin: 0 0 var(--spacing-6);
+  margin: 0 0 var(--space-6);
   font-family: var(--font-replica-mono);
   font-size: var(--text-caption);
   letter-spacing: var(--tracking-caption);
   line-height: var(--leading-caption);
-  color: var(--color-fog);
-}
-
-.portfolio .pf-text-link {
-  color: var(--color-fog);
-  font-size: var(--text-caption);
-  letter-spacing: var(--tracking-caption);
-  text-decoration: none;
-}
-
-.portfolio .pf-text-link:hover {
-  color: var(--color-bone-white);
-}
-
-.portfolio .pf-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--spacing-12) var(--spacing-24);
-  border-radius: var(--radius-buttons);
-  font-size: var(--text-caption);
-  letter-spacing: var(--tracking-caption);
-  line-height: var(--leading-caption);
-  text-decoration: none;
-  border: 0;
-  cursor: pointer;
-  font-family: inherit;
-  transition: background 160ms ease, border-color 160ms ease;
-}
-
-.portfolio .pf-btn-fill {
-  background: var(--surface-card);
-  color: var(--color-bone-white);
-}
-
-.portfolio .pf-btn-fill:hover {
-  background: var(--surface-card-hover);
-}
-
-.portfolio .pf-btn-ghost {
-  background: transparent;
-  color: var(--color-bone-white);
-  border: 1px solid var(--color-charcoal);
-}
-
-.portfolio .pf-btn-ghost:hover {
-  border-color: var(--color-fog);
-}
-
-.portfolio .pf-status-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-6);
-  padding: var(--spacing-6) var(--spacing-24);
-  border-radius: var(--radius-pills);
-  background: var(--surface-highlight);
-  color: var(--color-bone-white);
-  font-size: var(--text-caption);
-  letter-spacing: var(--tracking-caption);
-}
-
-.portfolio .pf-status-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: var(--radius-full);
-  background: color-mix(in srgb, var(--color-bone-white) 55%, var(--color-indigo-dusk));
-}
-
-.portfolio .pf-tag {
-  font-family: var(--font-replica-mono);
-  font-size: var(--text-caption);
   color: var(--color-fog);
 }
 
@@ -396,38 +228,41 @@
   overflow: hidden;
   border-radius: var(--radius-images);
   background: var(--surface-card);
-  border: 1px dashed color-mix(in srgb, var(--color-fog) 45%, transparent);
+  border: 1px dashed color-mix(in oklch, var(--color-fog) 45%, transparent);
   color: var(--color-fog);
   text-align: center;
-  padding: var(--spacing-24);
+  padding: var(--space-24);
 }
 
-/* Framed screenshot — dark matte fills the strip; image sits inset (maciej.co) */
+/* Screenshot nest — folder slate is the frame (no second well) */
 .portfolio .pf-media-slot.is-filled,
 .portfolio .pf-work-slot.is-filled {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  flex: 0 0 auto;
   width: auto;
-  height: 100%;
+  height: auto;
+  max-height: 100%;
   border: none;
-  padding: 16px;
-  background: hsl(180, 8%, 14%);
-  border-radius: var(--radius-images);
+  /* Thin gutter; top tighter so peeks show image, not empty pad */
+  padding: 6px 10px 10px;
+  background: var(--card-fill, var(--color-surface-card));
+  border-radius: 12px;
   overflow: hidden;
+  /* Ground bright UIs — inset, not floating stickers */
+  box-shadow: inset 0 0 0 1px oklch(0 0 0 / 0.28);
 }
 
 .portfolio .pf-media-slot.is-filled img,
 .portfolio .pf-work-slot.is-filled img {
   display: block;
-  height: 100%;
   width: auto;
-  max-width: none;
-  object-fit: contain;
-  object-position: center top;
-  border-radius: 10px;
-  background: #fff;
+  height: auto;
+  max-width: var(--work-max-width, none);
+  max-height: var(--work-image-height, 100%);
+  border-radius: 12px;
 }
 
 .portfolio .pf-media-slot-label {
@@ -438,116 +273,7 @@
   max-width: 36ch;
 }
 
-/* First screen — title + folders share one viewport (maciej.co) */
-.portfolio .pf-viewport {
-  display: flex;
-  flex-direction: column;
-  height: 100dvh;
-  min-height: 620px;
-  max-height: 100dvh;
-  overflow: clip;
-  box-sizing: border-box;
-}
-
-/* Identity strip — maciej.co top bar (4-col grid + Contact+ pill) */
-.portfolio .pf-identity {
-  position: relative;
-  flex: 0 0 auto;
-  padding: 0;
-}
-
-.portfolio .pf-identity-row {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  column-gap: var(--spacing-4);
-  align-items: center;
-  height: 60px;
-  padding-inline: var(--page-inline-pad);
-  padding-right: calc(var(--page-inline-pad) + 140px);
-  box-sizing: border-box;
-}
-
-.portfolio .pf-identity-row > * {
-  margin: 0;
-  font-family: var(--font-replica-regular);
-  font-size: var(--text-body);
-  font-weight: 500;
-  letter-spacing: var(--tracking-body);
-  line-height: 1.1;
-  color: color-mix(in srgb, var(--color-bone-white) 88%, transparent);
-  text-decoration: none;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.portfolio .pf-identity-name {
-  color: color-mix(in srgb, var(--color-bone-white) 88%, transparent);
-}
-
-.portfolio .pf-contact-pill {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 20;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  height: 40px;
-  padding: 0 12px 0 16px;
-  border-radius: var(--radius-cards);
-  background: color-mix(in srgb, var(--color-bone-white) 12%, transparent);
-  color: var(--color-bone-white);
-  border: 0;
-  font-family: var(--font-replica-regular);
-  font-size: var(--text-body-sm);
-  font-weight: 500;
-  letter-spacing: var(--tracking-body-sm);
-  text-decoration: none;
-  backdrop-filter: blur(12px) saturate(115%);
-  transition: color 160ms ease, background 160ms ease;
-}
-
-.portfolio .pf-contact-pill:hover {
-  color: #ac9cfc;
-  background: color-mix(in srgb, var(--color-bone-white) 16%, transparent);
-}
-
-.portfolio .pf-contact-pill svg {
-  width: 18px;
-  height: 18px;
-  fill: currentColor;
-}
-
-@media (max-width: 700px) {
-  .portfolio .pf-identity-row {
-    grid-template-columns: 1fr 1fr;
-    height: auto;
-    min-height: 48px;
-    row-gap: var(--spacing-6);
-    padding-block: var(--spacing-12);
-    padding-right: calc(var(--page-inline-pad) + 120px);
-  }
-
-  .portfolio .pf-identity-row > :nth-child(3),
-  .portfolio .pf-identity-row > :nth-child(4) {
-    display: none;
-  }
-
-  .portfolio .pf-identity-row > * {
-    font-size: var(--text-caption);
-  }
-}
-
-.portfolio .pf-open-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--element-gap);
-}
-
-/* Hero — I build things (vector SVG mask, maciej.co .build model) */
+/* Hero — I build things (vector SVG mask — cannot inline) */
 .portfolio .pf-hero {
   flex: 0 0 auto;
   margin-top: clamp(4px, 1dvh, 12px);
@@ -562,7 +288,7 @@
   aspect-ratio: var(--svg-w) / var(--svg-h);
   height: auto;
   min-height: 0;
-  background: #f2f2f3;
+  background: var(--color-bone-white);
   -webkit-mask-image: url('/hero/i-build-things.svg?v=2');
   mask-image: url('/hero/i-build-things.svg?v=2');
   -webkit-mask-repeat: no-repeat;
@@ -606,34 +332,6 @@
   flex-direction: column;
 }
 
-.portfolio .pf-work-head {
-  flex: 0 0 auto;
-  display: grid;
-  gap: var(--spacing-6);
-  margin-bottom: clamp(8px, 1.2dvh, 16px);
-}
-
-.portfolio .pf-work-head .pf-section-title {
-  margin: 0;
-  font-size: clamp(18px, 2vw, 28px);
-}
-
-@media (min-width: 900px) {
-  .portfolio .pf-work-head {
-    grid-template-columns: 1fr 1.2fr;
-    align-items: end;
-    column-gap: var(--spacing-24);
-  }
-}
-
-.portfolio .pf-work-lede {
-  margin: 0;
-  max-width: 48ch;
-  color: var(--color-fog);
-  font-size: clamp(14px, 1.5vw, var(--text-body-sm));
-  line-height: var(--leading-body-sm);
-}
-
 .portfolio .pf-gallery-wrap {
   position: relative;
   flex: 1 1 auto;
@@ -642,15 +340,11 @@
   margin-inline: 0;
 }
 
-.portfolio .pf-work > .pf-shell {
-  padding-inline: 0;
-}
-
 .portfolio .pf-gallery {
   --gallery-tab: 44px;
   --gallery-tab-mask: calc(var(--gallery-tab) * 2 / 3);
-  /* Folders fill remaining viewport under the title */
-  --gallery-origin: 0px;
+  /* Headroom so hover lift (-24px) doesn't clip tab labels under stage overflow */
+  --gallery-origin: 28px;
   --gallery-count: 6;
   --gallery-front: 0;
   --gallery-peek: max(
@@ -658,18 +352,20 @@
     calc((100% - var(--gallery-origin)) / var(--gallery-count))
   );
   --gallery-peek-offset: 0px;
-  /* Folder stack — exact maciej.co dark scheme tokens */
+  /* Folder stack — cool slate layers + 1px rim (maciej.co) */
   --gallery-l-step: 1.8%;
   --card-unfocused-h: 180;
   --card-unfocused-s: 10%;
   --card-unfocused-l: 20%;
   --card-edge-ink: white;
+  /* maciej.co --card-edge-mix: 10% */
   --card-edge-mix: 10%;
   --gallery-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --gallery-time: 350ms;
-  --gallery-pad: 16px;
+  /* maciej.co --pad: 20px — content uses pad*2 so screenshots sit below the peek band */
+  --gallery-pad: 20px;
   --gallery-gap: 4px;
-  --gallery-accent: #ac9cfc;
+  --gallery-accent: var(--color-gallery-accent);
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -684,14 +380,29 @@
   height: 100dvh;
   pointer-events: auto;
   --gallery-peek-offset: calc(min(1, var(--gallery-front)) * var(--gallery-tab));
-  background: color-mix(in srgb, var(--surface-canvas) 88%, black);
+  background: color-mix(in oklch, var(--surface-canvas) 88%, oklch(0 0 0));
 }
 
 .portfolio .pf-gallery-stage {
+  --gallery-perspective: 1400px;
   position: relative;
   height: 100%;
   overflow: hidden;
-  perspective: 1400px;
+  perspective: var(--gallery-perspective);
+  perspective-origin: 50% 50%;
+  transform-style: preserve-3d;
+}
+
+/*
+  Motion intro wraps each card. maciej.co mounts cards as direct stage children;
+  put perspective on the shell so rotateX still gets a real camera (preserve-3d
+  alone is not enough once Motion also writes transforms on this node).
+*/
+.portfolio .pf-gallery-card-shell {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  perspective: var(--gallery-perspective);
   perspective-origin: 50% 50%;
   transform-style: preserve-3d;
 }
@@ -718,9 +429,9 @@
     opacity 300ms var(--gallery-ease),
     transform 300ms var(--gallery-ease);
   box-shadow:
-    inset 0 0 1px 0.5px rgba(255, 255, 255, 0.2),
-    0 8px 32px rgba(0, 0, 0, 0.2),
-    0 2px 8px rgba(0, 0, 0, 0.15);
+    inset 0 0 1px 0.5px oklch(1 0 0 / 0.2),
+    0 8px 32px oklch(0 0 0 / 0.2),
+    0 2px 8px oklch(0 0 0 / 0.15);
 }
 
 .portfolio .pf-gallery-dismiss svg {
@@ -759,7 +470,7 @@
   width: 20px;
   height: 20px;
   border-radius: 5px;
-  background: color-mix(in srgb, var(--color-bone-white) 40%, transparent);
+  background: color-mix(in oklch, var(--color-bone-white) 40%, transparent);
   color: var(--surface-canvas);
   font-size: 11px;
 }
@@ -792,6 +503,7 @@
     var(--card-unfocused-s),
     calc(var(--card-unfocused-l) - var(--i) * var(--gallery-l-step))
   );
+  /* Lift toward lighter slate on hover (maciej.co), not purple wash */
   --card-hover: hsl(
     var(--card-unfocused-h),
     var(--card-unfocused-s),
@@ -809,7 +521,11 @@
   --le: calc(var(--gt-l) - var(--gt-ear));
   --re: var(--gt-r);
   --card-fill: var(--card-bg);
-  --card-edge: color-mix(in srgb, var(--card-fill), var(--card-edge-ink) var(--card-edge-mix));
+  --card-edge: color-mix(
+    in srgb,
+    var(--card-fill),
+    var(--card-edge-ink) var(--card-edge-mix)
+  );
   --gt-in: 0px;
   position: absolute;
   top: 0;
@@ -823,7 +539,11 @@
   background: var(--card-edge);
   transform-origin: top center;
   transform: translate3d(0, var(--gallery-y), 0) rotateX(-20deg);
-  transition: transform var(--gallery-time) var(--gallery-ease);
+  /* Rim + perspective carry depth — heavy drop-shadows muddied the edge */
+  filter: none;
+  transition:
+    transform var(--gallery-time) var(--gallery-ease),
+    filter var(--gallery-time) var(--gallery-ease);
   will-change: transform;
   pointer-events: none;
   outline: none;
@@ -864,7 +584,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: 0;
   pointer-events: none;
   --gt-in: 1px;
   background: var(--card-fill);
@@ -913,6 +633,8 @@
 }
 
 .portfolio .pf-gallery-tab {
+  position: relative;
+  z-index: 1;
   display: grid;
   flex: 0 0 var(--gallery-tab);
   width: 100%;
@@ -926,13 +648,18 @@
   display: flex;
   grid-column: calc(var(--gt-slot) + 1) / span 1;
   align-items: center;
+  justify-content: center;
   margin: 0;
   height: 100%;
   padding: 0 var(--gallery-gap);
-  font-family: var(--font-display);
-  font-size: clamp(13px, 1.4vw, 18px);
-  font-weight: 500;
-  letter-spacing: var(--tracking-caption);
+  /* maciej.co Die Grotesk 700 / 32px — Satoshi bold, centered in tab */
+  color: color-mix(in oklch, var(--color-bone-white) 88%, transparent);
+  font-family: var(--font-replica-regular);
+  font-size: clamp(18px, 2.2vw, 32px);
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -941,31 +668,39 @@
 
 .portfolio .pf-gallery-content {
   position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: row;
-  align-items: stretch;
+  align-items: center;
   flex: 1 1 auto;
   min-height: 0;
   width: 100%;
-  padding: var(--gallery-pad) 0
-    calc(var(--gallery-pad) + var(--gallery-peek-offset)) 0;
+  /* maciej.co pad*2 — peeks come from a closed-stack translate, not short padding */
+  padding: calc(var(--gallery-pad) * 2) 0
+    calc(var(--gallery-pad) * 2 + var(--gallery-peek-offset)) 0;
   overflow: hidden;
   container-type: size;
 }
 
+/*
+  Closed veil: light depth only — peeks stay readable. Folder framing
+  (slate well + inset) handles polish, not a luminance crush.
+*/
 .portfolio .pf-gallery-content::after {
   content: '';
   position: absolute;
   inset: 0;
+  z-index: 2;
   background: linear-gradient(
     0deg,
-    rgba(0, 0, 0, 0.62) 0%,
-    rgba(0, 0, 0, 0.4) 40%,
-    rgba(0, 0, 0, 0.12) 75%,
+    oklch(0 0 0 / 0.32) 0%,
+    oklch(0 0 0 / 0.16) 42%,
+    oklch(0 0 0 / 0.05) 78%,
     transparent 100%
   );
   opacity: 1;
   pointer-events: none;
+  will-change: opacity;
   transition: opacity var(--gallery-time) var(--gallery-ease);
 }
 
@@ -974,32 +709,56 @@
 }
 
 .portfolio .pf-work-images {
+  --work-max-width: min(90dvw, 1280px);
+  --work-image-height: min(
+    800px,
+    calc(var(--work-max-width) * 800 / 1280),
+    calc(100cqh - 2 * var(--gallery-pad))
+  );
   display: flex;
   flex-direction: row;
-  align-items: stretch;
+  align-items: center;
   align-self: stretch;
   flex: 0 0 auto;
+  height: 100%;
+  max-height: 100%;
   min-height: 0;
   min-width: max-content;
-  padding-inline: 16px;
-  gap: 16px;
+  padding-inline: var(--gallery-pad);
+  gap: var(--gallery-pad);
   transform: translateY(0);
-  transition: transform var(--gallery-time) var(--gallery-ease);
+  will-change: transform;
+  transition:
+    transform var(--gallery-time) var(--gallery-ease),
+    opacity var(--gallery-time) var(--gallery-ease);
+}
+
+/*
+  Closed stack: pull shots up so a strip peeks under each tab.
+  Hover lifts ~20px more (maciej.co).
+*/
+.portfolio .pf-gallery:not(.is-focused) .pf-work-images {
+  transform: translateY(calc(-1.5 * var(--gallery-pad)));
 }
 
 .portfolio .pf-gallery:not(.is-focused) .pf-gallery-card:hover .pf-work-images,
 .portfolio .pf-gallery:not(.is-focused) .pf-gallery-card:focus-visible .pf-work-images {
-  transform: translateY(-20px);
+  transform: translateY(calc(-1.5 * var(--gallery-pad) - 20px));
+}
+
+.portfolio .pf-gallery-card.is-active .pf-work-images {
+  transform: translateY(0);
 }
 
 .portfolio .pf-gallery-card.is-back .pf-work-images {
   transform: translateY(var(--gallery-tab));
 }
 
-/* Screenshot strip — full folder height, natural width inside frames */
+/* Screenshot strip — natural width, height capped by --work-image-height */
 .portfolio .pf-work-slot {
   flex: 0 0 auto;
-  height: 100%;
+  height: auto;
+  max-height: 100%;
   min-height: 0;
 }
 
@@ -1012,22 +771,22 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-self: stretch;
+  align-self: center;
   flex: 0 0 auto;
-  gap: var(--spacing-24);
-  width: min(280px, 70vw);
-  padding-left: var(--gallery-pad);
+  gap: var(--space-24);
+  width: min(440px, 70vw);
+  height: var(--work-image-height, auto);
   min-height: 0;
 }
 
 .portfolio .pf-work-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-6) var(--spacing-12);
+  gap: var(--space-6) var(--space-12);
   margin: 0;
   padding: 0;
   list-style: none;
-  color: color-mix(in srgb, var(--color-bone-white) 88%, transparent);
+  color: color-mix(in oklch, var(--color-bone-white) 88%, transparent);
   font-size: var(--text-body-sm);
   line-height: 1.35;
 }
@@ -1036,13 +795,13 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--spacing-12);
+  gap: var(--space-12);
 }
 
 .portfolio .pf-live-link {
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-6);
+  gap: var(--space-6);
   color: var(--color-bone-white);
   font-size: var(--text-body-sm);
   line-height: 1.35;
@@ -1060,8 +819,8 @@
 }
 
 .portfolio .pf-live-link:hover {
-  color: #ffffff;
-  text-decoration-color: #ffffff;
+  color: oklch(1 0 0);
+  text-decoration-color: oklch(1 0 0);
 }
 
 .portfolio .pf-live-link:focus-visible {
@@ -1070,11 +829,27 @@
 }
 
 @media (max-width: 700px) {
+  /* Closer camera = stronger forward lean on small screens (maciej.co) */
+  .portfolio .pf-gallery-stage {
+    --gallery-perspective: 800px;
+  }
+
+  /* Larger peek bands = easy taps, low misclicks (maciej.co ~68px) */
+  .portfolio .pf-gallery {
+    --gallery-tab: 52px;
+    --gallery-peek: max(
+      60px,
+      calc((100% - var(--gallery-origin)) / var(--gallery-count))
+    );
+  }
+
   .portfolio .pf-gallery-card {
     --gt-cols: 2;
     --gt-ear: 24px;
     --gt-slot: 0;
-    --gt-pad: 24px;
+    --gt-pad: 20px;
+    --gt-w: min(78%, calc(100% - var(--gt-pad) * 2));
+    --card-edge-mix: 14%;
   }
 
   .portfolio .pf-gallery-tab {
@@ -1088,229 +863,23 @@
     flex: 0 0 var(--gt-w);
     width: var(--gt-w);
     max-width: 100%;
+    justify-content: flex-start;
+    padding: 0 var(--space-12) 0 var(--space-4);
+    font-size: 22px;
+  }
+
+  /* Mobile closed stack stays clean — no colorful peeks on small peeks */
+  .portfolio .pf-gallery:not(.is-focused) .pf-work-images {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Open strip: screenshots span ~2 viewports; pan, don't page one-per-screen */
+  .portfolio .pf-work-images {
+    --work-max-width: 200dvw;
   }
 
   .portfolio .pf-work-info {
-    width: calc(100vw - (var(--gallery-pad) * 2));
+    width: calc(100dvw - (var(--gallery-pad) * 2) - 16px);
   }
-}
-
-/* About — Bpowell type wall, on the same black as the hero */
-.portfolio .pf-about {
-  background: #000000;
-  color: #f2f2f3;
-  padding: 4.5rem 1.5rem 5rem;
-  border-top: 1px solid #1a1a1a;
-}
-
-.portfolio .pf-about ::selection {
-  background: #f2f2f3;
-  color: #000000;
-}
-
-.portfolio .pf-about-name {
-  margin: 0;
-  color: #f2f2f3;
-  font-family: Zodiak, 'Iowan Old Style', Palatino, serif;
-  font-size: clamp(2.5rem, 11vw, 5.375rem);
-  font-weight: 400;
-  letter-spacing: -0.033em;
-  line-height: 0.96;
-}
-
-.portfolio .pf-about-name span {
-  display: block;
-}
-
-.portfolio .pf-about-copy {
-  display: grid;
-  gap: 1.15rem;
-  max-width: 32em;
-  margin-top: 3.5rem;
-  font-family: Satoshi, ui-sans-serif, system-ui, sans-serif;
-  font-size: clamp(1.25rem, 2vw, 1.625rem);
-  font-weight: 500;
-  letter-spacing: -0.017em;
-  line-height: 1.2;
-}
-
-.portfolio .pf-about-copy p {
-  margin: 0;
-  color: #f2f2f3;
-  text-wrap: pretty;
-}
-
-.portfolio .pf-about-mail {
-  width: fit-content;
-  margin-top: 0.35rem;
-  color: #f2f2f3;
-  font: inherit;
-  letter-spacing: inherit;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.18em;
-}
-
-.portfolio .pf-about-mail:hover {
-  text-decoration-thickness: 2px;
-}
-
-.portfolio .pf-about-mail:focus-visible {
-  outline: 2px solid #f2f2f3;
-  outline-offset: 4px;
-}
-
-@media (min-width: 700px) {
-  .portfolio .pf-about {
-    padding: 6.5rem 2.5rem;
-  }
-}
-
-/* Experience — Linear-inspired instrument rows */
-.portfolio .pf-experience {
-  margin-top: var(--section-gap);
-  padding-top: var(--section-gap);
-  border-top: 1px solid var(--surface-hairline);
-}
-
-.portfolio .pf-experience-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.portfolio .pf-experience-row {
-  display: grid;
-  grid-template-columns: 4.5rem 1fr;
-  grid-template-areas:
-    'year place'
-    'year role';
-  column-gap: var(--spacing-24);
-  row-gap: var(--spacing-4);
-  padding-block: var(--spacing-12);
-  border-top: 1px solid var(--surface-hairline);
-  transition: color 160ms ease;
-}
-
-.portfolio .pf-experience-row:last-child {
-  border-bottom: 1px solid var(--surface-hairline);
-}
-
-.portfolio .pf-experience-year {
-  grid-area: year;
-  font-family: var(--font-replica-mono);
-  font-size: var(--text-caption);
-  color: var(--color-fog);
-  align-self: start;
-  padding-top: 0.15em;
-}
-
-.portfolio .pf-experience-place {
-  grid-area: place;
-  font-family: var(--font-display);
-  font-size: var(--text-subheading);
-  letter-spacing: var(--tracking-subheading);
-  color: var(--color-bone-white);
-}
-
-.portfolio .pf-experience-role {
-  grid-area: role;
-  color: var(--color-fog);
-  font-size: var(--text-caption);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .portfolio .pf-experience-row:hover .pf-experience-place {
-    color: color-mix(in srgb, var(--color-bone-white) 88%, var(--color-fog));
-  }
-
-  .portfolio .pf-experience-row:hover .pf-experience-year,
-  .portfolio .pf-experience-row:hover .pf-experience-role {
-    color: color-mix(in srgb, var(--color-fog) 70%, var(--color-bone-white));
-  }
-}
-
-@media (min-width: 700px) {
-  .portfolio .pf-experience-row {
-    grid-template-columns: 4.5rem 1fr auto;
-    grid-template-areas: 'year place role';
-    align-items: baseline;
-    padding-block: 14px;
-  }
-
-  .portfolio .pf-experience-role {
-    text-align: right;
-  }
-}
-
-/* Case studies */
-.portfolio .pf-cases {
-  margin-top: var(--section-gap);
-}
-
-.portfolio .pf-case {
-  padding: var(--section-gap) 0;
-  border-top: 1px solid var(--surface-hairline);
-}
-
-.portfolio .pf-case-title {
-  margin: 0 0 var(--spacing-24);
-  font-family: var(--font-display);
-  font-size: var(--text-heading);
-  font-weight: var(--font-weight-regular);
-  letter-spacing: var(--tracking-heading);
-  line-height: var(--leading-heading);
-}
-
-.portfolio .pf-case-meta {
-  display: grid;
-  gap: var(--spacing-24);
-  margin-top: var(--spacing-24);
-}
-
-.portfolio .pf-case-scope {
-  margin: 0;
-  max-width: 52ch;
-  color: var(--color-fog);
-}
-
-.portfolio .pf-case-facts {
-  display: grid;
-  gap: var(--spacing-24);
-}
-
-.portfolio .pf-case-facts p {
-  margin: 0;
-}
-
-.portfolio .pf-case-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-12);
-}
-
-@media (min-width: 800px) {
-  .portfolio .pf-case-meta {
-    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  }
-}
-
-/* Footer */
-.portfolio .pf-footer {
-  border-top: 1px solid var(--surface-hairline);
-  padding: var(--spacing-24) 0 var(--spacing-90);
-}
-
-.portfolio .pf-footer-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing-12);
-}
-
-.portfolio .pf-footer-copy {
-  margin: 0;
-  color: var(--color-ash);
-  font-size: var(--text-caption);
 }
