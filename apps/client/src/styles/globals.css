@@ -239,9 +239,9 @@
 
   /* Surfaces — canvas stays black; cards match maciej.co dark folders */
   --surface-canvas: #000000;
-  --surface-card: hsl(180, 10%, 20%);
+  --surface-card: #181818;
   --surface-highlight: #384270;
-  --surface-card-hover: hsl(180, 5%, 24%);
+  --surface-card-hover: #222222;
   --surface-hairline: #1a1a1a;
 
   /* Short aliases used by components */
@@ -413,7 +413,7 @@
   height: 100%;
   border: none;
   padding: 16px;
-  background: hsl(180, 8%, 14%);
+  background: #141414;
   border-radius: var(--radius-images);
   overflow: hidden;
 }
@@ -658,13 +658,13 @@
     calc((100% - var(--gallery-origin)) / var(--gallery-count))
   );
   --gallery-peek-offset: 0px;
-  /* Folder stack — exact maciej.co dark scheme tokens */
-  --gallery-l-step: 1.8%;
-  --card-unfocused-h: 180;
-  --card-unfocused-s: 10%;
-  --card-unfocused-l: 20%;
+  /* Folder stack — charcoal layers + hairline edge (maciej.co) */
+  --gallery-l-step: 1.6%;
+  --card-unfocused-h: 0;
+  --card-unfocused-s: 0%;
+  --card-unfocused-l: 13%;
   --card-edge-ink: white;
-  --card-edge-mix: 10%;
+  --card-edge-mix: 15%;
   --gallery-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --gallery-time: 350ms;
   --gallery-pad: 16px;
@@ -792,11 +792,8 @@
     var(--card-unfocused-s),
     calc(var(--card-unfocused-l) - var(--i) * var(--gallery-l-step))
   );
-  --card-hover: hsl(
-    var(--card-unfocused-h),
-    var(--card-unfocused-s),
-    calc(var(--card-unfocused-l) - (var(--i) - 4) * var(--gallery-l-step))
-  );
+  /* Solid mix — nested hsl()/calc in color-mix fails to paint in Chromium */
+  --card-hover: color-mix(in srgb, var(--gallery-accent) 78%, #141414);
   --gt-pad: 48px;
   --gt-cols: var(--gallery-count);
   --gt-w: calc((100% - var(--gt-pad) * 2) / var(--gt-cols));
@@ -820,10 +817,16 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  isolation: isolate;
   background: var(--card-edge);
   transform-origin: top center;
   transform: translate3d(0, var(--gallery-y), 0) rotateX(-20deg);
-  transition: transform var(--gallery-time) var(--gallery-ease);
+  filter:
+    drop-shadow(0 10px 28px rgba(0, 0, 0, 0.55))
+    drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
+  transition:
+    transform var(--gallery-time) var(--gallery-ease),
+    filter var(--gallery-time) var(--gallery-ease);
   will-change: transform;
   pointer-events: none;
   outline: none;
@@ -864,7 +867,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: 0;
   pointer-events: none;
   --gt-in: 1px;
   background: var(--card-fill);
@@ -875,6 +878,10 @@
 .portfolio .pf-gallery:not(.is-focused) .pf-gallery-card:focus-visible {
   transform: translate3d(0, calc(var(--gallery-y) - 24px), 0) rotateX(-16deg);
   --card-fill: var(--card-hover);
+  --card-edge-mix: 22%;
+  filter:
+    drop-shadow(0 16px 36px rgba(0, 0, 0, 0.6))
+    drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
 }
 
 .portfolio .pf-gallery.is-focused .pf-gallery-card {
@@ -913,6 +920,8 @@
 }
 
 .portfolio .pf-gallery-tab {
+  position: relative;
+  z-index: 1;
   display: grid;
   flex: 0 0 var(--gallery-tab);
   width: 100%;
@@ -926,9 +935,11 @@
   display: flex;
   grid-column: calc(var(--gt-slot) + 1) / span 1;
   align-items: center;
+  justify-content: center;
   margin: 0;
   height: 100%;
-  padding: 0 var(--gallery-gap);
+  padding: 2px var(--gallery-gap) 0;
+  color: var(--color-bone-white);
   font-family: var(--font-display);
   font-size: clamp(13px, 1.4vw, 18px);
   font-weight: 500;
@@ -941,6 +952,7 @@
 
 .portfolio .pf-gallery-content {
   position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -957,11 +969,12 @@
   content: '';
   position: absolute;
   inset: 0;
+  z-index: 2;
   background: linear-gradient(
     0deg,
-    rgba(0, 0, 0, 0.62) 0%,
-    rgba(0, 0, 0, 0.4) 40%,
-    rgba(0, 0, 0, 0.12) 75%,
+    rgba(0, 0, 0, 0.38) 0%,
+    rgba(0, 0, 0, 0.22) 42%,
+    rgba(0, 0, 0, 0.06) 78%,
     transparent 100%
   );
   opacity: 1;
@@ -1110,7 +1123,7 @@
 
 .portfolio .pf-about-inner {
   display: grid;
-  gap: var(--spacing-24);
+  gap: var(--section-gap);
 }
 
 .portfolio .pf-about-name {
@@ -1185,6 +1198,7 @@
   .portfolio .pf-about-inner {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
     column-gap: var(--spacing-90);
+    row-gap: var(--spacing-24);
     align-items: start;
   }
 
@@ -1241,10 +1255,10 @@
 .portfolio .pf-experience-place {
   grid-area: place;
   font-family: var(--font-display);
-  font-size: var(--text-heading-sm);
+  font-size: var(--text-subheading);
   font-weight: var(--font-weight-regular);
-  letter-spacing: var(--tracking-heading-sm);
-  line-height: var(--leading-heading-sm);
+  letter-spacing: var(--tracking-subheading);
+  line-height: var(--leading-subheading);
   color: var(--color-bone-white);
 }
 
