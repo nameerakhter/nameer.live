@@ -345,11 +345,11 @@
   --gallery-tab-mask: calc(var(--gallery-tab) * 2 / 3);
   /* Headroom so hover lift (-24px) doesn't clip tab labels under stage overflow */
   --gallery-origin: 28px;
-  --gallery-count: 6;
+  --gallery-count: 7;
   --gallery-front: 0;
-  --gallery-peek: max(
-    var(--gallery-tab),
-    calc((100% - var(--gallery-origin)) / var(--gallery-count))
+  /* Always divide available height so every folder tab stays on-stage */
+  --gallery-peek: calc(
+    (100% - var(--gallery-origin)) / var(--gallery-count)
   );
   --gallery-peek-offset: 0px;
   /* Folder stack — cool slate layers + 1px rim (maciej.co) */
@@ -834,37 +834,52 @@
     --gallery-perspective: 800px;
   }
 
-  /* Larger peek bands = easy taps, low misclicks (maciej.co ~68px) */
+  /*
+    maciej.co ≤700px: left-aligned half-width tabs, same curved clip-path.
+    Pad must stay ≥ ear so --le stays positive — otherwise left ears clip
+    past the card edge and stack into the broken cascade.
+  */
   .portfolio .pf-gallery {
-    --gallery-tab: 52px;
-    --gallery-peek: max(
-      60px,
-      calc((100% - var(--gallery-origin)) / var(--gallery-count))
+    --gallery-tab: 44px;
+    --gallery-tab-mask: 29px;
+    --gallery-origin: 12px;
+    /* Fit every folder (incl. Research); never floor peek above available height */
+    --gallery-peek: calc(
+      (100% - var(--gallery-origin)) / var(--gallery-count)
     );
   }
 
   .portfolio .pf-gallery-card {
     --gt-cols: 2;
-    --gt-ear: 24px;
+    --gt-ear: 29px;
     --gt-slot: 0;
-    --gt-pad: 20px;
-    --gt-w: min(78%, calc(100% - var(--gt-pad) * 2));
-    --card-edge-mix: 14%;
+    --gt-pad: 48px;
+    /*
+      Clip-path tab width on the card (100% = card).
+      Slightly wider than maciej's half so longer labels fit.
+    */
+    --gt-w: calc((100% - var(--gt-pad) * 2) * 2 / 3);
   }
 
   .portfolio .pf-gallery-tab {
     display: flex;
     justify-content: flex-start;
     grid-template-columns: none;
+    padding: 0 var(--gt-pad);
   }
 
   .portfolio .pf-gallery-tab h3 {
     grid-column: auto;
-    flex: 0 0 var(--gt-w);
-    width: var(--gt-w);
+    /*
+      Do NOT use var(--gt-w) here — its 100% would resolve against the
+      padded tab content box and shrink labels (~100px) while the clip
+      tab stays ~164px. 2/3 of the tab content box matches the clip.
+    */
+    flex: 0 0 calc(100% * 2 / 3);
+    width: calc(100% * 2 / 3);
     max-width: 100%;
-    justify-content: flex-start;
-    padding: 0 var(--space-12) 0 var(--space-4);
+    justify-content: center;
+    padding: 0 var(--gallery-gap);
     font-size: 22px;
   }
 
