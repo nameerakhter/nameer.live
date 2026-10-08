@@ -80,10 +80,7 @@ export function WorkGallery() {
     const maxScroll = el.scrollWidth - el.clientWidth
     if (maxScroll <= 1) return false
 
-    const isMobile = window.matchMedia('(max-width: 700px)').matches
-    const step = isMobile
-      ? el.clientWidth
-      : Math.max(280, Math.round(el.clientWidth * 0.72))
+    const step = Math.max(280, Math.round(el.clientWidth * 0.72))
     const before = el.scrollLeft
     el.scrollLeft = Math.max(
       0,
@@ -304,36 +301,7 @@ function GalleryCard({
         </div>
 
         <article ref={contentRef} className="pf-gallery-content">
-          <aside className="pf-work-info">
-            <div>
-              <p className="pf-mono-label">Stack</p>
-              <ul className="pf-work-tags">
-                {study.tags.map((tag) => (
-                  <li key={tag}>{tag}</li>
-                ))}
-              </ul>
-            </div>
-            {study.links.length > 0 ? (
-              <div>
-                <p className="pf-mono-label">Live</p>
-                <div className="pf-case-links">
-                  {study.links.map((link) => (
-                    <a
-                      key={link.href}
-                      href={link.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="pf-live-link"
-                    >
-                      {link.label}
-                      <span aria-hidden>↗</span>
-                    </a>
-                  ))}
-                </div>
-              </div>
-            ) : null}
-          </aside>
-
+          {/* maciej.co: screenshots then Stack/Live in one strip */}
           <div className="pf-work-images">
             {study.images.map((image) => (
               <MediaSlot
@@ -343,6 +311,36 @@ function GalleryCard({
                 className="pf-work-slot"
               />
             ))}
+
+            <aside className="pf-work-info">
+              <div>
+                <p className="pf-mono-label">Stack</p>
+                <ul className="pf-work-tags">
+                  {study.tags.map((tag) => (
+                    <li key={tag}>{tag}</li>
+                  ))}
+                </ul>
+              </div>
+              {study.links.length > 0 ? (
+                <div>
+                  <p className="pf-mono-label">Live</p>
+                  <div className="pf-case-links">
+                    {study.links.map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="pf-live-link"
+                      >
+                        {link.label}
+                        <span aria-hidden>↗</span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+            </aside>
           </div>
         </article>
       </section>
