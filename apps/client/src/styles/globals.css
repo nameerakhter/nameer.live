@@ -859,7 +859,6 @@
       Slightly wider than maciej's half so longer labels fit.
     */
     --gt-w: calc((100% - var(--gt-pad) * 2) * 2 / 3);
-    --card-edge-mix: 14%;
   }
 
   .portfolio .pf-gallery-tab {
