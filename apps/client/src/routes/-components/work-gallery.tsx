@@ -4,8 +4,10 @@ import {
   type CSSProperties,
   type KeyboardEvent,
 } from 'react'
+import { motion, useReducedMotion } from 'motion/react'
 
 import { useMountEffect } from '@/hooks/use-mount-effect'
+import { introCardTransition, introChromeTransition } from '@/lib/portfolio-motion'
 
 import MediaSlot from './media-slot'
 import { CASE_STUDIES, type CaseStudy } from './portfolio-data'
@@ -32,6 +34,7 @@ export function WorkGallery() {
   const [mode, setMode] = useState<GalleryMode>('stack')
   const [activeId, setActiveId] = useState<string | null>(null)
   const galleryRef = useRef<HTMLDivElement>(null)
+  const reduce = useReducedMotion()
 
   const activeListIndex =
     activeId === null
@@ -77,7 +80,10 @@ export function WorkGallery() {
     const maxScroll = el.scrollWidth - el.clientWidth
     if (maxScroll <= 1) return false
 
-    const step = Math.max(280, Math.round(el.clientWidth * 0.72))
+    const isMobile = window.matchMedia('(max-width: 700px)').matches
+    const step = isMobile
+      ? el.clientWidth
+      : Math.max(280, Math.round(el.clientWidth * 0.72))
     const before = el.scrollLeft
     el.scrollLeft = Math.max(
       0,
@@ -116,17 +122,27 @@ export function WorkGallery() {
 
   return (
     <section id="work" className="pf-work">
-      <div className="pf-shell">
-        <div className="pf-work-head">
-          <h2 className="pf-section-title">Projects ↓</h2>
-          <p className="pf-work-lede">
+      <div className="box-border w-full">
+        <motion.div
+          className="mb-[clamp(8px,1.2dvh,16px)] grid gap-1.5 min-[900px]:grid-cols-[1fr_1.2fr] min-[900px]:items-end min-[900px]:gap-x-6"
+          initial={reduce ? false : { opacity: 0, filter: 'blur(4px)' }}
+          animate={{ opacity: 1, filter: 'blur(0px)' }}
+          transition={introChromeTransition}
+        >
+          <h2 className="m-0 font-display text-[clamp(18px,2vw,28px)] font-normal tracking-heading leading-heading text-bone-white">
+            Projects ↓
+          </h2>
+          <p className="m-0 max-w-[48ch] font-replica-regular text-[clamp(14px,1.5vw,var(--text-body-sm))] leading-body-sm text-fog">
             I ship production backends, AI workflows, and full-stack platforms —
             civic portals, payment rails, and assistants used at scale.{' '}
-            <a href="#about" className="pf-text-link">
+            <a
+              href="#about"
+              className="text-caption tracking-caption text-fog no-underline hover:text-bone-white"
+            >
               Learn more
             </a>
           </p>
-        </div>
+        </motion.div>
       </div>
 
       <div className="pf-gallery-wrap">
@@ -182,10 +198,12 @@ export function WorkGallery() {
                   key={study.id}
                   study={study}
                   layer={layer}
+                  count={count}
                   isActive={isActive}
                   isFront={isFront}
                   isBack={isBack}
                   galleryY={y}
+                  reduceMotion={Boolean(reduce)}
                   onOpen={() => openStudy(study.id)}
                 />
               )
@@ -200,18 +218,22 @@ export function WorkGallery() {
 function GalleryCard({
   study,
   layer,
+  count,
   isActive,
   isFront,
   isBack,
   galleryY,
+  reduceMotion,
   onOpen,
 }: {
   study: CaseStudy
   layer: number
+  count: number
   isActive: boolean
   isFront: boolean
   isBack: boolean
   galleryY: string | undefined
+  reduceMotion: boolean
   onOpen: () => void
 }) {
   const contentRef = useRef<HTMLElement>(null)
@@ -243,77 +265,87 @@ function GalleryCard({
   })
 
   return (
-    <section
-      id={study.id}
-      className={className}
-      style={
-        {
-          '--i': layer,
-          ...(galleryY ? { '--gallery-y': galleryY } : {}),
-        } as CSSProperties
+    <motion.div
+      className="pointer-events-none absolute inset-0"
+      style={{ zIndex: count - layer }}
+      initial={
+        reduceMotion ? false : { opacity: 0, y: '50vh', scale: 1.1 }
       }
-      tabIndex={isActive ? -1 : 0}
-      aria-label={study.tabLabel ?? study.title}
-      aria-current={isActive ? 'true' : 'false'}
-      onClick={(event) => {
-        const target = event.target as HTMLElement
-        if (target.closest('a')) return
-        if (!isActive) onOpen()
-      }}
-      onKeyDown={(event) => {
-        if (isActive) return
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault()
-          onOpen()
-        }
-      }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={introCardTransition(layer, count)}
     >
-      <div className="pf-gallery-tab">
-        <h3>{study.tabLabel ?? study.title}</h3>
-      </div>
-
-      <article ref={contentRef} className="pf-gallery-content">
-        <aside className="pf-work-info">
-          <div>
-            <p className="pf-mono-label">Stack</p>
-            <ul className="pf-work-tags">
-              {study.tags.map((tag) => (
-                <li key={tag}>{tag}</li>
-              ))}
-            </ul>
-          </div>
-          {study.links.length > 0 ? (
-            <div>
-              <p className="pf-mono-label">Live</p>
-              <div className="pf-case-links">
-                {study.links.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="pf-live-link"
-                  >
-                    {link.label}
-                    <span aria-hidden>↗</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          ) : null}
-        </aside>
-
-        <div className="pf-work-images">
-          {study.images.map((image) => (
-            <MediaSlot
-              key={image.path}
-              src={image.path}
-              label={image.label}
-              className="pf-work-slot"
-            />
-          ))}
+      <section
+        id={study.id}
+        className={className}
+        style={
+          {
+            '--i': layer,
+            ...(galleryY ? { '--gallery-y': galleryY } : {}),
+          } as CSSProperties
+        }
+        tabIndex={isActive ? -1 : 0}
+        aria-label={study.tabLabel ?? study.title}
+        aria-current={isActive ? 'true' : 'false'}
+        onClick={(event) => {
+          const target = event.target as HTMLElement
+          if (target.closest('a')) return
+          if (!isActive) onOpen()
+        }}
+        onKeyDown={(event) => {
+          if (isActive) return
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault()
+            onOpen()
+          }
+        }}
+      >
+        <div className="pf-gallery-tab">
+          <h3>{study.tabLabel ?? study.title}</h3>
         </div>
-      </article>
-    </section>
+
+        <article ref={contentRef} className="pf-gallery-content">
+          <aside className="pf-work-info">
+            <div>
+              <p className="pf-mono-label">Stack</p>
+              <ul className="pf-work-tags">
+                {study.tags.map((tag) => (
+                  <li key={tag}>{tag}</li>
+                ))}
+              </ul>
+            </div>
+            {study.links.length > 0 ? (
+              <div>
+                <p className="pf-mono-label">Live</p>
+                <div className="pf-case-links">
+                  {study.links.map((link) => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="pf-live-link"
+                    >
+                      {link.label}
+                      <span aria-hidden>↗</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+          </aside>
+
+          <div className="pf-work-images">
+            {study.images.map((image) => (
+              <MediaSlot
+                key={image.path}
+                src={image.path}
+                label={image.label}
+                className="pf-work-slot"
+              />
+            ))}
+          </div>
+        </article>
+      </section>
+    </motion.div>
   )
 }
