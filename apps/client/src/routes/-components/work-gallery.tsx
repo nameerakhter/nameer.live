@@ -263,8 +263,8 @@ function GalleryCard({
 
   return (
     <motion.div
-      className="pointer-events-none absolute inset-0"
-      style={{ zIndex: count - layer }}
+      className="pf-gallery-card-shell"
+      style={{ zIndex: count - layer, transformStyle: 'preserve-3d' }}
       initial={
         reduceMotion ? false : { opacity: 0, y: '50vh', scale: 1.1 }
       }

@@ -44,11 +44,6 @@
   --text-display: 120px;
   --leading-display: 1;
   --tracking-display: -0.014em;
-  --spacing-4: 4px;
-  --spacing-6: 6px;
-  --spacing-12: 12px;
-  --spacing-24: 24px;
-  --spacing-90: 90px;
   --radius-images: 16px;
   --radius-2xl: 16px;
   --radius-3xl: 24px;
@@ -190,7 +185,13 @@
   --surface-highlight: var(--color-indigo-dusk);
   --surface-card-hover: var(--color-surface-card-hover);
   --surface-hairline: var(--color-surface-hairline);
-  --page-inline-pad: var(--spacing-24);
+  /* Named pixel spaces — keep off Tailwind's --spacing-* scale (p-4, gap-4, …) */
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-12: 12px;
+  --space-24: 24px;
+  --space-90: 90px;
+  --page-inline-pad: var(--space-24);
   --section-gap: 64px;
   --font-weight-regular: 400;
 }
@@ -210,7 +211,7 @@
 
 /* Shared */
 .portfolio .pf-mono-label {
-  margin: 0 0 var(--spacing-6);
+  margin: 0 0 var(--space-6);
   font-family: var(--font-replica-mono);
   font-size: var(--text-caption);
   letter-spacing: var(--tracking-caption);
@@ -230,7 +231,7 @@
   border: 1px dashed color-mix(in oklch, var(--color-fog) 45%, transparent);
   color: var(--color-fog);
   text-align: center;
-  padding: var(--spacing-24);
+  padding: var(--space-24);
 }
 
 /* Framed screenshot — natural aspect, height-capped (no forced ratio) */
@@ -339,8 +340,8 @@
 .portfolio .pf-gallery {
   --gallery-tab: 44px;
   --gallery-tab-mask: calc(var(--gallery-tab) * 2 / 3);
-  /* Folders fill remaining viewport under the title */
-  --gallery-origin: 0px;
+  /* Headroom so hover lift (-24px) doesn't clip tab labels under stage overflow */
+  --gallery-origin: 28px;
   --gallery-count: 6;
   --gallery-front: 0;
   --gallery-peek: max(
@@ -379,10 +380,25 @@
 }
 
 .portfolio .pf-gallery-stage {
+  --gallery-perspective: 1400px;
   position: relative;
   height: 100%;
   overflow: hidden;
-  perspective: 1400px;
+  perspective: var(--gallery-perspective);
+  perspective-origin: 50% 50%;
+  transform-style: preserve-3d;
+}
+
+/*
+  Motion intro wraps each card. maciej.co mounts cards as direct stage children;
+  put perspective on the shell so rotateX still gets a real camera (preserve-3d
+  alone is not enough once Motion also writes transforms on this node).
+*/
+.portfolio .pf-gallery-card-shell {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  perspective: var(--gallery-perspective);
   perspective-origin: 50% 50%;
   transform-style: preserve-3d;
 }
@@ -516,7 +532,6 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  isolation: isolate;
   background: var(--card-edge);
   transform-origin: top center;
   transform: translate3d(0, var(--gallery-y), 0) rotateX(-20deg);
@@ -734,7 +749,7 @@
   justify-content: center;
   align-self: center;
   flex: 0 0 auto;
-  gap: var(--spacing-24);
+  gap: var(--space-24);
   width: min(440px, 70vw);
   height: var(--work-image-height, auto);
   min-height: 0;
@@ -743,7 +758,7 @@
 .portfolio .pf-work-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-6) var(--spacing-12);
+  gap: var(--space-6) var(--space-12);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -756,13 +771,13 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--spacing-12);
+  gap: var(--space-12);
 }
 
 .portfolio .pf-live-link {
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-6);
+  gap: var(--space-6);
   color: var(--color-bone-white);
   font-size: var(--text-body-sm);
   line-height: 1.35;
@@ -790,6 +805,11 @@
 }
 
 @media (max-width: 700px) {
+  /* Closer camera = stronger forward lean on small screens (maciej.co) */
+  .portfolio .pf-gallery-stage {
+    --gallery-perspective: 800px;
+  }
+
   /* Larger peek bands = easy taps, low misclicks (maciej.co ~68px) */
   .portfolio .pf-gallery {
     --gallery-tab: 52px;
@@ -820,7 +840,7 @@
     width: var(--gt-w);
     max-width: 100%;
     justify-content: flex-start;
-    padding: 0 var(--spacing-12) 0 var(--spacing-4);
+    padding: 0 var(--space-12) 0 var(--space-4);
     font-size: 22px;
   }
 
