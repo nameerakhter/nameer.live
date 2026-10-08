@@ -1095,27 +1095,32 @@
   }
 }
 
-/* About — Bpowell type wall, on the same black as the hero */
+/* About — display name + body prose, same type system as the rest */
 .portfolio .pf-about {
-  background: #000000;
-  color: #f2f2f3;
-  padding: 4.5rem 1.5rem 5rem;
-  border-top: 1px solid #1a1a1a;
+  background: var(--surface-canvas);
+  color: var(--color-bone-white);
+  padding-block: var(--section-gap);
+  border-top: 1px solid var(--surface-hairline);
 }
 
 .portfolio .pf-about ::selection {
-  background: #f2f2f3;
-  color: #000000;
+  background: var(--color-bone-white);
+  color: var(--surface-canvas);
+}
+
+.portfolio .pf-about-inner {
+  display: grid;
+  gap: var(--spacing-24);
 }
 
 .portfolio .pf-about-name {
   margin: 0;
-  color: #f2f2f3;
-  font-family: Zodiak, 'Iowan Old Style', Palatino, serif;
-  font-size: clamp(2.5rem, 11vw, 5.375rem);
-  font-weight: 400;
-  letter-spacing: -0.033em;
-  line-height: 0.96;
+  color: var(--color-bone-white);
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 9vw, 5rem);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--tracking-display);
+  line-height: 0.98;
 }
 
 .portfolio .pf-about-name span {
@@ -1124,53 +1129,78 @@
 
 .portfolio .pf-about-copy {
   display: grid;
-  gap: 1.15rem;
-  max-width: 32em;
-  margin-top: 3.5rem;
-  font-family: Satoshi, ui-sans-serif, system-ui, sans-serif;
-  font-size: clamp(1.25rem, 2vw, 1.625rem);
-  font-weight: 500;
-  letter-spacing: -0.017em;
-  line-height: 1.2;
+  gap: var(--spacing-12);
+  max-width: 52ch;
+  align-content: start;
+  font-family: var(--font-replica-regular);
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--tracking-body);
+  line-height: 1.35;
 }
 
 .portfolio .pf-about-copy p {
   margin: 0;
-  color: #f2f2f3;
+  color: var(--color-bone-white);
   text-wrap: pretty;
 }
 
 .portfolio .pf-about-mail {
   width: fit-content;
-  margin-top: 0.35rem;
-  color: #f2f2f3;
-  font: inherit;
-  letter-spacing: inherit;
+  margin-top: var(--spacing-12);
+  color: var(--color-fog);
+  font-family: var(--font-replica-regular);
+  font-size: var(--text-body-sm);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--tracking-body-sm);
+  line-height: var(--leading-body-sm);
   text-decoration: underline;
   text-decoration-thickness: 1px;
-  text-underline-offset: 0.18em;
+  text-underline-offset: 0.22em;
+  text-decoration-color: color-mix(
+    in srgb,
+    var(--color-fog) 55%,
+    transparent
+  );
+  transition:
+    color 160ms ease,
+    text-decoration-color 160ms ease;
 }
 
 .portfolio .pf-about-mail:hover {
-  text-decoration-thickness: 2px;
+  color: var(--color-bone-white);
+  text-decoration-color: var(--color-bone-white);
 }
 
 .portfolio .pf-about-mail:focus-visible {
-  outline: 2px solid #f2f2f3;
+  outline: 2px solid var(--color-bone-white);
   outline-offset: 4px;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 900px) {
   .portfolio .pf-about {
-    padding: 6.5rem 2.5rem;
+    padding-block: calc(var(--section-gap) + var(--spacing-24));
+  }
+
+  .portfolio .pf-about-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    column-gap: var(--spacing-90);
+    align-items: start;
+  }
+
+  .portfolio .pf-about-copy {
+    padding-top: 0.35em;
   }
 }
 
-/* Experience — Linear-inspired instrument rows */
+/* Experience — year (mono) → place (display) → role (body) */
 .portfolio .pf-experience {
-  margin-top: var(--section-gap);
-  padding-top: var(--section-gap);
+  padding-block: var(--section-gap);
   border-top: 1px solid var(--surface-hairline);
+}
+
+.portfolio .pf-experience .pf-section-title {
+  margin-bottom: var(--spacing-12);
 }
 
 .portfolio .pf-experience-list {
@@ -1200,23 +1230,32 @@
   grid-area: year;
   font-family: var(--font-replica-mono);
   font-size: var(--text-caption);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--tracking-caption);
+  line-height: var(--leading-caption);
   color: var(--color-fog);
   align-self: start;
-  padding-top: 0.15em;
+  padding-top: 0.35em;
 }
 
 .portfolio .pf-experience-place {
   grid-area: place;
   font-family: var(--font-display);
-  font-size: var(--text-subheading);
-  letter-spacing: var(--tracking-subheading);
+  font-size: var(--text-heading-sm);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--tracking-heading-sm);
+  line-height: var(--leading-heading-sm);
   color: var(--color-bone-white);
 }
 
 .portfolio .pf-experience-role {
   grid-area: role;
+  font-family: var(--font-replica-regular);
+  font-size: var(--text-body-sm);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--tracking-body-sm);
+  line-height: var(--leading-body-sm);
   color: var(--color-fog);
-  font-size: var(--text-caption);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -1232,10 +1271,10 @@
 
 @media (min-width: 700px) {
   .portfolio .pf-experience-row {
-    grid-template-columns: 4.5rem 1fr auto;
+    grid-template-columns: 5rem minmax(0, 1fr) minmax(12rem, auto);
     grid-template-areas: 'year place role';
     align-items: baseline;
-    padding-block: 14px;
+    padding-block: var(--spacing-12);
   }
 
   .portfolio .pf-experience-role {

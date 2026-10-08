@@ -3,31 +3,33 @@ import { CONTACT, EXPERIENCE } from './portfolio-data'
 export function AboutSection() {
   return (
     <section id="about" className="pf-about" aria-labelledby="about-name">
-      <h2 id="about-name" className="pf-about-name">
-        <span>Muhammad</span>
-        <span>Nameer</span>
-        <span>Akhter</span>
-      </h2>
-      <div className="pf-about-copy">
-        <p>
-          I&apos;m a software engineer based in Dehradun. I work at Prodios
-          Labs building platforms that real people depend on — civic portals,
-          payment infrastructure, and AI assistants that need to work under
-          load.
-        </p>
-        <p>
-          My background spans full-stack development, ML research at IIT
-          Roorkee, and a B.Tech in Computer Science (AIML) from UPES. I care
-          about API design, automated testing, and shipping systems that
-          don&apos;t break when the stakes are high.
-        </p>
-        <p>
-          I do my best work on hard technical problems with clear product
-          stakes. If that sounds like you, let&apos;s chat.
-        </p>
-        <a className="pf-about-mail" href={`mailto:${CONTACT.email}`}>
-          {CONTACT.email}
-        </a>
+      <div className="pf-shell pf-about-inner">
+        <h2 id="about-name" className="pf-about-name">
+          <span>Muhammad</span>
+          <span>Nameer</span>
+          <span>Akhter</span>
+        </h2>
+        <div className="pf-about-copy">
+          <p>
+            I&apos;m a software engineer based in Dehradun. I work at Prodios
+            Labs building platforms that real people depend on — civic portals,
+            payment infrastructure, and AI assistants that need to work under
+            load.
+          </p>
+          <p>
+            My background spans full-stack development, ML research at IIT
+            Roorkee, and a B.Tech in Computer Science (AIML) from UPES. I care
+            about API design, automated testing, and shipping systems that
+            don&apos;t break when the stakes are high.
+          </p>
+          <p>
+            I do my best work on hard technical problems with clear product
+            stakes. If that sounds like you, let&apos;s chat.
+          </p>
+          <a className="pf-about-mail" href={`mailto:${CONTACT.email}`}>
+            {CONTACT.email}
+          </a>
+        </div>
       </div>
     </section>
   )
