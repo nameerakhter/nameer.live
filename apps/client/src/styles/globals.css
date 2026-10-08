@@ -234,7 +234,7 @@
   padding: var(--space-24);
 }
 
-/* Framed screenshot — natural aspect, height-capped (no forced ratio) */
+/* Screenshot nest — folder slate is the frame (no second well) */
 .portfolio .pf-media-slot.is-filled,
 .portfolio .pf-work-slot.is-filled {
   display: flex;
@@ -246,10 +246,13 @@
   height: auto;
   max-height: 100%;
   border: none;
-  padding: 16px;
-  background: var(--color-surface-media);
-  border-radius: var(--radius-images);
+  /* Thin gutter; top tighter so peeks show image, not empty pad */
+  padding: 6px 10px 10px;
+  background: var(--card-fill, var(--color-surface-card));
+  border-radius: 12px;
   overflow: hidden;
+  /* Ground bright UIs — inset, not floating stickers */
+  box-shadow: inset 0 0 0 1px oklch(0 0 0 / 0.28);
 }
 
 .portfolio .pf-media-slot.is-filled img,
@@ -259,7 +262,7 @@
   height: auto;
   max-width: var(--work-max-width, none);
   max-height: var(--work-image-height, 100%);
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
 .portfolio .pf-media-slot-label {
@@ -355,11 +358,12 @@
   --card-unfocused-s: 10%;
   --card-unfocused-l: 20%;
   --card-edge-ink: white;
-  /* Slightly stronger rim than maciej 10% — reads cleaner on near-black */
-  --card-edge-mix: 12%;
+  /* maciej.co --card-edge-mix: 10% */
+  --card-edge-mix: 10%;
   --gallery-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --gallery-time: 350ms;
-  --gallery-pad: 16px;
+  /* maciej.co --pad: 20px — content uses pad*2 so screenshots sit below the peek band */
+  --gallery-pad: 20px;
   --gallery-gap: 4px;
   --gallery-accent: var(--color-gallery-accent);
   position: absolute;
@@ -591,7 +595,6 @@
 .portfolio .pf-gallery:not(.is-focused) .pf-gallery-card:focus-visible {
   transform: translate3d(0, calc(var(--gallery-y) - 24px), 0) rotateX(-16deg);
   --card-fill: var(--card-hover);
-  --card-edge-mix: 14%;
 }
 
 .portfolio .pf-gallery.is-focused .pf-gallery-card {
@@ -672,12 +675,17 @@
   flex: 1 1 auto;
   min-height: 0;
   width: 100%;
-  padding: var(--gallery-pad) 0
-    calc(var(--gallery-pad) + var(--gallery-peek-offset)) 0;
+  /* maciej.co pad*2 — peeks come from a closed-stack translate, not short padding */
+  padding: calc(var(--gallery-pad) * 2) 0
+    calc(var(--gallery-pad) * 2 + var(--gallery-peek-offset)) 0;
   overflow: hidden;
   container-type: size;
 }
 
+/*
+  Closed veil: soft depth over peeks — enough to settle white chrome
+  into the slate, not crush it to black. Fades off when active.
+*/
 .portfolio .pf-gallery-content::after {
   content: '';
   position: absolute;
@@ -685,13 +693,14 @@
   z-index: 2;
   background: linear-gradient(
     0deg,
-    oklch(0 0 0 / 0.38) 0%,
-    oklch(0 0 0 / 0.22) 42%,
-    oklch(0 0 0 / 0.06) 78%,
-    transparent 100%
+    oklch(0 0 0 / 0.45) 0%,
+    oklch(0 0 0 / 0.28) 40%,
+    oklch(0 0 0 / 0.12) 72%,
+    oklch(0 0 0 / 0.06) 100%
   );
   opacity: 1;
   pointer-events: none;
+  will-change: opacity;
   transition: opacity var(--gallery-time) var(--gallery-ease);
 }
 
@@ -715,15 +724,31 @@
   max-height: 100%;
   min-height: 0;
   min-width: max-content;
-  padding-inline: 16px;
-  gap: 16px;
+  padding-inline: var(--gallery-pad);
+  gap: var(--gallery-pad);
   transform: translateY(0);
-  transition: transform var(--gallery-time) var(--gallery-ease);
+  will-change: transform;
+  transition:
+    transform var(--gallery-time) var(--gallery-ease),
+    opacity var(--gallery-time) var(--gallery-ease);
+}
+
+/*
+  Closed stack: pull shots up for a thin peek under each tab.
+  Framing (folder slate + inset) quiets pop — not a luminance crush.
+  Hover lifts ~20px more (maciej.co).
+*/
+.portfolio .pf-gallery:not(.is-focused) .pf-work-images {
+  transform: translateY(calc(-1 * var(--gallery-pad)));
 }
 
 .portfolio .pf-gallery:not(.is-focused) .pf-gallery-card:hover .pf-work-images,
 .portfolio .pf-gallery:not(.is-focused) .pf-gallery-card:focus-visible .pf-work-images {
-  transform: translateY(-20px);
+  transform: translateY(calc(-1 * var(--gallery-pad) - 20px));
+}
+
+.portfolio .pf-gallery-card.is-active .pf-work-images {
+  transform: translateY(0);
 }
 
 .portfolio .pf-gallery-card.is-back .pf-work-images {
@@ -844,21 +869,10 @@
     font-size: 22px;
   }
 
-  /* Closed stack: no screenshot peeks — clean slate faces only (maciej.co mobile) */
+  /* Mobile closed stack stays clean — no colorful peeks on small peeks */
   .portfolio .pf-gallery:not(.is-focused) .pf-work-images {
     opacity: 0;
     pointer-events: none;
-  }
-
-  .portfolio .pf-gallery:not(.is-focused) .pf-gallery-content::after {
-    opacity: 1;
-    background: linear-gradient(
-      0deg,
-      oklch(0 0 0) 0%,
-      oklch(0 0 0 / 0.96) 35%,
-      oklch(0 0 0 / 0.72) 70%,
-      transparent 100%
-    );
   }
 
   /* Open strip: screenshots span ~2 viewports; pan, don't page one-per-screen */
