@@ -40,7 +40,7 @@ export default function PortfolioHeader() {
 
       <motion.a
         href={`mailto:${CONTACT.email}`}
-        className="absolute top-2.5 right-2.5 z-20 inline-flex h-10 origin-top-right items-center justify-center gap-2 rounded-2xl border-0 bg-bone-white/12 pt-1 pr-3 pb-0 pl-4 font-replica-regular text-body-sm font-medium leading-none tracking-body-sm text-bone-white no-underline backdrop-blur-[12px] backdrop-saturate-[1.15] transition-colors duration-[160ms] hover:bg-bone-white/16 hover:text-gallery-accent"
+        className="absolute top-2.5 right-2.5 z-20 inline-flex h-10 origin-top-right items-center justify-center gap-2 rounded-2xl border-0 bg-bone-white/12 pr-3 pl-4 font-replica-regular text-body font-medium leading-none tracking-body text-bone-white no-underline backdrop-blur-[12px] backdrop-saturate-[1.15] transition-colors duration-[160ms] hover:bg-bone-white/16 hover:text-gallery-accent"
         initial={reduce ? false : { opacity: 0, filter: 'blur(4px)' }}
         animate={{ opacity: 1, filter: 'blur(0px)' }}
         transition={introChromeTransition}
@@ -48,7 +48,7 @@ export default function PortfolioHeader() {
         Contact
         <svg
           viewBox="0 0 20 20"
-          className="size-[18px] shrink-0 fill-current"
+          className="size-5 shrink-0 fill-current"
           aria-hidden
         >
           <path d="M10 3.5a1 1 0 0 1 1 1V9h5.5a1 1 0 1 1 0 2H11v5.5a1 1 0 1 1-2 0V11H3.5a1 1 0 1 1 0-2H9V4.5a1 1 0 0 1 1-1z" />
