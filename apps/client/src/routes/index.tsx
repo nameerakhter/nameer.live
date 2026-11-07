@@ -1,13 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-import PortfolioFooter from './-components/portfolio-footer'
-import PortfolioHeader from './-components/portfolio-header'
-import { HeroMuralSection } from './-components/hero-mural'
-import {
-  AboutSection,
-  ExperienceSection,
-} from './-components/portfolio-sections'
-import { WorkGallery } from './-components/work-gallery'
+import { CareerStints } from './-components/career-stints'
+import { DriverProfile } from './-components/driver-profile'
+import { GarageHero } from './-components/garage-hero'
+import { PitWallFooter } from './-components/pit-wall-footer'
+import { ProjectSheet } from './-components/project-sheet'
+import { RaceProvider } from './-components/race-context'
 
 export const Route = createFileRoute('/')({
   head: () => ({
@@ -16,7 +14,7 @@ export const Route = createFileRoute('/')({
       {
         name: 'description',
         content:
-          'Software engineer at Prodios Labs building government-scale platforms, CBDC payment infrastructure, and AI-powered workflows.',
+          'Software engineer in Dehradun building government-scale platforms, CBDC payment infrastructure, and AI-powered workflows. Start a project.',
       },
     ],
   }),
@@ -25,17 +23,16 @@ export const Route = createFileRoute('/')({
 
 function PortfolioPage() {
   return (
-    <div className="portfolio min-h-screen bg-slate-dark font-replica-regular text-body font-normal tracking-body leading-body text-bone-white antialiased">
-      <div className="pf-viewport flex max-h-dvh min-h-[620px] h-dvh flex-col overflow-clip box-border">
-        <PortfolioHeader />
-        <HeroMuralSection />
-        <WorkGallery />
+    <RaceProvider>
+      <div className="portfolio min-h-screen bg-carbon font-display text-body tracking-body text-chalk antialiased">
+        <GarageHero />
+        <main>
+          <DriverProfile />
+          <CareerStints />
+        </main>
+        <PitWallFooter />
+        <ProjectSheet />
       </div>
-      <main>
-        <AboutSection />
-        <ExperienceSection />
-      </main>
-      <PortfolioFooter />
-    </div>
+    </RaceProvider>
   )
 }

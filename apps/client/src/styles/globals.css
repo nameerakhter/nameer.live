@@ -1,56 +1,64 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
+@import '@fontsource/titillium-web/600.css';
+@import '@fontsource/titillium-web/700.css';
+@import '@fontsource/titillium-web/900.css';
 @import '@fontsource/commit-mono/400.css';
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  /* Portfolio tokens — oklch (Maciej structure on pure black) */
-  --color-bone-white: oklch(0.961 0.001 286.4);
-  /* Cool near-black canvas (maciej.co rgb(12,18,18)) + slate folders */
-  --color-slate-dark: oklch(0.169 0.006 196.5);
-  --color-graphite: oklch(0.336 0.015 196.5);
-  --color-fog: oklch(0.628 0.017 273.7);
-  --color-ash: oklch(0.455 0.015 275.8);
-  --color-charcoal: oklch(0.364 0.011 196.7);
-  --color-indigo-dusk: oklch(0.393 0.079 273);
-  --color-gallery-accent: oklch(0.745 0.137 290.3);
-  --color-surface-card: oklch(0.336 0.015 196.5);
-  --color-surface-card-hover: oklch(0.38 0.016 196.5);
-  --color-surface-hairline: oklch(0.24 0.01 196.5);
-  --color-surface-media: oklch(0.28 0.012 196.5);
-  --font-replica-regular: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
-  --font-replica-mono: 'Commit Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  --font-display: 'Clash Display', 'Satoshi', ui-sans-serif, system-ui, sans-serif;
-  --text-caption: 14px;
-  --leading-caption: 1.2;
-  --tracking-caption: -0.014em;
-  --text-body-sm: 16px;
-  --leading-body-sm: 1.2;
-  --tracking-body-sm: -0.014em;
-  --text-body: 20px;
-  --leading-body: 1.2;
-  --tracking-body: -0.014em;
-  --text-subheading: 24px;
-  --leading-subheading: 1.2;
-  --tracking-subheading: -0.014em;
-  --text-heading-sm: 28px;
-  --leading-heading-sm: 1.2;
-  --tracking-heading-sm: -0.014em;
-  --text-heading: 36px;
-  --leading-heading: 1.2;
-  --tracking-heading: -0.014em;
-  --text-display: 120px;
-  --leading-display: 1;
-  --tracking-display: -0.014em;
-  --radius-images: 16px;
-  --radius-2xl: 16px;
-  --radius-3xl: 24px;
-  --radius-full: 64px;
+  /* Pit garage — Red Bull-led dark palette */
+  --color-carbon: oklch(0.14 0.01 260);
+  --color-carbon-raised: oklch(0.18 0.015 260);
+  --color-navy: oklch(0.22 0.05 265);
+  --color-tarmac: oklch(0.28 0.01 260);
+  --color-chalk: oklch(0.96 0.005 100);
+  --color-chalk-muted: oklch(0.68 0.015 260);
+  --color-signal: oklch(0.55 0.22 25);
+  --color-bull-yellow: oklch(0.86 0.16 95);
+  --color-sector-purple: oklch(0.55 0.2 300);
+  --color-sector-green: oklch(0.72 0.17 145);
+  --color-sector-yellow: oklch(0.86 0.16 95);
+  --color-hairline: oklch(0.32 0.02 260);
 
-  --font-heading: var(--font-sans);
-  --font-sans: 'Satoshi', -apple-system, system-ui, sans-serif;
+  --font-display: 'Titillium Web', ui-sans-serif, system-ui, sans-serif;
+  --font-timing: 'Commit Mono', ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, monospace;
+  --font-sans: 'Titillium Web', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-display);
+
+  --text-caption: 14px;
+  --leading-caption: 1.25;
+  --tracking-caption: 0.04em;
+  --text-body-sm: 16px;
+  --leading-body-sm: 1.35;
+  --tracking-body-sm: 0.01em;
+  --text-body: 18px;
+  --leading-body: 1.4;
+  --tracking-body: 0.01em;
+  --text-subheading: 22px;
+  --leading-subheading: 1.2;
+  --tracking-subheading: 0.02em;
+  --text-heading-sm: 28px;
+  --leading-heading-sm: 1.1;
+  --tracking-heading-sm: 0.01em;
+  --text-heading: 36px;
+  --leading-heading: 1.05;
+  --tracking-heading: 0.005em;
+  --text-display: 64px;
+  --leading-display: 0.95;
+  --tracking-display: -0.01em;
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -82,82 +90,75 @@
   --color-card: var(--card);
   --color-foreground: var(--foreground);
   --color-background: var(--background);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.141 0.005 285.823);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.141 0.005 285.823);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.141 0.005 285.823);
-  --primary: oklch(0.508 0.118 165.612);
-  --primary-foreground: oklch(0.979 0.021 166.113);
-  --secondary: oklch(0.967 0.001 286.375);
-  --secondary-foreground: oklch(0.21 0.006 285.885);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.21 0.006 285.885);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.705 0.015 286.067);
-  --chart-1: oklch(0.78 0.12 175);
-  --chart-2: oklch(0.62 0.14 172);
-  --chart-3: oklch(0.54 0.12 168);
-  --chart-4: oklch(0.48 0.1 165);
-  --chart-5: oklch(0.42 0.08 162);
-  --radius: 0.5rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-primary: oklch(0.596 0.145 163.225);
-  --sidebar-primary-foreground: oklch(0.979 0.021 166.113);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.705 0.015 286.067);
+  --background: oklch(0.14 0.01 260);
+  --foreground: oklch(0.96 0.005 100);
+  --card: oklch(0.18 0.015 260);
+  --card-foreground: oklch(0.96 0.005 100);
+  --popover: oklch(0.18 0.015 260);
+  --popover-foreground: oklch(0.96 0.005 100);
+  --primary: oklch(0.55 0.22 25);
+  --primary-foreground: oklch(0.96 0.005 100);
+  --secondary: oklch(0.22 0.05 265);
+  --secondary-foreground: oklch(0.96 0.005 100);
+  --muted: oklch(0.22 0.05 265);
+  --muted-foreground: oklch(0.68 0.015 260);
+  --accent: oklch(0.22 0.05 265);
+  --accent-foreground: oklch(0.96 0.005 100);
+  --destructive: oklch(0.55 0.22 25);
+  --border: oklch(0.32 0.02 260);
+  --input: oklch(0.32 0.02 260);
+  --ring: oklch(0.55 0.22 25);
+  --chart-1: oklch(0.55 0.22 25);
+  --chart-2: oklch(0.86 0.16 95);
+  --chart-3: oklch(0.55 0.2 300);
+  --chart-4: oklch(0.72 0.17 145);
+  --chart-5: oklch(0.68 0.015 260);
+  --radius: 0.25rem;
+  --sidebar: oklch(0.18 0.015 260);
+  --sidebar-foreground: oklch(0.96 0.005 100);
+  --sidebar-primary: oklch(0.55 0.22 25);
+  --sidebar-primary-foreground: oklch(0.96 0.005 100);
+  --sidebar-accent: oklch(0.22 0.05 265);
+  --sidebar-accent-foreground: oklch(0.96 0.005 100);
+  --sidebar-border: oklch(0.32 0.02 260);
+  --sidebar-ring: oklch(0.55 0.22 25);
 }
 
 .dark {
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.21 0.006 285.885);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.21 0.006 285.885);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.432 0.095 166.913);
-  --primary-foreground: oklch(0.979 0.021 166.113);
-  --secondary: oklch(0.274 0.006 286.033);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
-  --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.552 0.016 285.938);
-  --chart-1: oklch(0.78 0.12 175);
-  --chart-2: oklch(0.62 0.14 172);
-  --chart-3: oklch(0.54 0.12 168);
-  --chart-4: oklch(0.48 0.1 165);
-  --chart-5: oklch(0.42 0.08 162);
-  --sidebar: oklch(0.21 0.006 285.885);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.696 0.17 162.48);
-  --sidebar-primary-foreground: oklch(0.262 0.051 172.552);
-  --sidebar-accent: oklch(0.274 0.006 286.033);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.552 0.016 285.938);
+  --background: oklch(0.14 0.01 260);
+  --foreground: oklch(0.96 0.005 100);
+  --card: oklch(0.18 0.015 260);
+  --card-foreground: oklch(0.96 0.005 100);
+  --popover: oklch(0.18 0.015 260);
+  --popover-foreground: oklch(0.96 0.005 100);
+  --primary: oklch(0.55 0.22 25);
+  --primary-foreground: oklch(0.96 0.005 100);
+  --secondary: oklch(0.22 0.05 265);
+  --secondary-foreground: oklch(0.96 0.005 100);
+  --muted: oklch(0.22 0.05 265);
+  --muted-foreground: oklch(0.68 0.015 260);
+  --accent: oklch(0.22 0.05 265);
+  --accent-foreground: oklch(0.96 0.005 100);
+  --destructive: oklch(0.55 0.22 25);
+  --border: oklch(0.32 0.02 260);
+  --input: oklch(0.32 0.02 260);
+  --ring: oklch(0.55 0.22 25);
+  --chart-1: oklch(0.55 0.22 25);
+  --chart-2: oklch(0.86 0.16 95);
+  --chart-3: oklch(0.55 0.2 300);
+  --chart-4: oklch(0.72 0.17 145);
+  --chart-5: oklch(0.68 0.015 260);
+  --sidebar: oklch(0.18 0.015 260);
+  --sidebar-foreground: oklch(0.96 0.005 100);
+  --sidebar-primary: oklch(0.55 0.22 25);
+  --sidebar-primary-foreground: oklch(0.96 0.005 100);
+  --sidebar-accent: oklch(0.22 0.05 265);
+  --sidebar-accent-foreground: oklch(0.96 0.005 100);
+  --sidebar-border: oklch(0.32 0.02 260);
+  --sidebar-ring: oklch(0.55 0.22 25);
 }
 
 @layer base {
@@ -165,35 +166,41 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-carbon text-chalk;
   }
   html {
     @apply font-sans scroll-smooth;
   }
+
+  /* Thin custom scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-hairline) transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: var(--color-hairline);
+    border-radius: 999px;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background: var(--color-chalk-muted);
+  }
 }
 
-[data-sonner-toaster][data-sonner-theme='dark'] [data-description] {
-  @apply !text-muted-foreground;
-}
-
-/* ─── Gallery portfolio (Maciej folder stack on black canvas) ─── */
+/* ─── Pit garage portfolio ─── */
 
 .portfolio {
-  /* Surfaces alias theme tokens (oklch) for gallery CSS that can't be inlined */
-  --surface-canvas: var(--color-slate-dark);
-  --surface-card: var(--color-surface-card);
-  --surface-highlight: var(--color-indigo-dusk);
-  --surface-card-hover: var(--color-surface-card-hover);
-  --surface-hairline: var(--color-surface-hairline);
-  /* Named pixel spaces — keep off Tailwind's --spacing-* scale (p-4, gap-4, …) */
-  --space-4: 4px;
-  --space-6: 6px;
-  --space-12: 12px;
-  --space-24: 24px;
-  --space-90: 90px;
-  --page-inline-pad: var(--space-24);
-  --section-gap: 64px;
-  --font-weight-regular: 400;
+  --surface-canvas: var(--color-carbon);
+  --page-inline-pad: 1.5rem;
+  --section-gap: 5rem;
+  color: var(--color-chalk);
+  background: var(--color-carbon);
 }
 
 .portfolio .sr-only {
@@ -208,693 +215,445 @@
   border: 0;
 }
 
-
-/* Shared */
-.portfolio .pf-mono-label {
-  margin: 0 0 var(--space-6);
-  font-family: var(--font-replica-mono);
-  font-size: var(--text-caption);
-  letter-spacing: var(--tracking-caption);
-  line-height: var(--leading-caption);
-  color: var(--color-fog);
-}
-
-/* Media wells — placeholder or filled screenshot */
-.portfolio .pf-media-slot {
-  display: grid;
-  place-items: center;
-  width: 100%;
-  margin: 0;
-  overflow: hidden;
-  border-radius: var(--radius-images);
-  background: var(--surface-card);
-  border: 1px dashed color-mix(in oklch, var(--color-fog) 45%, transparent);
-  color: var(--color-fog);
-  text-align: center;
-  padding: var(--space-24);
-}
-
-/* Screenshot nest — folder slate is the frame (no second well) */
-.portfolio .pf-media-slot.is-filled,
-.portfolio .pf-work-slot.is-filled {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  flex: 0 0 auto;
-  width: auto;
-  height: auto;
-  max-height: 100%;
-  border: none;
-  /* Thin gutter; top tighter so peeks show image, not empty pad */
-  padding: 6px 10px 10px;
-  background: var(--card-fill, var(--color-surface-card));
-  border-radius: 12px;
-  overflow: hidden;
-  /* Ground bright UIs — inset, not floating stickers */
-  box-shadow: inset 0 0 0 1px oklch(0 0 0 / 0.28);
-}
-
-.portfolio .pf-media-slot.is-filled img,
-.portfolio .pf-work-slot.is-filled img {
-  display: block;
-  width: auto;
-  height: auto;
-  max-width: var(--work-max-width, none);
-  max-height: var(--work-image-height, 100%);
-  border-radius: 12px;
-}
-
-.portfolio .pf-media-slot-label {
-  font-family: var(--font-replica-mono);
-  font-size: var(--text-caption);
-  letter-spacing: var(--tracking-caption);
-  line-height: 1.4;
-  max-width: 36ch;
-}
-
-/* Hero — I build things (vector SVG mask — cannot inline) */
-.portfolio .pf-hero {
-  flex: 0 0 auto;
-  margin-top: clamp(4px, 1dvh, 12px);
-}
-
-.portfolio .pf-build {
-  /* Match maciej.co header frame + Die Grotesk C Bold letterforms */
-  --svg-w: 594;
-  --svg-h: 110;
+/* Sticky garage stage — scroll drives the car, UI stays pinned */
+.garage-stage {
   position: relative;
-  width: 100%;
-  aspect-ratio: var(--svg-w) / var(--svg-h);
-  height: auto;
-  min-height: 0;
-  background: var(--color-bone-white);
-  -webkit-mask-image: url('/hero/i-build-things.svg?v=2');
-  mask-image: url('/hero/i-build-things.svg?v=2');
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-mode: alpha;
-  mask-mode: alpha;
-  overflow: hidden;
+  height: 320vh;
+  background: var(--color-carbon);
 }
 
-@media (max-width: 700px) {
-  .portfolio .pf-build {
-    -webkit-mask-image: url('/hero/i-build-things-mobile.svg?v=2');
-    mask-image: url('/hero/i-build-things-mobile.svg?v=2');
-    --svg-w: 298;
-    --svg-h: 198;
-  }
+.garage-stage-sticky {
+  position: sticky;
+  top: 0;
+  isolation: isolate;
+  height: 100dvh;
+  overflow: clip;
+  background: var(--color-carbon);
 }
 
-.portfolio .pf-build-particles {
+.garage-hero-canvas {
   position: absolute;
   inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
+  z-index: 0;
+}
+
+.garage-hero-canvas.is-interactive {
   pointer-events: auto;
+  cursor: grab;
 }
 
-/* Selected work — stacked folder gallery (maciej.co model) */
-.portfolio .pf-work {
-  flex: 1 1 auto;
-  min-height: 0;
-  margin-top: clamp(4px, 1dvh, 12px);
-  padding-inline: var(--page-inline-pad);
-  padding-bottom: 0;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
+.garage-hero-canvas.is-interactive:active {
+  cursor: grabbing;
 }
 
-.portfolio .pf-gallery-wrap {
+.garage-hero-canvas canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.garage-stage-ui {
   position: relative;
-  flex: 1 1 auto;
-  min-height: 0;
-  width: 100%;
-  margin-inline: 0;
-}
-
-.portfolio .pf-gallery {
-  --gallery-tab: 44px;
-  --gallery-tab-mask: calc(var(--gallery-tab) * 2 / 3);
-  /* Headroom so hover lift (-24px) doesn't clip tab labels under stage overflow */
-  --gallery-origin: 28px;
-  --gallery-count: 7;
-  --gallery-front: 0;
-  /* Always divide available height so every folder tab stays on-stage */
-  --gallery-peek: calc(
-    (100% - var(--gallery-origin)) / var(--gallery-count)
-  );
-  --gallery-peek-offset: 0px;
-  /* Folder stack — cool slate layers + 1px rim (maciej.co) */
-  --gallery-l-step: 1.8%;
-  --card-unfocused-h: 180;
-  --card-unfocused-s: 10%;
-  --card-unfocused-l: 20%;
-  --card-edge-ink: white;
-  /* maciej.co --card-edge-mix: 10% */
-  --card-edge-mix: 10%;
-  --gallery-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --gallery-time: 350ms;
-  /* maciej.co --pad: 20px — content uses pad*2 so screenshots sit below the peek band */
-  --gallery-pad: 20px;
-  --gallery-gap: 4px;
-  --gallery-accent: var(--color-gallery-accent);
-  position: absolute;
-  inset: 0;
-  z-index: 1;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: stretch;
+  box-sizing: border-box;
   height: 100%;
+  padding: 1.25rem var(--page-inline-pad) 1.25rem;
   pointer-events: none;
 }
 
-.portfolio .pf-gallery.is-focused {
+@media (min-width: 960px) {
+  .garage-stage-ui {
+    grid-template-columns: minmax(0, 1fr) minmax(17rem, 22rem);
+    gap: 1.5rem;
+  }
+}
+
+.garage-hero-fallback {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      135deg,
+      var(--color-navy) 0%,
+      var(--color-carbon) 55%,
+      color-mix(in oklch, var(--color-signal) 18%, var(--color-carbon)) 100%
+    );
+}
+
+.garage-hero-fallback-copy {
+  position: absolute;
+  right: 8%;
+  bottom: 22%;
+  max-width: 18ch;
+  font-family: var(--font-timing);
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-caption);
+  color: color-mix(in oklch, var(--color-chalk) 55%, transparent);
+  text-transform: uppercase;
+}
+
+.garage-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      color-mix(in oklch, var(--color-carbon) 88%, transparent) 0%,
+      color-mix(in oklch, var(--color-carbon) 40%, transparent) 34%,
+      transparent 58%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in oklch, var(--color-carbon) 45%, transparent) 0%,
+      transparent 24%,
+      transparent 78%,
+      color-mix(in oklch, var(--color-carbon) 55%, transparent) 100%
+    );
+}
+
+.garage-hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  box-sizing: border-box;
+  min-width: 0;
+  transition: opacity 160ms ease;
+}
+
+.garage-hero-content a,
+.garage-hero-content button,
+.timing-rail {
+  pointer-events: auto;
+}
+
+.garage-hero-name {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2.75rem, 9vw, 4.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.garage-hero-tagline {
+  margin-top: 1rem;
+}
+
+.garage-hero-actions {
+  margin-top: 1.5rem;
+}
+
+.garage-hero-cta {
+  background: var(--color-signal);
+  color: var(--color-chalk);
+}
+
+/* Timing tower / in-fold rail */
+.timing-tower {
+  border-block: 1px solid var(--color-hairline);
+  background: var(--color-carbon-raised);
+}
+
+.timing-rail {
+  display: flex;
+  flex-direction: column;
+  align-self: end;
+  max-height: min(58dvh, 28rem);
+  overflow: hidden;
+  border: 1px solid color-mix(in oklch, var(--color-hairline) 85%, transparent);
+  background: color-mix(in oklch, var(--color-carbon) 72%, transparent);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 48px color-mix(in oklch, var(--color-carbon) 55%, transparent);
+}
+
+.timing-rail-head {
+  flex: 0 0 auto;
+  padding: 0.85rem 1rem 0.55rem;
+  border-bottom: 1px solid var(--color-hairline);
+}
+
+.timing-rail-list {
+  flex: 1 1 auto;
+  overflow: auto;
+}
+
+.timing-tower-row {
+  display: grid;
+  grid-template-columns: 2.5rem 0.35rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  width: 100%;
+  padding: 0.85rem var(--page-inline-pad);
+  border: 0;
+  border-bottom: 1px solid var(--color-hairline);
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 160ms ease;
+}
+
+.timing-tower-row.is-rail {
+  grid-template-columns: 2rem 0.3rem minmax(0, 1fr) auto;
+  gap: 0.55rem 0.65rem;
+  padding: 0.65rem 0.85rem;
+}
+
+.timing-tower-row:last-child {
+  border-bottom: 0;
+}
+
+.timing-tower-row:hover,
+.timing-tower-row:focus-visible {
+  background: color-mix(in oklch, var(--color-navy) 55%, transparent);
+  outline: none;
+}
+
+.timing-tower-row.is-active {
+  background: color-mix(in oklch, var(--color-navy) 70%, transparent);
+  box-shadow: inset 3px 0 0 var(--color-bull-yellow);
+}
+
+.timing-tower-pos {
+  font-family: var(--font-timing);
+  font-size: var(--text-body-sm);
+  color: var(--color-chalk-muted);
+}
+
+.timing-tower-row.is-p1 .timing-tower-pos {
+  color: var(--color-bull-yellow);
+}
+
+.timing-tower-tick {
+  width: 0.35rem;
+  height: 1.4rem;
+  border-radius: 999px;
+  background: var(--tick, var(--color-signal));
+}
+
+.timing-tower-metric {
+  font-family: var(--font-timing);
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-caption);
+  color: var(--color-chalk-muted);
+  text-transform: uppercase;
+}
+
+.timing-tower-row[data-sector='purple'] .timing-tower-metric {
+  color: var(--color-sector-purple);
+}
+.timing-tower-row[data-sector='green'] .timing-tower-metric {
+  color: var(--color-sector-green);
+}
+.timing-tower-row[data-sector='yellow'] .timing-tower-metric {
+  color: var(--color-sector-yellow);
+}
+
+/* Sections */
+.race-section {
+  padding: var(--section-gap) var(--page-inline-pad);
+  border-top: 1px solid var(--color-hairline);
+}
+
+.race-section-title {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-heading);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  text-transform: uppercase;
+}
+
+.race-section-lede {
+  margin: 0 0 2rem;
+  max-width: 48ch;
+  color: var(--color-chalk-muted);
+}
+
+/* Career timeline */
+.career-timeline {
+  display: grid;
+  gap: 0;
+}
+
+.career-row {
+  display: grid;
+  grid-template-columns: 4.5rem 1.25rem minmax(0, 1fr);
+  gap: 0.85rem 1rem;
+  align-items: start;
+  padding: 0.35rem 0 1.35rem;
+}
+
+.career-year {
+  padding-top: 0.2rem;
+}
+
+.career-mark {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.career-dot {
+  position: relative;
+  z-index: 1;
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-top: 0.35rem;
+  border-radius: 999px;
+  background: var(--color-signal);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-signal) 22%, transparent);
+}
+
+.career-line {
+  position: absolute;
+  top: 1rem;
+  bottom: -1.35rem;
+  left: 50%;
+  width: 1px;
+  transform: translateX(-50%);
+  background: var(--color-hairline);
+}
+
+/* Telemetry panel */
+.telemetry-panel {
   position: fixed;
   inset: 0;
-  z-index: 80;
-  height: 100dvh;
-  pointer-events: auto;
-  --gallery-peek-offset: calc(min(1, var(--gallery-front)) * var(--gallery-tab));
-  background: color-mix(in oklch, var(--surface-canvas) 88%, oklch(0 0 0));
-}
-
-.portfolio .pf-gallery-stage {
-  --gallery-perspective: 1400px;
-  position: relative;
-  height: 100%;
-  overflow: hidden;
-  perspective: var(--gallery-perspective);
-  perspective-origin: 50% 50%;
-  transform-style: preserve-3d;
-}
-
-/*
-  Motion intro wraps each card. maciej.co mounts cards as direct stage children;
-  put perspective on the shell so rotateX still gets a real camera (preserve-3d
-  alone is not enough once Motion also writes transforms on this node).
-*/
-.portfolio .pf-gallery-card-shell {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  perspective: var(--gallery-perspective);
-  perspective-origin: 50% 50%;
-  transform-style: preserve-3d;
-}
-
-.portfolio .pf-gallery-dismiss {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 99;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 0;
-  border-radius: 50%;
-  background: var(--gallery-accent);
-  color: var(--color-bone-white);
-  cursor: pointer;
-  opacity: 0;
-  pointer-events: none;
-  transform: scale(0.8) translateY(24px);
-  transition:
-    opacity 300ms var(--gallery-ease),
-    transform 300ms var(--gallery-ease);
-  box-shadow:
-    inset 0 0 1px 0.5px oklch(1 0 0 / 0.2),
-    0 8px 32px oklch(0 0 0 / 0.2),
-    0 2px 8px oklch(0 0 0 / 0.15);
-}
-
-.portfolio .pf-gallery-dismiss svg {
-  fill: currentColor;
-  transform: rotate(45deg);
-}
-
-.portfolio .pf-gallery.is-focused .pf-gallery-dismiss {
-  opacity: 1;
-  pointer-events: auto;
-  transform: scale(1) translateY(0);
-}
-
-.portfolio .pf-gallery-keyboard {
-  position: absolute;
-  top: 9px;
-  right: 10px;
-  z-index: 0;
-  display: none;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-  width: 64px;
-  height: 42px;
-  opacity: 0;
-  pointer-events: none;
-  transform: scale(0.8) translateY(24px);
-  transition:
-    opacity 300ms var(--gallery-ease),
-    transform 300ms var(--gallery-ease);
-}
-
-.portfolio .pf-gallery-keyboard span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  border-radius: 5px;
-  background: color-mix(in oklch, var(--color-bone-white) 40%, transparent);
-  color: var(--surface-canvas);
-  font-size: 11px;
-}
-
-.portfolio .pf-gallery-keyboard span:nth-of-type(1) {
-  grid-column: 2;
-}
-
-.portfolio .pf-gallery-keyboard span:nth-of-type(2) {
-  grid-column: 1;
-}
-
-@media (min-width: 1280px) {
-  .portfolio .pf-gallery-keyboard {
-    display: grid;
-  }
-
-  .portfolio .pf-gallery.is-focused .pf-gallery-keyboard {
-    opacity: 0.66;
-    transform: scale(1) translateY(0);
-  }
-}
-
-.portfolio .pf-gallery-card {
-  --gallery-y: calc(
-    var(--gallery-origin) + (var(--gallery-count) - 1 - var(--i)) * var(--gallery-peek)
-  );
-  --card-bg: hsl(
-    var(--card-unfocused-h),
-    var(--card-unfocused-s),
-    calc(var(--card-unfocused-l) - var(--i) * var(--gallery-l-step))
-  );
-  /* Lift toward lighter slate on hover (maciej.co), not purple wash */
-  --card-hover: hsl(
-    var(--card-unfocused-h),
-    var(--card-unfocused-s),
-    calc(var(--card-unfocused-l) - (var(--i) - 4) * var(--gallery-l-step))
-  );
-  --gt-pad: 48px;
-  --gt-cols: var(--gallery-count);
-  --gt-w: calc((100% - var(--gt-pad) * 2) / var(--gt-cols));
-  --gt-h: var(--gallery-tab);
-  --gt-ear: var(--gallery-tab-mask);
-  --gt-slot: calc(var(--gallery-count) - 1 - var(--i));
-  --gt-l: calc(var(--gt-pad) + var(--gt-slot) * var(--gt-w));
-  --gt-r: calc(var(--gt-l) + var(--gt-w));
-  --gt-cr: 12px;
-  --le: calc(var(--gt-l) - var(--gt-ear));
-  --re: var(--gt-r);
-  --card-fill: var(--card-bg);
-  --card-edge: color-mix(
-    in srgb,
-    var(--card-fill),
-    var(--card-edge-ink) var(--card-edge-mix)
-  );
-  --gt-in: 0px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: calc(var(--gallery-count) - var(--i));
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  background: var(--card-edge);
-  transform-origin: top center;
-  transform: translate3d(0, var(--gallery-y), 0) rotateX(-20deg);
-  /* Rim + perspective carry depth — heavy drop-shadows muddied the edge */
-  filter: none;
-  transition:
-    transform var(--gallery-time) var(--gallery-ease),
-    filter var(--gallery-time) var(--gallery-ease);
-  will-change: transform;
-  pointer-events: none;
-  outline: none;
-  color: var(--color-bone-white);
-}
-
-.portfolio .pf-gallery-card,
-.portfolio .pf-gallery-card::after {
-  clip-path: shape(
-    from var(--gt-in) calc(var(--gt-h) + var(--gt-cr)),
-    line to var(--gt-in) calc(100% - var(--gt-in)),
-    line to calc(100% - var(--gt-in)) calc(100% - var(--gt-in)),
-    line to calc(100% - var(--gt-in)) calc(var(--gt-h) + var(--gt-cr)),
-    arc to calc(100% - var(--gt-cr)) calc(var(--gt-h) + var(--gt-in)) of calc(var(--gt-cr) - var(--gt-in)) ccw,
-    line to calc(var(--re) + var(--gt-ear) - var(--gt-in)) calc(var(--gt-h) + var(--gt-in)),
-    curve to calc(var(--re) + 0.6709425 * var(--gt-ear) - var(--gt-in)) calc(0.8418867 * var(--gt-h) + var(--gt-in))
-      with calc(var(--re) + 0.8507025 * var(--gt-ear) - var(--gt-in)) calc(var(--gt-h) + var(--gt-in))
-      / calc(var(--re) + 0.718155 * var(--gt-ear) - var(--gt-in)) calc(0.93631 * var(--gt-h) + var(--gt-in)),
-    line to calc(var(--re) + 0.3290575 * var(--gt-ear) - var(--gt-in)) calc(0.1581138 * var(--gt-h) + var(--gt-in)),
-    curve to calc(var(--re) - var(--gt-in)) var(--gt-in)
-      with calc(var(--re) + 0.281845 * var(--gt-ear) - var(--gt-in)) calc(0.06369 * var(--gt-h) + var(--gt-in))
-      / calc(var(--re) + 0.1492975 * var(--gt-ear) - var(--gt-in)) var(--gt-in),
-    line to calc(var(--gt-l) + var(--gt-in)) var(--gt-in),
-    curve to calc(var(--le) + 0.6709425 * var(--gt-ear) + var(--gt-in)) calc(0.1581138 * var(--gt-h) + var(--gt-in))
-      with calc(var(--le) + 0.8507025 * var(--gt-ear) + var(--gt-in)) var(--gt-in)
-      / calc(var(--le) + 0.718155 * var(--gt-ear) + var(--gt-in)) calc(0.06369 * var(--gt-h) + var(--gt-in)),
-    line to calc(var(--le) + 0.3290575 * var(--gt-ear) + var(--gt-in)) calc(0.8418867 * var(--gt-h) + var(--gt-in)),
-    curve to calc(var(--le) + var(--gt-in)) calc(var(--gt-h) + var(--gt-in))
-      with calc(var(--le) + 0.281845 * var(--gt-ear) + var(--gt-in)) calc(0.93631 * var(--gt-h) + var(--gt-in))
-      / calc(var(--le) + 0.1492975 * var(--gt-ear) + var(--gt-in)) calc(var(--gt-h) + var(--gt-in)),
-    line to var(--gt-cr) calc(var(--gt-h) + var(--gt-in)),
-    arc to var(--gt-in) calc(var(--gt-h) + var(--gt-cr)) of calc(var(--gt-cr) - var(--gt-in)) ccw,
-    close
-  );
-}
-
-.portfolio .pf-gallery-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  --gt-in: 1px;
-  background: var(--card-fill);
-  transition: background 150ms var(--gallery-ease);
-}
-
-.portfolio .pf-gallery:not(.is-focused) .pf-gallery-card:hover,
-.portfolio .pf-gallery:not(.is-focused) .pf-gallery-card:focus-visible {
-  transform: translate3d(0, calc(var(--gallery-y) - 24px), 0) rotateX(-16deg);
-  --card-fill: var(--card-hover);
-}
-
-.portfolio .pf-gallery.is-focused .pf-gallery-card {
-  transform: translate3d(0, var(--gallery-y), 0) rotateX(0deg);
-}
-
-.portfolio .pf-gallery-tab h3,
-.portfolio .pf-gallery-content {
-  pointer-events: auto;
-}
-
-.portfolio .pf-gallery.is-focused .pf-gallery-card.is-active .pf-gallery-tab {
-  pointer-events: none;
-}
-
-.portfolio .pf-gallery.is-focused .pf-gallery-card.is-active .pf-gallery-content {
-  pointer-events: auto;
-  overflow-x: auto;
-  overflow-y: hidden;
-  overscroll-behavior: contain;
-  scrollbar-width: none;
-  touch-action: pan-x;
-}
-
-.portfolio .pf-gallery.is-focused .pf-gallery-card.is-active .pf-gallery-content::-webkit-scrollbar {
-  display: none;
-}
-
-.portfolio .pf-gallery.is-focused .pf-gallery-card.is-active {
-  --card-fill: var(--surface-card);
-}
-
-.portfolio .pf-gallery.is-focused .is-front:hover,
-.portfolio .pf-gallery.is-focused .is-back:hover {
-  --card-fill: var(--surface-card-hover);
-}
-
-.portfolio .pf-gallery-tab {
-  position: relative;
-  z-index: 1;
+  z-index: 50;
   display: grid;
-  flex: 0 0 var(--gallery-tab);
-  width: 100%;
-  height: var(--gallery-tab);
-  grid-template-columns: repeat(var(--gt-cols), 1fr);
-  padding: 0 var(--gt-pad);
-  column-gap: 0;
+  place-items: end stretch;
+  background: color-mix(in oklch, var(--color-carbon) 55%, transparent);
 }
 
-.portfolio .pf-gallery-tab h3 {
+.telemetry-sheet {
+  box-sizing: border-box;
+  width: min(100%, 34rem);
+  max-height: 100dvh;
+  overflow: auto;
+  padding: 1.25rem 1.5rem 2rem;
+  background: var(--color-carbon-raised);
+  border-left: 1px solid var(--color-hairline);
+  box-shadow: -24px 0 48px color-mix(in oklch, var(--color-carbon) 55%, transparent);
+}
+
+.telemetry-media {
   display: flex;
-  grid-column: calc(var(--gt-slot) + 1) / span 1;
-  align-items: center;
-  justify-content: center;
+  gap: 0.75rem;
+  overflow-x: auto;
+  margin: 1.25rem 0;
+  padding-bottom: 0.25rem;
+  scroll-snap-type: x mandatory;
+}
+
+.telemetry-media figure {
+  flex: 0 0 auto;
   margin: 0;
-  height: 100%;
-  padding: 0 var(--gallery-gap);
-  /* maciej.co Die Grotesk 700 / 32px — Satoshi bold, centered in tab */
-  color: color-mix(in oklch, var(--color-bone-white) 88%, transparent);
-  font-family: var(--font-replica-regular);
-  font-size: clamp(18px, 2.2vw, 32px);
-  font-weight: 700;
-  font-style: normal;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  cursor: pointer;
+  scroll-snap-align: start;
 }
 
-.portfolio .pf-gallery-content {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex: 1 1 auto;
-  min-height: 0;
-  width: 100%;
-  /* maciej.co pad*2 — peeks come from a closed-stack translate, not short padding */
-  padding: calc(var(--gallery-pad) * 2) 0
-    calc(var(--gallery-pad) * 2 + var(--gallery-peek-offset)) 0;
-  overflow: hidden;
-  container-type: size;
-}
-
-/*
-  Closed veil: light depth only — peeks stay readable. Folder framing
-  (slate well + inset) handles polish, not a luminance crush.
-*/
-.portfolio .pf-gallery-content::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background: linear-gradient(
-    0deg,
-    oklch(0 0 0 / 0.32) 0%,
-    oklch(0 0 0 / 0.16) 42%,
-    oklch(0 0 0 / 0.05) 78%,
-    transparent 100%
-  );
-  opacity: 1;
-  pointer-events: none;
-  will-change: opacity;
-  transition: opacity var(--gallery-time) var(--gallery-ease);
-}
-
-.portfolio .pf-gallery-card.is-active .pf-gallery-content::after {
-  opacity: 0;
-}
-
-.portfolio .pf-work-images {
-  --work-max-width: min(90dvw, 1280px);
-  --work-image-height: min(
-    800px,
-    calc(var(--work-max-width) * 800 / 1280),
-    calc(100cqh - 2 * var(--gallery-pad))
-  );
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  align-self: stretch;
-  flex: 0 0 auto;
-  height: 100%;
-  max-height: 100%;
-  min-height: 0;
-  min-width: max-content;
-  padding-inline: var(--gallery-pad);
-  gap: var(--gallery-pad);
-  transform: translateY(0);
-  will-change: transform;
-  transition:
-    transform var(--gallery-time) var(--gallery-ease),
-    opacity var(--gallery-time) var(--gallery-ease);
-}
-
-/*
-  Closed stack: pull shots up so a strip peeks under each tab.
-  Hover lifts ~20px more (maciej.co).
-*/
-.portfolio .pf-gallery:not(.is-focused) .pf-work-images {
-  transform: translateY(calc(-1.5 * var(--gallery-pad)));
-}
-
-.portfolio .pf-gallery:not(.is-focused) .pf-gallery-card:hover .pf-work-images,
-.portfolio .pf-gallery:not(.is-focused) .pf-gallery-card:focus-visible .pf-work-images {
-  transform: translateY(calc(-1.5 * var(--gallery-pad) - 20px));
-}
-
-.portfolio .pf-gallery-card.is-active .pf-work-images {
-  transform: translateY(0);
-}
-
-.portfolio .pf-gallery-card.is-back .pf-work-images {
-  transform: translateY(var(--gallery-tab));
-}
-
-/* Screenshot strip — natural width, height capped by --work-image-height */
-.portfolio .pf-work-slot {
-  flex: 0 0 auto;
+.telemetry-media img {
+  display: block;
+  width: min(72vw, 20rem);
   height: auto;
-  max-height: 100%;
-  min-height: 0;
+  border: 1px solid var(--color-hairline);
+  background: var(--color-navy);
 }
 
-.portfolio .pf-work-slot:not(.is-filled) {
-  width: min(52vw, 560px);
-  aspect-ratio: 16 / 9;
+/* Circuit map */
+.circuit-map {
+  width: 100%;
+  max-width: 28rem;
+  aspect-ratio: 1.45;
+  color: var(--color-chalk-muted);
 }
 
-.portfolio .pf-work-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-self: center;
-  flex: 0 0 auto;
-  gap: var(--space-24);
-  width: min(440px, 70vw);
-  height: var(--work-image-height, auto);
-  min-height: 0;
+.circuit-map path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  path-length: 1;
+  transition: stroke-dashoffset 1.4s ease;
 }
 
-.portfolio .pf-work-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-6) var(--space-12);
+.circuit-map.is-drawn path {
+  stroke-dashoffset: 0;
+  stroke: var(--color-signal);
+}
+
+/* Footer */
+.pit-wall {
+  display: grid;
+  gap: 2.5rem;
+  padding: 3.5rem var(--page-inline-pad) 4.5rem;
+  border-top: 1px solid var(--color-hairline);
+  background: var(--color-carbon-raised);
+}
+
+.pit-wall-credits {
   margin: 0;
-  padding: 0;
-  list-style: none;
-  color: color-mix(in oklch, var(--color-bone-white) 88%, transparent);
-  font-size: var(--text-body-sm);
-  line-height: 1.35;
+  font-family: var(--font-timing);
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-caption);
+  color: var(--color-chalk-muted);
 }
 
-.portfolio .pf-case-links {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-12);
+@media (min-width: 900px) {
+  .garage-hero-content {
+    width: min(100%, 46rem);
+    padding-top: 1.75rem;
+    padding-bottom: 2rem;
+  }
+
+  .telemetry-panel {
+    place-items: center end;
+  }
 }
 
-.portfolio .pf-live-link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-6);
-  color: var(--color-bone-white);
-  font-size: var(--text-body-sm);
-  line-height: 1.35;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.22em;
-  text-decoration-color: color-mix(
-    in srgb,
-    var(--color-bone-white) 55%,
-    transparent
-  );
-  transition:
-    color 160ms ease,
-    text-decoration-color 160ms ease;
-}
-
-.portfolio .pf-live-link:hover {
-  color: oklch(1 0 0);
-  text-decoration-color: oklch(1 0 0);
-}
-
-.portfolio .pf-live-link:focus-visible {
-  outline: 2px solid var(--color-bone-white);
-  outline-offset: 4px;
-}
-
-@media (max-width: 700px) {
-  /* Closer camera = stronger forward lean on small screens (maciej.co) */
-  .portfolio .pf-gallery-stage {
-    --gallery-perspective: 800px;
+@media (max-width: 959px) {
+  .garage-stage {
+    height: auto;
   }
 
-  /*
-    maciej.co ≤700px: left-aligned half-width tabs, same curved clip-path.
-    Pad must stay ≥ ear so --le stays positive — otherwise left ears clip
-    past the card edge and stack into the broken cascade.
-  */
-  .portfolio .pf-gallery {
-    --gallery-tab: 44px;
-    --gallery-tab-mask: 29px;
-    --gallery-origin: 12px;
-    /* Fit every folder (incl. Research); never floor peek above available height */
-    --gallery-peek: calc(
-      (100% - var(--gallery-origin)) / var(--gallery-count)
-    );
+  .garage-stage-sticky {
+    position: relative;
+    height: auto;
+    min-height: 100dvh;
   }
 
-  .portfolio .pf-gallery-card {
-    --gt-cols: 2;
-    --gt-ear: 29px;
-    --gt-slot: 0;
-    --gt-pad: 48px;
-    /*
-      Clip-path tab width on the card (100% = card).
-      Slightly wider than maciej's half so longer labels fit.
-    */
-    --gt-w: calc((100% - var(--gt-pad) * 2) * 2 / 3);
+  .garage-stage-ui {
+    min-height: 100dvh;
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: 1rem;
   }
 
-  .portfolio .pf-gallery-tab {
-    display: flex;
-    justify-content: flex-start;
-    grid-template-columns: none;
-    padding: 0 var(--gt-pad);
+  .garage-hero-overlay {
+    background:
+      linear-gradient(
+        180deg,
+        color-mix(in oklch, var(--color-carbon) 70%, transparent) 0%,
+        color-mix(in oklch, var(--color-carbon) 28%, transparent) 40%,
+        color-mix(in oklch, var(--color-carbon) 78%, transparent) 100%
+      );
   }
 
-  .portfolio .pf-gallery-tab h3 {
-    grid-column: auto;
-    /*
-      Do NOT use var(--gt-w) here — its 100% would resolve against the
-      padded tab content box and shrink labels (~100px) while the clip
-      tab stays ~164px. 2/3 of the tab content box matches the clip.
-    */
-    flex: 0 0 calc(100% * 2 / 3);
-    width: calc(100% * 2 / 3);
-    max-width: 100%;
-    justify-content: center;
-    padding: 0 var(--gallery-gap);
-    font-size: 22px;
+  .timing-rail {
+    max-height: none;
+    align-self: stretch;
   }
 
-  /* Mobile closed stack stays clean — no colorful peeks on small peeks */
-  .portfolio .pf-gallery:not(.is-focused) .pf-work-images {
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  /* Open strip: screenshots span ~2 viewports; pan, don't page one-per-screen */
-  .portfolio .pf-work-images {
-    --work-max-width: 200dvw;
-  }
-
-  .portfolio .pf-work-info {
-    width: calc(100dvw - (var(--gallery-pad) * 2) - 16px);
+  .timing-rail-list {
+    max-height: 40dvh;
   }
 }
