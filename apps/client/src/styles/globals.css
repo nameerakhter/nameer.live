@@ -450,9 +450,10 @@
   background: color-mix(in oklch, var(--color-sheet) 10%, transparent);
 }
 
-/* Clip native scrollbar — arrows remain the scroll affordance */
+/* Hard-clip native scrollbar — arrows remain the scroll affordance */
 .portfolio .survey-station-rail-wrap {
   position: relative;
+  height: 3.35rem;
   overflow: hidden;
 }
 
@@ -475,20 +476,23 @@
 .portfolio .survey-station-rail {
   display: flex;
   gap: 0;
-  margin: 0 0 -1.5rem;
-  padding: 0 0 1.5rem;
+  height: 5rem;
+  margin: 0;
+  padding: 0 2rem 2rem 0;
   list-style: none;
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: none;
   -ms-overflow-style: none;
   overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 .portfolio .survey-station-rail::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  display: none;
+  all: unset;
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
   background: transparent;
 }
 
