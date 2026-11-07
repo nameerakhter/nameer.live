@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 .tanstack/
 
+
+# Large source 3D models (not served)
+assets-src/
