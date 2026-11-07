@@ -1,0 +1,26 @@
+---
+description: Frontend UI and data conventions for the Vite client — tokens, minimalism, colocation, refetchQueries
+globs: apps/client/**/*.{tsx,ts,css}
+alwaysApply: false
+---
+
+# Frontend UI
+
+Follow `.agents/skills/frontend/SKILL.md` for full detail.
+
+- **Colocate**: page-only UI in `-components/`; shared (2+ pages) in `src/components/<kebab-name>/`.
+- **Tokens only**: style with utilities from `globals.css` / `@theme`; never hardcode hex/`oklch` in components. See `references/theme.md`.
+- **Min type size**: no `text-[10px]`-style arbitrary micro sizes.
+- **Icons**: `lucide-react` for new icons.
+- **Mutations**: `refetchQueries` with exact keys — not blanket `invalidateQueries`.
+- **Minimal UI**: content over chrome, quiet until hover, one primary CTA. Avoid AI-slop patterns in `references/minimalism.md`.
+
+```tsx
+// ❌ BAD
+<div className="bg-[#1a1a2e] text-[10px]">…</div>
+queryClient.invalidateQueries()
+
+// ✅ GOOD
+<div className="bg-slate-dark text-caption">…</div>
+queryClient.refetchQueries({ queryKey: NOTIFICATIONS_KEY })
+```

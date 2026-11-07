@@ -1,0 +1,22 @@
+---
+description: Core coding practices for nameer.live — functional components, named handlers/effects, revealing file order, skill loading
+alwaysApply: true
+---
+
+# Coding practices
+
+- Use **functional React components** only.
+- Prefer **named functions** for route handlers, middleware, workers, cron callbacks, and `useEffect` / `useLayoutEffect` bodies — not anonymous arrows.
+- **Revealing file order**: primary export first; supporting helpers/components below in first-call order.
+- Do not drive-by refactor unrelated code; match existing style in the file.
+- Before substantial work in `apps/client`, follow `.agents/skills/frontend/SKILL.md`. Before substantial work in `apps/server`, follow `.agents/skills/backend/SKILL.md`.
+
+```ts
+// ❌ BAD
+useEffect(() => { syncTheme() }, [])
+
+// ✅ GOOD
+useEffect(function syncTheme() {
+  // …
+}, [])
+```
