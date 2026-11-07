@@ -56,7 +56,13 @@ Three.js materials sample hex mirrors in `GARAGE_RGB` (`garage-rgb.ts`) because 
 
 ## Signature interaction
 
-Opening a timing row flies the camera to that project’s preset angle (`CameraControls`) and slides in the telemetry panel. Esc closes; arrows move between projects. Garage strip lights sweep on first load. `prefers-reduced-motion` skips flights and the light sweep. WebGL unavailable → CSS garage fallback. Wheel spin / DRS omitted — the RB22 Sketchfab mesh has no separately named wheel or flap nodes.
+Inspired by scroll-driven automotive shows (Porsche Showcase / Spyker / WAMOS) and dark showroom restraint (Ferrari / Lamborghini on Refero):
+
+- The garage is a **sticky 320vh stage**. Scrolling laps the car; dragging orbits the camera.
+- The **timing tower sits in the fold** as a frosted rail — projects open without leaving the car.
+- Opening a row snaps the orbit to a project angle and slides in the telemetry panel. Esc closes; arrows move between projects.
+- Strip lights sweep on load. `prefers-reduced-motion` freezes spin/orbit. WebGL unavailable → CSS garage fallback.
+- Wheel spin / DRS omitted — the RB22 Sketchfab mesh has no separately named wheel or flap nodes.
 
 ## Components
 
