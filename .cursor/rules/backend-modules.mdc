@@ -1,0 +1,28 @@
+---
+description: Backend module conventions for the Hono server — module.*.ts layout, named handlers, no repository layer
+globs: apps/server/**/*.ts
+alwaysApply: false
+---
+
+# Backend modules
+
+Follow `.agents/skills/backend/SKILL.md` for full detail.
+
+- Keep module files as `<module>.router.ts`, `<module>.utils.ts`, `<module>.middleware.ts`, `<module>.cron.ts`, `<module>.worker.ts`.
+- **Named** async handlers; validate with inline `zValidator` unless the schema is shared across files.
+- **No `repository.ts`** — query `db` inline in the handler; shared queries go in `module.utils.ts`.
+- **No helper-file sprawl** — do not create one file per tiny helper.
+- Throw `HTTPException`; log with `logger` and `component` / `requestId`.
+
+```ts
+// ❌ BAD
+export const listItems = async (c) => { /* anonymous style + repository */ }
+
+// ✅ GOOD
+.get('/', zValidator('query', z.object({ limit: z.coerce.number().optional() })),
+  async function listItems(c) {
+    const { limit } = c.req.valid('query')
+    // query db inline
+    return c.json({ items: [] })
+  })
+```
