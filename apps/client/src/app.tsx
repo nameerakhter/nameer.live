@@ -14,7 +14,7 @@ declare module '@tanstack/react-router' {
 
 export default function App() {
   return (
-    <ThemeProvider defaultTheme="dark">
+    <ThemeProvider defaultTheme="light" storageKey="nameer-portfolio-theme">
       <RouterProvider router={router} />
       <Analytics />
     </ThemeProvider>
