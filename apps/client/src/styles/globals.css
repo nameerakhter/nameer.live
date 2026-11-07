@@ -2,55 +2,58 @@
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
 @import '@fontsource/commit-mono/400.css';
+@import '@fontsource-variable/mona-sans/wdth.css';
+@import '@fontsource-variable/mona-sans/wdth-italic.css';
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  /* Portfolio tokens — oklch (Maciej structure on pure black) */
-  --color-bone-white: oklch(0.961 0.001 286.4);
-  /* Cool near-black canvas (maciej.co rgb(12,18,18)) + slate folders */
-  --color-slate-dark: oklch(0.169 0.006 196.5);
-  --color-graphite: oklch(0.336 0.015 196.5);
-  --color-fog: oklch(0.628 0.017 273.7);
-  --color-ash: oklch(0.455 0.015 275.8);
-  --color-charcoal: oklch(0.364 0.011 196.7);
-  --color-indigo-dusk: oklch(0.393 0.079 273);
-  --color-gallery-accent: oklch(0.745 0.137 290.3);
-  --color-surface-card: oklch(0.336 0.015 196.5);
-  --color-surface-card-hover: oklch(0.38 0.016 196.5);
-  --color-surface-hairline: oklch(0.24 0.01 196.5);
-  --color-surface-media: oklch(0.28 0.012 196.5);
-  --font-replica-regular: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
-  --font-replica-mono: 'Commit Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  --font-display: 'Clash Display', 'Satoshi', ui-sans-serif, system-ui, sans-serif;
+  /* Living Survey Sheet tokens */
+  --color-sheet: oklch(0.965 0.008 230);
+  --color-sheet-deep: oklch(0.935 0.012 230);
+  --color-ink: oklch(0.22 0.02 250);
+  --color-ink-muted: oklch(0.48 0.02 250);
+  --color-contour: oklch(0.52 0.1 55);
+  --color-contour-index: oklch(0.42 0.11 50);
+  --color-water: oklch(0.48 0.1 240);
+  --color-forest: oklch(0.62 0.07 150);
+  --color-station: oklch(0.52 0.19 25);
+  --color-hairline: oklch(0.78 0.02 230);
+
+  --font-mona: 'Mona Sans Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono-survey:
+    'Commit Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    monospace;
+
   --text-caption: 14px;
-  --leading-caption: 1.2;
-  --tracking-caption: -0.014em;
+  --leading-caption: 1.25;
+  --tracking-caption: 0.02em;
   --text-body-sm: 16px;
-  --leading-body-sm: 1.2;
-  --tracking-body-sm: -0.014em;
-  --text-body: 20px;
-  --leading-body: 1.2;
-  --tracking-body: -0.014em;
-  --text-subheading: 24px;
+  --leading-body-sm: 1.35;
+  --tracking-body-sm: -0.01em;
+  --text-body: 18px;
+  --leading-body: 1.4;
+  --tracking-body: -0.012em;
+  --text-subheading: 22px;
   --leading-subheading: 1.2;
-  --tracking-subheading: -0.014em;
+  --tracking-subheading: -0.02em;
   --text-heading-sm: 28px;
-  --leading-heading-sm: 1.2;
-  --tracking-heading-sm: -0.014em;
+  --leading-heading-sm: 1.1;
+  --tracking-heading-sm: -0.025em;
   --text-heading: 36px;
-  --leading-heading: 1.2;
-  --tracking-heading: -0.014em;
-  --text-display: 120px;
-  --leading-display: 1;
-  --tracking-display: -0.014em;
-  --radius-images: 16px;
+  --leading-heading: 1.05;
+  --tracking-heading: -0.03em;
+  --text-display: 64px;
+  --leading-display: 0.95;
+  --tracking-display: -0.04em;
+
+  --radius-sheet: 2px;
   --radius-2xl: 16px;
   --radius-3xl: 24px;
   --radius-full: 64px;
 
-  --font-heading: var(--font-sans);
-  --font-sans: 'Satoshi', -apple-system, system-ui, sans-serif;
+  --font-heading: var(--font-mona);
+  --font-sans: var(--font-mona);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -92,49 +95,50 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.141 0.005 285.823);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.141 0.005 285.823);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.141 0.005 285.823);
-  --primary: oklch(0.508 0.118 165.612);
-  --primary-foreground: oklch(0.979 0.021 166.113);
-  --secondary: oklch(0.967 0.001 286.375);
-  --secondary-foreground: oklch(0.21 0.006 285.885);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.21 0.006 285.885);
+  --background: oklch(0.965 0.008 230);
+  --foreground: oklch(0.22 0.02 250);
+  --card: oklch(0.985 0.005 230);
+  --card-foreground: oklch(0.22 0.02 250);
+  --popover: oklch(0.985 0.005 230);
+  --popover-foreground: oklch(0.22 0.02 250);
+  --primary: oklch(0.52 0.19 25);
+  --primary-foreground: oklch(0.98 0.01 230);
+  --secondary: oklch(0.935 0.012 230);
+  --secondary-foreground: oklch(0.22 0.02 250);
+  --muted: oklch(0.935 0.012 230);
+  --muted-foreground: oklch(0.48 0.02 250);
+  --accent: oklch(0.935 0.012 230);
+  --accent-foreground: oklch(0.22 0.02 250);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.705 0.015 286.067);
-  --chart-1: oklch(0.78 0.12 175);
-  --chart-2: oklch(0.62 0.14 172);
-  --chart-3: oklch(0.54 0.12 168);
-  --chart-4: oklch(0.48 0.1 165);
-  --chart-5: oklch(0.42 0.08 162);
-  --radius: 0.5rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-primary: oklch(0.596 0.145 163.225);
-  --sidebar-primary-foreground: oklch(0.979 0.021 166.113);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.705 0.015 286.067);
+  --border: oklch(0.78 0.02 230);
+  --input: oklch(0.78 0.02 230);
+  --ring: oklch(0.48 0.1 240);
+  --chart-1: oklch(0.52 0.1 55);
+  --chart-2: oklch(0.48 0.1 240);
+  --chart-3: oklch(0.62 0.07 150);
+  --chart-4: oklch(0.52 0.19 25);
+  --chart-5: oklch(0.42 0.11 50);
+  --radius: 0.25rem;
+  --sidebar: oklch(0.985 0.005 230);
+  --sidebar-foreground: oklch(0.22 0.02 250);
+  --sidebar-primary: oklch(0.52 0.19 25);
+  --sidebar-primary-foreground: oklch(0.98 0.01 230);
+  --sidebar-accent: oklch(0.935 0.012 230);
+  --sidebar-accent-foreground: oklch(0.22 0.02 250);
+  --sidebar-border: oklch(0.78 0.02 230);
+  --sidebar-ring: oklch(0.48 0.1 240);
 }
 
 .dark {
+  /* Portfolio is light-only; keep shadcn dark tokens for any residual chrome. */
   --background: oklch(0.141 0.005 285.823);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.21 0.006 285.885);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.21 0.006 285.885);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.432 0.095 166.913);
-  --primary-foreground: oklch(0.979 0.021 166.113);
+  --primary: oklch(0.62 0.18 25);
+  --primary-foreground: oklch(0.98 0.01 230);
   --secondary: oklch(0.274 0.006 286.033);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.274 0.006 286.033);
@@ -145,15 +149,15 @@
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.552 0.016 285.938);
-  --chart-1: oklch(0.78 0.12 175);
-  --chart-2: oklch(0.62 0.14 172);
-  --chart-3: oklch(0.54 0.12 168);
-  --chart-4: oklch(0.48 0.1 165);
-  --chart-5: oklch(0.42 0.08 162);
+  --chart-1: oklch(0.7 0.1 55);
+  --chart-2: oklch(0.62 0.1 240);
+  --chart-3: oklch(0.68 0.07 150);
+  --chart-4: oklch(0.62 0.18 25);
+  --chart-5: oklch(0.55 0.1 50);
   --sidebar: oklch(0.21 0.006 285.885);
   --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.696 0.17 162.48);
-  --sidebar-primary-foreground: oklch(0.262 0.051 172.552);
+  --sidebar-primary: oklch(0.62 0.18 25);
+  --sidebar-primary-foreground: oklch(0.98 0.01 230);
   --sidebar-accent: oklch(0.274 0.006 286.033);
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
@@ -172,28 +176,19 @@
   }
 }
 
-[data-sonner-toaster][data-sonner-theme='dark'] [data-description] {
-  @apply !text-muted-foreground;
-}
-
-/* ─── Gallery portfolio (Maciej folder stack on black canvas) ─── */
+/* Living Survey Sheet */
 
 .portfolio {
-  /* Surfaces alias theme tokens (oklch) for gallery CSS that can't be inlined */
-  --surface-canvas: var(--color-slate-dark);
-  --surface-card: var(--color-surface-card);
-  --surface-highlight: var(--color-indigo-dusk);
-  --surface-card-hover: var(--color-surface-card-hover);
-  --surface-hairline: var(--color-surface-hairline);
-  /* Named pixel spaces — keep off Tailwind's --spacing-* scale (p-4, gap-4, …) */
+  --surface-canvas: var(--color-sheet);
   --space-4: 4px;
   --space-6: 6px;
   --space-12: 12px;
   --space-24: 24px;
   --space-90: 90px;
-  --page-inline-pad: var(--space-24);
-  --section-gap: 64px;
-  --font-weight-regular: 400;
+  --page-inline-pad: clamp(1rem, 3vw, 1.75rem);
+  --section-gap: clamp(3rem, 8vw, 5.5rem);
+  color: var(--color-ink);
+  background: var(--color-sheet);
 }
 
 .portfolio .sr-only {
@@ -208,693 +203,443 @@
   border: 0;
 }
 
-
-/* Shared */
-.portfolio .pf-mono-label {
-  margin: 0 0 var(--space-6);
-  font-family: var(--font-replica-mono);
-  font-size: var(--text-caption);
-  letter-spacing: var(--tracking-caption);
-  line-height: var(--leading-caption);
-  color: var(--color-fog);
+.portfolio .survey-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 100dvh;
+  background: var(--color-ink);
 }
 
-/* Media wells — placeholder or filled screenshot */
-.portfolio .pf-media-slot {
+.portfolio .survey-hero-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.portfolio .survey-map,
+.portfolio .survey-map .maplibregl-map {
+  width: 100%;
+  height: 100%;
+}
+
+.portfolio .survey-map-fallback {
   display: grid;
   place-items: center;
-  width: 100%;
-  margin: 0;
-  overflow: hidden;
-  border-radius: var(--radius-images);
-  background: var(--surface-card);
-  border: 1px dashed color-mix(in oklch, var(--color-fog) 45%, transparent);
-  color: var(--color-fog);
-  text-align: center;
-  padding: var(--space-24);
+  background: var(--color-ink);
 }
 
-/* Screenshot nest — folder slate is the frame (no second well) */
-.portfolio .pf-media-slot.is-filled,
-.portfolio .pf-work-slot.is-filled {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  flex: 0 0 auto;
-  width: auto;
-  height: auto;
-  max-height: 100%;
-  border: none;
-  /* Thin gutter; top tighter so peeks show image, not empty pad */
-  padding: 6px 10px 10px;
-  background: var(--card-fill, var(--color-surface-card));
-  border-radius: 12px;
-  overflow: hidden;
-  /* Ground bright UIs — inset, not floating stickers */
-  box-shadow: inset 0 0 0 1px oklch(0 0 0 / 0.28);
-}
-
-.portfolio .pf-media-slot.is-filled img,
-.portfolio .pf-work-slot.is-filled img {
-  display: block;
-  width: auto;
-  height: auto;
-  max-width: var(--work-max-width, none);
-  max-height: var(--work-image-height, 100%);
-  border-radius: 12px;
-}
-
-.portfolio .pf-media-slot-label {
-  font-family: var(--font-replica-mono);
+.portfolio .survey-map-fallback-copy {
+  font-family: var(--font-mono-survey);
   font-size: var(--text-caption);
-  letter-spacing: var(--tracking-caption);
-  line-height: 1.4;
-  max-width: 36ch;
+  color: var(--color-sheet);
+  opacity: 0.55;
 }
 
-/* Hero — I build things (vector SVG mask — cannot inline) */
-.portfolio .pf-hero {
-  flex: 0 0 auto;
-  margin-top: clamp(4px, 1dvh, 12px);
-}
-
-.portfolio .pf-build {
-  /* Match maciej.co header frame + Die Grotesk C Bold letterforms */
-  --svg-w: 594;
-  --svg-h: 110;
-  position: relative;
-  width: 100%;
-  aspect-ratio: var(--svg-w) / var(--svg-h);
-  height: auto;
-  min-height: 0;
-  background: var(--color-bone-white);
-  -webkit-mask-image: url('/hero/i-build-things.svg?v=2');
-  mask-image: url('/hero/i-build-things.svg?v=2');
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-mode: alpha;
-  mask-mode: alpha;
-  overflow: hidden;
-}
-
-@media (max-width: 700px) {
-  .portfolio .pf-build {
-    -webkit-mask-image: url('/hero/i-build-things-mobile.svg?v=2');
-    mask-image: url('/hero/i-build-things-mobile.svg?v=2');
-    --svg-w: 298;
-    --svg-h: 198;
-  }
-}
-
-.portfolio .pf-build-particles {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  pointer-events: auto;
-}
-
-/* Selected work — stacked folder gallery (maciej.co model) */
-.portfolio .pf-work {
-  flex: 1 1 auto;
-  min-height: 0;
-  margin-top: clamp(4px, 1dvh, 12px);
-  padding-inline: var(--page-inline-pad);
-  padding-bottom: 0;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-}
-
-.portfolio .pf-gallery-wrap {
-  position: relative;
-  flex: 1 1 auto;
-  min-height: 0;
-  width: 100%;
-  margin-inline: 0;
-}
-
-.portfolio .pf-gallery {
-  --gallery-tab: 44px;
-  --gallery-tab-mask: calc(var(--gallery-tab) * 2 / 3);
-  /* Headroom so hover lift (-24px) doesn't clip tab labels under stage overflow */
-  --gallery-origin: 28px;
-  --gallery-count: 7;
-  --gallery-front: 0;
-  /* Always divide available height so every folder tab stays on-stage */
-  --gallery-peek: calc(
-    (100% - var(--gallery-origin)) / var(--gallery-count)
-  );
-  --gallery-peek-offset: 0px;
-  /* Folder stack — cool slate layers + 1px rim (maciej.co) */
-  --gallery-l-step: 1.8%;
-  --card-unfocused-h: 180;
-  --card-unfocused-s: 10%;
-  --card-unfocused-l: 20%;
-  --card-edge-ink: white;
-  /* maciej.co --card-edge-mix: 10% */
-  --card-edge-mix: 10%;
-  --gallery-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --gallery-time: 350ms;
-  /* maciej.co --pad: 20px — content uses pad*2 so screenshots sit below the peek band */
-  --gallery-pad: 20px;
-  --gallery-gap: 4px;
-  --gallery-accent: var(--color-gallery-accent);
+/* Atmosphere only — brand sits above this */
+.portfolio .survey-hero-overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
-  height: 100%;
   pointer-events: none;
+  background:
+    linear-gradient(
+      100deg,
+      color-mix(in oklch, var(--color-ink) 88%, transparent) 0%,
+      color-mix(in oklch, var(--color-ink) 72%, transparent) 28%,
+      color-mix(in oklch, var(--color-ink) 28%, transparent) 58%,
+      color-mix(in oklch, var(--color-ink) 42%, transparent) 100%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in oklch, var(--color-ink) 42%, transparent) 0%,
+      transparent 26%,
+      transparent 52%,
+      color-mix(in oklch, var(--color-ink) 82%, transparent) 100%
+    );
 }
 
-.portfolio .pf-gallery.is-focused {
-  position: fixed;
-  inset: 0;
-  z-index: 80;
-  height: 100dvh;
-  pointer-events: auto;
-  --gallery-peek-offset: calc(min(1, var(--gallery-front)) * var(--gallery-tab));
-  background: color-mix(in oklch, var(--surface-canvas) 88%, oklch(0 0 0));
-}
-
-.portfolio .pf-gallery-stage {
-  --gallery-perspective: 1400px;
+.portfolio .survey-hero-content {
   position: relative;
-  height: 100%;
-  overflow: hidden;
-  perspective: var(--gallery-perspective);
-  perspective-origin: 50% 50%;
-  transform-style: preserve-3d;
-}
-
-/*
-  Motion intro wraps each card. maciej.co mounts cards as direct stage children;
-  put perspective on the shell so rotateX still gets a real camera (preserve-3d
-  alone is not enough once Motion also writes transforms on this node).
-*/
-.portfolio .pf-gallery-card-shell {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  perspective: var(--gallery-perspective);
-  perspective-origin: 50% 50%;
-  transform-style: preserve-3d;
-}
-
-.portfolio .pf-gallery-dismiss {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 99;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 0;
-  border-radius: 50%;
-  background: var(--gallery-accent);
-  color: var(--color-bone-white);
-  cursor: pointer;
-  opacity: 0;
-  pointer-events: none;
-  transform: scale(0.8) translateY(24px);
-  transition:
-    opacity 300ms var(--gallery-ease),
-    transform 300ms var(--gallery-ease);
-  box-shadow:
-    inset 0 0 1px 0.5px oklch(1 0 0 / 0.2),
-    0 8px 32px oklch(0 0 0 / 0.2),
-    0 2px 8px oklch(0 0 0 / 0.15);
-}
-
-.portfolio .pf-gallery-dismiss svg {
-  fill: currentColor;
-  transform: rotate(45deg);
-}
-
-.portfolio .pf-gallery.is-focused .pf-gallery-dismiss {
-  opacity: 1;
-  pointer-events: auto;
-  transform: scale(1) translateY(0);
-}
-
-.portfolio .pf-gallery-keyboard {
-  position: absolute;
-  top: 9px;
-  right: 10px;
-  z-index: 0;
-  display: none;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-  width: 64px;
-  height: 42px;
-  opacity: 0;
-  pointer-events: none;
-  transform: scale(0.8) translateY(24px);
-  transition:
-    opacity 300ms var(--gallery-ease),
-    transform 300ms var(--gallery-ease);
-}
-
-.portfolio .pf-gallery-keyboard span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  border-radius: 5px;
-  background: color-mix(in oklch, var(--color-bone-white) 40%, transparent);
-  color: var(--surface-canvas);
-  font-size: 11px;
-}
-
-.portfolio .pf-gallery-keyboard span:nth-of-type(1) {
-  grid-column: 2;
-}
-
-.portfolio .pf-gallery-keyboard span:nth-of-type(2) {
-  grid-column: 1;
-}
-
-@media (min-width: 1280px) {
-  .portfolio .pf-gallery-keyboard {
-    display: grid;
-  }
-
-  .portfolio .pf-gallery.is-focused .pf-gallery-keyboard {
-    opacity: 0.66;
-    transform: scale(1) translateY(0);
-  }
-}
-
-.portfolio .pf-gallery-card {
-  --gallery-y: calc(
-    var(--gallery-origin) + (var(--gallery-count) - 1 - var(--i)) * var(--gallery-peek)
-  );
-  --card-bg: hsl(
-    var(--card-unfocused-h),
-    var(--card-unfocused-s),
-    calc(var(--card-unfocused-l) - var(--i) * var(--gallery-l-step))
-  );
-  /* Lift toward lighter slate on hover (maciej.co), not purple wash */
-  --card-hover: hsl(
-    var(--card-unfocused-h),
-    var(--card-unfocused-s),
-    calc(var(--card-unfocused-l) - (var(--i) - 4) * var(--gallery-l-step))
-  );
-  --gt-pad: 48px;
-  --gt-cols: var(--gallery-count);
-  --gt-w: calc((100% - var(--gt-pad) * 2) / var(--gt-cols));
-  --gt-h: var(--gallery-tab);
-  --gt-ear: var(--gallery-tab-mask);
-  --gt-slot: calc(var(--gallery-count) - 1 - var(--i));
-  --gt-l: calc(var(--gt-pad) + var(--gt-slot) * var(--gt-w));
-  --gt-r: calc(var(--gt-l) + var(--gt-w));
-  --gt-cr: 12px;
-  --le: calc(var(--gt-l) - var(--gt-ear));
-  --re: var(--gt-r);
-  --card-fill: var(--card-bg);
-  --card-edge: color-mix(
-    in srgb,
-    var(--card-fill),
-    var(--card-edge-ink) var(--card-edge-mix)
-  );
-  --gt-in: 0px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: calc(var(--gallery-count) - var(--i));
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  background: var(--card-edge);
-  transform-origin: top center;
-  transform: translate3d(0, var(--gallery-y), 0) rotateX(-20deg);
-  /* Rim + perspective carry depth — heavy drop-shadows muddied the edge */
-  filter: none;
-  transition:
-    transform var(--gallery-time) var(--gallery-ease),
-    filter var(--gallery-time) var(--gallery-ease);
-  will-change: transform;
-  pointer-events: none;
-  outline: none;
-  color: var(--color-bone-white);
-}
-
-.portfolio .pf-gallery-card,
-.portfolio .pf-gallery-card::after {
-  clip-path: shape(
-    from var(--gt-in) calc(var(--gt-h) + var(--gt-cr)),
-    line to var(--gt-in) calc(100% - var(--gt-in)),
-    line to calc(100% - var(--gt-in)) calc(100% - var(--gt-in)),
-    line to calc(100% - var(--gt-in)) calc(var(--gt-h) + var(--gt-cr)),
-    arc to calc(100% - var(--gt-cr)) calc(var(--gt-h) + var(--gt-in)) of calc(var(--gt-cr) - var(--gt-in)) ccw,
-    line to calc(var(--re) + var(--gt-ear) - var(--gt-in)) calc(var(--gt-h) + var(--gt-in)),
-    curve to calc(var(--re) + 0.6709425 * var(--gt-ear) - var(--gt-in)) calc(0.8418867 * var(--gt-h) + var(--gt-in))
-      with calc(var(--re) + 0.8507025 * var(--gt-ear) - var(--gt-in)) calc(var(--gt-h) + var(--gt-in))
-      / calc(var(--re) + 0.718155 * var(--gt-ear) - var(--gt-in)) calc(0.93631 * var(--gt-h) + var(--gt-in)),
-    line to calc(var(--re) + 0.3290575 * var(--gt-ear) - var(--gt-in)) calc(0.1581138 * var(--gt-h) + var(--gt-in)),
-    curve to calc(var(--re) - var(--gt-in)) var(--gt-in)
-      with calc(var(--re) + 0.281845 * var(--gt-ear) - var(--gt-in)) calc(0.06369 * var(--gt-h) + var(--gt-in))
-      / calc(var(--re) + 0.1492975 * var(--gt-ear) - var(--gt-in)) var(--gt-in),
-    line to calc(var(--gt-l) + var(--gt-in)) var(--gt-in),
-    curve to calc(var(--le) + 0.6709425 * var(--gt-ear) + var(--gt-in)) calc(0.1581138 * var(--gt-h) + var(--gt-in))
-      with calc(var(--le) + 0.8507025 * var(--gt-ear) + var(--gt-in)) var(--gt-in)
-      / calc(var(--le) + 0.718155 * var(--gt-ear) + var(--gt-in)) calc(0.06369 * var(--gt-h) + var(--gt-in)),
-    line to calc(var(--le) + 0.3290575 * var(--gt-ear) + var(--gt-in)) calc(0.8418867 * var(--gt-h) + var(--gt-in)),
-    curve to calc(var(--le) + var(--gt-in)) calc(var(--gt-h) + var(--gt-in))
-      with calc(var(--le) + 0.281845 * var(--gt-ear) + var(--gt-in)) calc(0.93631 * var(--gt-h) + var(--gt-in))
-      / calc(var(--le) + 0.1492975 * var(--gt-ear) + var(--gt-in)) calc(var(--gt-h) + var(--gt-in)),
-    line to var(--gt-cr) calc(var(--gt-h) + var(--gt-in)),
-    arc to var(--gt-in) calc(var(--gt-h) + var(--gt-cr)) of calc(var(--gt-cr) - var(--gt-in)) ccw,
-    close
-  );
-}
-
-.portfolio .pf-gallery-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  --gt-in: 1px;
-  background: var(--card-fill);
-  transition: background 150ms var(--gallery-ease);
-}
-
-.portfolio .pf-gallery:not(.is-focused) .pf-gallery-card:hover,
-.portfolio .pf-gallery:not(.is-focused) .pf-gallery-card:focus-visible {
-  transform: translate3d(0, calc(var(--gallery-y) - 24px), 0) rotateX(-16deg);
-  --card-fill: var(--card-hover);
-}
-
-.portfolio .pf-gallery.is-focused .pf-gallery-card {
-  transform: translate3d(0, var(--gallery-y), 0) rotateX(0deg);
-}
-
-.portfolio .pf-gallery-tab h3,
-.portfolio .pf-gallery-content {
-  pointer-events: auto;
-}
-
-.portfolio .pf-gallery.is-focused .pf-gallery-card.is-active .pf-gallery-tab {
-  pointer-events: none;
-}
-
-.portfolio .pf-gallery.is-focused .pf-gallery-card.is-active .pf-gallery-content {
-  pointer-events: auto;
-  overflow-x: auto;
-  overflow-y: hidden;
-  overscroll-behavior: contain;
-  scrollbar-width: none;
-  touch-action: pan-x;
-}
-
-.portfolio .pf-gallery.is-focused .pf-gallery-card.is-active .pf-gallery-content::-webkit-scrollbar {
-  display: none;
-}
-
-.portfolio .pf-gallery.is-focused .pf-gallery-card.is-active {
-  --card-fill: var(--surface-card);
-}
-
-.portfolio .pf-gallery.is-focused .is-front:hover,
-.portfolio .pf-gallery.is-focused .is-back:hover {
-  --card-fill: var(--surface-card-hover);
-}
-
-.portfolio .pf-gallery-tab {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  flex: 0 0 var(--gallery-tab);
-  width: 100%;
-  height: var(--gallery-tab);
-  grid-template-columns: repeat(var(--gt-cols), 1fr);
-  padding: 0 var(--gt-pad);
-  column-gap: 0;
-}
-
-.portfolio .pf-gallery-tab h3 {
-  display: flex;
-  grid-column: calc(var(--gt-slot) + 1) / span 1;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  height: 100%;
-  padding: 0 var(--gallery-gap);
-  /* maciej.co Die Grotesk 700 / 32px — Satoshi bold, centered in tab */
-  color: color-mix(in oklch, var(--color-bone-white) 88%, transparent);
-  font-family: var(--font-replica-regular);
-  font-size: clamp(18px, 2.2vw, 32px);
-  font-weight: 700;
-  font-style: normal;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  cursor: pointer;
-}
-
-.portfolio .pf-gallery-content {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex: 1 1 auto;
-  min-height: 0;
-  width: 100%;
-  /* maciej.co pad*2 — peeks come from a closed-stack translate, not short padding */
-  padding: calc(var(--gallery-pad) * 2) 0
-    calc(var(--gallery-pad) * 2 + var(--gallery-peek-offset)) 0;
-  overflow: hidden;
-  container-type: size;
-}
-
-/*
-  Closed veil: light depth only — peeks stay readable. Folder framing
-  (slate well + inset) handles polish, not a luminance crush.
-*/
-.portfolio .pf-gallery-content::after {
-  content: '';
-  position: absolute;
-  inset: 0;
   z-index: 2;
-  background: linear-gradient(
-    0deg,
-    oklch(0 0 0 / 0.32) 0%,
-    oklch(0 0 0 / 0.16) 42%,
-    oklch(0 0 0 / 0.05) 78%,
-    transparent 100%
-  );
-  opacity: 1;
-  pointer-events: none;
-  will-change: opacity;
-  transition: opacity var(--gallery-time) var(--gallery-ease);
-}
-
-.portfolio .pf-gallery-card.is-active .pf-gallery-content::after {
-  opacity: 0;
-}
-
-.portfolio .pf-work-images {
-  --work-max-width: min(90dvw, 1280px);
-  --work-image-height: min(
-    800px,
-    calc(var(--work-max-width) * 800 / 1280),
-    calc(100cqh - 2 * var(--gallery-pad))
-  );
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  align-self: stretch;
-  flex: 0 0 auto;
-  height: 100%;
-  max-height: 100%;
-  min-height: 0;
-  min-width: max-content;
-  padding-inline: var(--gallery-pad);
-  gap: var(--gallery-pad);
-  transform: translateY(0);
-  will-change: transform;
-  transition:
-    transform var(--gallery-time) var(--gallery-ease),
-    opacity var(--gallery-time) var(--gallery-ease);
+  min-height: 100dvh;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.75rem;
+  padding: 1.25rem var(--page-inline-pad) 1.35rem;
+  pointer-events: none;
 }
 
-/*
-  Closed stack: pull shots up so a strip peeks under each tab.
-  Hover lifts ~20px more (maciej.co).
-*/
-.portfolio .pf-gallery:not(.is-focused) .pf-work-images {
-  transform: translateY(calc(-1.5 * var(--gallery-pad)));
+.portfolio .survey-hero-content a,
+.portfolio .survey-hero-content button {
+  pointer-events: auto;
 }
 
-.portfolio .pf-gallery:not(.is-focused) .pf-gallery-card:hover .pf-work-images,
-.portfolio .pf-gallery:not(.is-focused) .pf-gallery-card:focus-visible .pf-work-images {
-  transform: translateY(calc(-1.5 * var(--gallery-pad) - 20px));
+.portfolio .survey-hero-brand {
+  max-width: 44rem;
+  padding-top: clamp(2rem, 12vh, 7rem);
 }
 
-.portfolio .pf-gallery-card.is-active .pf-work-images {
-  transform: translateY(0);
+.portfolio .survey-hero-name {
+  font-stretch: 112%;
+  font-size: clamp(3.25rem, 11vw, 6.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+  text-shadow: 0 1px 24px color-mix(in oklch, var(--color-ink) 35%, transparent);
 }
 
-.portfolio .pf-gallery-card.is-back .pf-work-images {
-  transform: translateY(var(--gallery-tab));
+.portfolio .survey-hero-tagline {
+  margin-top: 1.35rem;
 }
 
-/* Screenshot strip — natural width, height capped by --work-image-height */
-.portfolio .pf-work-slot {
-  flex: 0 0 auto;
-  height: auto;
-  max-height: 100%;
-  min-height: 0;
+.portfolio .survey-hero-actions {
+  margin-top: 1.75rem;
 }
 
-.portfolio .pf-work-slot:not(.is-filled) {
-  width: min(52vw, 560px);
-  aspect-ratio: 16 / 9;
-}
-
-.portfolio .pf-work-info {
+.portfolio .survey-map-marker {
+  --marker-fill: var(--color-station);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-self: center;
-  flex: 0 0 auto;
-  gap: var(--space-24);
-  width: min(440px, 70vw);
-  height: var(--work-image-height, auto);
-  min-height: 0;
-}
-
-.portfolio .pf-work-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-6) var(--space-12);
+  align-items: center;
+  gap: 0.2rem;
   margin: 0;
   padding: 0;
-  list-style: none;
-  color: color-mix(in oklch, var(--color-bone-white) 88%, transparent);
-  font-size: var(--text-body-sm);
-  line-height: 1.35;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0.55;
+  transition:
+    opacity 320ms ease,
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.portfolio .pf-case-links {
+.portfolio .survey-map-marker[data-tone='civic'],
+.portfolio .survey-map-marker[data-tone='agents'],
+.portfolio .survey-map-marker[data-tone='assistant'],
+.portfolio .survey-map-marker[data-tone='event'],
+.portfolio .survey-map-marker[data-tone='enterprise'],
+.portfolio .survey-map-marker[data-tone='mobile'],
+.portfolio .survey-map-marker[data-tone='research'] {
+  --marker-fill: var(--color-station);
+}
+
+.portfolio .survey-map-marker-pin {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 1.65rem;
+  height: 1.65rem;
+}
+
+.portfolio .survey-map-marker-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border: 1.5px solid var(--color-sheet);
+  border-radius: 999px;
+  background: var(--marker-fill);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-ink) 35%, transparent);
+}
+
+.portfolio .survey-map-marker-index {
+  position: absolute;
+  top: -0.55rem;
+  left: 50%;
+  translate: -50% 0;
+  padding: 0.05rem 0.2rem;
+  border: 1px solid color-mix(in oklch, var(--color-sheet) 45%, transparent);
+  background: color-mix(in oklch, var(--color-ink) 72%, transparent);
+  color: var(--color-sheet);
+  font-family: var(--font-mono-survey);
+  font-size: 0.62rem;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.portfolio .survey-map-marker-label {
+  display: grid;
+  gap: 0.05rem;
+  min-width: 6.5rem;
+  max-width: 9rem;
+  padding: 0.28rem 0.4rem;
+  border: 1px solid color-mix(in oklch, var(--color-sheet) 35%, transparent);
+  background: color-mix(in oklch, var(--color-sheet) 94%, transparent);
+  color: var(--color-ink);
+  text-align: left;
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+  transition:
+    opacity 200ms ease,
+    transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.portfolio .survey-map-marker-title {
+  font-family: var(--font-mona);
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-stretch: 92%;
+  line-height: 1.15;
+}
+
+.portfolio .survey-map-marker-meta {
+  font-family: var(--font-mono-survey);
+  font-size: 0.62rem;
+  letter-spacing: 0.03em;
+  opacity: 0.7;
+}
+
+.portfolio .survey-map-marker:hover,
+.portfolio .survey-map-marker:focus-visible {
+  opacity: 1;
+  z-index: 4;
+}
+
+.portfolio .survey-map-marker:hover .survey-map-marker-label,
+.portfolio .survey-map-marker:focus-visible .survey-map-marker-label,
+.portfolio .survey-map-marker.is-active .survey-map-marker-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.portfolio .survey-map-marker.is-active {
+  z-index: 5;
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.portfolio .survey-map-marker.is-active .survey-map-marker-dot {
+  box-shadow: 0 0 0 4px color-mix(in oklch, var(--marker-fill) 40%, transparent);
+}
+
+.portfolio .survey-map-marker.is-away {
+  opacity: 0.12;
+  transform: scale(0.85);
+  pointer-events: none;
+}
+
+.portfolio .survey-work-rail {
+  border-top: 1px solid color-mix(in oklch, var(--color-sheet) 22%, transparent);
+  padding-top: 0.85rem;
+}
+
+.portfolio .survey-work-rail-head {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-12);
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
 }
 
-.portfolio .pf-live-link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-6);
-  color: var(--color-bone-white);
-  font-size: var(--text-body-sm);
-  line-height: 1.35;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.22em;
-  text-decoration-color: color-mix(
-    in srgb,
-    var(--color-bone-white) 55%,
-    transparent
+.portfolio .survey-rail-nav {
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin: 0;
+  padding: 0;
+  border: 1px solid color-mix(in oklch, var(--color-sheet) 28%, transparent);
+  background: transparent;
+  color: var(--color-sheet);
+  cursor: pointer;
+}
+
+.portfolio .survey-rail-nav:hover {
+  border-color: color-mix(in oklch, var(--color-sheet) 55%, transparent);
+  background: color-mix(in oklch, var(--color-sheet) 10%, transparent);
+}
+
+/* Clip native scrollbar — arrows remain the scroll affordance */
+.portfolio .survey-station-rail-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio .survey-station-rail-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 2.5rem;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklch, var(--color-ink) 70%, transparent)
   );
+}
+
+.portfolio .survey-station-rail {
+  display: flex;
+  gap: 0;
+  margin: 0 0 -1.5rem;
+  padding: 0 0 1.5rem;
+  list-style: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overscroll-behavior-x: contain;
+}
+
+.portfolio .survey-station-rail::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+  background: transparent;
+}
+
+.portfolio .survey-station-chip {
+  display: flex;
+  min-width: 9.75rem;
+  max-width: 11.5rem;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0.35rem 1rem 0.55rem 0;
+  border: 0;
+  border-right: 1px solid
+    color-mix(in oklch, var(--color-sheet) 18%, transparent);
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-sheet);
+  text-align: left;
+  cursor: pointer;
   transition:
     color 160ms ease,
-    text-decoration-color 160ms ease;
+    opacity 160ms ease;
 }
 
-.portfolio .pf-live-link:hover {
-  color: oklch(1 0 0);
-  text-decoration-color: oklch(1 0 0);
+.portfolio .survey-station-chip:last-child {
+  border-right: 0;
 }
 
-.portfolio .pf-live-link:focus-visible {
-  outline: 2px solid var(--color-bone-white);
-  outline-offset: 4px;
+.portfolio .survey-station-chip:hover {
+  color: var(--color-sheet);
+  opacity: 1;
+}
+
+.portfolio .survey-station-chip.is-active {
+  color: var(--color-sheet);
+}
+
+.portfolio .survey-station-chip.is-active .survey-station-chip-title {
+  text-decoration: underline;
+  text-decoration-color: var(--color-station);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.28em;
+}
+
+.portfolio .survey-station-chip-index {
+  flex: 0 0 auto;
+  font-family: var(--font-mono-survey);
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-caption);
+  opacity: 0.55;
+}
+
+.portfolio .survey-station-chip-body {
+  min-width: 0;
+  display: grid;
+  gap: 0.1rem;
+}
+
+.portfolio .survey-station-chip-title {
+  display: block;
+  overflow: hidden;
+  font-family: var(--font-mona);
+  font-size: var(--text-body-sm);
+  font-weight: 650;
+  font-stretch: 94%;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.portfolio .survey-station-chip-place {
+  display: block;
+  font-family: var(--font-mona);
+  font-size: var(--text-caption);
+  opacity: 0.55;
+}
+
+.portfolio .survey-hero .maplibregl-ctrl-top-right,
+.portfolio .survey-hero .maplibregl-ctrl-bottom-left,
+.portfolio .survey-hero .maplibregl-ctrl-bottom-right {
+  display: none;
+}
+
+.portfolio .survey-hero .maplibregl-cooperative-gesture-screen {
+  background: color-mix(in oklch, var(--color-ink) 55%, transparent) !important;
+}
+
+.portfolio .survey-hero .maplibregl-cooperative-gesture-screen .maplibregl-cooperative-gesture-screen-message {
+  font-family: var(--font-mona);
+  font-size: var(--text-caption);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio .survey-map-marker,
+  .portfolio .survey-map-marker-label,
+  .portfolio .survey-station-chip {
+    transition: none;
+  }
+}
+
+.portfolio .project-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-end;
+  background: color-mix(in oklch, var(--color-ink) 28%, transparent);
+}
+
+.portfolio .project-sheet-panel {
+  display: flex;
+  width: min(42rem, 100%);
+  height: 100%;
+  flex-direction: column;
+  background: var(--color-sheet);
+  border-left: 1px solid var(--color-hairline);
+  box-shadow: -24px 0 48px
+    color-mix(in oklch, var(--color-ink) 12%, transparent);
+}
+
+.portfolio .project-sheet-strip {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 0.5rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+}
+
+.portfolio .project-sheet-strip img {
+  display: block;
+  height: min(42vh, 22rem);
+  width: auto;
+  max-width: none;
+  scroll-snap-align: start;
+  border: 1px solid var(--color-hairline);
+  background: var(--color-sheet-deep);
 }
 
 @media (max-width: 700px) {
-  /* Closer camera = stronger forward lean on small screens (maciej.co) */
-  .portfolio .pf-gallery-stage {
-    --gallery-perspective: 800px;
+  .portfolio .project-sheet {
+    align-items: flex-end;
   }
 
-  /*
-    maciej.co ≤700px: left-aligned half-width tabs, same curved clip-path.
-    Pad must stay ≥ ear so --le stays positive — otherwise left ears clip
-    past the card edge and stack into the broken cascade.
-  */
-  .portfolio .pf-gallery {
-    --gallery-tab: 44px;
-    --gallery-tab-mask: 29px;
-    --gallery-origin: 12px;
-    /* Fit every folder (incl. Research); never floor peek above available height */
-    --gallery-peek: calc(
-      (100% - var(--gallery-origin)) / var(--gallery-count)
-    );
-  }
-
-  .portfolio .pf-gallery-card {
-    --gt-cols: 2;
-    --gt-ear: 29px;
-    --gt-slot: 0;
-    --gt-pad: 48px;
-    /*
-      Clip-path tab width on the card (100% = card).
-      Slightly wider than maciej's half so longer labels fit.
-    */
-    --gt-w: calc((100% - var(--gt-pad) * 2) * 2 / 3);
-  }
-
-  .portfolio .pf-gallery-tab {
-    display: flex;
-    justify-content: flex-start;
-    grid-template-columns: none;
-    padding: 0 var(--gt-pad);
-  }
-
-  .portfolio .pf-gallery-tab h3 {
-    grid-column: auto;
-    /*
-      Do NOT use var(--gt-w) here — its 100% would resolve against the
-      padded tab content box and shrink labels (~100px) while the clip
-      tab stays ~164px. 2/3 of the tab content box matches the clip.
-    */
-    flex: 0 0 calc(100% * 2 / 3);
-    width: calc(100% * 2 / 3);
-    max-width: 100%;
-    justify-content: center;
-    padding: 0 var(--gallery-gap);
-    font-size: 22px;
-  }
-
-  /* Mobile closed stack stays clean — no colorful peeks on small peeks */
-  .portfolio .pf-gallery:not(.is-focused) .pf-work-images {
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  /* Open strip: screenshots span ~2 viewports; pan, don't page one-per-screen */
-  .portfolio .pf-work-images {
-    --work-max-width: 200dvw;
-  }
-
-  .portfolio .pf-work-info {
-    width: calc(100dvw - (var(--gallery-pad) * 2) - 16px);
+  .portfolio .project-sheet-panel {
+    width: 100%;
+    height: min(88dvh, 100%);
+    border-left: 0;
+    border-top: 1px solid var(--color-hairline);
   }
 }

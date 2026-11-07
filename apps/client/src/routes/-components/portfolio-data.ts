@@ -9,20 +9,34 @@ export type CaseImageSlot = {
   label: string
 }
 
+export type SurveyStation = {
+  /** Approximate WGS84 — labelled as surveyed placement on the sheet */
+  lat: number
+  lng: number
+  place: string
+  /** Optional label offset in world units to reduce clustering */
+  labelOffset?: { x: number; y: number }
+  /** When true, placement is an honest approximation (Prodios cluster) */
+  approximate?: boolean
+}
+
 export type CaseStudy = {
   id: string
   year: string
   title: string
-  /** Short label for the folder tab */
+  /** Short label for the station marker */
   tabLabel: string
   role: string
   period: string
   scope: string
+  /** One-line client pitch under the title */
+  pitch: string
   tags: readonly string[]
   links: readonly WorkLink[]
   /** Folder under public/work/<id>/ */
   assetFolder: string
   images: readonly CaseImageSlot[]
+  station: SurveyStation
 }
 
 export type ExperienceItem = {
@@ -32,7 +46,7 @@ export type ExperienceItem = {
 }
 
 /**
- * Selected work — ordered for recruiter scan:
+ * Selected work — ordered for client scan:
  * scale → AI product ownership → production AI → current civic →
  * enterprise → mobile breadth → research closer
  */
@@ -46,6 +60,8 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     period: '2024 → Present',
     scope:
       'NestJS backends for citizen-facing e-District services — 1Cr+ users, 1,000+ public services, and CBDC subsidy payment rails across Uttarakhand.',
+    pitch:
+      'Government-scale citizen services and subsidy payment rails that have to stay up.',
     tags: [
       'NestJS',
       'Redis',
@@ -84,6 +100,12 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
         label: 'Best and worst services',
       },
     ],
+    station: {
+      lat: 30.3165,
+      lng: 78.0322,
+      place: 'Dehradun',
+      labelOffset: { x: -0.35, y: 0.25 },
+    },
   },
   {
     id: 'chat-forge',
@@ -94,6 +116,8 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     period: '2025 → Present',
     scope:
       'Platform for building support agents trained on a site — crawl a URL, index pages, and keep replies grounded in those sources.',
+    pitch:
+      'Support agents that stay grounded in your site — crawl, index, answer.',
     tags: ['RAG', 'Agents', 'LLM'],
     links: [{ label: 'Chat Forge', href: 'https://chatforge.prodioslabs.in/' }],
     assetFolder: 'work/chat-forge',
@@ -119,6 +143,13 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
         label: 'Agent actions',
       },
     ],
+    station: {
+      lat: 30.338,
+      lng: 78.068,
+      place: 'Prodios Labs, Dehradun',
+      approximate: true,
+      labelOffset: { x: 0.55, y: 0.35 },
+    },
   },
   {
     id: 'ai-assistant',
@@ -129,6 +160,8 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     period: '2024',
     scope:
       'Production RAG assistants with vector search and tool-calling — live on PGETA and Apuni Sarkar.',
+    pitch:
+      'Production RAG assistants with tool-calling, live on civic products.',
     tags: ['RAG', 'LLM', 'Vector Search'],
     links: [
       { label: 'PGETA', href: 'https://www.pgeta.in/' },
@@ -149,6 +182,13 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
         label: 'Apuni Sarkar chatbot',
       },
     ],
+    station: {
+      lat: 30.292,
+      lng: 78.062,
+      place: 'Prodios Labs, Dehradun',
+      approximate: true,
+      labelOffset: { x: 0.7, y: -0.15 },
+    },
   },
   {
     id: 'kumbh-2027',
@@ -159,6 +199,8 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     period: '2025 → Present',
     scope:
       'Digital platform for Haridwar Kumbh 2027 — pilgrim-facing services, operations tooling, and high-traffic civic infrastructure built with Prodios Labs.',
+    pitch:
+      'Pilgrim services and ops tooling for a high-traffic civic event.',
     tags: ['Civic', 'NestJS', 'Events'],
     links: [{ label: 'Kumbh 2027', href: 'https://kumbh.prodioslabs.in/' }],
     assetFolder: 'work/kumbh-2027',
@@ -188,6 +230,12 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
         label: 'Kumbh GIS map',
       },
     ],
+    station: {
+      lat: 29.9457,
+      lng: 78.1642,
+      place: 'Haridwar',
+      labelOffset: { x: 0.4, y: 0.2 },
+    },
   },
   {
     id: 'nhm',
@@ -198,6 +246,8 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     period: '2023',
     scope:
       'Enterprise training platform tracking 50K+ hours with automated validation and RBAC.',
+    pitch:
+      'Enterprise training platform with automated validation and RBAC.',
     tags: ['Enterprise', 'NestJS', 'RBAC'],
     links: [{ label: 'Portal', href: 'https://tms.uk.gov.in/login' }],
     assetFolder: 'work/nhm',
@@ -211,6 +261,12 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
         label: 'Training calendar',
       },
     ],
+    station: {
+      lat: 30.298,
+      lng: 78.018,
+      place: 'Dehradun',
+      labelOffset: { x: -0.6, y: -0.25 },
+    },
   },
   {
     id: 'stray-reporter',
@@ -221,6 +277,8 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     period: 'Personal',
     scope:
       'Mobile app for reporting stray cows and dogs — citizen capture flow, rescue tracking, and team inbox for accept/reject and status updates.',
+    pitch:
+      'Citizen capture to rescue tracking — a full mobile civic loop.',
     tags: [
       'React Native',
       'Expo',
@@ -271,6 +329,13 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
         label: 'Update status and close case',
       },
     ],
+    station: {
+      lat: 30.305,
+      lng: 78.01,
+      place: 'Prodios Labs, Dehradun',
+      approximate: true,
+      labelOffset: { x: 0.15, y: 0.55 },
+    },
   },
   {
     id: 'research',
@@ -281,6 +346,8 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     period: '2024 → 2025',
     scope:
       'IEEE-published research from IIT Roorkee — 1D CNN + PCA + SVM for CWRU vibration-based bearing fault detection, with a Streamlit explorer for time/FFT analysis.',
+    pitch:
+      'IEEE-published vibration ML from IIT Roorkee — CNN, PCA, SVM.',
     tags: ['Research', '1D CNN', 'IEEE'],
     links: [
       {
@@ -319,6 +386,12 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
         label: 'Per-segment frequency spectrum',
       },
     ],
+    station: {
+      lat: 29.8543,
+      lng: 77.888,
+      place: 'Roorkee',
+      labelOffset: { x: -0.45, y: 0.2 },
+    },
   },
 ]
 
@@ -334,4 +407,34 @@ export const CONTACT = {
   github: 'https://github.com/nameerakhter',
   availability: 'Open',
   availabilityNote: 'Available for engineering roles and selected collaborations',
+} as const
+
+/** Geographic bounds of the stylised sheet (WGS84) */
+export const SHEET_BOUNDS = {
+  latMin: 29.72,
+  latMax: 30.52,
+  lngMin: 77.72,
+  lngMax: 78.32,
+} as const
+
+export const SHEET_COPY = {
+  role: 'Software engineer · Dehradun',
+  tagline:
+    'I build civic platforms, payment rails, and AI systems that have to work when the stakes are high.',
+  cta: 'Start a project',
+  indexTitle: 'Index to stations',
+  indexLead:
+    'Seven surveyed projects across the Doon valley, Haridwar, and Roorkee. Open a station for screenshots and live links.',
+  aboutTitle: 'Marginal notes',
+  about: [
+    'I am a software engineer based in Dehradun. At Prodios Labs I build platforms real people depend on — citizen portals, CBDC subsidy rails, and AI assistants that need to stay correct under load.',
+    'My background spans full-stack product work, ML research at IIT Roorkee, and a B.Tech in Computer Science (AIML) from UPES. I care about API design, automated testing, and shipping systems that hold when the stakes are high.',
+    'I do my best work on hard technical problems with clear product stakes. If that sounds like your project, let’s talk.',
+  ],
+  experienceTitle: 'Elevation profile',
+  experienceLead: 'A cross-section through the places that shaped the work.',
+  footerCredit: 'Surveyed by M. N. Akhter',
+  mapCredit:
+    'Terrain imagery © Esri, Maxar, Earthstar Geographics · DEM AWS / Mapzen',
+  approximateNote: 'placement approx.',
 } as const
