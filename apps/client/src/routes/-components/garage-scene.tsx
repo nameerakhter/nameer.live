@@ -344,23 +344,30 @@ function SceneBody({
     <>
       <color attach="background" args={['#0c0e16']} />
       <fog attach="fog" args={['#0c0e16', 10, 26]} />
-      <ambientLight intensity={0.22} />
+      <ambientLight intensity={0.35} />
       <spotLight
         position={[5, 7, 4]}
-        angle={0.5}
-        penumbra={0.7}
-        intensity={2.2}
+        angle={0.55}
+        penumbra={0.65}
+        intensity={3.4}
         color="#fff4ea"
         castShadow={false}
       />
       <spotLight
-        position={[-4, 5, 2]}
-        angle={0.55}
-        penumbra={0.8}
-        intensity={1.1}
+        position={[-4, 5.5, 3]}
+        angle={0.6}
+        penumbra={0.75}
+        intensity={2.2}
         color="#c8d4ff"
       />
-      <pointLight position={[0, 3.8, 0]} intensity={0.8} color="#fff8f0" />
+      <spotLight
+        position={[0, 6, -2]}
+        angle={0.7}
+        penumbra={0.85}
+        intensity={1.6}
+        color="#ffffff"
+      />
+      <pointLight position={[0, 3.6, 1]} intensity={1.4} color="#fff8f0" />
       <Environment files={HDR} resolution={256}>
         <StripLights reduce={reduce} />
       </Environment>
@@ -430,7 +437,7 @@ export function GarageScene({
           antialias: true,
           alpha: false,
           powerPreference: 'high-performance',
-          toneMappingExposure: 1.15,
+          toneMappingExposure: 1.35,
         }}
         frameloop={visible ? 'always' : 'demand'}
       >
