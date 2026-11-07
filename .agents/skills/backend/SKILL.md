@@ -1,6 +1,6 @@
 ---
 name: backend
-description: Backend conventions for the Hono server app — module layout, routers, middleware, cron jobs, and BullMQ workers. Use when creating or refactoring any backend route, worker, cron job, or server module in apps/server/src/.
+description: Backend conventions for the Hono server app — module layout, routers, middleware, cron jobs, BullMQ workers, inline DB queries (no repository layer), and file-internal layout. Use when creating or refactoring any backend route, worker, cron job, or server module in apps/server/src/.
 ---
 
 # Backend
@@ -22,10 +22,16 @@ https://hono.dev/llms-full.txt
 | `module.middleware.ts` | Middleware scoped to this module |
 | `module.router.ts` | Hono API routes |
 | `module.cron.ts` | Cron jobs for this module |
-| `module.utils.ts` | Utils used only within this module |
+| `module.utils.ts` | Helpers, schemas, and queries used by 2+ files in this module |
 | `module.worker.ts` | BullMQ queue + worker for this module |
 
 **Shared code** used across multiple modules belongs in `src/lib/`, not in a module's utils file.
+
+**Do not** create a `repository.ts` or any other data-access layer: write each database query inline where it runs. Route-only helpers belong in `module.router.ts`. Anything used by two or more files in the module (a Zod schema, a parser, a query) moves to `module.utils.ts`.
+
+**Do not** create one file per helper or operation. Small shared functions go into `module.utils.ts` together. A step that exists only to serve a feature lives in that feature's file (e.g. compile logic stays in `compile.ts`, not `tag-source.ts`).
+
+A file with a purpose of its own keeps a specific name (`auth.ts`, `mailers.ts`). `module.utils.ts` is for shared helpers, not features.
 
 ```
 apps/server/src/
@@ -42,14 +48,21 @@ apps/server/src/
     └── <module>.worker.ts       # optional
 ```
 
+### File-internal layout
+
+Put the primary export first (`captchaRouter`, `createX`, or the module's public API). Keep only the constants that export closes over above it. Place helpers below in first-call order: a helper appears after the function that uses it, and that helper's own callees follow immediately in the order they are called. Types and consts that exist only to support a helper sit next to that helper, not at the top of the file.
+
 ## Routers (`module.router.ts`)
 
 - Export a named router: `export const captchaRouter = new Hono()…`
 - Use **named async functions** for route handlers (not anonymous arrows).
 - Validate input with `zValidator` from `@hono/zod-validator` and `z` from `zod`.
+- **Inline** Zod schemas in `zValidator` unless the same schema is imported by another file. Repeat small schemas rather than extracting a file-local const.
 - Read validated data via `c.req.valid('query' | 'json' | 'param')`.
+- Query the database **inline** in the handler with `db` from `../lib/db`. Do not wrap a query in a repository function; call a function from `module.utils.ts` only when another file runs the same query.
 - Throw `HTTPException` from `hono/http-exception` for HTTP errors.
 - Log with `logger` from `../lib/logger`; set `component` to the handler name and include `requestId` when available (`c.get('requestId')`).
+- Keep route-only helpers in the same `module.router.ts` file, below the export.
 - Mount the router in `app.ts`: `.route('/<path>', <module>Router)`.
 
 ### Param / query / body validation
@@ -216,7 +229,9 @@ See `notification/notification.worker.ts` and `src/worker.ts` for the full patte
 
 ## Utils (`module.utils.ts`)
 
-- Keep helpers that are **only used within one module** here.
+- Put helpers, schemas, or queries used by **two or more files in this module** here.
+- Route-only helpers stay in `module.router.ts` (see File-internal layout).
+- Do **not** add `repository.ts`. Write each query where it runs.
 - If a util is needed by two or more modules, move it to `src/lib/`.
 
 ## Checklist for new backend features
@@ -224,7 +239,8 @@ See `notification/notification.worker.ts` and `src/worker.ts` for the full patte
 ```
 New module or endpoint
 ├─ Routes?
-│  ├─ Add <module>.router.ts (named handlers, zValidator, logging)
+│  ├─ Add <module>.router.ts (named handlers, inline zValidator, logging)
+│  ├─ Queries inline in handlers (no repository.ts)
 │  └─ Mount in app.ts with .route()
 ├─ Module-specific middleware?
 │  └─ Add <module>.middleware.ts (createMiddleware, AppContext)
@@ -234,6 +250,8 @@ New module or endpoint
 ├─ Background job?
 │  ├─ Add <module>.worker.ts (zod schema, createQueue, createWorker)
 │  └─ Register in src/worker.ts → bootstrapWorkers()
-└─ Shared helper needed elsewhere?
+├─ Helper used by 2+ files in the module?
+│  └─ Add to <module>.utils.ts (not a new one-off file)
+└─ Shared helper needed by other modules?
    └─ Move to src/lib/
 ```

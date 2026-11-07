@@ -1,6 +1,6 @@
 ---
 name: frontend
-description: Frontend conventions for the Vite client app — component colocation, page structure, PageContainer, Breadcrumb, and PageHeader layout, shared components, and server data fetching. Use when creating or refactoring components or pages, organizing frontend files, or fetching data from the server.
+description: Frontend conventions for the Vite client app — component colocation, page structure, PageContainer, Breadcrumb, and PageHeader layout, shared components, server data fetching via route loaders + TanStack Query, refetchQueries after mutations, named useEffect callbacks, theme tokens, and minimal UI. Use when creating or refactoring components or pages, organizing frontend files, fetching data from the server, or styling UI.
 ---
 
 # Frontend
@@ -14,12 +14,18 @@ Apply these conventions for all work in `apps/client/src/`.
 3. **Used on 2+ pages** → `src/components/<component-name>/`.
 4. **Private to a shared component** → subfolder inside that component's directory.
 5. **Promote when reused** — if a private component is needed elsewhere, move it to `src/components/`.
-6. **Data fetching** — route loaders + TanStack Query + `honoClient`; never `useEffect` for fetch (see `no-use-effect` skill).
+6. **Data fetching** — route loaders + TanStack Query + `honoClient`; never `useEffect` for fetch (see `no-use-effect` skill). After mutations, `refetchQueries` every query the affected loaders fetched with `ensureQueryData` — not blanket `invalidateQueries`.
 7. **Query UI states** — branch on TanStack Query `status` with `match` from `ts-pattern`; derive values from `data` inside `status: 'success'`, not `query.data?.` at the top level.
 8. **Composition over variants** — shared behavior + different chrome → file-local base + render props + separate exports; not `variant` switches. See [composition-over-variants.md](references/composition-over-variants.md).
 9. **Prop types** — `Component` → `ComponentProps`. If the component accepts `children`, use `React.PropsWithChildren<{ ... }>` — never `children?: React.ReactNode`. If it renders a root element callers may style, wrap with `WithBasicProps` from `@/lib/utils` and merge `className` via `cn()`. When both apply, combine: `WithBasicProps<React.PropsWithChildren<{ ... }>>`.
 10. **No external layout** — components must not own margin, position, or offset relative to their parent; the parent sets spacing and placement.
 11. **Page layout** — every route page uses `PageContainer` as the root wrapper, `Breadcrumb` (`@/components/ui/breadcrumb`) as the first child, then `PageHeader` (`@/components/ui/page-header`) with a `title` and `description`.
+12. **Named effects** — `useEffect` / `useLayoutEffect` callbacks must be named functions that describe the effect's purpose, not `() => {}`.
+13. **Theme tokens** — style with utilities and CSS variables from `apps/client/src/styles/globals.css` / `@theme`; never hardcode hex or `oklch(...)` in components. See [theme.md](references/theme.md).
+14. **Minimum type size** — no arbitrary micro sizes (`text-[10px]`, `text-[11px]`, etc.); use the project type scale or default Tailwind steps (`text-xs` and up).
+15. **Icons** — use `lucide-react` for every new icon. Do not introduce another icon package unless an existing surface already uses one.
+16. **Stories are opt-in** — never create a `*.stories.tsx` unless the user asks.
+17. **Minimal by default** — lists, rows, row actions, and chrome follow [minimalism.md](references/minimalism.md). Update that file when a new minimal pattern is agreed.
 
 ## Decision tree
 
@@ -740,7 +746,8 @@ Rules:
 ### Rules
 
 - Always use `getDataOrThrow` — never call `res.json()` on error responses manually.
-- Export query keys from hooks so mutations can invalidate consistently.
+- Export query keys from hooks so mutations can `refetchQueries` consistently.
+- Prefer `refetchQueries({ queryKey })` after mutations over blanket `invalidateQueries`.
 - Prefer route `loader` + `ensureQueryData` for page-level reads.
 - Colocate one-off fetch helpers with the page in `-components/` or the route file; promote to `src/hooks/` when reused.
 - Use `Skeleton` in route `pendingComponent` to mirror page layout — see [pending-skeleton-loaders.md](references/pending-skeleton-loaders.md).
@@ -762,9 +769,15 @@ When moving or splitting components:
 - [ ] No external layout (`margin`, `position`, offsets) on component — parent owns spacing/placement
 - [ ] Main export at top of file? → supporting skeletons, sub-components, and helpers below it (revealing pattern)
 - [ ] `useQuery` UI states? → `match(query).returnType<React.ReactNode>()` with explicit `pending` / `success` / `error` branches; derive values from `data` inside `success`, not `query.data?.` at top level; section UI errors use `ErrorMessage` + `refetch`
+- [ ] Mutations refetch the exact query keys loaders warmed (`refetchQueries`), not blanket `invalidateQueries`
+- [ ] Colors / radii / type from theme tokens — no hardcoded hex/`oklch` in components
+- [ ] `useEffect` / `useLayoutEffect` callbacks are named functions
+- [ ] UI follows [minimalism.md](references/minimalism.md) (content over chrome, quiet until hover)
 
 ## Additional resources
 
-- Full structure reference with examples: [project-structure.md](references/project-structure.md
+- Full structure reference with examples: [project-structure.md](references/project-structure.md)
 - Pending skeleton loaders for route `pendingComponent`: [pending-skeleton-loaders.md](references/pending-skeleton-loaders.md)
 - Composition over variant switches: [composition-over-variants.md](references/composition-over-variants.md)
+- Minimal UI patterns (lists, rows, anti-slop): [minimalism.md](references/minimalism.md)
+- Theme tokens and color rules: [theme.md](references/theme.md)
